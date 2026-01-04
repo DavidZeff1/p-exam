@@ -22,6 +22,22 @@ import { CombinedProblems } from "../pages/CombinedProblems.jsx";
 import { ConditionalProbability } from "../pages/ConditionalProbability.jsx";
 import { BayesTheorem } from "../pages/BayesTheorem.jsx";
 import { LawTotalProbability } from "../pages/LawTotalProbability.jsx";
+import { RandomVariables } from "../pages/RandomVariables.jsx";
+import { PDF } from "../pages/PDF.jsx";
+import { CDF } from "../pages/CDF.jsx";
+import { DiscreteUniform } from "../pages/DiscreteUniform.jsx";
+import { Binomial } from "../pages/Binomial.jsx";
+import { Geometric } from "../pages/Geometric.jsx";
+import { NegativeBinomial } from "../pages/NegativeBinomial.jsx";
+import { Hypergeometric } from "../pages/Hypergeometric.jsx";
+import { Poisson } from "../pages/Poisson.jsx";
+import { ContinuousUniform } from "../pages/ContinuousUniform.jsx";
+import { Exponential } from "../pages/Exponential.jsx";
+import { Gamma } from "../pages/Gamma.jsx";
+import { Beta } from "../pages/Beta.jsx";
+import { Normal } from "../pages/Normal.jsx";
+import { Lognormal } from "../pages/Lognormal.jsx";
+import { ConditionalDiscrete } from "../pages/ConditionalDiscrete.jsx";
 
 const routes = {
   "": Home,
@@ -45,6 +61,22 @@ const routes = {
   "f1-conditional-probability": ConditionalProbability,
   "f2-bayes-theorem": BayesTheorem,
   "f3-law-total-probability": LawTotalProbability,
+  "urv-a1-random-variables": RandomVariables,
+  "urv-a2-pdf": PDF,
+  "urv-a3-cdf": CDF,
+  "urv-b1-discrete-uniform": DiscreteUniform,
+  "urv-b2-binomial": Binomial,
+  "urv-b3-geometric": Geometric,
+  "urv-b4-negative-binomial": NegativeBinomial,
+  "urv-b5-hypergeometric": Hypergeometric,
+  "urv-b6-poisson": Poisson,
+  "urv-c1-continuous-uniform": ContinuousUniform,
+  "urv-c2-exponential": Exponential,
+  "urv-c3-gamma": Gamma,
+  "urv-c4-beta": Beta,
+  "urv-c5-normal": Normal,
+  "urv-c6-lognormal": Lognormal,
+  "urv-d1-conditional-discrete": ConditionalDiscrete,
 };
 
 export function App() {

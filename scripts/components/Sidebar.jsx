@@ -72,6 +72,100 @@ const navStructure = [
       },
     ],
   },
+  {
+    id: "univariate-random-variables",
+    title: "Univariate Random Variables",
+    sections: [
+      {
+        title: "A. Random Variables, PDFs & CDFs",
+        items: [
+          { id: "urv-a1-random-variables", label: "A.1 Random Variables" },
+          { id: "urv-a2-pdf", label: "A.2 Probability Density Functions" },
+          { id: "urv-a3-cdf", label: "A.3 Cumulative Distribution Functions" },
+        ],
+      },
+      {
+        title: "B. Discrete Distributions",
+        items: [
+          { id: "urv-b1-discrete-uniform", label: "B.1 Discrete Uniform" },
+          { id: "urv-b2-binomial", label: "B.2 Binomial" },
+          { id: "urv-b3-geometric", label: "B.3 Geometric" },
+          { id: "urv-b4-negative-binomial", label: "B.4 Negative Binomial" },
+          { id: "urv-b5-hypergeometric", label: "B.5 Hypergeometric" },
+          { id: "urv-b6-poisson", label: "B.6 Poisson" },
+        ],
+      },
+      {
+        title: "C. Continuous Distributions",
+        items: [
+          { id: "urv-c1-continuous-uniform", label: "C.1 Continuous Uniform" },
+          { id: "urv-c2-exponential", label: "C.2 Exponential" },
+          { id: "urv-c3-gamma", label: "C.3 Gamma" },
+          { id: "urv-c4-beta", label: "C.4 Beta" },
+          { id: "urv-c5-normal", label: "C.5 Normal" },
+          { id: "urv-c6-lognormal", label: "C.6 Lognormal" },
+        ],
+      },
+      {
+        title: "D. Conditional Probabilities",
+        items: [
+          {
+            id: "urv-d1-conditional-discrete",
+            label: "D.1 Conditional: Discrete",
+          },
+          {
+            id: "urv-d2-conditional-continuous",
+            label: "D.2 Conditional: Continuous",
+          },
+        ],
+      },
+      {
+        title: "E. Expected Value & Moments",
+        items: [
+          { id: "urv-e1-expected-value", label: "E.1 Expected Value" },
+          { id: "urv-e2-moments", label: "E.2 Moments" },
+          {
+            id: "urv-e3-mode-median-percentiles",
+            label: "E.3 Mode, Median & Percentiles",
+          },
+        ],
+      },
+      {
+        title: "F. Variance & Standard Deviation",
+        items: [
+          { id: "urv-f1-variance", label: "F.1 Variance" },
+          { id: "urv-f2-standard-deviation", label: "F.2 Standard Deviation" },
+          {
+            id: "urv-f3-coefficient-variation",
+            label: "F.3 Coefficient of Variation",
+          },
+        ],
+      },
+      {
+        title: "G. Insurance Payments",
+        items: [
+          { id: "urv-g1-deductibles", label: "G.1 Deductibles" },
+          { id: "urv-g2-coinsurance", label: "G.2 Coinsurance" },
+          { id: "urv-g3-benefit-limits", label: "G.3 Benefit Limits" },
+          { id: "urv-g4-inflation", label: "G.4 Inflation Adjustments" },
+        ],
+      },
+      {
+        title: "H. Loss & Payment Variables",
+        items: [
+          { id: "urv-h1-loss-variable", label: "H.1 Loss Random Variable" },
+          {
+            id: "urv-h2-payment-variable",
+            label: "H.2 Payment Random Variable",
+          },
+          {
+            id: "urv-h3-moments-loss-payment",
+            label: "H.3 Moments of Loss & Payment",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export function Sidebar({ currentPage }) {
