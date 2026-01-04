@@ -31,6 +31,45 @@ const navStructure = [
           },
         ],
       },
+      {
+        title: "C. Independence",
+        items: [
+          { id: "c1-independent-events", label: "C.1 Independent Events" },
+          { id: "c2-independent-trials", label: "C.2 Independent Trials" },
+        ],
+      },
+      {
+        title: "D. Mutually Exclusive Events",
+        items: [
+          {
+            id: "d1-mutually-exclusive",
+            label: "D.1 Mutually Exclusive Events",
+          },
+          { id: "d2-partitions", label: "D.2 Partitions & Total Probability" },
+        ],
+      },
+      {
+        title: "E. Addition & Multiplication Rules",
+        items: [
+          { id: "e1-addition-rule", label: "E.1 Addition Rule" },
+          { id: "e2-multiplication-rule", label: "E.2 Multiplication Rule" },
+          { id: "e3-combined-problems", label: "E.3 Combined Problems" },
+        ],
+      },
+      {
+        title: "F. Conditional Probability",
+        items: [
+          {
+            id: "f1-conditional-probability",
+            label: "F.1 Conditional Probability",
+          },
+          { id: "f2-bayes-theorem", label: "F.2 Bayes' Theorem" },
+          {
+            id: "f3-law-total-probability",
+            label: "F.3 Law of Total Probability",
+          },
+        ],
+      },
     ],
   },
 ];

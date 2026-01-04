@@ -1157,3 +1157,1894 @@ body {
   font-size: 12px;
   transform: translate(-50%, -50%);
 }
+
+/* Combination derivation visual */
+.comb-derivation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.comb-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #e3f2fd;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+.step-label { font-size: 12px; color: #666; margin-bottom: 5px; }
+.step-formula { font-weight: bold; }
+.comb-arrow { font-size: 18px; font-weight: bold; color: #1976d2; }
+
+/* Comparison table */
+.comparison-table {
+  margin: 15px 0;
+}
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.compare-row.header {
+  font-weight: bold;
+  background: #f5f5f5;
+  border-radius: 6px 6px 0 0;
+}
+.compare-row .yes { color: #e65100; font-weight: bold; }
+.compare-row .no { color: #1976d2; font-weight: bold; }
+
+/* Perm vs Comb visual */
+.perm-vs-comb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.pvc-box {
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 120px;
+}
+.pvc-box.perm { background: #fff3e0; border: 2px solid #ff9800; }
+.pvc-box.comb { background: #e3f2fd; border: 2px solid #1976d2; }
+.pvc-title { display: block; font-weight: bold; margin-bottom: 10px; }
+.pvc-items { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 10px; }
+.pvc-items span { background: rgba(255,255,255,0.7); padding: 3px 8px; border-radius: 4px; font-size: 13px; }
+.pvc-count { font-size: 12px; color: #666; }
+.pvc-vs { font-weight: bold; font-size: 18px; }
+
+/* Pascal's Triangle */
+.pascal-triangle {
+  text-align: center;
+  margin: 20px 0;
+}
+.pascal-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+.pascal-row span {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e3f2fd;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Stars and bars */
+.stars-bars {
+  text-align: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+.sb-label { display: block; margin-bottom: 15px; font-weight: bold; }
+.sb-example {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 8px 0;
+  font-family: monospace;
+}
+.sb-meaning { font-size: 13px; color: #666; }
+
+/* Classical probability visual */
+.classical-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.cv-favorable, .cv-total {
+  text-align: center;
+}
+.cv-label { display: block; font-size: 12px; margin-bottom: 8px; color: #666; }
+.cv-dots { display: flex; gap: 5px; justify-content: center; font-size: 18px; }
+.cv-dots.favorable span { color: #4caf50; }
+.cv-dots.total .cv-dots span:nth-child(-n+3) { color: #4caf50; }
+.cv-divide, .cv-equals { font-size: 24px; font-weight: bold; }
+.cv-result { font-size: 28px; font-weight: bold; color: #1976d2; }
+
+/* Birthday table */
+.birthday-table, .poker-table {
+  max-width: 300px;
+  margin: 20px auto;
+}
+.bday-row, .poker-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+}
+.poker-row {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+.bday-row.header, .poker-row.header {
+  font-weight: bold;
+  background: #f5f5f5;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Hypergeometric visual */
+.hyper-visual {
+  text-align: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+.hyper-pool {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+.hyper-success, .hyper-failure {
+  text-align: center;
+}
+.hyper-label { display: block; font-size: 12px; margin-bottom: 5px; }
+.hyper-success .hyper-items { color: #4caf50; font-size: 20px; letter-spacing: 3px; }
+.hyper-failure .hyper-items { color: #9e9e9e; font-size: 20px; letter-spacing: 3px; }
+.hyper-arrow { font-size: 18px; margin: 10px 0; }
+.hyper-sample {
+  background: #e3f2fd;
+  padding: 10px 20px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Committee list */
+.committee-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+.committee-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+.committee-list li:last-child { border-bottom: none; }
+
+/* Independence visual */
+.independence-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.ind-scenario {
+  text-align: center;
+  padding: 20px;
+  background: #e8f5e9;
+  border-radius: 10px;
+  min-width: 150px;
+}
+.ind-scenario.dependent {
+  background: #ffebee;
+}
+.ind-label { display: block; font-weight: bold; margin-bottom: 10px; }
+.ind-coins { font-size: 28px; margin: 10px 0; }
+.coin-gap { display: inline-block; width: 20px; }
+.coin-arrow { font-size: 18px; margin: 0 5px; }
+.ind-desc { font-size: 12px; color: #666; }
+.ind-vs { font-weight: bold; font-size: 18px; }
+
+/* Compare table */
+.compare-table, .cmp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.compare-table {
+  margin: 15px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cmp-row {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.cmp-row.header {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+.cmp-row span { text-align: center; }
+
+/* Multiplication chain */
+.mult-chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.mult-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #e3f2fd;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+.mult-label { font-size: 11px; color: #666; }
+.mult-val { font-size: 20px; font-weight: bold; color: #1976d2; }
+.mult-times, .mult-equals { font-size: 20px; font-weight: bold; }
+.mult-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #c8e6c9;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+.mult-result .mult-val { color: #388e3c; }
+
+/* Property list */
+.property-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.property-list li {
+  background: #f5f5f5;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+/* Scenarios grid */
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 15px 0;
+}
+.scenario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  background: #e8f5e9;
+  border-radius: 8px;
+  text-align: center;
+}
+.scenario.not-ind {
+  background: #ffebee;
+}
+.scenario-icon { font-size: 24px; margin-bottom: 5px; }
+.scenario-title { font-weight: bold; font-size: 12px; }
+.scenario-desc { font-size: 11px; color: #666; margin-top: 3px; }
+
+/* Bernoulli visual */
+.bernoulli-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+.bern-outcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+  border-radius: 10px;
+  min-width: 100px;
+}
+.bern-outcome.success { background: #c8e6c9; border: 2px solid #4caf50; }
+.bern-outcome.failure { background: #ffcdd2; border: 2px solid #f44336; }
+.bern-label { font-weight: bold; margin-bottom: 5px; }
+.bern-prob { font-size: 20px; font-family: serif; font-style: italic; }
+.bern-or { font-weight: bold; color: #666; }
+
+/* Binomial breakdown */
+.binom-breakdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.binom-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #e3f2fd;
+  padding: 12px 18px;
+  border-radius: 8px;
+}
+.binom-formula { font-weight: bold; font-size: 16px; }
+.binom-meaning { font-size: 11px; color: #666; margin-top: 5px; }
+.binom-times { font-size: 18px; font-weight: bold; }
+
+/* Geometric sequence */
+.geom-sequence {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+  font-size: 20px;
+}
+.geom-fail {
+  width: 35px;
+  height: 35px;
+  background: #ffcdd2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #c62828;
+}
+.geom-success {
+  width: 35px;
+  height: 35px;
+  background: #c8e6c9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #2e7d32;
+}
+.geom-dots { color: #666; }
+
+/* Memoryless visual */
+.memoryless-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding: 15px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+.mem-past, .mem-future {
+  text-align: center;
+}
+.mem-label { display: block; font-size: 12px; color: #666; margin-bottom: 8px; }
+.mem-trials { font-family: monospace; font-size: 18px; letter-spacing: 5px; }
+.mem-past .mem-trials { color: #9e9e9e; }
+.mem-future .mem-trials { color: #1976d2; }
+.mem-arrow { font-size: 24px; color: #666; }
+
+/* Disjoint visual */
+.disjoint-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.disj-event {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+.disj-event.a { background: #90caf9; }
+.disj-event.b { background: #a5d6a7; }
+.disj-gap { width: 30px; }
+
+/* Add mutually exclusive visual */
+.add-me-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.add-me-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+.add-me-box.a { background: #90caf9; }
+.add-me-box.b { background: #a5d6a7; }
+.add-me-box.result { background: #fff59d; }
+.add-me-label { font-size: 12px; color: #333; }
+.add-me-val { font-size: 22px; font-weight: bold; }
+.add-me-plus, .add-me-equals { font-size: 22px; font-weight: bold; }
+
+/* ME list */
+.me-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+.me-list li { padding: 8px 0; }
+.me-yes { color: #388e3c; font-weight: bold; }
+.me-no { color: #c62828; font-weight: bold; }
+
+/* ME examples grid */
+.me-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.me-ex {
+  padding: 15px;
+  border-radius: 8px;
+}
+.me-ex.yes { background: #e8f5e9; }
+.me-ex.no { background: #ffebee; }
+.me-ex-icon { font-size: 20px; }
+.me-ex-title { font-weight: bold; margin-left: 8px; }
+.me-ex ul { margin: 10px 0 0 25px; padding: 0; font-size: 14px; }
+.me-ex li { margin: 5px 0; }
+
+/* Overlap compare */
+.overlap-compare {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.oc-case { text-align: center; }
+.oc-title { display: block; font-weight: bold; margin-bottom: 10px; }
+.oc-circles {
+  position: relative;
+  width: 140px;
+  height: 80px;
+  margin: 0 auto 10px;
+}
+.oc-circles .oc-circle {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  opacity: 0.7;
+}
+.oc-circles .oc-circle.a { background: #90caf9; left: 0; }
+.oc-circles .oc-circle.b { background: #a5d6a7; }
+.oc-circles.me .oc-circle.b { left: 70px; }
+.oc-circles.overlap .oc-circle.b { left: 45px; }
+.oc-formula { font-size: 12px; font-family: monospace; }
+
+/* Pairwise visual */
+.pairwise-visual {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+.pw-event {
+  width: 60px;
+  height: 60px;
+  background: #e3f2fd;
+  border: 2px solid #1976d2;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Complement ME visual */
+.complement-me-visual {
+  display: flex;
+  max-width: 300px;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cme-event {
+  flex: 1;
+  padding: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.cme-event.a { background: #90caf9; }
+.cme-event.aprime { background: #ffcc80; }
+
+/* Application grid */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.app-item {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+.app-title { font-weight: bold; display: block; margin-bottom: 5px; }
+.app-item p { font-size: 13px; margin: 0; color: #666; }
+
+/* Partition visual */
+.partition-visual {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.part-slice {
+  flex: 1;
+  padding: 30px 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Partition examples */
+.partition-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.part-ex {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.part-ex-title {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.part-ex-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+.part-ex-items span {
+  background: #e3f2fd;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* Total probability visual */
+.total-prob-visual {
+  text-align: center;
+  margin: 20px 0;
+}
+.tp-sample-space {
+  display: flex;
+  justify-content: center;
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 360px;
+  margin: 0 auto 10px;
+}
+.tp-partition {
+  flex: 1;
+  padding: 20px 10px;
+  position: relative;
+  min-height: 80px;
+}
+.tp-partition.b1 { background: #bbdefb; }
+.tp-partition.b2 { background: #c8e6c9; }
+.tp-partition.b3 { background: #fff9c4; }
+.tp-label {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: bold;
+}
+.tp-intersection {
+  background: rgba(255,255,255,0.8);
+  border: 2px dashed #1976d2;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  margin: 15px auto 0;
+}
+
+/* Binary partition visual */
+.binary-partition-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.bp-case {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #e3f2fd;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+.bp-label { font-size: 12px; color: #666; margin-bottom: 5px; }
+.bp-prob { font-weight: bold; font-size: 14px; }
+.bp-plus { font-size: 24px; font-weight: bold; }
+
+/* Tree diagram */
+.tree-diagram {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+.tree-root {
+  display: inline-block;
+  background: #333;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+.tree-level-1 {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+.tree-branch {
+  text-align: center;
+}
+.branch-prob {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 5px;
+}
+.tree-node {
+  background: #90caf9;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.tree-level-2 {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.tree-leaf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.leaf-label {
+  background: #c8e6c9;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* Weighted average visual */
+.weighted-avg-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.wa-term {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 12px 18px;
+  border-radius: 8px;
+}
+.wa-weight { font-size: 12px; color: #666; }
+.wa-value { font-weight: bold; margin-top: 5px; }
+.wa-plus { font-size: 20px; font-weight: bold; }
+
+/* Addition rule visual */
+.addition-rule-visual {
+  margin: 20px 0;
+  overflow-x: auto;
+}
+.arv-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.arv-term {
+  text-align: center;
+}
+.arv-venn {
+  position: relative;
+  width: 70px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+.arv-circle {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  top: 5px;
+}
+.arv-circle.a { left: 5px; }
+.arv-circle.b { left: 25px; }
+.arv-circle.full { background: rgba(33, 150, 243, 0.5); }
+.arv-circle.empty { background: transparent; }
+.arv-overlap {
+  position: absolute;
+  width: 20px;
+  height: 35px;
+  background: rgba(33, 150, 243, 0.5);
+  left: 25px;
+  top: 5px;
+  border-radius: 50%;
+  clip-path: ellipse(25% 50% at 0% 50%);
+}
+.arv-op {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0 5px;
+}
+.arv-term span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ME addition visual */
+.me-addition-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+.mea-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+.mea-circle.a { background: #90caf9; }
+.mea-circle.b { background: #a5d6a7; }
+.mea-plus, .mea-equals { font-size: 24px; font-weight: bold; }
+.mea-result {
+  background: #fff59d;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Three event visual */
+.three-event-visual {
+  text-align: center;
+  margin: 20px 0;
+}
+.tev-venn {
+  position: relative;
+  width: 150px;
+  height: 130px;
+  margin: 0 auto 15px;
+}
+.tev-circle {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  opacity: 0.6;
+}
+.tev-circle.a { background: #90caf9; top: 0; left: 40px; }
+.tev-circle.b { background: #a5d6a7; top: 50px; left: 10px; }
+.tev-circle.c { background: #ffcc80; top: 50px; left: 70px; }
+.tev-legend {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.tev-item {
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.tev-item.add { background: #c8e6c9; }
+.tev-item.sub { background: #ffcdd2; }
+
+/* Inclusion-exclusion pattern */
+.ie-pattern {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.ie-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  min-width: 80px;
+}
+.ie-sign {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1976d2;
+}
+.ie-desc { font-size: 11px; color: #666; text-align: center; }
+
+/* Complement approach */
+.complement-approach {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.ca-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+.ca-box.union { background: #c8e6c9; }
+.ca-box.one { background: #e3f2fd; font-size: 24px; font-weight: bold; }
+.ca-box.neither { background: #ffcdd2; }
+.ca-label { font-weight: bold; }
+.ca-desc { font-size: 11px; color: #666; }
+.ca-equals, .ca-minus { font-size: 24px; font-weight: bold; }
+
+/* Mistakes grid */
+.mistakes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.mistake {
+  background: #ffebee;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #f44336;
+}
+.mistake-icon { font-size: 20px; }
+.mistake-title { font-weight: bold; margin-left: 8px; }
+.mistake p { font-size: 13px; margin: 8px 0 0; color: #666; }
+
+/* When grid */
+.when-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.when-item {
+  background: #e3f2fd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.when-keyword {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  color: #1976d2;
+  margin-bottom: 5px;
+}
+.when-item p { font-size: 13px; margin: 0; color: #666; }
+
+/* Multiplication rule visual */
+.mult-rule-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.mrv-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #e3f2fd;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+.mrv-step.result { background: #c8e6c9; }
+.mrv-label { font-size: 11px; color: #666; margin-bottom: 5px; }
+.mrv-prob { font-weight: bold; font-size: 16px; }
+.mrv-then, .mrv-equals { font-size: 18px; font-weight: bold; color: #666; }
+
+/* Independent multiplication visual */
+.ind-mult-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+.imv-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+.imv-icon { font-size: 28px; margin-bottom: 5px; }
+.imv-prob { font-weight: bold; }
+.imv-times, .imv-equals { font-size: 24px; font-weight: bold; }
+.imv-result {
+  background: #c8e6c9;
+  padding: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Chain visual */
+.chain-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.chain-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #e3f2fd;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+.chain-num { font-size: 11px; color: #666; }
+.chain-prob { font-weight: bold; font-size: 13px; }
+.chain-arrow { font-size: 20px; color: #666; }
+.chain-dots { font-size: 20px; color: #666; }
+
+/* Sampling compare */
+.sampling-compare {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.samp-case {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+}
+.samp-title {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #1976d2;
+}
+.samp-desc { font-size: 13px; margin-bottom: 10px; }
+.samp-desc p { margin: 5px 0; }
+.samp-example {
+  background: #e3f2fd;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.samp-formula { display: block; font-weight: bold; margin-top: 5px; }
+.samp-vs { font-size: 20px; font-weight: bold; align-self: center; }
+
+/* Multiplication tree */
+.mult-tree {
+  text-align: center;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+.mt-root {
+  display: inline-block;
+  background: #333;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+.mt-level1 {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.mt-branch { text-align: center; }
+.mt-edge { margin-bottom: 5px; }
+.mt-prob { font-size: 11px; color: #666; }
+.mt-node {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.mt-node.a { background: #90caf9; }
+.mt-node.aprime { background: #ffcc80; }
+.mt-level2 {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.mt-leaf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+}
+.mt-outcome {
+  background: #e8f5e9;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 3px 0;
+}
+.mt-total { color: #388e3c; font-weight: bold; }
+
+/* Reliability visual */
+.reliability-visual {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.rel-system {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 180px;
+}
+.rel-system.series { background: #e3f2fd; }
+.rel-system.parallel { background: #fff3e0; }
+.rel-title { display: block; font-weight: bold; margin-bottom: 15px; }
+.rel-components {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.rel-components.stacked {
+  flex-direction: column;
+  gap: 5px;
+}
+.rel-comp {
+  background: white;
+  border: 2px solid #333;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.rel-arrow { font-size: 16px; }
+.rel-formula { font-size: 12px; color: #666; }
+
+/* Decision framework */
+.decision-framework {
+  margin: 20px 0;
+}
+.df-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.df-keyword {
+  font-weight: bold;
+  color: #1976d2;
+  min-width: 180px;
+}
+.df-arrow { color: #666; }
+.df-action {
+  background: #e3f2fd;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 13px;
+}
+.df-formula {
+  font-family: serif;
+  font-style: italic;
+  margin-left: auto;
+}
+
+/* OR of ANDs visual */
+.or-of-ands {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.ooa-path {
+  background: #e3f2fd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.ooa-label {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 8px;
+}
+.ooa-events {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+.ooa-events span {
+  background: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.ooa-and { font-size: 14px; }
+.ooa-or {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e65100;
+}
+
+/* At least one visual */
+.at-least-one-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.alo-wanted, .alo-complement {
+  text-align: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+.alo-wanted { background: #c8e6c9; }
+.alo-complement { background: #ffcdd2; }
+.alo-label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+.alo-cases { font-weight: bold; }
+.alo-equals, .alo-minus { font-size: 24px; font-weight: bold; }
+.alo-one {
+  font-size: 28px;
+  font-weight: bold;
+  background: #e3f2fd;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Checklist */
+.checklist {
+  margin: 20px 0;
+}
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.check-item:last-child { border-bottom: none; }
+.check-num {
+  width: 30px;
+  height: 30px;
+  background: #1976d2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.check-text { font-size: 14px; }
+
+/* Formula grid */
+.formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.fg-item {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.fg-name {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Conditional probability visual */
+.cond-prob-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.cpv-full, .cpv-reduced {
+  text-align: center;
+}
+.cpv-label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.cpv-venn {
+  position: relative;
+  width: 120px;
+  height: 80px;
+}
+.cpv-circle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  opacity: 0.6;
+  top: 10px;
+}
+.cpv-circle.a { background: #90caf9; left: 10px; }
+.cpv-circle.b { background: #a5d6a7; left: 45px; }
+.cpv-arrow {
+  font-weight: bold;
+  color: #666;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+.cpv-b-only {
+  padding: 10px;
+}
+.cpv-b-circle {
+  width: 80px;
+  height: 80px;
+  background: #a5d6a7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.cpv-a-in-b {
+  background: #4caf50;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+.cpv-b-label {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* Multiplication rearrange */
+.mult-rearrange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.mr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+.mr-top, .mr-bottom { font-weight: bold; }
+.mr-line {
+  width: 80px;
+  height: 2px;
+  background: #333;
+  margin: 5px 0;
+}
+.mr-equals, .mr-rearrange { font-size: 18px; font-weight: bold; }
+.mr-result {
+  background: #c8e6c9;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Independence vs dependence */
+.ind-vs-dep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.ivd-case {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background: #e8f5e9;
+  min-width: 180px;
+}
+.ivd-case.dep { background: #fff3e0; }
+.ivd-title { display: block; font-weight: bold; margin-bottom: 10px; }
+.ivd-eq {
+  font-family: serif;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.ivd-meaning { font-size: 12px; color: #666; }
+.ivd-vs { font-weight: bold; font-size: 18px; }
+
+/* Probability table */
+.prob-table {
+  margin: 20px auto;
+  max-width: 400px;
+}
+.prob-table.small { max-width: 350px; font-size: 14px; }
+.pt-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.pt-row.header {
+  font-weight: bold;
+  background: #f5f5f5;
+}
+.pt-row.footer {
+  font-weight: bold;
+  background: #f5f5f5;
+}
+.pt-row span {
+  padding: 10px 8px;
+}
+.pt-label { font-weight: bold; text-align: left; }
+.pt-marginal { background: #e3f2fd; }
+.pt-total { background: #c8e6c9; font-weight: bold; }
+
+/* Fallacy visual */
+.fallacy-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fv-wrong, .fv-right {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.fv-wrong { background: #ffebee; border: 2px solid #f44336; }
+.fv-right { background: #e8f5e9; border: 2px solid #4caf50; }
+.fv-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.fv-wrong .fv-label { color: #c62828; }
+.fv-right .fv-label { color: #2e7d32; }
+.fv-eq { font-size: 14px; }
+
+/* Conditional properties list */
+.cond-properties {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+.cond-properties li {
+  padding: 8px 15px;
+  background: #f5f5f5;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  font-family: serif;
+}
+
+/* Bayes visual */
+.bayes-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.bv-known, .bv-want {
+  text-align: center;
+  padding: 20px 25px;
+  border-radius: 10px;
+}
+.bv-known { background: #e3f2fd; }
+.bv-want { background: #c8e6c9; }
+.bv-label { display: block; font-size: 12px; color: #666; margin-bottom: 5px; }
+.bv-prob { display: block; font-size: 22px; font-weight: bold; font-family: serif; }
+.bv-desc { display: block; font-size: 13px; margin-top: 5px; }
+.bv-arrow { font-size: 28px; font-weight: bold; color: #666; }
+
+/* Bayes components */
+.bayes-components {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+.bc-item {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.bc-item.posterior { background: #c8e6c9; }
+.bc-item.likelihood { background: #e3f2fd; }
+.bc-item.prior { background: #fff9c4; }
+.bc-item.evidence { background: #ffccbc; }
+.bc-term { display: block; font-size: 20px; font-weight: bold; font-family: serif; }
+.bc-name { display: block; font-weight: bold; margin: 8px 0 5px; }
+.bc-desc { font-size: 12px; color: #555; }
+
+/* Bayes expanded */
+.bayes-expanded {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 10px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.be-num, .be-denom {
+  text-align: center;
+  padding: 10px;
+}
+.be-label { display: block; font-size: 11px; color: #666; }
+.be-content { display: block; font-weight: bold; margin: 5px 0; }
+.be-desc { font-size: 12px; color: #888; }
+.be-line {
+  width: 100%;
+  height: 2px;
+  background: #333;
+  margin: 5px 0;
+}
+
+/* Test setup */
+.test-setup {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+.ts-item {
+  text-align: center;
+}
+.ts-label { display: block; font-size: 12px; color: #666; }
+.ts-val { display: block; font-weight: bold; font-size: 18px; }
+
+.result-highlight {
+  background: #fff3e0;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid #ff9800;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Base rate visual */
+.base-rate-visual {
+  margin: 20px 0;
+}
+.brv-population {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+.brv-title { display: block; font-weight: bold; margin-bottom: 15px; }
+.brv-groups {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+.brv-group {
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 140px;
+}
+.brv-group.sick { background: #ffcdd2; }
+.brv-group.healthy { background: #c8e6c9; }
+.brv-count { display: block; font-weight: bold; margin-bottom: 8px; }
+.brv-test { display: block; font-size: 13px; }
+.brv-test.dim { color: #888; }
+.brv-total {
+  background: #e3f2fd;
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Bayes tree */
+.bayes-tree {
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.bt-level1 {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+.bt-branch { text-align: center; }
+.bt-prob { display: block; font-size: 11px; color: #666; margin-bottom: 5px; }
+.bt-node {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.bt-node.a { background: #90caf9; }
+.bt-node.aprime { background: #ffcc80; }
+.bt-level2 {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.bt-leaf { text-align: center; }
+.bt-outcome {
+  display: block;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.bt-outcome.yes { background: #c8e6c9; }
+.bt-outcome.no { background: #f5f5f5; }
+
+/* Odds words */
+.odds-words {
+  background: #e3f2fd;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Sequential visual */
+.sequential-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.seq-step {
+  text-align: center;
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: 8px;
+  min-width: 100px;
+}
+.seq-label { display: block; font-size: 11px; color: #666; margin-bottom: 5px; }
+.seq-prob { font-weight: bold; font-family: serif; }
+.seq-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+.seq-evidence { font-size: 10px; color: #666; }
+
+/* Total probability paths */
+.total-prob-paths {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.tpp-a {
+  background: #c8e6c9;
+  padding: 20px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.tpp-equals { font-size: 24px; font-weight: bold; }
+.tpp-sum {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tpp-path {
+  background: #e3f2fd;
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.tpp-via { display: block; font-size: 11px; color: #666; margin-bottom: 5px; }
+.tpp-formula { font-weight: bold; font-size: 13px; }
+.tpp-plus { font-size: 20px; font-weight: bold; }
+
+/* Binary total */
+.binary-total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.bt-case {
+  background: #f5f5f5;
+  padding: 18px 22px;
+  border-radius: 10px;
+  text-align: center;
+}
+.bt-scenario { display: block; font-weight: bold; margin-bottom: 8px; color: #1976d2; }
+.bt-formula { font-size: 14px; }
+.bt-plus { font-size: 28px; font-weight: bold; }
+
+/* Weighted average bars */
+.weighted-avg-bars {
+  margin: 20px 0;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 10px;
+}
+.wab-item {
+  margin-bottom: 15px;
+}
+.wab-bar {
+  height: 35px;
+  background: #90caf9;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  min-width: 60px;
+}
+.wab-val { font-weight: bold; font-size: 13px; color: #0d47a1; }
+.wab-weight { font-size: 12px; color: #666; margin-left: 10px; }
+.wab-result {
+  background: #c8e6c9;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* LTP tree */
+.ltp-tree {
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+.ltp-start {
+  text-align: center;
+  background: #333;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.ltp-branches {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.ltp-branch { text-align: center; }
+.ltp-edge { margin-bottom: 5px; }
+.ltp-prob { font-size: 11px; color: #666; }
+.ltp-node {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.ltp-node.b1 { background: #90caf9; }
+.ltp-node.b2 { background: #a5d6a7; }
+.ltp-node.b3 { background: #ffcc80; }
+.ltp-leaves {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.ltp-leaf { text-align: center; }
+.ltp-leaf.a .ltp-end { background: #c8e6c9; }
+.ltp-leaf.nota .ltp-end { background: #f5f5f5; }
+.ltp-end {
+  display: block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.ltp-end.dim { color: #999; }
+
+/* Factory table */
+.factory-table {
+  margin: 15px auto;
+  max-width: 350px;
+}
+.ft-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.ft-row.header {
+  font-weight: bold;
+  background: #f5f5f5;
+}
+
+/* Driver list */
+.driver-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+.driver-list li {
+  padding: 8px 15px;
+  background: #f5f5f5;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+/* LTP Bayes connection */
+.ltp-bayes-connection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.lbc-ltp, .lbc-bayes {
+  text-align: center;
+  padding: 18px 22px;
+  border-radius: 10px;
+}
+.lbc-ltp { background: #e3f2fd; }
+.lbc-bayes { background: #c8e6c9; }
+.lbc-title { display: block; font-weight: bold; margin-bottom: 5px; }
+.lbc-gives { font-size: 13px; color: #666; }
+.lbc-arrow { font-size: 28px; font-weight: bold; color: #666; }

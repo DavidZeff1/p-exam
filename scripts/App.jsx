@@ -10,6 +10,18 @@ import { ProbabilitySetFunction } from "../pages/ProbabilitySetFunction.jsx";
 import { AxiomsOfProbability } from "../pages/AxiomsOfProbability.jsx";
 import { CountingPrinciples } from "../pages/CountingPrinciples.jsx";
 import { Permutations } from "../pages/Permutations.jsx";
+import { Combinations } from "../pages/Combinations.jsx";
+import { CombinatorialProbability } from "../pages/CombinatorialProbability.jsx";
+import { IndependentEvents } from "../pages/IndependentEvents.jsx";
+import { IndependentTrials } from "../pages/IndependentTrials.jsx";
+import { MutuallyExclusive } from "../pages/MutuallyExclusive.jsx";
+import { Partitions } from "../pages/Partitions.jsx";
+import { AdditionRule } from "../pages/AdditionRule.jsx";
+import { MultiplicationRule } from "../pages/MultiplicationRule.jsx";
+import { CombinedProblems } from "../pages/CombinedProblems.jsx";
+import { ConditionalProbability } from "../pages/ConditionalProbability.jsx";
+import { BayesTheorem } from "../pages/BayesTheorem.jsx";
+import { LawTotalProbability } from "../pages/LawTotalProbability.jsx";
 
 const routes = {
   "": Home,
@@ -21,6 +33,18 @@ const routes = {
   "a6-axioms-probability": AxiomsOfProbability,
   "b1-counting-principles": CountingPrinciples,
   "b2-permutations": Permutations,
+  "b3-combinations": Combinations,
+  "b4-combinatorial-probability": CombinatorialProbability,
+  "c1-independent-events": IndependentEvents,
+  "c2-independent-trials": IndependentTrials,
+  "d1-mutually-exclusive": MutuallyExclusive,
+  "d2-partitions": Partitions,
+  "e1-addition-rule": AdditionRule,
+  "e2-multiplication-rule": MultiplicationRule,
+  "e3-combined-problems": CombinedProblems,
+  "f1-conditional-probability": ConditionalProbability,
+  "f2-bayes-theorem": BayesTheorem,
+  "f3-law-total-probability": LawTotalProbability,
 };
 
 export function App() {
