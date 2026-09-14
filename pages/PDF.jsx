@@ -30,9 +30,11 @@ export function PDF() {
         </div>
         <div class="visual">
           <div class="pmf-visual">
-            <div class="pmf-bar" style={{ height: '60px' }}><span>0.3</span></div>
-            <div class="pmf-bar" style={{ height: '100px' }}><span>0.5</span></div>
-            <div class="pmf-bar" style={{ height: '40px' }}><span>0.2</span></div>
+            <div class="pmf-bars">
+              <div class="pmf-bar" style={{ height: '60px' }}><span>0.3</span></div>
+              <div class="pmf-bar" style={{ height: '100px' }}><span>0.5</span></div>
+              <div class="pmf-bar" style={{ height: '40px' }}><span>0.2</span></div>
+            </div>
             <div class="pmf-labels">
               <span>x=1</span>
               <span>x=2</span>
@@ -172,7 +174,7 @@ export function PDF() {
         </div>
         <div class="example">
           <p>
-            <strong>Example:</strong> Let f(x) = 2x for 0 ≤ x ≤ 1. Find P(X > 0.5):
+            <strong>Example:</strong> Let f(x) = 2x for 0 ≤ x ≤ 1. Find P(X &gt; 0.5):
           </p>
           <div class="formula" data-latex="P(X > 0.5) = \int_{0.5}^{1} 2x \, dx = [x^2]_{0.5}^{1} = 1 - 0.25 = 0.75"></div>
         </div>

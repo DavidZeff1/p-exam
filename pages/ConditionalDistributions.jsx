@@ -1,7 +1,7 @@
 export function ConditionalDistributions() {
   return (
     <>
-      <h1 class="page-title">D.2 Conditional Distributions</h1>
+      <h1 class="page-title">A.2 Conditional Distributions</h1>
       <p class="page-subtitle">Multivariate Distributions</p>
 
       <section class="intro">

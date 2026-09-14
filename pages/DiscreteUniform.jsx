@@ -51,12 +51,14 @@ export function DiscreteUniform() {
         </div>
         <div class="visual">
           <div class="pmf-visual">
-            <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
-            <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
-            <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
-            <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
-            <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
-            <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
+            <div class="pmf-bars">
+              <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
+              <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
+              <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
+              <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
+              <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
+              <div class="pmf-bar" style={{ height: '80px' }}><span>1/6</span></div>
+            </div>
             <div class="pmf-labels">
               <span>1</span>
               <span>2</span>

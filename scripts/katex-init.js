@@ -1,3 +1,5 @@
+import katex from 'katex'
+
 export function renderFormulas() {
   document.querySelectorAll('[data-latex]').forEach(el => {
     katex.render(el.dataset.latex, el, {

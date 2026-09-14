@@ -1,7 +1,7 @@
 export function JointDistributions() {
   return (
     <>
-      <h1 class="page-title">D.1 Joint Distributions</h1>
+      <h1 class="page-title">A.1 Joint Distributions</h1>
       <p class="page-subtitle">Multivariate Distributions</p>
 
       <section class="intro">
