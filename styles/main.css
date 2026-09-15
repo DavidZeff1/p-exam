@@ -5496,6 +5496,19 @@ body {
     grid-column: auto;
   }
 
+  /* Give practice problem math more room on narrow screens */
+  .problem {
+    padding: 1rem 0.75rem;
+  }
+
+  .problem-solution {
+    padding: 0.75rem 0.6rem;
+  }
+
+  .problem .katex {
+    font-size: 1.08em;
+  }
+
   /* Page visuals sized for desktop */
   .pmf-bars,
   .pmf-labels {

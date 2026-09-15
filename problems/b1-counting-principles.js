@@ -23,7 +23,7 @@ export default [
     ],
   },
   {
-    question: "A reinsurance pool consists of $12$ insurers. Every pair of insurers in the pool has exactly one treaty with each other, and there are no other treaties. An auditor randomly selects two different treaties, with all pairs of treaties equally likely. Calculate the probability that the two selected treaties involve a common insurer.",
+    question: "A reinsurance pool consists of $12$ insurers. Every pair of insurers in the pool has exactly one treaty with each other, and there are no other treaties. An auditor randomly selects two different treaties, with all pairs of treaties equally likely. Calculate the probability, rounded to three decimal places, that the two selected treaties involve a common insurer.",
     choices: ["$0.154$", "$0.308$", "$0.333$", "$0.615$", "$0.692$"],
     answer: 1,
     solution: [

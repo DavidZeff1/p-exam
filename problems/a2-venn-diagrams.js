@@ -1,48 +1,47 @@
 export default [
   {
-    question: "An auto insurer has $1{,}000$ policies in force. Of these, $620$ include collision coverage, $410$ include comprehensive coverage, and $250$ include both. Calculate the probability that a randomly selected policy includes exactly one of these two coverages.",
-    choices: ["$0.22$", "$0.25$", "$0.53$", "$0.75$", "$0.78$"],
-    answer: 2,
-    solution: [
-      "Let $C$ be collision and $M$ be comprehensive. Fill the diagram from the inside out: $|C \\cap M| = 250$.",
-      "Collision only: $|C \\cap M'| = 620 - 250 = 370$. Comprehensive only: $|C' \\cap M| = 410 - 250 = 160$.",
-      "Exactly one is the sum of the two single-set regions: $370 + 160 = 530$, which matches $|C| + |M| - 2|C \\cap M| = 620 + 410 - 500$.",
-      "$$P(\\text{exactly one}) = \\frac{530}{1{,}000} = 0.53$$",
-    ],
-  },
-  {
-    question: "An employer offers three voluntary benefits: dental, vision, and supplemental life insurance. Of its $200$ employees, $110$ are enrolled in dental, $80$ in vision, $70$ in life, $45$ in both dental and vision, $30$ in both dental and life, $25$ in both vision and life, and $25$ are enrolled in none of the three. Calculate the probability that a randomly selected employee is enrolled in exactly two of the three benefits.",
-    choices: ["$0.075$", "$0.275$", "$0.350$", "$0.425$", "$0.500$"],
-    answer: 1,
-    solution: [
-      "Enrolled in at least one: $|D \\cup V \\cup L| = 200 - 25 = 175$.",
-      "By inclusion-exclusion, $175 = 110 + 80 + 70 - 45 - 30 - 25 + |D \\cap V \\cap L|$, so $|D \\cap V \\cap L| = 175 - 160 = 15$.",
-      "Each pairwise count includes the center, so the two-only regions are $45 - 15 = 30$, $30 - 15 = 15$, and $25 - 15 = 10$.",
-      "Exactly two: $30 + 15 + 10 = 55$.",
-      "$$P(\\text{exactly two}) = \\frac{55}{200} = 0.275$$",
-    ],
-  },
-  {
-    question: "For a randomly selected household, the probability of having an auto policy with a particular insurer is $0.60$, and the probability of having a homeowners policy with that insurer is $0.35$. The probability that the household has exactly one of these two policies with the insurer is $0.45$. Calculate the probability that the household has neither policy with the insurer.",
-    choices: ["$0.05$", "$0.25$", "$0.30$", "$0.55$", "$0.70$"],
-    answer: 2,
-    solution: [
-      "Let $A$ be auto and $H$ be homeowners. Exactly one is $P(A) + P(H) - 2P(A \\cap H)$.",
-      "$$0.45 = 0.60 + 0.35 - 2P(A \\cap H) \\implies P(A \\cap H) = 0.25$$",
-      "$P(A \\cup H) = 0.60 + 0.35 - 0.25 = 0.70$.",
-      "$$P(A' \\cap H') = 1 - P(A \\cup H) = 1 - 0.70 = 0.30$$",
-    ],
-  },
-  {
-    question: "A health insurer tracks three chronic conditions among its members: hypertension, diabetes, and obesity. For a randomly selected member, the probability of having hypertension is $0.30$, of having diabetes is $0.20$, and of having obesity is $0.35$. The probability of having exactly two of the three conditions is $0.14$, and the probability of having all three is $0.04$. Calculate the probability that a randomly selected member has none of the three conditions.",
-    choices: ["$0.25$", "$0.29$", "$0.33$", "$0.37$", "$0.41$"],
+    question: "An insurance agency has $500$ clients. Of these, $290$ hold an auto policy with the agency, $170$ hold a renters policy with the agency, and $120$ hold neither policy. Calculate the probability that a randomly selected client holds an auto policy but not a renters policy.",
+    choices: ["$0.16$", "$0.18$", "$0.24$", "$0.42$", "$0.58$"],
     answer: 3,
     solution: [
-      "Let $e_1$, $e_2$, $e_3$ be the probabilities of exactly one, exactly two, and all three conditions. Summing the three single-condition probabilities counts each exactly-two region twice and the center three times.",
-      "$$0.30 + 0.20 + 0.35 = e_1 + 2e_2 + 3e_3 = e_1 + 0.28 + 0.12 \\implies e_1 = 0.45$$",
-      "The at-least-one region is the union of the exactly-one, exactly-two, and all-three regions: $e_1 + e_2 + e_3 = 0.45 + 0.14 + 0.04 = 0.63$.",
-      "Check with inclusion-exclusion: the pairwise intersections sum to $e_2 + 3e_3 = 0.26$, and $0.85 - 0.26 + 0.04 = 0.63$.",
-      "$$P(\\text{none}) = 1 - 0.63 = 0.37$$",
+      "Let $A$ and $R$ be the sets of clients holding auto and renters policies. The neither region is $(A \\cup R)'$, so $|A \\cup R| = 500 - 120 = 380$.",
+      "By inclusion-exclusion, $|A \\cap R| = |A| + |R| - |A \\cup R| = 290 + 170 - 380 = 80$.",
+      "The auto-only region is $A \\cap R'$, so $|A \\cap R'| = |A| - |A \\cap R| = 290 - 80 = 210$.",
+      "$$P(A \\cap R') = \\frac{210}{500} = 0.42$$",
+    ],
+  },
+  {
+    question: "For a randomly selected driver insured by a company, let $A$ be the event that the driver files a collision claim during the year and $B$ be the event that the driver files a liability claim during the year. The probability that the driver files at least one of these two types of claims is $0.36$. The probability that the driver files a collision claim or does not file a liability claim is $0.88$. Calculate $P(A)$.",
+    choices: ["$0.12$", "$0.24$", "$0.48$", "$0.52$", "$0.64$"],
+    answer: 1,
+    solution: [
+      "The event $A \\cup B'$ covers every region of the diagram except the $B$-only region $A' \\cap B$, so $P(A' \\cap B) = 1 - P(A \\cup B') = 1 - 0.88 = 0.12$.",
+      "The union $A \\cup B$ splits into the disjoint pieces $A$ and $A' \\cap B$, so $P(A) = P(A \\cup B) - P(A' \\cap B)$.",
+      "$$P(A) = 0.36 - 0.12 = 0.24$$",
+    ],
+  },
+  {
+    question: "An insurer offers three optional endorsements on its commercial policies: cyber liability, equipment breakdown, and employment practices liability. For a randomly selected policyholder, the probabilities of purchasing the cyber, equipment breakdown, and employment practices endorsements are $0.40$, $0.35$, and $0.25$, respectively. The probability of purchasing both cyber and equipment breakdown is $0.15$, both cyber and employment practices is $0.10$, and both equipment breakdown and employment practices is $0.08$. The probability of purchasing all three endorsements is $0.04$. Calculate the probability that a randomly selected policyholder purchases exactly one of the three endorsements.",
+    choices: ["$0.25$", "$0.29$", "$0.34$", "$0.38$", "$0.46$"],
+    answer: 4,
+    solution: [
+      "Let $C$, $E$, and $L$ be the three endorsements. Fill the diagram from the inside out: $P(C \\cap E \\cap L) = 0.04$.",
+      "The two-only regions are $0.15 - 0.04 = 0.11$ for $C$ and $E$, $0.10 - 0.04 = 0.06$ for $C$ and $L$, and $0.08 - 0.04 = 0.04$ for $E$ and $L$.",
+      "The one-only regions are $C$: $0.40 - 0.11 - 0.06 - 0.04 = 0.19$; $E$: $0.35 - 0.11 - 0.04 - 0.04 = 0.16$; $L$: $0.25 - 0.06 - 0.04 - 0.04 = 0.11$.",
+      "Exactly one is $0.19 + 0.16 + 0.11 = 0.46$. As a check, $1.00 - 2(0.33) + 3(0.04) = 0.46$.",
+      "$$P(\\text{exactly one}) = 0.46$$",
+    ],
+  },
+  {
+    question: "An employer offers three supplementary coverages: dental, vision, and hearing. The coverages are sold only in bundles, so each employee chooses exactly two of the three coverages, all three coverages, or none. For a randomly selected employee, the probabilities of having dental, vision, and hearing coverage are $0.50$, $0.40$, and $0.30$, respectively, and the probability of having all three coverages is $0.08$. Calculate the probability that a randomly selected employee has none of the three coverages.",
+    choices: ["$0.36$", "$0.40$", "$0.44$", "$0.48$", "$0.52$"],
+    answer: 2,
+    solution: [
+      "Let $e_2$ and $e_3$ be the probabilities of having exactly two and all three coverages. No employee is in a one-only region, so those three regions have probability $0$.",
+      "Adding the three coverage probabilities counts each two-only region twice and the center three times: $0.50 + 0.40 + 0.30 = 2e_2 + 3e_3$.",
+      "$$1.20 = 2e_2 + 3(0.08) \\implies e_2 = \\frac{1.20 - 0.24}{2} = 0.48$$",
+      "Every region is the none region, a two-only region, or the center, so $P(\\text{none}) = 1 - e_2 - e_3$.",
+      "$$P(\\text{none}) = 1 - 0.48 - 0.08 = 0.44$$",
     ],
   },
 ];

@@ -1,12 +1,12 @@
 export default [
   {
-    question: "An auto insurer classifies each policy year into exactly one of five outcomes: no claim, a minor claim, a moderate claim, a major claim, or a total loss. For a randomly selected policy year, the probabilities of no claim, a major claim, and a total loss are $0.68$, $0.05$, and $0.03$, respectively, and a minor claim is three times as likely as a moderate claim. Calculate the probability that the policy year results in a moderate claim, a major claim, or a total loss.",
-    choices: ["$0.06$", "$0.08$", "$0.11$", "$0.14$", "$0.26$"],
-    answer: 3,
+    question: "A six-sided die is weighted so that, on a single roll, the probability of the face showing $k$ is proportional to $k$, for $k = 1, 2, \\ldots, 6$. The die is rolled once. Calculate the probability that the number rolled is even or greater than $3$.",
+    choices: ["$\\frac{1}{3}$", "$\\frac{4}{7}$", "$\\frac{2}{3}$", "$\\frac{5}{7}$", "$\\frac{17}{21}$"],
+    answer: 4,
     solution: [
-      "The five outcomes are mutually exclusive and together make up $S$, so their probabilities must sum to $P(S) = 1$.",
-      "Let $m$ be the probability of a moderate claim, so a minor claim has probability $3m$: $$0.68 + 3m + m + 0.05 + 0.03 = 1 \\implies 4m = 0.24 \\implies m = 0.06$$",
-      "The event is made up of three outcomes, so its probability is the sum of their probabilities: $$P(E) = 0.06 + 0.05 + 0.03 = 0.14$$",
+      "Write $P(\\{k\\}) = ck$. The outcome probabilities must sum to $P(S) = 1$: $$c(1 + 2 + 3 + 4 + 5 + 6) = 21c = 1 \\implies c = \\frac{1}{21}$$",
+      "The event is $E = \\{2, 4, 6\\} \\cup \\{4, 5, 6\\} = \\{2, 4, 5, 6\\}$. Each outcome is counted once, even though $4$ and $6$ belong to both sets.",
+      "For a discrete sample space, $P(E)$ is the sum of the probabilities of the outcomes in $E$. The outcomes are not equally likely, so $\\frac{4}{6}$ is wrong: $$P(E) = \\frac{2 + 4 + 5 + 6}{21} = \\frac{17}{21}$$",
     ],
   },
   {
@@ -20,7 +20,7 @@ export default [
     ],
   },
   {
-    question: "A claim file is complete only if it contains a police report, medical records, and a repair estimate. For a randomly selected claim file, the probability that it contains a police report is $0.85$, the probability that it contains medical records is $0.80$, and the probability that it contains a repair estimate is $0.90$. Nothing else is known about how these events are related. Calculate the smallest possible value of the probability that a randomly selected claim file is complete.",
+    question: "A claim file is complete if and only if it contains all three of the following documents: a police report, medical records, and a repair estimate. For a randomly selected claim file, the probability that it contains a police report is $0.85$, the probability that it contains medical records is $0.80$, and the probability that it contains a repair estimate is $0.90$. Nothing else is known about how these events are related. Calculate the smallest possible value of the probability that a randomly selected claim file is complete.",
     choices: ["$0.450$", "$0.550$", "$0.612$", "$0.650$", "$0.800$"],
     answer: 1,
     solution: [
