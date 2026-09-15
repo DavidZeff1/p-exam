@@ -1,6 +1,6 @@
 // Splits text into plain-text and LaTeX segments: $inline$, $$display$$,
 // and \$ for a literal dollar sign (e.g. "a deductible of \$500").
-const MATH_PATTERN = /\$\$([\s\S]+?)\$\$|\$((?:\\.|[^\\$])+)\$|\\\$/g;
+const MATH_PATTERN = /\$\$((?:\\[\s\S]|[^\\$]|\$(?!\$))+?)\$\$|\$((?:\\.|[^\\$])+)\$|\\\$/g;
 
 export function tokenizeMath(source) {
   const segments = [];

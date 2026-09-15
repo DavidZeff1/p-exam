@@ -6,7 +6,7 @@ import { basename, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import katex from "katex";
 import { tokenizeMath } from "../scripts/math-text.js";
-import { topicById } from "../scripts/topics.js";
+import { getTopic } from "../scripts/topics.js";
 
 const problemsDir = resolve(import.meta.dirname, "../problems");
 const args = process.argv.slice(2);
@@ -18,6 +18,10 @@ const files = args.length
         .map((name) => resolve(problemsDir, name))
     : [];
 
+// Commands whose braced argument is text or a name rather than math to scan for stray words.
+const NON_MATH_ARGUMENT =
+  /\\(text|textbf|textit|textrm|textsf|textnormal|mathrm|operatorname|mbox|color|textcolor|begin|end)\{[^}]*\}/g;
+
 let errorCount = 0;
 let problemCount = 0;
 
@@ -28,8 +32,9 @@ for (const file of files) {
     console.error(`${id}: ${message}`);
   };
 
-  if (!topicById[id]) report("file name does not match any topic id in scripts/topics.js");
-  else if (!topicById[id].page) report("topic has no page, so its problems would never be shown");
+  const topic = getTopic(id);
+  if (!topic) report("file name does not match any topic id in scripts/topics.js");
+  else if (!topic.page) report("topic has no page, so its problems would never be shown");
 
   // In a double-quoted JS string "\frac" becomes a form feed + "rac" and "\sum" becomes "sum".
   // Every LaTeX backslash must be doubled, so an odd run of backslashes is always a mistake.
@@ -71,13 +76,17 @@ for (const file of files) {
           report(`${where} ${field}: unmatched $ (use \\\\$ for a literal dollar sign)`);
         }
         if (segment.type === "inline" || segment.type === "display") {
-          // Prose inside math usually means a money amount was written $500 instead of \$500.
+          // Prose inside math usually means money was written $500 instead of \$500.
           const bareWords = segment.value
-            .replace(/\\(text|textbf|textit|mathrm|operatorname)\{[^}]*\}/g, "")
+            .replace(NON_MATH_ARGUMENT, "")
             .replace(/\\[a-zA-Z]+/g, "")
             .match(/[a-zA-Z]{4,}/g);
           if (bareWords) {
             report(`${where} ${field}: words inside math "${bareWords.join(", ")}" (use \\\\text{...}, or \\\\$ for money)`);
+          }
+          // "between $500 and $1000" tokenizes as the math "500 and ", which has no long words.
+          if (segment.type === "inline" && /^\s*\d[\d,.{}]*\s+[a-zA-Z]/.test(segment.value)) {
+            report(`${where} ${field}: math "${segment.value}" looks like money between two dollar signs (use \\\\$ for money)`);
           }
           try {
             katex.renderToString(segment.value, {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "preact/hooks";
-import { navStructure, topicById, availableTopics } from "../topics.js";
+import { navStructure, getTopic, availableTopics } from "../topics.js";
 
 export function Sidebar({ currentPage, completed, isOpen, onClose }) {
   const [openSections, setOpenSections] = useState(["general-probability"]);
-  const currentCategory = topicById[currentPage]?.categoryId;
+  const currentCategory = getTopic(currentPage)?.categoryId;
   const completedCount = availableTopics.filter((topic) => completed.includes(topic.id)).length;
 
   // Expand the category of the page being viewed, e.g. after following a deep link.

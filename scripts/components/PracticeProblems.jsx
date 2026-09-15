@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { RichText } from "./RichText.jsx";
 
 // Problem sets live in problems/<topic-id>.js; topics without a file show nothing.
@@ -13,8 +13,22 @@ function loadProblems(topicId) {
 function Problem({ problem, number }) {
   const [selected, setSelected] = useState(null);
   const [showSolution, setShowSolution] = useState(false);
+  const feedbackRef = useRef(null);
+  const firstChoiceRef = useRef(null);
+  const refocusChoices = useRef(false);
   const answered = selected !== null;
   const correct = selected === problem.answer;
+
+  // Answering disables the choice buttons and "Try again" removes itself, so move
+  // keyboard focus somewhere meaningful instead of letting it fall back to <body>.
+  useEffect(() => {
+    if (answered) {
+      feedbackRef.current?.focus({ preventScroll: true });
+    } else if (refocusChoices.current) {
+      refocusChoices.current = false;
+      firstChoiceRef.current?.focus();
+    }
+  }, [answered]);
 
   const choiceClass = (index) => {
     if (answered && index === problem.answer) return "choice correct";
@@ -32,6 +46,7 @@ function Problem({ problem, number }) {
         {problem.choices.map((choice, index) => (
           <li key={index}>
             <button
+              ref={index === 0 ? firstChoiceRef : undefined}
               type="button"
               class={choiceClass(index)}
               disabled={answered}
@@ -46,7 +61,11 @@ function Problem({ problem, number }) {
         ))}
       </ol>
       {answered && (
-        <p class={`problem-feedback ${correct ? "correct" : "incorrect"}`} role="status">
+        <p
+          ref={feedbackRef}
+          tabIndex={-1}
+          class={`problem-feedback ${correct ? "correct" : "incorrect"}`}
+        >
           {correct
             ? "Correct!"
             : `Not quite. The correct answer is ${CHOICE_LETTERS[problem.answer]}.`}
@@ -66,6 +85,7 @@ function Problem({ problem, number }) {
             type="button"
             class="problem-action"
             onClick={() => {
+              refocusChoices.current = true;
               setSelected(null);
               setShowSolution(false);
             }}

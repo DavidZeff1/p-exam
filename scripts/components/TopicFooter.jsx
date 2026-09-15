@@ -9,7 +9,6 @@ export function TopicFooter({ topic, isCompleted, onToggleCompleted }) {
         <button
           type="button"
           class={`complete-toggle ${isCompleted ? "done" : ""}`}
-          aria-pressed={isCompleted}
           onClick={() => onToggleCompleted(topic.id)}
         >
           {isCompleted ? "✓ Completed" : "Mark topic as complete"}

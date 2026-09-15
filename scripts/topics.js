@@ -237,6 +237,9 @@ export const topics = navStructure.flatMap((category) =>
 
 export const topicById = Object.fromEntries(topics.map((topic) => [topic.id, topic]));
 
+// Own-property lookup, so ids like "constructor" or "__proto__" aren't treated as topics.
+export const getTopic = (id) => (Object.hasOwn(topicById, id) ? topicById[id] : undefined);
+
 export const availableTopics = topics.filter((topic) => topic.page);
 
 // Nearest topics with content on either side, skipping "coming soon" entries.

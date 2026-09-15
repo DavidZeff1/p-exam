@@ -10,6 +10,7 @@
   --color-sidebar: #1a1a2e;
   --color-sidebar-hover: #16213e;
   --color-primary: #4a90d9;
+  --color-primary-dark: #2f6fb5;
   --color-text: #333;
   --color-text-light: #e0e0e0;
   --color-border: #ddd;
@@ -5092,11 +5093,11 @@ body {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .nav-link.coming-soon {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .nav-section-toggle:focus-visible,
@@ -5108,8 +5109,18 @@ body {
 }
 
 .page-loading {
-  color: #888;
+  color: #666;
   font-style: italic;
+}
+
+.page-error p {
+  margin-bottom: 0.75rem;
+}
+
+/* Headings and feedback receive focus programmatically; no ring needed */
+.page-title:focus,
+.problem-feedback:focus {
+  outline: none;
 }
 
 /* ===== Home Page Topic Index ===== */
@@ -5121,7 +5132,7 @@ body {
   display: inline-block;
   margin-top: 0.75rem;
   padding: 0.6rem 1.1rem;
-  background: var(--color-primary);
+  background: var(--color-primary-dark);
   color: white;
   border-radius: 6px;
   text-decoration: none;
@@ -5129,7 +5140,7 @@ body {
 }
 
 .home-cta:hover {
-  background: #3a7bc8;
+  background: #27609f;
 }
 
 .home-category {
@@ -5146,7 +5157,7 @@ body {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #777;
+  color: #666;
   margin: 1rem 0 0.25rem;
 }
 
@@ -5167,12 +5178,12 @@ body {
 }
 
 .topic-list a.coming-soon {
-  color: #999;
+  color: #666;
 }
 
 .topic-badge {
   font-size: 0.75rem;
-  color: #999;
+  color: #666;
   white-space: nowrap;
 }
 
@@ -5209,7 +5220,7 @@ body {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #777;
+  color: #666;
   margin-bottom: 0.5rem;
 }
 
@@ -5261,7 +5272,7 @@ body {
 .choice-letter {
   min-width: 1rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
 
 .choice-text {
@@ -5292,8 +5303,8 @@ body {
 .problem-action {
   padding: 0.4rem 0.9rem;
   background: white;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
   border-radius: 6px;
   font: inherit;
   font-size: 0.9rem;
@@ -5351,7 +5362,8 @@ body {
 }
 
 .complete-toggle.done {
-  background: #43a047;
+  background: #2e7d32;
+  border-color: #2e7d32;
   color: white;
 }
 
@@ -5383,12 +5395,12 @@ body {
 
 .pager-direction {
   font-size: 0.8rem;
-  color: #777;
+  color: #666;
 }
 
 .pager-label {
   font-weight: 500;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
 
 /* Long display formulas scroll sideways instead of widening the page */
@@ -5439,8 +5451,13 @@ body {
     font-weight: 600;
   }
 
+  html.drawer-open {
+    overflow: hidden;
+  }
+
   .sidebar {
     width: min(var(--sidebar-width), 85vw);
+    overscroll-behavior: contain;
     transform: translateX(-100%);
     visibility: hidden;
     transition: transform 0.25s ease, visibility 0s linear 0.25s;
