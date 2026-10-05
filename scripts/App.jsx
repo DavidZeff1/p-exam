@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useState, useEffect, useLayoutEffect, useRef } from "preact/hooks";
 import { renderFormulas } from "./katex-init.js";
 import { getTopic } from "./topics.js";
 import { useCompletedTopics } from "./progress.js";
@@ -10,6 +10,8 @@ import { Syllabus } from "../pages/Syllabus.jsx";
 import { Reference } from "../pages/Reference.jsx";
 import { MockExam } from "../pages/MockExam.jsx";
 import { getOutcomes } from "./syllabus.js";
+import { useTheme } from "./theme.js";
+import { ThemeToggle } from "./components/ThemeToggle.jsx";
 const utilityTitles = { syllabus: "Syllabus checklist", reference: "Formulas & prerequisites", exam: "Practice exam" };
 
 // Topic pages are split into their own chunks and loaded on first visit.
@@ -29,6 +31,7 @@ function loadPage(topic) {
 const readHash = () => window.location.hash.slice(2);
 
 export function App() {
+  const [theme, toggleTheme] = useTheme();
   const [currentPage, setCurrentPage] = useState(readHash);
   const [loadedPage, setLoadedPage] = useState(null);
   const [failedPage, setFailedPage] = useState(null);
@@ -58,12 +61,13 @@ export function App() {
   }, []);
 
   // Keep the desktop panel preference separate from the mobile overlay.
-  useEffect(() => {
+  useLayoutEffect(() => {
     const wide = window.matchMedia("(min-width: 901px)");
     const handleChange = (event) => {
       setIsDesktop(event.matches);
       setSidebarOpen(false);
     };
+    setIsDesktop(wide.matches);
     wide.addEventListener("change", handleChange);
     return () => wide.removeEventListener("change", handleChange);
   }, []);
@@ -71,7 +75,7 @@ export function App() {
   // While the drawer is open, focus moves into it, the page behind is inert and
   // doesn't scroll, and Escape closes it. Closing it without navigating returns
   // focus to the menu button.
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.classList.toggle("drawer-open", drawerIsOpen);
     if (!drawerIsOpen) {
       if (drawerOpenedOn.current === currentPage) menuButtonRef.current?.focus();
@@ -172,6 +176,7 @@ export function App() {
         <a href="#/" class="mobile-title">
           Exam P
         </a>
+        <ThemeToggle theme={theme} onToggle={toggleTheme} />
       </header>
       <Sidebar
         currentPage={currentPage}
@@ -199,6 +204,7 @@ export function App() {
             <span aria-hidden="true">☰</span>
             {desktopSidebarOpen ? "Hide topics" : "Show topics"}
           </button>
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
         </div>
         <div id="page-container">
           {topic && pageReady && <nav class="lesson-toolbar" aria-label="Lesson tools"><a href="#/">Study guide</a><span>{topic.sectionTitle}</span><a href="#practice" onClick={event => { event.preventDefault(); document.getElementById("practice")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); }}>Go to practice</a></nav>}

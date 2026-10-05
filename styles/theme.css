@@ -1,0 +1,108 @@
+/* Theme roles also color the diagrams, tables, and older lesson components. */
+:root { color-scheme: light; }
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #101b27;
+  --color-sidebar: #162839;
+  --color-sidebar-hover: #253e52;
+  --color-primary: #93cfea;
+  --color-primary-dark: #a7d9f1;
+  --color-text: #e5edf5;
+  --color-text-light: #e5edf5;
+  --color-border: #3b5062;
+  --surface: #192b3b;
+  --wash-neutral: #243747;
+  --wash-blue: #213e53;
+  --wash-teal: #203f43;
+  --wash-green: #223f33;
+  --wash-red: #482e38;
+  --wash-amber: #453b27;
+  --wash-purple: #3b304d;
+  --text-body: #e5edf5;
+  --text-muted: #b8c9d8;
+  --text-blue: #9dd5f2;
+  --text-teal: #99dcde;
+  --text-green: #9cddb1;
+  --text-red: #ffafba;
+  --text-amber: #ffe0a0;
+  --text-purple: #d8baf4;
+  --line: #405569;
+  --stroke-blue: #5b9dc0;
+  --stroke-teal: #64a7aa;
+  --stroke-green: #65ae83;
+  --stroke-red: #d37e8a;
+  --stroke-amber: #c6a662;
+  --stroke-purple: #a58cc7;
+  --action-bg: #286784;
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .5rem .8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--surface, white);
+  color: var(--color-text);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.theme-toggle:hover { background: var(--wash-blue, #eaf3f6); }
+.theme-toggle span { font-size: 1.2rem; line-height: 1; }
+.desktop-menu-toolbar { justify-content: space-between; gap: 1rem; }
+.mobile-header .theme-toggle { margin-left: auto; background: transparent; color: #e5eef5; border-color: #61798d; font-size: .8rem; min-height: 38px; padding: .3rem .6rem; }
+[data-theme='dark'] .home-cta,
+[data-theme='dark'] .primary-action,
+[data-theme='dark'] .step-number { background: var(--action-bg); color: #fff; }
+[data-theme='dark'] .home-cta:hover,
+[data-theme='dark'] .primary-action:hover { background: #327895; }
+[data-theme='dark'] .primary-action:disabled { background: #455e72; }
+[data-theme='dark'] .choice.correct,
+[data-theme='dark'] .complete-toggle.done { background: #224b38; color: #d9f6e3; }
+[data-theme='dark'] .choice.incorrect { background: #482e38; }
+[data-theme='dark'] .choice-letter { color: var(--text-blue); }
+[data-theme='dark'] .choice.correct .choice-letter { color: var(--text-green); }
+[data-theme='dark'] .choice.incorrect .choice-letter { color: var(--text-red); }
+[data-theme='dark'] .syllabus-weight-bar .general { background: #286784; }
+[data-theme='dark'] .syllabus-weight-bar .univariate { background: #246574; }
+[data-theme='dark'] .syllabus-weight-bar .multivariate { background: #515e83; }
+[data-theme='dark'] input,
+[data-theme='dark'] select { color: var(--color-text); background: var(--surface); }
+[data-theme='dark'] input::placeholder { color: #a8bdcc; }
+[data-theme='dark'] .study-start progress::-webkit-progress-bar { background: #405569; }
+[data-theme='dark'] .study-start progress::-webkit-progress-value { background: #7ebdcc; }
+[data-theme='dark'] .study-start progress::-moz-progress-bar { background: #7ebdcc; }
+/* These SVG figures have fixed light fills; retain their readable diagram canvas. */
+[data-theme='dark'] :is(svg.set-diagram, svg.set-diagram-small, svg.inline-diagram) { background: #f5f7fa; border-radius: 4px; color: #20354a; }
+[data-theme='dark'] .part-slice { color: #20354a; }
+[data-theme='dark'] .katex { color: inherit; }
+@media print {
+  .theme-toggle { display: none; }
+  :root[data-theme='dark'] {
+    color-scheme: light;
+    --color-bg: white;
+    --color-text: #20354a;
+    --color-primary: #276c91;
+    --color-primary-dark: #205d7f;
+    --color-border: #d5e0e9;
+    --surface: white;
+    --wash-neutral: #f5f5f5;
+    --wash-blue: #e3f2fd;
+    --wash-teal: #edf7f6;
+    --wash-green: #e8f5e9;
+    --wash-red: #ffebee;
+    --wash-amber: #fff3e0;
+    --wash-purple: #f0e7f8;
+    --text-body: #20354a;
+    --text-muted: #526577;
+    --text-blue: #205d7f;
+    --text-teal: #246970;
+    --text-green: #2e7d32;
+    --text-red: #c62828;
+    --text-amber: #94671b;
+    --text-purple: #764ba2;
+    --line: #d5e0e9;
+  }
+}

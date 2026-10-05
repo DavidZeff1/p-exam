@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('exam-p-theme'); } catch {}
+        if (theme !== 'dark' && theme !== 'light') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <style>:root[data-theme="dark"] { background: #101b27; color-scheme: dark; }</style>
     <title>SOA Exam P Study Guide</title>
     <meta name="description" content="Study the May 2026 Exam P syllabus with complete probability lessons, chapter practice, worked solutions, and a timed 30-question practice exam." />
     <link
