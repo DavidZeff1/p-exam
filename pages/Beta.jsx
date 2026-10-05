@@ -229,11 +229,11 @@ export function Beta() {
             </div>
             <div class="summary-row">
               <span>Beta(1, β)</span>
-              <span>Power function (decreasing)</span>
+              <span>Decreasing for β &gt; 1; increasing for β &lt; 1</span>
             </div>
             <div class="summary-row">
               <span>Beta(α, 1)</span>
-              <span>Power function (increasing)</span>
+              <span>Increasing for α &gt; 1; decreasing for α &lt; 1</span>
             </div>
             <div class="summary-row">
               <span>Beta(1/2, 1/2)</span>
@@ -304,7 +304,7 @@ export function Beta() {
       </section>
 
       <section class="definition-block">
-        <h2>Bayesian Connection</h2>
+        <h2>Bayesian Connection (optional enrichment)</h2>
         <div class="definition">
           <p>
             <strong>Conjugate prior:</strong> Beta is the conjugate prior for

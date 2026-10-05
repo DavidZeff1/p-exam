@@ -160,7 +160,7 @@ export function Normal() {
       </section>
 
       <section class="definition-block">
-        <h2>MGF</h2>
+        <h2>MGF (optional enrichment)</h2>
         <div class="definition">
           <p>
             <strong>Moment Generating Function:</strong>
@@ -370,16 +370,16 @@ export function Normal() {
         <div class="definition">
           <p>
             <strong>CLT:</strong> For large n, the sum (or average) of i.i.d.
-            random variables is approximately normal, regardless of the original
-            distribution:
+            random variables with finite mean and finite positive variance is
+            approximately normal as the sample size grows:
           </p>
           <div class="formula" data-latex="\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} N(0, 1)"></div>
         </div>
         <div class="visual">
           <div class="highlight-box">
             <span class="highlight-title">CLT Rule of Thumb</span>
-            <p>n ≥ 30 usually sufficient</p>
-            <span class="highlight-note">Unless distribution is very skewed</span>
+            <p>Required sample size depends on the distribution</p>
+            <span class="highlight-note">Strong skewness can require much larger samples</span>
           </div>
         </div>
         <div class="intuition">
@@ -528,7 +528,7 @@ export function Normal() {
             <div class="formula" data-latex="Var(X) = \sigma^2"></div>
           </div>
           <div class="property">
-            <h3>MGF</h3>
+            <h3>MGF (optional enrichment)</h3>
             <div class="formula" data-latex="e^{\mu t + \sigma^2 t^2/2}"></div>
           </div>
         </div>

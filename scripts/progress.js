@@ -6,7 +6,7 @@ const STORAGE_KEY = "exam-p-completed-topics";
 function readStored() {
   try {
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return Array.isArray(stored) ? stored : null;
+    return Array.isArray(stored) ? stored.filter(id => typeof id === "string") : null;
   } catch {
     return null;
   }

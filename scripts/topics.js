@@ -4,6 +4,7 @@
 export const navStructure = [
   {
     id: "general-probability",
+    weight: "23–30%",
     title: "General Probability",
     sections: [
       {
@@ -108,6 +109,7 @@ export const navStructure = [
   },
   {
     id: "univariate-random-variables",
+    weight: "44–50%",
     title: "Univariate Random Variables",
     sections: [
       {
@@ -153,7 +155,7 @@ export const navStructure = [
           { id: "urv-c3-gamma", label: "C.3 Gamma", page: "Gamma" },
           { id: "urv-c4-beta", label: "C.4 Beta", page: "Beta" },
           { id: "urv-c5-normal", label: "C.5 Normal", page: "Normal" },
-          { id: "urv-c6-lognormal", label: "C.6 Lognormal", page: "Lognormal" },
+          { id: "urv-c6-lognormal", label: "C.6 Lognormal", page: "Lognormal", enrichment: true },
         ],
       },
       {
@@ -164,46 +166,47 @@ export const navStructure = [
             label: "D.1 Conditional: Discrete",
             page: "ConditionalDiscrete",
           },
-          { id: "urv-d2-conditional-continuous", label: "D.2 Conditional: Continuous" },
+          { id: "urv-d2-conditional-continuous", label: "D.2 Conditional: Continuous", page: "StudyLesson" },
         ],
       },
       {
         title: "E. Expected Value & Moments",
         items: [
-          { id: "urv-e1-expected-value", label: "E.1 Expected Value" },
-          { id: "urv-e2-moments", label: "E.2 Moments" },
-          { id: "urv-e3-mode-median-percentiles", label: "E.3 Mode, Median & Percentiles" },
+          { id: "urv-e1-expected-value", label: "E.1 Expected Value", page: "StudyLesson" },
+          { id: "urv-e2-moments", label: "E.2 Moments", page: "StudyLesson" },
+          { id: "urv-e3-mode-median-percentiles", label: "E.3 Mode, Median & Percentiles", page: "StudyLesson" },
         ],
       },
       {
         title: "F. Variance & Standard Deviation",
         items: [
-          { id: "urv-f1-variance", label: "F.1 Variance" },
-          { id: "urv-f2-standard-deviation", label: "F.2 Standard Deviation" },
-          { id: "urv-f3-coefficient-variation", label: "F.3 Coefficient of Variation" },
+          { id: "urv-f1-variance", label: "F.1 Variance", page: "StudyLesson" },
+          { id: "urv-f2-standard-deviation", label: "F.2 Standard Deviation", page: "StudyLesson" },
+          { id: "urv-f3-coefficient-variation", label: "F.3 Coefficient of Variation", page: "StudyLesson" },
         ],
       },
       {
         title: "G. Insurance Payments",
         items: [
-          { id: "urv-g1-deductibles", label: "G.1 Deductibles" },
-          { id: "urv-g2-coinsurance", label: "G.2 Coinsurance" },
-          { id: "urv-g3-benefit-limits", label: "G.3 Benefit Limits" },
-          { id: "urv-g4-inflation", label: "G.4 Inflation Adjustments" },
+          { id: "urv-g1-deductibles", label: "G.1 Deductibles", page: "StudyLesson" },
+          { id: "urv-g2-coinsurance", label: "G.2 Coinsurance", page: "StudyLesson" },
+          { id: "urv-g3-benefit-limits", label: "G.3 Benefit Limits", page: "StudyLesson" },
+          { id: "urv-g4-inflation", label: "G.4 Inflation Adjustments", page: "StudyLesson" },
         ],
       },
       {
         title: "H. Loss & Payment Variables",
         items: [
-          { id: "urv-h1-loss-variable", label: "H.1 Loss Random Variable" },
-          { id: "urv-h2-payment-variable", label: "H.2 Payment Random Variable" },
-          { id: "urv-h3-moments-loss-payment", label: "H.3 Moments of Loss & Payment" },
+          { id: "urv-h1-loss-variable", label: "H.1 Loss Random Variable", page: "StudyLesson" },
+          { id: "urv-h2-payment-variable", label: "H.2 Payment Random Variable", page: "StudyLesson" },
+          { id: "urv-h3-moments-loss-payment", label: "H.3 Moments of Loss & Payment", page: "StudyLesson" },
         ],
       },
     ],
   },
   {
     id: "multivariate-random-variables",
+    weight: "23–30%",
     title: "Multivariate Random Variables",
     sections: [
       {
@@ -221,6 +224,23 @@ export const navStructure = [
           },
         ],
       },
+      { title: "B. Joint & Conditional Moments", items: [
+        { id: "mrv-b1-joint-moments", label: "B.1 Joint, Marginal & Conditional Moments", page: "StudyLesson" },
+        { id: "mrv-b2-conditional-variance", label: "B.2 Conditional & Marginal Variance", page: "StudyLesson" },
+      ] },
+      { title: "C. Covariance & Correlation", items: [
+        { id: "mrv-c1-covariance", label: "C.1 Covariance & Correlation", page: "StudyLesson" },
+      ] },
+      { title: "D. Order Statistics", items: [
+        { id: "mrv-d1-order-statistics", label: "D.1 Order Statistics & Joint Ranks", page: "StudyLesson" },
+      ] },
+      { title: "E. Linear Combinations", items: [
+        { id: "mrv-e1-linear-combinations", label: "E.1 Discrete & Normal Combinations", page: "StudyLesson" },
+        { id: "mrv-e2-linear-moments", label: "E.2 Moments of Linear Combinations", page: "StudyLesson" },
+      ] },
+      { title: "F. Normal Approximations", items: [
+        { id: "mrv-f1-central-limit-theorem", label: "F.1 Central Limit Theorem", page: "StudyLesson" },
+      ] },
     ],
   },
 ];

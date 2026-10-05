@@ -6,13 +6,20 @@ import { Sidebar } from "./components/Sidebar.jsx";
 import { PracticeProblems } from "./components/PracticeProblems.jsx";
 import { TopicFooter } from "./components/TopicFooter.jsx";
 import { Home } from "../pages/Home.jsx";
-import { Placeholder } from "../pages/Placeholder.jsx";
+import { Syllabus } from "../pages/Syllabus.jsx";
+import { Reference } from "../pages/Reference.jsx";
+import { MockExam } from "../pages/MockExam.jsx";
+import { getOutcomes } from "./syllabus.js";
+const utilityTitles = { syllabus: "Syllabus checklist", reference: "Formulas & prerequisites", exam: "Practice exam" };
 
 // Topic pages are split into their own chunks and loaded on first visit.
 const pageModules = import.meta.glob([
   "../pages/*.jsx",
   "!../pages/Home.jsx",
   "!../pages/Placeholder.jsx",
+  "!../pages/Syllabus.jsx",
+  "!../pages/Reference.jsx",
+  "!../pages/MockExam.jsx",
 ]);
 
 function loadPage(topic) {
@@ -70,13 +77,19 @@ export function App() {
     document.querySelector(".sidebar-close")?.focus();
     const handleKey = (event) => {
       if (event.key === "Escape") setSidebarOpen(false);
+      if (event.key === "Tab") {
+        const nodes = [...document.querySelectorAll('.sidebar a, .sidebar button, .sidebar input')].filter(el => el.getClientRects().length && !el.disabled);
+        const first = nodes[0], last = nodes[nodes.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [sidebarOpen]);
 
   useEffect(() => {
-    document.title = topic ? `${topic.label} · Exam P` : "SOA Exam P Study Guide";
+    document.title = topic ? `${topic.label} · Exam P` : Object.hasOwn(utilityTitles, currentPage) ? `${utilityTitles[currentPage]} · Exam P` : "SOA Exam P Study Guide";
     if (!topic?.page) return;
 
     let cancelled = false;
@@ -84,7 +97,7 @@ export function App() {
       (PageComponent) => {
         // The element is kept in state so its identity is stable: re-renders of App
         // (e.g. toggling progress) then skip the page and leave KaTeX's DOM alone.
-        if (!cancelled) setLoadedPage({ id: topic.id, element: <PageComponent /> });
+        if (!cancelled) setLoadedPage({ id: topic.id, element: <PageComponent topic={topic} /> });
       },
       () => {
         // Offline, or an old tab after a deploy replaced the chunk files.
@@ -94,7 +107,7 @@ export function App() {
     return () => {
       cancelled = true;
     };
-  }, [topic]);
+  }, [topic, currentPage]);
 
   useEffect(() => {
     renderFormulas();
@@ -110,10 +123,16 @@ export function App() {
   }, [currentPage, pageReady]);
 
   let content;
-  if (!topic) {
+  if (currentPage === "syllabus") {
+    content = <Syllabus completed={completed} />;
+  } else if (currentPage === "reference") {
+    content = <Reference />;
+  } else if (currentPage === "exam") {
+    content = <MockExam />;
+  } else if (!topic && currentPage) {
+    content = <><h1 class="page-title">Topic not found</h1><p>That chapter link does not exist. <a href="#/">Find a lesson in the study guide</a>.</p></>;
+  } else if (!topic) {
     content = <Home completed={completed} />;
-  } else if (!topic.page) {
-    content = <Placeholder topic={topic} />;
   } else if (pageReady) {
     content = loadedPage.element;
   } else if (failedPage === topic.id) {
@@ -131,6 +150,7 @@ export function App() {
 
   return (
     <div class="app">
+      <a class="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById("main-content")?.focus(); }}>Skip to study content</a>
       <header class="mobile-header" inert={sidebarOpen}>
         <button
           ref={menuButtonRef}
@@ -154,8 +174,10 @@ export function App() {
         onClose={() => setSidebarOpen(false)}
       />
       {sidebarOpen && <div class="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
-      <main class="content" inert={sidebarOpen}>
+      <main id="main-content" tabIndex={-1} class="content" inert={sidebarOpen}>
         <div id="page-container">
+          {topic && pageReady && <nav class="lesson-toolbar" aria-label="Lesson tools"><a href="#/">Study guide</a><span>{topic.sectionTitle}</span><a href="#practice" onClick={event => { event.preventDefault(); document.getElementById("practice")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); }}>Go to practice</a></nav>}
+          {topic && pageReady && <p class="outcome-tags">{topic.enrichment ? "Optional enrichment: lognormal is not named in the May 2026 syllabus." : <>Syllabus {getOutcomes(topic.id).map(outcome => <a key={outcome.code} href="#/syllabus" title={outcome.label}>{outcome.code}</a>)}</>}</p>}
           {content}
           {pageReady && <PracticeProblems key={topic.id} topicId={topic.id} />}
           {topic && (pageReady || !topic.page) && (

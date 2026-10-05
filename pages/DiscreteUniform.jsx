@@ -252,7 +252,7 @@ export function DiscreteUniform() {
       </section>
 
       <section class="definition-block">
-        <h2>MGF and Moments</h2>
+        <h2>MGF and Moments (optional enrichment)</h2>
         <div class="definition">
           <p>
             <strong>Moment Generating Function:</strong>

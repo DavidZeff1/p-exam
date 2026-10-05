@@ -135,7 +135,7 @@ export function CombinatorialProbability() {
             <div class="bday-row"><span>50</span><span>97.0%</span></div>
             <div class="bday-row"><span>70</span><span>99.9%</span></div>
           </div>
-          <p class="visual-caption">Only 23 people needed for >50% chance!</p>
+          <p class="visual-caption">Only 23 people needed for &gt;50% chance!</p>
         </div>
       </section>
 

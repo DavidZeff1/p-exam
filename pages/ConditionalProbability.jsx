@@ -234,7 +234,7 @@ export function ConditionalProbability() {
           </div>
           <div class="mistake">
             <span class="mistake-icon">❌</span>
-            <span class="mistake-title">Forgetting P(B) > 0</span>
+            <span class="mistake-title">Forgetting P(B) &gt; 0</span>
             <p>Can't condition on impossible events</p>
           </div>
         </div>

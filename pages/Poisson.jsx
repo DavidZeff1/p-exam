@@ -190,7 +190,7 @@ export function Poisson() {
       </section>
 
       <section class="definition-block">
-        <h2>MGF</h2>
+        <h2>MGF (optional enrichment)</h2>
         <div class="definition">
           <p>
             <strong>Moment Generating Function:</strong>
@@ -253,7 +253,7 @@ export function Poisson() {
         <div class="definition">
           <p>
             <strong>Different time intervals:</strong> If X ~ Poisson(λ) for one
-            unit of time, then for t units:
+            unit of time in a homogeneous Poisson process, then for t units:
           </p>
           <div class="formula" data-latex="X_t \sim \text{Poisson}(\lambda t)"></div>
         </div>
@@ -463,7 +463,7 @@ export function Poisson() {
             <div class="formula" data-latex="Var(X) = \lambda"></div>
           </div>
           <div class="property">
-            <h3>MGF</h3>
+            <h3>MGF (optional enrichment)</h3>
             <div class="formula" data-latex="e^{\lambda(e^t - 1)}"></div>
           </div>
         </div>

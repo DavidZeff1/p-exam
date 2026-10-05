@@ -2,9 +2,11 @@ import { useEffect, useState } from "preact/hooks";
 import { navStructure, getTopic, availableTopics } from "../topics.js";
 
 export function Sidebar({ currentPage, completed, isOpen, onClose }) {
+  const [search, setSearch] = useState("");
   const [openSections, setOpenSections] = useState(["general-probability"]);
   const currentCategory = getTopic(currentPage)?.categoryId;
-  const completedCount = availableTopics.filter((topic) => completed.includes(topic.id)).length;
+  const coreTopics = availableTopics.filter(topic => !topic.enrichment);
+  const completedCount = coreTopics.filter((topic) => completed.includes(topic.id)).length;
 
   // Expand the category of the page being viewed, e.g. after following a deep link.
   useEffect(() => {
@@ -41,15 +43,17 @@ export function Sidebar({ currentPage, completed, isOpen, onClose }) {
           <div class="progress-track">
             <div
               class="progress-fill"
-              style={{ width: `${(100 * completedCount) / availableTopics.length}%` }}
+              style={{ width: `${(100 * completedCount) / coreTopics.length}%` }}
             />
           </div>
           <span>
-            {completedCount} of {availableTopics.length} topics complete
+            {completedCount} of {coreTopics.length} syllabus lessons complete
           </span>
         </div>
       </div>
-      <ul class="nav-list">
+      <div class="sidebar-tools"><a href="#/syllabus" aria-current={currentPage === "syllabus" ? "page" : undefined} onClick={onClose}>Syllabus checklist</a><a href="#/exam" aria-current={currentPage === "exam" ? "page" : undefined} onClick={onClose}>Practice exam</a><a href="#/reference" aria-current={currentPage === "reference" ? "page" : undefined} onClick={onClose}>Formulas & prerequisites</a></div>
+      <label class="sidebar-search">Find a lesson<input type="search" placeholder="Search topics" value={search} onInput={event => setSearch(event.target.value)} /></label>
+      {search.trim() ? <div class="sidebar-results">{availableTopics.filter(topic => `${topic.label} ${topic.sectionTitle}`.toLowerCase().includes(search.trim().toLowerCase())).map(topic => <a class="nav-link" href={`#/${topic.id}`} key={topic.id} onClick={() => { setSearch(""); onClose(); }}>{topic.label}</a>)}{!availableTopics.some(topic => `${topic.label} ${topic.sectionTitle}`.toLowerCase().includes(search.trim().toLowerCase())) && <p role="status">No matching lessons.</p>}</div> : <ul class="nav-list">
         {navStructure.map((category) => {
           const expanded = openSections.includes(category.id);
           return (
@@ -90,7 +94,7 @@ export function Sidebar({ currentPage, completed, isOpen, onClose }) {
                               ✓
                             </span>
                           )}
-                          {!item.page && <span class="nav-soon">soon</span>}
+                          {item.enrichment && <span class="nav-soon">optional</span>}
                         </a>
                       );
                     })}
@@ -100,7 +104,7 @@ export function Sidebar({ currentPage, completed, isOpen, onClose }) {
             </li>
           );
         })}
-      </ul>
+      </ul>}
     </nav>
   );
 }

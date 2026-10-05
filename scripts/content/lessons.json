@@ -1,0 +1,859 @@
+{
+  "urv-d2-conditional-continuous": {
+    "intro": "Conditioning restricts the possible losses and rescales the density on the remaining region.",
+    "objectives": [
+      "Normalize a density after conditioning.",
+      "Use survival functions and distinguish truncation from a deductible."
+    ],
+    "sections": [
+      {
+        "title": "Restrict and normalize",
+        "paragraphs": [
+          "For an event $A$ with positive probability, $P(B\\mid A)=P(B\\cap A)/P(A)$. For $a<X<b$, the conditional density is $f_X(x)/(F(b)-F(a))$ on $(a,b)$ and zero elsewhere.",
+          "$$P(X>t\\mid X>d)=\\frac{S(t)}{S(d)},\\qquad t\\ge d,\\quad S(x)=1-F(x).$$"
+        ]
+      },
+      {
+        "title": "Worked example: a reported loss",
+        "paragraphs": [
+          "A loss has density $f(x)=2x$ on $(0,1)$. Given that the loss exceeds $0.5$, find the probability it exceeds $0.8$.",
+          "Here $F(x)=x^2$, so $P(X>0.8\\mid X>0.5)=(1-0.8^2)/(1-0.5^2)=0.48$."
+        ]
+      },
+      {
+        "title": "Conditional expectation",
+        "paragraphs": [
+          "$$E[g(X)\\mid X>d]=\\frac{\\int_d^\\infty g(x)f_X(x)\\,dx}{S(d)}.$$",
+          "Use the original loss for a loss conditional on a claim. Use $g(x)=x-d$ for the payment above an ordinary deductible."
+        ]
+      },
+      {
+        "title": "Memorylessness",
+        "paragraphs": [
+          "If $X$ is exponential with rate $\\lambda$, then $P(X>d+t\\mid X>d)=e^{-\\lambda t}$. The excess $X-d$ conditional on $X>d$ has the original exponential distribution. This property does not hold for every continuous distribution."
+        ]
+      }
+    ],
+    "tip": "An unconditional payment includes zero payments. A payment conditional on being positive does not."
+  },
+  "urv-e1-expected-value": {
+    "intro": "Expected value is a probability-weighted average. For insurance, it describes long-run average cost, rather than the most likely individual loss.",
+    "objectives": [
+      "Compute discrete and continuous expectations.",
+      "Apply LOTUS and linearity to functions of a loss."
+    ],
+    "sections": [
+      {
+        "title": "Discrete and continuous averages",
+        "paragraphs": [
+          "$$E[X]=\\sum_x x p_X(x),\\qquad E[X]=\\int_{-\\infty}^{\\infty}x f_X(x)\\,dx.$$",
+          "Check that the relevant absolute integral or sum is finite. An expectation need not be a possible observed value."
+        ]
+      },
+      {
+        "title": "Functions of a variable: LOTUS",
+        "paragraphs": [
+          "$$E[g(X)]=\\sum_x g(x)p_X(x)\\quad\\text{or}\\quad \\int g(x)f_X(x)\\,dx.$$",
+          "You can compute a payment expectation directly from the original loss without first deriving its distribution."
+        ]
+      },
+      {
+        "title": "Worked example: benefit schedule",
+        "paragraphs": [
+          "A loss takes values $0,100,300$ with probabilities $0.5,0.3,0.2$. A policy pays $g(X)=\\max(X-100,0)$.",
+          "$E[X]=90$, but $E[g(X)]=0(0.5)+0(0.3)+200(0.2)=40$. Applying the deductible to the mean would give zero and is incorrect."
+        ]
+      },
+      {
+        "title": "Linearity and indicators",
+        "paragraphs": [
+          "$E[aX+bY+c]=aE[X]+bE[Y]+c$ even if the variables are dependent. For an indicator $I_A$, $E[I_A]=P(A)$.",
+          "For nonnegative $X$, the tail identity $E[X]=\\int_0^\\infty P(X>t)\\,dt$ is often convenient for capped payments."
+        ]
+      }
+    ],
+    "tip": "In general, $E[g(X)]\\ne g(E[X])$. Linearity applies to sums, not arbitrary nonlinear functions."
+  },
+  "urv-e2-moments": {
+    "intro": "Moments summarize location, spread, and shape. Exam calculations often need only the first and second raw moments.",
+    "objectives": [
+      "Compute raw and central moments.",
+      "Use second moments for nonlinear benefits and variance."
+    ],
+    "sections": [
+      {
+        "title": "Raw and central moments",
+        "paragraphs": [
+          "The $k$th raw moment is $E[X^k]$. The $k$th central moment is $E[(X-E[X])^k]$. The first central moment is zero; the second is variance.",
+          "$$\\operatorname{Var}(X)=E[X^2]-(E[X])^2.$$"
+        ]
+      },
+      {
+        "title": "Worked example: a polynomial density",
+        "paragraphs": [
+          "Let $f(x)=2x$ for $0<x<1$. Then $E[X^k]=\\int_0^1 2x^{k+1}\\,dx=2/(k+2)$ for nonnegative integer $k$.",
+          "$E[X]=2/3$, $E[X^2]=1/2$, and $\\operatorname{Var}(X)=1/2-4/9=1/18$."
+        ]
+      },
+      {
+        "title": "A transformed second moment",
+        "paragraphs": [
+          "$$E[(aX+b)^2]=a^2E[X^2]+2abE[X]+b^2.$$",
+          "For a squared loss benefit, use the second raw moment. For its variance, you will also need the fourth raw moment."
+        ]
+      },
+      {
+        "title": "Distribution shortcuts",
+        "paragraphs": [
+          "For an exponential variable with mean $\\theta$, $E[X^k]=k!\\theta^k$. For a gamma variable with shape $\\alpha$ and scale $\\theta$, $E[X^k]=\\theta^k\\Gamma(\\alpha+k)/\\Gamma(\\alpha)$. Always identify whether the second parameter is rate or scale."
+        ]
+      }
+    ],
+    "tip": "Calculate the raw second moment first, then subtract the square of the mean. Moment generating functions are extra material, not a requirement of this syllabus."
+  },
+  "urv-e3-mode-median-percentiles": {
+    "intro": "The mean, mode, and median answer different questions. Percentiles identify loss thresholds exceeded with a specified probability.",
+    "objectives": [
+      "Find modes from PMFs or densities.",
+      "Calculate quantiles for discrete and continuous variables."
+    ],
+    "sections": [
+      {
+        "title": "Modes",
+        "paragraphs": [
+          "A discrete mode maximizes $p_X(x)$. A continuous mode maximizes $f_X(x)$ on its support. Check endpoints and ties as well as stationary points.",
+          "For $f(x)=6x(1-x)$ on $(0,1)$, $f\\prime(x)=6-12x$; the mode is $1/2$."
+        ]
+      },
+      {
+        "title": "Median and percentiles",
+        "paragraphs": [
+          "The lower $p$-quantile is $q_p=\\inf\\{x:F(x)\\ge p\\}$. For a continuous strictly increasing CDF, solve $F(q_p)=p$. A median has at least half the probability on either side."
+        ]
+      },
+      {
+        "title": "Worked example: exponential threshold",
+        "paragraphs": [
+          "For an exponential loss with mean $1000$, $F(x)=1-e^{-x/1000}$. Its median is $1000\\ln 2\\approx693.15$, and its 90th percentile is $-1000\\ln(0.1)\\approx2302.59$."
+        ]
+      },
+      {
+        "title": "Discrete percentiles",
+        "paragraphs": [
+          "If $P(X=0)=0.3$, $P(X=1)=0.4$, and $P(X=2)=0.3$, the lower 60th percentile is $1$, since $F(0)=0.3<0.6\\le F(1)=0.7$. Do not interpolate between discrete values unless explicitly instructed."
+        ]
+      }
+    ],
+    "tip": "A 95th percentile leaves 5% in the upper tail. Convert the wording into a CDF probability before solving."
+  },
+  "urv-f1-variance": {
+    "intro": "Variance measures squared deviations around the mean. Its units are the square of the loss units.",
+    "objectives": [
+      "Compute variance from raw moments.",
+      "Scale variance and recognize constant shifts."
+    ],
+    "sections": [
+      {
+        "title": "Two equivalent definitions",
+        "paragraphs": [
+          "$$\\operatorname{Var}(X)=E[(X-\\mu)^2]=E[X^2]-\\mu^2,\\qquad\\mu=E[X].$$",
+          "Variance is nonnegative and is zero for a constant random variable."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "A loss is $0,100,300$ with probabilities $0.5,0.3,0.2$. Its mean is $90$ and second moment is $10000(0.3)+90000(0.2)=21000$.",
+          "The variance is $21000-90^2=12900$."
+        ]
+      },
+      {
+        "title": "Scaling and shifting",
+        "paragraphs": [
+          "$$\\operatorname{Var}(aX+b)=a^2\\operatorname{Var}(X).$$",
+          "Adding a fixed fee changes the mean, but not variance. Doubling every loss quadruples variance."
+        ]
+      },
+      {
+        "title": "Sums",
+        "paragraphs": [
+          "For independent variables, $\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)$. For dependent variables, add $2\\operatorname{Cov}(X,Y)$. Independence is not needed for means to add."
+        ]
+      }
+    ],
+    "tip": "Keep full precision for both raw moments before subtracting. A negative variance indicates an error or excessive rounding."
+  },
+  "urv-f2-standard-deviation": {
+    "intro": "Standard deviation converts squared spread back into the original units, making loss variability easier to interpret.",
+    "objectives": [
+      "Calculate standard deviation.",
+      "Transform standard deviation and distinguish it from the standard deviation of an average."
+    ],
+    "sections": [
+      {
+        "title": "Definition and units",
+        "paragraphs": [
+          "$$\\operatorname{SD}(X)=\\sqrt{\\operatorname{Var}(X)}.$$",
+          "If losses are measured in dollars, variance is in squared dollars and standard deviation is in dollars."
+        ]
+      },
+      {
+        "title": "Transformations",
+        "paragraphs": [
+          "$$\\operatorname{SD}(aX+b)=|a|\\operatorname{SD}(X).$$",
+          "If $\\operatorname{Var}(X)=400$ and $Y=3X-100$, then $\\operatorname{SD}(Y)=3\\sqrt{400}=60$."
+        ]
+      },
+      {
+        "title": "Independent sums and averages",
+        "paragraphs": [
+          "For $n$ independent variables with the same variance $\\sigma^2$, the sum has standard deviation $\\sigma\\sqrt n$ and the average has standard deviation $\\sigma/\\sqrt n$."
+        ]
+      },
+      {
+        "title": "Worked example: aggregate claims",
+        "paragraphs": [
+          "For $100$ independent claims each with standard deviation $200$, the total standard deviation is $2000$, while the average claim standard deviation is $20$. Adding the $100$ individual standard deviations would be incorrect."
+        ]
+      }
+    ],
+    "tip": "In $N(\\mu,\\sigma^2)$, the second parameter is variance. Take its square root when standardizing."
+  },
+  "urv-f3-coefficient-variation": {
+    "intro": "The coefficient of variation compares spread relative to the mean, useful when portfolios have different average costs.",
+    "objectives": [
+      "Compute and interpret CV.",
+      "Understand the effect of scaling and shifting losses."
+    ],
+    "sections": [
+      {
+        "title": "Definition",
+        "paragraphs": [
+          "$$\\operatorname{CV}(X)=\\frac{\\operatorname{SD}(X)}{E[X]},\\qquad E[X]>0.$$",
+          "CV is dimensionless. For positive losses, a CV of 0.5 means the standard deviation is half the mean."
+        ]
+      },
+      {
+        "title": "Scale invariance",
+        "paragraphs": [
+          "For $a>0$, $\\operatorname{CV}(aX)=\\operatorname{CV}(X)$. A shift does change CV: $\\operatorname{CV}(X+b)=\\sigma/(\\mu+b)$ when the denominator is positive."
+        ]
+      },
+      {
+        "title": "Worked example: gamma parameters",
+        "paragraphs": [
+          "A gamma loss with shape $\\alpha$ and scale $\\theta$ has mean $\\alpha\\theta$, variance $\\alpha\\theta^2$, and CV $1/\\sqrt\\alpha$. A CV of $0.5$ implies $\\alpha=4$."
+        ]
+      },
+      {
+        "title": "Pooling independent risks",
+        "paragraphs": [
+          "For $n$ i.i.d. nonnegative losses with positive mean, $\\operatorname{CV}(\\sum X_i)=\\operatorname{CV}(X_1)/\\sqrt n$. Pooling independent risks reduces relative variability, although total standard deviation increases."
+        ]
+      }
+    ],
+    "tip": "CV is not variance divided by the mean. It uses standard deviation; a zero mean makes this definition undefined."
+  },
+  "urv-g1-deductibles": {
+    "intro": "An ordinary deductible makes the policyholder pay the first portion of each covered loss. A franchise deductible uses a different payment rule.",
+    "objectives": [
+      "Build payment functions for ordinary and franchise deductibles.",
+      "Calculate payment probabilities and expected payments."
+    ],
+    "sections": [
+      {
+        "title": "Ordinary deductible",
+        "paragraphs": [
+          "$$Y=(X-d)_+=\\max(X-d,0).$$",
+          "There is a probability mass at zero: $P(Y=0)=P(X\\le d)$. For $y\\ge0$, $F_Y(y)=F_X(d+y)$; for $y<0$, $F_Y(y)=0$."
+        ]
+      },
+      {
+        "title": "Franchise deductible",
+        "paragraphs": [
+          "Under the convention that payment occurs only when $X>d$, a franchise policy pays $Y=X\\,I_{\\{X>d\\}}$. An ordinary policy pays only the excess above $d$. State the convention at equality for a discrete loss."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "With loss $1500$ and deductible $500$, an ordinary policy pays $1000$; a franchise policy pays the full $1500$. Both pay zero for loss $400$."
+        ]
+      },
+      {
+        "title": "Expected payment",
+        "paragraphs": [
+          "$$E[(X-d)_+]=\\int_d^\\infty S_X(x)\\,dx.$$ ",
+          "For an exponential loss of mean $\\theta$, $E[Y]=\\theta e^{-d/\\theta}$. This expectation includes losses that produce no payment."
+        ]
+      }
+    ],
+    "tip": "A deductible truncates the payment amount; it does not simply condition the original loss distribution."
+  },
+  "urv-g2-coinsurance": {
+    "intro": "Coinsurance specifies what fraction of a covered loss the insurer pays. Identify whose percentage is being stated.",
+    "objectives": [
+      "Translate coinsurance wording into a payment.",
+      "Scale payment means and variances."
+    ],
+    "sections": [
+      {
+        "title": "Insurer share",
+        "paragraphs": [
+          "If the insurer pays a proportion $c$ after an ordinary deductible, $Y=c(X-d)_+$, where $0\\le c\\le1$. If the policyholder pays 20%, the insurer share is 80%."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "A loss is $5000$, the ordinary deductible is $1000$, and the insurer pays 75% of the remaining loss. Payment is $0.75(5000-1000)=3000$. The policyholder retains $2000$ in total."
+        ]
+      },
+      {
+        "title": "Moments",
+        "paragraphs": [
+          "$$E[cY_0]=cE[Y_0],\\qquad \\operatorname{Var}(cY_0)=c^2\\operatorname{Var}(Y_0).$$",
+          "If $Y_0$ has mean $600$ and variance $90000$, a 70% share gives mean $420$, variance $44100$, and standard deviation $210$."
+        ]
+      },
+      {
+        "title": "Order of operations",
+        "paragraphs": [
+          "A cap of $u$ on the insurer payment gives $Y=\\min(c(X-d)_+,u)$. A cap of $u$ on the covered amount before coinsurance gives $Y=c\\min((X-d)_+,u)$. These are different contracts."
+        ]
+      }
+    ],
+    "tip": "Write the contract as one function before substituting the loss. The location of a cap relative to coinsurance matters."
+  },
+  "urv-g3-benefit-limits": {
+    "intro": "A benefit limit caps what the insurer pays. Capping creates probability mass at the maximum payment.",
+    "objectives": [
+      "Distinguish a payment limit from a loss limit.",
+      "Calculate probabilities and moments of capped payments."
+    ],
+    "sections": [
+      {
+        "title": "Payment cap",
+        "paragraphs": [
+          "With ordinary deductible $d$ and maximum insurer payment $u$, $Y=\\min((X-d)_+,u)$. Payment is zero below $d$, $X-d$ between $d$ and $d+u$, and $u$ above $d+u$."
+        ]
+      },
+      {
+        "title": "Distribution and point masses",
+        "paragraphs": [
+          "$P(Y=0)=F_X(d)$ and $P(Y=u)=P(X\\ge d+u)$. For a continuous loss the latter is $S_X(d+u)$. For $0\\le y<u$, $F_Y(y)=F_X(d+y)$; for $y\\ge u$, $F_Y(y)=1$."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "A policy has deductible $200$ and payment cap $500$. A loss of $900$ produces payment $500$, not $700$. For $X$ uniform on $(0,1000)$, the payment has mass $0.2$ at zero and $0.3$ at $500$."
+        ]
+      },
+      {
+        "title": "Tail integration",
+        "paragraphs": [
+          "$$E[Y]=\\int_d^{d+u}S_X(x)\\,dx,\\qquad E[Y^2]=2\\int_0^u y S_X(d+y)\\,dy.$$ ",
+          "For the uniform example, $E[Y]=\\int_{200}^{700}(1-x/1000)\\,dx=275$. A limit $L$ on covered loss instead yields payment $\\max(\\min(X,L)-d,0)$, whose maximum is $(L-d)_+$."
+        ]
+      }
+    ],
+    "tip": "Check whether the limit caps the original covered loss or the insurer payment. Never ignore the probability mass at the cap."
+  },
+  "urv-g4-inflation": {
+    "intro": "Inflation scales the loss before applying fixed policy terms. A fixed deductible changes its relative size after inflation.",
+    "objectives": [
+      "Transform loss distributions under inflation.",
+      "Apply inflated losses to deductibles, coinsurance, and caps."
+    ],
+    "sections": [
+      {
+        "title": "Inflated loss",
+        "paragraphs": [
+          "If inflation is $r$, the new loss is $X^*=(1+r)X$. Its mean is $(1+r)E[X]$, variance is $(1+r)^2\\operatorname{Var}(X)$, and $F_{X^*}(x)=F_X(x/(1+r))$."
+        ]
+      },
+      {
+        "title": "Fixed contract terms",
+        "paragraphs": [
+          "$$Y=\\min\\{c((1+r)X-d)_+,u\\}.$$",
+          "Apply inflation first when the deductible and payment cap remain fixed in nominal currency. If the problem says these terms also increase, update them separately."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "The original loss is $1200$. Inflation is 10%, the fixed deductible is $500$, the insurer share is 80%, and the payment cap is $600$. Payment is $\\min(0.8(1320-500),600)=600$."
+        ]
+      },
+      {
+        "title": "Exponential shortcut",
+        "paragraphs": [
+          "If the original loss is exponential with mean $\\theta$ and only an ordinary deductible applies, then $E[Y]=(1+r)\\theta\\exp(-d/((1+r)\\theta))$. This is not generally $(1+r)$ times the old payment expectation."
+        ]
+      }
+    ],
+    "tip": "Inflating a payment after subtracting a fixed deductible gives a different answer from inflating the loss first."
+  },
+  "urv-h1-loss-variable": {
+    "intro": "Separate the occurrence of a claim from its severity. A loss random variable may include a substantial chance of no loss.",
+    "objectives": [
+      "Model a loss with a mass at zero.",
+      "Compute loss moments for mixtures and retention."
+    ],
+    "sections": [
+      {
+        "title": "Occurrence and severity",
+        "paragraphs": [
+          "Let $I$ be Bernoulli with probability $q$ and let severity $Z$ be independent of $I$. The per-policy loss is $X=IZ$. For positive severities, $P(X=0)=1-q$."
+        ]
+      },
+      {
+        "title": "Moments of the mixture",
+        "paragraphs": [
+          "$$E[X]=qE[Z],\\quad E[X^2]=qE[Z^2],\\quad \\operatorname{Var}(X)=q\\operatorname{Var}(Z)+q(1-q)(E[Z])^2.$$",
+          "Severity conditional on a claim is not the same variable as loss per policy."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "Claim probability is $0.1$. Conditional severity has mean $1000$ and variance $400000$. Then $E[X]=100$, $E[X^2]=0.1(400000+1000000)=140000$, and $\\operatorname{Var}(X)=130000$."
+        ]
+      },
+      {
+        "title": "Insured and retained loss",
+        "paragraphs": [
+          "If the insurer payment is $Y=g(X)$, the retained loss is $R=X-Y$. Then $E[R]=E[X]-E[Y]$. The variables $X$ and $Y$ are generally dependent, so their variances cannot simply be subtracted."
+        ]
+      }
+    ],
+    "tip": "Determine whether a supplied severity distribution is conditional on a claim or already includes no-claim outcomes."
+  },
+  "urv-h2-payment-variable": {
+    "intro": "A policy transforms a loss into an insurer payment. Even a continuous loss can produce a mixed payment distribution.",
+    "objectives": [
+      "Derive the distribution of a payment.",
+      "Distinguish payment per loss from payment per payment."
+    ],
+    "sections": [
+      {
+        "title": "Map each loss outcome",
+        "paragraphs": [
+          "For deductible $d$, insurer share $c>0$, and payment cap $u$, write $Y=\\min(c(X-d)_+,u)$. On the interior, $X=d+Y/c$.",
+          "For $0<y<u$, $f_Y(y)=f_X(d+y/c)/c$. Add masses $P(Y=0)=P(X\\le d)$ and $P(Y=u)=P(X\\ge d+u/c)$ separately."
+        ]
+      },
+      {
+        "title": "Per loss versus per payment",
+        "paragraphs": [
+          "$Y$ per loss includes zeros. A payment per payment has the conditional distribution $Y\\mid Y>0$. If $q=P(Y>0)>0$, then $E[Y\\mid Y>0]=E[Y]/q$."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "For $X$ uniform on $(0,1000)$ and deductible $200$, $P(Y>0)=0.8$ and $E[Y]=320$. Thus the mean positive payment is $320/0.8=400$."
+        ]
+      },
+      {
+        "title": "Conditional second moment",
+        "paragraphs": [
+          "$E[Y^2\\mid Y>0]=E[Y^2]/q$. Subtract $(E[Y]/q)^2$ to obtain the conditional variance. Dividing the unconditional variance by $q$ alone does not work."
+        ]
+      }
+    ],
+    "tip": "A payment PDF over positive amounts may integrate to less than one. The missing probability belongs to zero and any capped payment."
+  },
+  "urv-h3-moments-loss-payment": {
+    "intro": "Calculate payment moments by applying the policy to the loss inside the expectation. Keep zero and capped outcomes in the calculation.",
+    "objectives": [
+      "Compute first and second payment moments.",
+      "Calculate conditional payment variance and standard deviation."
+    ],
+    "sections": [
+      {
+        "title": "Direct method",
+        "paragraphs": [
+          "$$E[Y^k]=E[g(X)^k]=\\sum_x g(x)^k p_X(x)\\quad\\text{or}\\quad\\int g(x)^k f_X(x)\\,dx.$$ ",
+          "For $Y=\\min((X-d)_+,u)$ and a continuous loss, $E[Y^k]=\\int_d^{d+u}(x-d)^k f_X(x)\\,dx+u^kP(X\\ge d+u)$ for $k>0$."
+        ]
+      },
+      {
+        "title": "Worked example: uniform loss",
+        "paragraphs": [
+          "Let $X$ be uniform on $(0,1000)$ and $Y=(X-200)_+$. Then $E[Y]=800^2/(2\\cdot1000)=320$ and $E[Y^2]=800^3/(3\\cdot1000)=170666.67$.",
+          "$\\operatorname{Var}(Y)=170666.67-320^2=68266.67$, so $\\operatorname{SD}(Y)\\approx261.28$. The original loss has mean $500$ and variance $1000^2/12$."
+        ]
+      },
+      {
+        "title": "Exponential deductible",
+        "paragraphs": [
+          "For exponential loss with mean $\\theta$, $E[Y]=\\theta e^{-d/\\theta}$ and $E[Y^2]=2\\theta^2e^{-d/\\theta}$. Subtract the squared mean for variance."
+        ]
+      },
+      {
+        "title": "Positive payments",
+        "paragraphs": [
+          "If $q=P(Y>0)$, then $\\operatorname{Var}(Y\\mid Y>0)=E[Y^2]/q-(E[Y]/q)^2$. For the uniform example, the positive payment is uniform on $(0,800)$, with variance $800^2/12$."
+        ]
+      }
+    ],
+    "tip": "The second moment is not the variance. For a cap, include the cap amount raised to the relevant power times its probability."
+  },
+  "mrv-a1-joint-distributions": {
+    "intro": "A joint PMF assigns probability to each possible pair. Row and column totals recover the individual distributions.",
+    "objectives": [
+      "Normalize a joint PMF and calculate marginals.",
+      "Evaluate joint CDFs and check independence."
+    ],
+    "sections": [
+      {
+        "title": "Joint PMF and support",
+        "paragraphs": [
+          "$p_{X,Y}(x,y)=P(X=x,Y=y)\\ge0$ and $\\sum_x\\sum_y p_{X,Y}(x,y)=1$. List the support before summing; cells outside it have probability zero."
+        ]
+      },
+      {
+        "title": "Worked table",
+        "paragraphs": [
+          "Take $p(0,0)=0.1$, $p(0,1)=0.2$, $p(1,0)=0.3$, $p(1,1)=0.4$. The row totals are $p_X(0)=0.3$, $p_X(1)=0.7$; column totals are $p_Y(0)=0.4$, $p_Y(1)=0.6$."
+        ]
+      },
+      {
+        "title": "Joint CDF",
+        "paragraphs": [
+          "$$F_{X,Y}(a,b)=P(X\\le a,Y\\le b)=\\sum_{x\\le a}\\sum_{y\\le b}p(x,y).$$",
+          "In the example, $F(0.5,0.5)=0.1$ and $F(1,0.5)=0.4$. Rectangle probabilities use inclusion\u2013exclusion: $P(a<X\\le b,c<Y\\le d)=F(b,d)-F(a,d)-F(b,c)+F(a,c)$."
+        ]
+      },
+      {
+        "title": "Independence",
+        "paragraphs": [
+          "$X$ and $Y$ are independent exactly when $p(x,y)=p_X(x)p_Y(y)$ for every pair. In the example, $p(0,0)=0.1\\ne0.3(0.4)$, so they are dependent. For independent variables the joint CDF factors as $F_X(a)F_Y(b)$."
+        ]
+      }
+    ],
+    "tip": "This syllabus requires discrete joint and conditional calculations. Continuous order statistics and sums of independent normals are covered in their own chapters."
+  },
+  "mrv-a2-conditional-distributions": {
+    "intro": "Conditioning on one coordinate reduces the joint table to a row or column and normalizes its entries.",
+    "objectives": [
+      "Calculate discrete conditional PMFs.",
+      "Find conditional means and variances from a joint distribution."
+    ],
+    "sections": [
+      {
+        "title": "Conditional PMF",
+        "paragraphs": [
+          "$$p_{X\\mid Y}(x\\mid y)=\\frac{p(x,y)}{p_Y(y)},\\qquad p_Y(y)>0.$$",
+          "Sum the relevant column to get the denominator. The resulting conditional probabilities sum to one."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "With $p(0,0)=0.1$, $p(0,1)=0.2$, $p(1,0)=0.3$, $p(1,1)=0.4$, $p_Y(1)=0.6$. Thus $P(X=0\\mid Y=1)=1/3$ and $P(X=1\\mid Y=1)=2/3$."
+        ]
+      },
+      {
+        "title": "Conditional moments",
+        "paragraphs": [
+          "$$E[g(X)\\mid Y=y]=\\sum_x g(x)\\,p_{X\\mid Y}(x\\mid y).$$",
+          "In the example $X\\mid Y=1$ is Bernoulli with parameter $2/3$. Its mean is $2/3$, its second moment is $2/3$, and its variance is $2/9$."
+        ]
+      },
+      {
+        "title": "Independence check",
+        "paragraphs": [
+          "For independent variables, $p_{X\\mid Y}(x\\mid y)=p_X(x)$ for every conditioning value with positive probability. Checking a single matching row is not enough to establish independence."
+        ]
+      }
+    ],
+    "tip": "Do not divide by the probability of the variable you are trying to find. The denominator is the probability of the condition."
+  },
+  "mrv-b1-joint-moments": {
+    "intro": "Joint moments summarize the combined behavior of two discrete variables. Marginal and conditional moments use the same weighted-average principle.",
+    "objectives": [
+      "Calculate mixed moments such as E[XY].",
+      "Apply total expectation and total variance."
+    ],
+    "sections": [
+      {
+        "title": "Joint moments",
+        "paragraphs": [
+          "$$E[g(X,Y)]=\\sum_x\\sum_y g(x,y)p(x,y).$$",
+          "For a mixed moment, use $g(x,y)=x^r y^s$. You do not need independence to use this formula."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "For $p(0,0)=0.1$, $p(0,1)=0.2$, $p(1,0)=0.3$, $p(1,1)=0.4$, $E[X]=0.7$, $E[Y]=0.6$, and $E[XY]=0.4$. Only the $(1,1)$ cell contributes to $XY$."
+        ]
+      },
+      {
+        "title": "Total expectation",
+        "paragraphs": [
+          "$$E[X]=\\sum_y E[X\\mid Y=y]p_Y(y)=E[E[X\\mid Y]].$$",
+          "Here $E[X\\mid Y=0]=0.75$, $E[X\\mid Y=1]=2/3$, and $0.75(0.4)+(2/3)(0.6)=0.7$."
+        ]
+      },
+      {
+        "title": "Total variance",
+        "paragraphs": [
+          "$$\\operatorname{Var}(X)=E[\\operatorname{Var}(X\\mid Y)]+\\operatorname{Var}(E[X\\mid Y]).$$",
+          "The first term is variation within groups; the second is variation between group means. In the worked table these are $5/24$ and $1/600$, totaling $0.21$."
+        ]
+      }
+    ],
+    "tip": "$E[XY]=E[X]E[Y]$ follows from independence; it is not a general identity for joint distributions."
+  },
+  "mrv-b2-conditional-variance": {
+    "intro": "Conditional and marginal distributions describe different populations. Compute the variance using the probability weights for the population specified.",
+    "objectives": [
+      "Find variance and SD from a marginal PMF.",
+      "Compute conditional variance and compare it with total variance."
+    ],
+    "sections": [
+      {
+        "title": "Marginal variance",
+        "paragraphs": [
+          "First sum out the other variable to find $p_X(x)$. Then calculate $E[X]$, $E[X^2]$, and $\\operatorname{Var}(X)=E[X^2]-(E[X])^2$."
+        ]
+      },
+      {
+        "title": "Conditional variance",
+        "paragraphs": [
+          "$$\\operatorname{Var}(X\\mid Y=y)=E[X^2\\mid Y=y]-(E[X\\mid Y=y])^2.$$ ",
+          "Normalize the conditional PMF before calculating either moment. The conditional standard deviation is the square root of this variance."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "Conditional on $Y=0$, $X$ takes values $0,2$ equally likely. Conditional on $Y=1$, $X=1$ with certainty. Each $Y$ value has probability $1/2$.",
+          "Both conditional means are $1$. Conditional variances are $1$ and $0$. Marginal probabilities are $1/4,1/2,1/4$ at $0,1,2$, so the marginal variance is $1/2$ and SD is $1/\\sqrt2$."
+        ]
+      },
+      {
+        "title": "Why conditional variance alone is not enough",
+        "paragraphs": [
+          "The average conditional variance equals the marginal variance only if the conditional mean has zero variance. Otherwise use $E[\\operatorname{Var}(X\\mid Y)]+\\operatorname{Var}(E[X\\mid Y])$."
+        ]
+      }
+    ],
+    "tip": "A condition can increase or decrease variance. Do not assume conditional variance always shrinks."
+  },
+  "mrv-c1-covariance": {
+    "intro": "Covariance measures the direction of linear association. Correlation rescales that association to a dimensionless number between \u22121 and 1.",
+    "objectives": [
+      "Compute covariance and correlation for discrete variables.",
+      "Use covariance in the variance of a linear combination."
+    ],
+    "sections": [
+      {
+        "title": "Covariance",
+        "paragraphs": [
+          "$$\\operatorname{Cov}(X,Y)=E[XY]-E[X]E[Y].$$",
+          "Positive covariance means above-average values tend to occur together; negative covariance means they tend to move in opposite directions."
+        ]
+      },
+      {
+        "title": "Correlation",
+        "paragraphs": [
+          "$$\\rho_{X,Y}=\\frac{\\operatorname{Cov}(X,Y)}{\\operatorname{SD}(X)\\operatorname{SD}(Y)}.$$",
+          "Correlation is undefined if either variance is zero. Zero correlation does not generally imply independence."
+        ]
+      },
+      {
+        "title": "Worked example",
+        "paragraphs": [
+          "For $p(0,0)=0.1$, $p(0,1)=0.2$, $p(1,0)=0.3$, $p(1,1)=0.4$, the covariance is $0.4-0.7(0.6)=-0.02$. Variances are $0.21$ and $0.24$, so correlation is $-0.02/\\sqrt{0.21(0.24)}\\approx-0.0891$."
+        ]
+      },
+      {
+        "title": "Variance of a linear combination",
+        "paragraphs": [
+          "$$\\operatorname{Var}(aX+bY)=a^2\\operatorname{Var}(X)+b^2\\operatorname{Var}(Y)+2ab\\operatorname{Cov}(X,Y).$$",
+          "For a difference the covariance term is negative: $\\operatorname{Var}(X-Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)-2\\operatorname{Cov}(X,Y)$."
+        ]
+      }
+    ],
+    "tip": "Independence implies zero covariance when the relevant moments exist. The converse is false."
+  },
+  "mrv-d1-order-statistics": {
+    "intro": "Order statistics are sample values sorted from smallest to largest. Their distributions describe maximum claims, minimum waiting times, and ranked losses.",
+    "objectives": [
+      "Find probabilities for minima, maxima, and intermediate ranks.",
+      "Determine joint distributions of order statistics."
+    ],
+    "sections": [
+      {
+        "title": "Extremes and ranks for i.i.d. samples",
+        "paragraphs": [
+          "For $n$ i.i.d. continuous variables with CDF $F$, $P(X_{(n)}\\le x)=F(x)^n$ and $P(X_{(1)}>x)=(1-F(x))^n$.",
+          "$$P(X_{(k)}\\le x)=\\sum_{j=k}^n\\binom nj F(x)^j(1-F(x))^{n-j}.$$",
+          "Count how many observations fall below the threshold. The kth smallest is below it exactly when at least k observations are below it."
+        ]
+      },
+      {
+        "title": "Density and uniform ranks",
+        "paragraphs": [
+          "$$f_{(k)}(x)=\\frac{n!}{(k-1)!(n-k)!}F(x)^{k-1}(1-F(x))^{n-k}f(x).$$",
+          "For uniform $(0,1)$ observations, $X_{(k)}$ is beta with parameters $k,n+1-k$, mean $k/(n+1)$, and variance $k(n+1-k)/((n+1)^2(n+2))$."
+        ]
+      },
+      {
+        "title": "Joint density of two ranks",
+        "paragraphs": [
+          "For $i<j$ and $x<y$, the joint density for i.i.d. continuous observations is",
+          "$$f_{(i),(j)}(x,y)=\\frac{n!F(x)^{i-1}[F(y)-F(x)]^{j-i-1}[1-F(y)]^{n-j}f(x)f(y)}{(i-1)!(j-i-1)!(n-j)!}.$$",
+          "It is zero for $x\\ge y$. Integrate this density over the requested region. The factors count observations before x, between x and y, and after y."
+        ]
+      },
+      {
+        "title": "Joint distribution of the entire ordered sample",
+        "paragraphs": [
+          "For i.i.d. continuous observations, the joint density of all n order statistics is $n!\\prod_{i=1}^n f(x_i)$ on $x_1<\\cdots<x_n$, and zero otherwise. The factorial counts all assignments of the original observation labels to the ordered positions.",
+          "For independent continuous observations with different densities, replace this with $\\sum_{\\pi}\\prod_{i=1}^n f_i(x_{\\pi(i)})$, summing over all permutations of the n ordered positions. For two observations, this is $f_1(x)f_2(y)+f_1(y)f_2(x)$ on $x<y$.",
+          "For discrete observations, sort each possible original outcome vector and add its probability to the corresponding ordered vector. With two independent Bernoulli(p) observations, the ordered pairs $(0,0),(0,1),(1,1)$ have probabilities $(1-p)^2,2p(1-p),p^2$. The pair $(1,0)$ cannot be ordered."
+        ]
+      },
+      {
+        "title": "Worked joint probability",
+        "paragraphs": [
+          "For three independent uniform $(0,1)$ observations, the joint minimum\u2013maximum density is $6(y-x)$ for $0<x<y<1$.",
+          "The probability that all three fall in $(0.2,0.8)$ is $P(X_{(1)}>0.2,X_{(3)}<0.8)=(0.8-0.2)^3=0.216$."
+        ]
+      },
+      {
+        "title": "Independent, nonidentical observations",
+        "paragraphs": [
+          "Independence alone gives $F_{\\max}(x)=\\prod_i F_i(x)$ and $P(\\min>x)=\\prod_i(1-F_i(x))$. For independent continuous variables with different CDFs, the min\u2013max density on $x<y$ is $\\sum_{i\\ne j}f_i(x)f_j(y)\\prod_{k\\ne i,j}(F_k(y)-F_k(x))$.",
+          "For discrete samples, ties are possible. Use event counts or enumerate outcomes rather than using the continuous density formulas."
+        ]
+      }
+    ],
+    "tip": "The second largest of n observations is rank n\u22121, not rank 2. The beta and binomial rank formulas require identically distributed observations."
+  },
+  "mrv-e1-linear-combinations": {
+    "intro": "Linear combinations represent totals, differences, and weighted portfolios. Start with the mean and variance, then identify the distribution.",
+    "objectives": [
+      "Calculate probabilities for independent discrete sums.",
+      "Calculate probabilities for linear combinations of independent normals."
+    ],
+    "sections": [
+      {
+        "title": "Discrete convolution",
+        "paragraphs": [
+          "For independent discrete variables, $P(X+Y=s)=\\sum_x p_X(x)p_Y(s-x)$. More generally, sum $p_X(x)p_Y(y)$ over all pairs satisfying $ax+by\\le t$ to get $P(aX+bY\\le t)$."
+        ]
+      },
+      {
+        "title": "Worked discrete example",
+        "paragraphs": [
+          "Let independent $X,Y$ be Bernoulli with probabilities $0.3,0.4$. For $T=2X+Y$, the probabilities at $0,1,2,3$ are $0.42,0.28,0.18,0.12$, so $P(T\\ge2)=0.30$."
+        ]
+      },
+      {
+        "title": "Distribution shortcuts",
+        "paragraphs": [
+          "Independent Poisson variables sum to Poisson with the summed rate. Independent binomials sum to binomial when they share the same success probability. Different binomial success probabilities do not give this shortcut."
+        ]
+      },
+      {
+        "title": "Independent normal combination",
+        "paragraphs": [
+          "$$\\sum_i a_iX_i+b\\sim N\\left(\\sum_i a_i\\mu_i+b,\\sum_i a_i^2\\sigma_i^2\\right).$$",
+          "If $X\\sim N(100,400)$ and $Y\\sim N(80,225)$ are independent, $X-Y\\sim N(20,625)$. Thus $P(X>Y)=\\Phi(20/25)=\\Phi(0.8)\\approx0.7881$."
+        ]
+      },
+      {
+        "title": "Standardizing",
+        "paragraphs": [
+          "For $T\\sim N(\\mu_T,\\sigma_T^2)$, $P(T\\le t)=\\Phi((t-\\mu_T)/\\sigma_T)$. Independent normal combinations are exactly normal; no large-sample approximation is needed."
+        ]
+      }
+    ],
+    "tip": "Weights are squared in the variance. A negative weight reverses the mean contribution but never creates a negative variance contribution."
+  },
+  "mrv-e2-linear-moments": {
+    "intro": "Expectations of linear combinations are linear. Variances use squared weights and, when necessary, covariance terms.",
+    "objectives": [
+      "Compute moments of independent weighted sums.",
+      "Distinguish sums, averages, and differences."
+    ],
+    "sections": [
+      {
+        "title": "First moment",
+        "paragraphs": [
+          "$$E[T]=b+\\sum_i a_iE[X_i],\\qquad T=b+\\sum_i a_iX_i.$$",
+          "This expectation formula does not require independence."
+        ]
+      },
+      {
+        "title": "Variance and second raw moment",
+        "paragraphs": [
+          "For independent variables, $\\operatorname{Var}(T)=\\sum_i a_i^2\\operatorname{Var}(X_i)$ and $E[T^2]=\\operatorname{Var}(T)+(E[T])^2$. For dependent variables, include $2\\sum_{i<j}a_ia_j\\operatorname{Cov}(X_i,X_j)$."
+        ]
+      },
+      {
+        "title": "Worked weighted portfolio",
+        "paragraphs": [
+          "Independent $X,Y$ have means $10,20$ and variances $4,9$. For $T=2X-3Y+5$, the mean is $-35$, variance is $4(4)+9(9)=97$, and second raw moment is $97+1225=1322$."
+        ]
+      },
+      {
+        "title": "Sample means",
+        "paragraphs": [
+          "For $n$ i.i.d. variables with mean $\\mu$ and variance $\\sigma^2$, $E[\\bar X]=\\mu$ and $\\operatorname{Var}(\\bar X)=\\sigma^2/n$. For a total, mean is $n\\mu$ and variance is $n\\sigma^2$."
+        ]
+      }
+    ],
+    "tip": "A constant adds to the mean, contributes zero variance, and still affects the second raw moment through the squared mean."
+  },
+  "mrv-f1-central-limit-theorem": {
+    "intro": "The CLT approximates the distribution of a large sum or average of independent, identically distributed variables with finite variance.",
+    "objectives": [
+      "Standardize a sum or sample mean.",
+      "Use continuity corrections and recognize approximation limits."
+    ],
+    "sections": [
+      {
+        "title": "Conditions and standardization",
+        "paragraphs": [
+          "Let $X_i$ be i.i.d. with finite mean $\\mu$ and finite positive variance $\\sigma^2$. For large $n$,",
+          "$$\\frac{\\sum X_i-n\\mu}{\\sigma\\sqrt n}\\approx N(0,1),\\qquad\\frac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\approx N(0,1).$$",
+          "The approximation improves as n grows. Strong skewness can require a much larger sample; n=30 is not a guarantee. The CLT does not make each individual observation normal."
+        ]
+      },
+      {
+        "title": "Worked aggregate loss",
+        "paragraphs": [
+          "For $100$ independent losses with mean $50$ and SD $20$, the total has mean $5000$ and SD $200$. Hence $P(\\sum X_i>5400)\\approx1-\\Phi(2)=0.0228$."
+        ]
+      },
+      {
+        "title": "Continuity correction",
+        "paragraphs": [
+          "For integer-valued totals, approximate $P(S\\le k)$ with $P(N<k+0.5)$ and $P(S\\ge k)$ with $P(N>k-0.5)$. For $a\\le S\\le b$, use the interval from $a-0.5$ to $b+0.5$.",
+          "The half-unit correction applies to unit-spaced integer outcomes. For a different lattice spacing, use half that spacing."
+        ]
+      },
+      {
+        "title": "Binomial example",
+        "paragraphs": [
+          "For $S\\sim\\operatorname{Binomial}(100,0.5)$, mean is $50$ and SD is $5$. Then $P(45\\le S\\le55)\\approx\\Phi(1.1)-\\Phi(-1.1)=0.7287$. The endpoints are $44.5$ and $55.5$ after correction."
+        ]
+      },
+      {
+        "title": "Choosing a method",
+        "paragraphs": [
+          "If the inputs are independent normal variables, the total is exactly normal. For independent discrete variables with small supports, exact convolution is often preferable. Use the CLT for large sums when an approximation is requested or justified."
+        ]
+      }
+    ],
+    "tip": "Standardize totals with SD times the square root of n; standardize averages with SD divided by the square root of n."
+  }
+}

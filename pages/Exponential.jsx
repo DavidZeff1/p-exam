@@ -213,7 +213,7 @@ export function Exponential() {
       </section>
 
       <section class="definition-block">
-        <h2>MGF</h2>
+        <h2>MGF (optional enrichment)</h2>
         <div class="definition">
           <p>
             <strong>Moment Generating Function:</strong>

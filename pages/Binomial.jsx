@@ -180,7 +180,7 @@ export function Binomial() {
       </section>
 
       <section class="definition-block">
-        <h2>MGF</h2>
+        <h2>MGF (optional enrichment)</h2>
         <div class="definition">
           <p>
             <strong>Moment Generating Function:</strong>
@@ -370,7 +370,7 @@ export function Binomial() {
             <div class="formula" data-latex="Var(X) = np(1-p)"></div>
           </div>
           <div class="property">
-            <h3>MGF</h3>
+            <h3>MGF (optional enrichment)</h3>
             <div class="formula" data-latex="(q + pe^t)^n"></div>
           </div>
         </div>
