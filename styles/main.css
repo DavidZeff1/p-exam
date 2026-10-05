@@ -5745,3 +5745,39 @@ a { color: var(--color-primary-dark); text-underline-offset: .18em; }
 .study-start progress::-webkit-progress-bar { background: #cedee7; }
 .study-start progress::-webkit-progress-value { background: #267d8c; }
 .study-start progress::-moz-progress-bar { background: #267d8c; }
+
+/* Desktop topics panel can collapse without obscuring the lesson. */
+.desktop-menu-toolbar { display: none; }
+@media (min-width: 901px) {
+  .desktop-menu-toolbar { display: flex; max-width: 1020px; margin: 0 auto 1rem; }
+  .desktop-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    min-height: 44px;
+    padding: .5rem .8rem;
+    border: 1px solid #aabfcd;
+    border-radius: 4px;
+    background: white;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+  }
+  .desktop-menu-toggle:hover { background: #eaf3f6; }
+  .desktop-menu-toggle span { font-size: 1.2rem; line-height: 1; }
+  .sidebar-close {
+    display: block;
+    min-width: 36px;
+    min-height: 36px;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .sidebar-collapsed .sidebar { visibility: hidden; transform: translateX(-100%); }
+  .sidebar-collapsed .content { margin-left: 0; }
+}
+@media print {
+  .desktop-menu-toolbar { display: none; }
+}

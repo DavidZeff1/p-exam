@@ -1,7 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import { navStructure, getTopic, availableTopics } from "../topics.js";
 
-export function Sidebar({ currentPage, completed, isOpen, onClose }) {
+export function Sidebar({ currentPage, completed, isOpen, onClose, onNavigate }) {
   const [search, setSearch] = useState("");
   const [openSections, setOpenSections] = useState(["general-probability"]);
   const currentCategory = getTopic(currentPage)?.categoryId;
@@ -24,10 +24,10 @@ export function Sidebar({ currentPage, completed, isOpen, onClose }) {
   };
 
   return (
-    <nav id="sidebar" class={`sidebar ${isOpen ? "open" : ""}`} aria-label="Topics">
+    <nav id="sidebar" class={`sidebar ${isOpen ? "open" : ""}`} aria-label="Topics" inert={!isOpen}>
       <div class="sidebar-header">
         <h1>
-          <a href="#/" onClick={onClose}>
+          <a href="#/" onClick={onNavigate}>
             Exam P
           </a>
         </h1>
@@ -51,9 +51,9 @@ export function Sidebar({ currentPage, completed, isOpen, onClose }) {
           </span>
         </div>
       </div>
-      <div class="sidebar-tools"><a href="#/syllabus" aria-current={currentPage === "syllabus" ? "page" : undefined} onClick={onClose}>Syllabus checklist</a><a href="#/exam" aria-current={currentPage === "exam" ? "page" : undefined} onClick={onClose}>Practice exam</a><a href="#/reference" aria-current={currentPage === "reference" ? "page" : undefined} onClick={onClose}>Formulas & prerequisites</a></div>
+      <div class="sidebar-tools"><a href="#/syllabus" aria-current={currentPage === "syllabus" ? "page" : undefined} onClick={onNavigate}>Syllabus checklist</a><a href="#/exam" aria-current={currentPage === "exam" ? "page" : undefined} onClick={onNavigate}>Practice exam</a><a href="#/reference" aria-current={currentPage === "reference" ? "page" : undefined} onClick={onNavigate}>Formulas & prerequisites</a></div>
       <label class="sidebar-search">Find a lesson<input type="search" placeholder="Search topics" value={search} onInput={event => setSearch(event.target.value)} /></label>
-      {search.trim() ? <div class="sidebar-results">{availableTopics.filter(topic => `${topic.label} ${topic.sectionTitle}`.toLowerCase().includes(search.trim().toLowerCase())).map(topic => <a class="nav-link" href={`#/${topic.id}`} key={topic.id} onClick={() => { setSearch(""); onClose(); }}>{topic.label}</a>)}{!availableTopics.some(topic => `${topic.label} ${topic.sectionTitle}`.toLowerCase().includes(search.trim().toLowerCase())) && <p role="status">No matching lessons.</p>}</div> : <ul class="nav-list">
+      {search.trim() ? <div class="sidebar-results">{availableTopics.filter(topic => `${topic.label} ${topic.sectionTitle}`.toLowerCase().includes(search.trim().toLowerCase())).map(topic => <a class="nav-link" href={`#/${topic.id}`} key={topic.id} onClick={() => { setSearch(""); onNavigate(); }}>{topic.label}</a>)}{!availableTopics.some(topic => `${topic.label} ${topic.sectionTitle}`.toLowerCase().includes(search.trim().toLowerCase())) && <p role="status">No matching lessons.</p>}</div> : <ul class="nav-list">
         {navStructure.map((category) => {
           const expanded = openSections.includes(category.id);
           return (
@@ -85,7 +85,7 @@ export function Sidebar({ currentPage, completed, isOpen, onClose }) {
                           href={`#/${item.id}`}
                           class={classes}
                           aria-current={active ? "page" : undefined}
-                          onClick={onClose}
+                          onClick={onNavigate}
                           key={item.id}
                         >
                           <span class="nav-link-label">{item.label}</span>

@@ -33,8 +33,13 @@ export function App() {
   const [loadedPage, setLoadedPage] = useState(null);
   const [failedPage, setFailedPage] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia("(min-width: 901px)").matches);
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
+  const drawerIsOpen = !isDesktop && sidebarOpen;
+  const sidebarIsVisible = isDesktop ? desktopSidebarOpen : sidebarOpen;
   const [completed, toggleCompleted] = useCompletedTopics();
   const menuButtonRef = useRef(null);
+  const desktopMenuButtonRef = useRef(null);
   const drawerOpenedOn = useRef(null);
   const hasNavigated = useRef(false);
   const topic = getTopic(currentPage);
@@ -52,11 +57,12 @@ export function App() {
     return () => window.removeEventListener("hashchange", handleHash);
   }, []);
 
-  // The drawer only exists below 900px; close it if the window grows past that.
+  // Keep the desktop panel preference separate from the mobile overlay.
   useEffect(() => {
     const wide = window.matchMedia("(min-width: 901px)");
     const handleChange = (event) => {
-      if (event.matches) setSidebarOpen(false);
+      setIsDesktop(event.matches);
+      setSidebarOpen(false);
     };
     wide.addEventListener("change", handleChange);
     return () => wide.removeEventListener("change", handleChange);
@@ -66,8 +72,8 @@ export function App() {
   // doesn't scroll, and Escape closes it. Closing it without navigating returns
   // focus to the menu button.
   useEffect(() => {
-    document.documentElement.classList.toggle("drawer-open", sidebarOpen);
-    if (!sidebarOpen) {
+    document.documentElement.classList.toggle("drawer-open", drawerIsOpen);
+    if (!drawerIsOpen) {
       if (drawerOpenedOn.current === currentPage) menuButtonRef.current?.focus();
       drawerOpenedOn.current = null;
       return;
@@ -86,7 +92,7 @@ export function App() {
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [sidebarOpen]);
+  }, [drawerIsOpen]);
 
   useEffect(() => {
     document.title = topic ? `${topic.label} · Exam P` : Object.hasOwn(utilityTitles, currentPage) ? `${utilityTitles[currentPage]} · Exam P` : "SOA Exam P Study Guide";
@@ -149,9 +155,9 @@ export function App() {
   }
 
   return (
-    <div class="app">
+    <div class={`app ${isDesktop && !desktopSidebarOpen ? "sidebar-collapsed" : ""}`}>
       <a class="skip-link" href="#main-content" onClick={event => { event.preventDefault(); document.getElementById("main-content")?.focus(); }}>Skip to study content</a>
-      <header class="mobile-header" inert={sidebarOpen}>
+      <header class="mobile-header" inert={drawerIsOpen}>
         <button
           ref={menuButtonRef}
           type="button"
@@ -170,11 +176,30 @@ export function App() {
       <Sidebar
         currentPage={currentPage}
         completed={completed}
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
+        isOpen={sidebarIsVisible}
+        onClose={() => {
+          if (isDesktop) {
+            setDesktopSidebarOpen(false);
+            desktopMenuButtonRef.current?.focus();
+          } else setSidebarOpen(false);
+        }}
+        onNavigate={() => setSidebarOpen(false)}
       />
-      {sidebarOpen && <div class="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
-      <main id="main-content" tabIndex={-1} class="content" inert={sidebarOpen}>
+      {drawerIsOpen && <div class="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
+      <main id="main-content" tabIndex={-1} class="content" inert={drawerIsOpen}>
+        <div class="desktop-menu-toolbar">
+          <button
+            ref={desktopMenuButtonRef}
+            type="button"
+            class="desktop-menu-toggle"
+            aria-controls="sidebar"
+            aria-expanded={desktopSidebarOpen}
+            onClick={() => setDesktopSidebarOpen(open => !open)}
+          >
+            <span aria-hidden="true">☰</span>
+            {desktopSidebarOpen ? "Hide topics" : "Show topics"}
+          </button>
+        </div>
         <div id="page-container">
           {topic && pageReady && <nav class="lesson-toolbar" aria-label="Lesson tools"><a href="#/">Study guide</a><span>{topic.sectionTitle}</span><a href="#practice" onClick={event => { event.preventDefault(); document.getElementById("practice")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); }}>Go to practice</a></nav>}
           {topic && pageReady && <p class="outcome-tags">{topic.enrichment ? "Optional enrichment: lognormal is not named in the May 2026 syllabus." : <>Syllabus {getOutcomes(topic.id).map(outcome => <a key={outcome.code} href="#/syllabus" title={outcome.label}>{outcome.code}</a>)}</>}</p>}
