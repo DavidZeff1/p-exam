@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function ConditionalDiscrete() {
   return (
     <>
       <h1 class="page-title">D.1 Conditional Distributions: Discrete</h1>
       <p class="page-subtitle">Conditional Probabilities</p>
 
-      <section class="intro">
-        <p>
-          For discrete random variables, conditional distributions describe how
-          the probability mass of one variable changes when we have information
-          about another. This extends conditional probability to full distributions.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-d1-conditional-discrete" />
 
       <section class="definition-block">
         <h2>Conditional PMF</h2>

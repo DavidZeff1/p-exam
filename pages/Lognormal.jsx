@@ -1,17 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Lognormal() {
   return (
     <>
       <h1 class="page-title">C.6 Lognormal Distribution</h1>
       <p class="page-subtitle">Continuous Distributions</p>
 
-      <section class="intro">
-        <p>
-          The lognormal distribution arises when the logarithm of a random
-          variable is normally distributed. It's always positive and right-skewed,
-          making it ideal for modeling quantities that can't be negative, such as
-          prices, incomes, and lifetimes.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-c6-lognormal" />
 
       <section class="definition-block">
         <h2>Definition</h2>

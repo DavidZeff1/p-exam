@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function LawTotalProbability() {
   return (
     <>
       <h1 class="page-title">F.3 Law of Total Probability</h1>
       <p class="page-subtitle">Conditional Probability</p>
 
-      <section class="intro">
-        <p>
-          The Law of Total Probability lets us compute P(A) by breaking it down
-          into cases. When we don't know P(A) directly but know P(A|Bᵢ) for
-          various scenarios Bᵢ, we can piece together the total probability.
-        </p>
-      </section>
+      <LessonOpening topicId="f3-law-total-probability" />
 
       <section class="definition-block">
         <h2>Law of Total Probability</h2>

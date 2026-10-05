@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Binomial() {
   return (
     <>
       <h1 class="page-title">B.2 Binomial Distribution</h1>
       <p class="page-subtitle">Discrete Distributions</p>
 
-      <section class="intro">
-        <p>
-          The binomial distribution models the number of successes in a fixed
-          number of independent trials, each with the same probability of success.
-          It's one of the most important distributions in probability.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-b2-binomial" />
 
       <section class="definition-block">
         <h2>Setup</h2>

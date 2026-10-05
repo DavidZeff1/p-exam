@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function ConditionalProbability() {
   return (
     <>
       <h1 class="page-title">F.1 Conditional Probability</h1>
       <p class="page-subtitle">Conditional Probability</p>
 
-      <section class="intro">
-        <p>
-          Conditional probability measures the probability of an event given that
-          another event has occurred. It's how we update our beliefs when we
-          receive new information.
-        </p>
-      </section>
+      <LessonOpening topicId="f1-conditional-probability" />
 
       <section class="definition-block">
         <h2>Definition</h2>

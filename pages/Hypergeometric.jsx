@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Hypergeometric() {
   return (
     <>
       <h1 class="page-title">B.5 Hypergeometric Distribution</h1>
       <p class="page-subtitle">Discrete Distributions</p>
 
-      <section class="intro">
-        <p>
-          The hypergeometric distribution models sampling without replacement
-          from a finite population. Unlike the binomial, the probability changes
-          with each draw because items are not returned.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-b5-hypergeometric" />
 
       <section class="definition-block">
         <h2>Setup</h2>

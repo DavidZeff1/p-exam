@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function IndependentTrials() {
   return (
     <>
       <h1 class="page-title">C.2 Independent Trials</h1>
       <p class="page-subtitle">Independence</p>
 
-      <section class="intro">
-        <p>
-          Independent trials are repeated experiments where the outcome of each
-          trial doesn't affect the others. This framework underlies many
-          probability distributions and real-world applications.
-        </p>
-      </section>
+      <LessonOpening topicId="c2-independent-trials" />
 
       <section class="definition-block">
         <h2>Bernoulli Trial</h2>

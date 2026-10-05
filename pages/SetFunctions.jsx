@@ -1,15 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function SetFunctions() {
   return (
     <>
       <h1 class="page-title">A.1 Set Functions</h1>
       <p class="page-subtitle">Probability Fundamentals</p>
 
-      <section class="intro">
-        <p>
-          Set functions are operations that take one or more sets as input and produce a set as output.
-          Understanding these operations is fundamental to probability theory, where events are modeled as sets.
-        </p>
-      </section>
+      <LessonOpening topicId="a1-set-functions" />
 
       <section class="definition-block">
         <h2>Universal Set (U or S)</h2>

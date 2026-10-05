@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Geometric() {
   return (
     <>
       <h1 class="page-title">B.3 Geometric Distribution</h1>
       <p class="page-subtitle">Discrete Distributions</p>
 
-      <section class="intro">
-        <p>
-          The geometric distribution models the number of trials needed to get
-          the first success in a sequence of independent Bernoulli trials. It
-          answers "how long until something happens?"
-        </p>
-      </section>
+      <LessonOpening topicId="urv-b3-geometric" />
 
       <section class="definition-block">
         <h2>Two Conventions</h2>

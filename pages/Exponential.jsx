@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Exponential() {
   return (
     <>
       <h1 class="page-title">C.2 Exponential Distribution</h1>
       <p class="page-subtitle">Continuous Distributions</p>
 
-      <section class="intro">
-        <p>
-          The exponential distribution models the time until an event occurs in
-          a Poisson process. It's the continuous analog of the geometric
-          distribution and is fundamental to survival analysis and queuing theory.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-c2-exponential" />
 
       <section class="definition-block">
         <h2>Definition</h2>

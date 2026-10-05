@@ -4,9 +4,14 @@ A Preact + Vite study website aligned to the **May 2026 SOA Exam P syllabus**.
 
 - 58 syllabus lessons and one clearly labeled optional lognormal lesson.
 - All 22 learning outcomes mapped to instruction and chapter practice.
-- 211 original five-choice questions with worked solutions, including 75 added to previously uncovered chapters.
+- 211 original five-choice chapter questions, plus a parameterized exercise family for each of the 59 chapters.
+- Concrete lesson openings, method cues, misconception reminders, reasoning checks, and worked/guided/independent practice in every chapter.
+- Interactive Bayes counts, linked PDF/CDF graphs, deductible/coinsurance/cap/inflation payment graphs, and a reproducible CLT simulation.
+- Progressive hints and solution steps, choice-specific feedback where the error is known, and targeted calculation checks for other distractors.
+- Eight-question mixed review across the three syllabus areas, 12 method-selection drills, and a mistake notebook preserving exact questions and chosen answers.
+- Separate first-attempt accuracy, assistance, confidence, elapsed-time, and spaced-review records. Repeated success advances review intervals only after a scheduled review is due.
 - A three-hour, 30-question randomized practice exam: 8 general probability, 14 univariate, and 8 multivariate questions. Every syllabus section appears at least once.
-- Saved chapter answers, lesson completion, exam answers, flags, current question, and exam deadline in browser local storage when available.
+- Saved chapter answers, assistance evidence, lesson completion, learning records, review sessions, and exam sessions in browser local storage when available. Blocked storage falls back to memory for learning records during the current session.
 - Searchable chapters, a syllabus checklist, distribution formulas, prerequisite reminders, official SOA resources, and responsive keyboard-accessible navigation.
 
 Practice questions are original educational exercises, not released SOA questions. The practice exam has not been statistically calibrated and does not predict an official passing result. Its timer continues while the page is closed or the student visits another lesson. All practice-exam questions are scored; the simulator does not insert pilot questions.
@@ -27,9 +32,9 @@ npm test
 npm run build
 ```
 
-`npm test` verifies the exam blueprint, scoring, deadline calculations, stored-session structure, and topic navigation; independently recomputes all 75 new answer values; checks all 22 syllabus mappings and lesson formulas; and validates all 211 questions, choices, solutions, and LaTeX syntax. Numerical recomputation covers the new question sets, rather than claiming mathematical verification of every pre-existing exercise.
+`npm test` validates teaching coverage for all 59 chapters, generated choice uniqueness and LaTeX across multiple seeds, independently recomputes representative variant families, numerically integrates lab payment moments, checks the CLT simulation, and tests review scheduling and learning records. It also verifies the exam blueprint, scoring, deadline calculations, stored-session structure, and topic navigation; independently recomputes all 75 new answer values; checks all 22 syllabus mappings and lesson formulas; and validates all 211 questions, choices, solutions, and LaTeX syntax. Numerical recomputation covers the new question sets, rather than claiming mathematical verification of every pre-existing exercise.
 
-Browser verification also covered all 59 lesson routes at a mobile viewport, answer/solution interactions, saved practice answers, syllabus and formula pages, mobile navigation, exam restoration, submission, filtering, and automatic expiry. See [the syllabus audit](SYLLABUS_AUDIT.md).
+Browser verification also covered all 59 lesson routes at a 320-pixel dark-mode viewport, progressive hints, confidence, first-attempt retention, assistance after reloads, mixed review completion/restoration, mistake notebook history, answer/solution interactions, saved practice answers, syllabus and formula pages, mobile navigation, exam restoration, submission, filtering, and automatic expiry. See [the syllabus audit](SYLLABUS_AUDIT.md).
 
 ## Edit the content
 
@@ -38,6 +43,11 @@ Browser verification also covered all 59 lesson routes at a mobile viewport, ans
 - `scripts/content/lessons.json`: new lessons rendered by `pages/StudyLesson.jsx`.
 - `pages/*.jsx`: original lesson pages and study tools.
 - `problems/<topic-id>.js`: each chapter's question bank. Use five distinct choices, a zero-based `answer`, and a nonempty array of solution steps. Escape LaTeX backslashes in JavaScript strings.
+- `scripts/content/teaching.js`: chapter-specific concrete scenarios, intuition, method cues, traps, and reasoning checks.
+- `scripts/content/distractors.js`: known explanations for common wrong answers; avoid inventing a student's reasoning from an unexplained choice.
+- `scripts/variants.js`: deterministic numerical exercise families. Generated variants support learning within a chapter and do not reproduce every original question's difficulty or precise skill.
+- `scripts/lab-math.js` and `scripts/components/LearningLabs.jsx`: pure calculations and interactive graphs.
+- `scripts/learning.js`, `scripts/support.js`, and `pages/Review.jsx`: evidence, assistance tracking, review scheduling, and mistake history.
 - `scripts/exam.js`: selection blueprint and pure exam logic.
 - `pages/MockExam.jsx`: timer, persistence, navigation, and review.
 

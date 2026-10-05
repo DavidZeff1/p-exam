@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Partitions() {
   return (
     <>
       <h1 class="page-title">D.2 Partitions & Total Probability</h1>
       <p class="page-subtitle">Mutually Exclusive Events</p>
 
-      <section class="intro">
-        <p>
-          A partition divides the sample space into non-overlapping pieces that
-          together cover everything. This structure enables the powerful Law of
-          Total Probability, which breaks complex problems into simpler cases.
-        </p>
-      </section>
+      <LessonOpening topicId="d2-partitions" />
 
       <section class="definition-block">
         <h2>Partition Definition</h2>

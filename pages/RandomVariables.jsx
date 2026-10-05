@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function RandomVariables() {
   return (
     <>
       <h1 class="page-title">A.1 Random Variables</h1>
       <p class="page-subtitle">Univariate Random Variables</p>
 
-      <section class="intro">
-        <p>
-          A random variable is a function that assigns a numerical value to each
-          outcome in a sample space. It's the bridge between abstract probability
-          events and concrete numbers we can calculate with.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-a1-random-variables" />
 
       <section class="definition-block">
         <h2>Definition</h2>

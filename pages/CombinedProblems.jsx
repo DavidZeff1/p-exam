@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function CombinedProblems() {
   return (
     <>
       <h1 class="page-title">E.3 Combined Problems</h1>
       <p class="page-subtitle">Addition & Multiplication Rules</p>
 
-      <section class="intro">
-        <p>
-          Real probability problems often require both addition and multiplication
-          rules working together. The key is recognizing when to add (OR) and when
-          to multiply (AND), and breaking complex problems into manageable pieces.
-        </p>
-      </section>
+      <LessonOpening topicId="e3-combined-problems" />
 
       <section class="definition-block">
         <h2>Decision Framework</h2>

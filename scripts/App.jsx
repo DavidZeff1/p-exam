@@ -5,6 +5,8 @@ import { useCompletedTopics } from "./progress.js";
 import { Sidebar } from "./components/Sidebar.jsx";
 import { PracticeProblems } from "./components/PracticeProblems.jsx";
 import { TopicFooter } from "./components/TopicFooter.jsx";
+import { Review } from "../pages/Review.jsx";
+import { GuidedExamples } from "./components/GuidedExamples.jsx";
 import { Home } from "../pages/Home.jsx";
 import { Syllabus } from "../pages/Syllabus.jsx";
 import { Reference } from "../pages/Reference.jsx";
@@ -12,7 +14,7 @@ import { MockExam } from "../pages/MockExam.jsx";
 import { getOutcomes } from "./syllabus.js";
 import { useTheme } from "./theme.js";
 import { ThemeToggle } from "./components/ThemeToggle.jsx";
-const utilityTitles = { syllabus: "Syllabus checklist", reference: "Formulas & prerequisites", exam: "Practice exam" };
+const utilityTitles = { syllabus: "Syllabus checklist", reference: "Formulas & prerequisites", exam: "Practice exam", review: "Review & understanding" };
 
 // Topic pages are split into their own chunks and loaded on first visit.
 const pageModules = import.meta.glob([
@@ -22,6 +24,7 @@ const pageModules = import.meta.glob([
   "!../pages/Syllabus.jsx",
   "!../pages/Reference.jsx",
   "!../pages/MockExam.jsx",
+  "!../pages/Review.jsx",
 ]);
 
 function loadPage(topic) {
@@ -133,7 +136,9 @@ export function App() {
   }, [currentPage, pageReady]);
 
   let content;
-  if (currentPage === "syllabus") {
+  if (currentPage === "review") {
+    content = <Review />;
+  } else if (currentPage === "syllabus") {
     content = <Syllabus completed={completed} />;
   } else if (currentPage === "reference") {
     content = <Reference />;
@@ -210,6 +215,7 @@ export function App() {
           {topic && pageReady && <nav class="lesson-toolbar" aria-label="Lesson tools"><a href="#/">Study guide</a><span>{topic.sectionTitle}</span><a href="#practice" onClick={event => { event.preventDefault(); document.getElementById("practice")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); }}>Go to practice</a></nav>}
           {topic && pageReady && <p class="outcome-tags">{topic.enrichment ? "Optional enrichment: lognormal is not named in the May 2026 syllabus." : <>Syllabus {getOutcomes(topic.id).map(outcome => <a key={outcome.code} href="#/syllabus" title={outcome.label}>{outcome.code}</a>)}</>}</p>}
           {content}
+          {pageReady && <GuidedExamples key={`guided:${topic.id}`} topicId={topic.id} />}
           {pageReady && <PracticeProblems key={topic.id} topicId={topic.id} />}
           {topic && (pageReady || !topic.page) && (
             <TopicFooter

@@ -1,17 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Permutations() {
   return (
     <>
       <h1 class="page-title">B.2 Permutations</h1>
       <p class="page-subtitle">Combinatorics</p>
 
-      <section class="intro">
-        <p>
-          A permutation is an arrangement of objects where order matters.
-          Choosing a president, then vice president, then treasurer from a group
-          is a permutation problem — the same three people in different positions
-          count as different outcomes.
-        </p>
-      </section>
+      <LessonOpening topicId="b2-permutations" />
 
       <section class="definition-block">
         <h2>Factorial</h2>

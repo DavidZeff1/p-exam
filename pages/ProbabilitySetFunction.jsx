@@ -1,15 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function ProbabilitySetFunction() {
   return (
     <>
       <h1 class="page-title">A.5 Probability as a Set Function</h1>
       <p class="page-subtitle">Probability Fundamentals</p>
 
-      <section class="intro">
-        <p>
-          Probability is a function that assigns a number to each event in a sample space. 
-          This function must satisfy certain rules to behave in ways that match our intuition about chance and uncertainty.
-        </p>
-      </section>
+      <LessonOpening topicId="a5-probability-set-function" />
 
       <section class="definition-block">
         <h2>Probability Function</h2>

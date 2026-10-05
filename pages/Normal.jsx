@@ -1,17 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Normal() {
   return (
     <>
       <h1 class="page-title">C.5 Normal Distribution</h1>
       <p class="page-subtitle">Continuous Distributions</p>
 
-      <section class="intro">
-        <p>
-          The normal (Gaussian) distribution is the most important distribution
-          in probability and statistics. It arises naturally from the Central
-          Limit Theorem and describes countless phenomena in nature, finance,
-          and science.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-c5-normal" />
 
       <section class="definition-block">
         <h2>Definition</h2>

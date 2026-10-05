@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function CDF() {
   return (
     <>
       <h1 class="page-title">A.3 Cumulative Distribution Functions</h1>
       <p class="page-subtitle">Univariate Random Variables</p>
 
-      <section class="intro">
-        <p>
-          The cumulative distribution function (CDF) gives the probability that a
-          random variable is less than or equal to a value. It works for both
-          discrete and continuous random variables with the same definition.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-a3-cdf" />
 
       <section class="definition-block">
         <h2>Definition</h2>

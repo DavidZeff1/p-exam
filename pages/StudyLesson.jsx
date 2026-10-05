@@ -1,3 +1,4 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 import lessons from '../scripts/content/lessons.json';
 import { RichText } from '../scripts/components/RichText.jsx';
 
@@ -6,7 +7,7 @@ export function StudyLesson({ topic }) {
   return <>
     <h1 class="page-title">{topic.label}</h1>
     <p class="page-subtitle">{topic.sectionTitle}</p>
-    <section class="intro"><p>{lesson.intro}</p></section>
+    <LessonOpening topicId={topic.id} />
     <section class="lesson-objectives" aria-label="Learning goals">
       <h2>By the end of this lesson</h2>
       <ul>{lesson.objectives.map(goal => <li key={goal}>{goal}</li>)}</ul>

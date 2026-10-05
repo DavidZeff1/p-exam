@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function AxiomsOfProbability() {
   return (
     <>
       <h1 class="page-title">A.6 Axioms of Probability</h1>
       <p class="page-subtitle">Probability Fundamentals</p>
 
-      <section class="intro">
-        <p>
-          The axioms of probability, established by Andrey Kolmogorov in 1933,
-          are the foundation of all probability theory. Every rule and formula
-          in probability can be derived from just three simple axioms.
-        </p>
-      </section>
+      <LessonOpening topicId="a6-axioms-probability" />
 
       <section class="definition-block">
         <h2>Axiom 1: Non-negativity</h2>

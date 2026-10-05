@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function BayesTheorem() {
   return (
     <>
       <h1 class="page-title">F.2 Bayes' Theorem</h1>
       <p class="page-subtitle">Conditional Probability</p>
 
-      <section class="intro">
-        <p>
-          Bayes' theorem lets us "reverse" conditional probabilities. Given P(B|A),
-          we can find P(A|B). This is essential for updating beliefs when we
-          receive new evidence.
-        </p>
-      </section>
+      <LessonOpening topicId="f2-bayes-theorem" />
 
       <section class="definition-block">
         <h2>Bayes' Theorem (Two Events)</h2>

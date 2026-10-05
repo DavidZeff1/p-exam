@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function VennDiagrams() {
   return (
     <>
       <h1 class="page-title">A.2 Venn Diagrams</h1>
       <p class="page-subtitle">Probability Fundamentals</p>
 
-      <section class="intro">
-        <p>
-          Venn diagrams are visual tools for representing sets and their relationships.
-          They make abstract set operations concrete and are invaluable for solving probability problems
-          involving multiple events.
-        </p>
-      </section>
+      <LessonOpening topicId="a2-venn-diagrams" />
 
       <section class="definition-block">
         <h2>What is a Venn Diagram?</h2>

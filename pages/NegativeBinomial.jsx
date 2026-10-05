@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function NegativeBinomial() {
   return (
     <>
       <h1 class="page-title">B.4 Negative Binomial Distribution</h1>
       <p class="page-subtitle">Discrete Distributions</p>
 
-      <section class="intro">
-        <p>
-          The negative binomial distribution models the number of trials needed
-          to achieve a fixed number of successes. It generalizes the geometric
-          distribution from "first success" to "rth success."
-        </p>
-      </section>
+      <LessonOpening topicId="urv-b4-negative-binomial" />
 
       <section class="definition-block">
         <h2>Two Conventions</h2>

@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function MutuallyExclusive() {
   return (
     <>
       <h1 class="page-title">D.1 Mutually Exclusive Events</h1>
       <p class="page-subtitle">Mutually Exclusive Events</p>
 
-      <section class="intro">
-        <p>
-          Mutually exclusive events cannot occur at the same time. If one happens,
-          the other is impossible. This property dramatically simplifies probability
-          calculations for unions of events.
-        </p>
-      </section>
+      <LessonOpening topicId="d1-mutually-exclusive" />
 
       <section class="definition-block">
         <h2>Definition</h2>

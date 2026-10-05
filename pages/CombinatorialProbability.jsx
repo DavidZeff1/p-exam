@@ -1,17 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function CombinatorialProbability() {
   return (
     <>
       <h1 class="page-title">B.4 Combinatorial Probability</h1>
       <p class="page-subtitle">Combinatorics</p>
 
-      <section class="intro">
-        <p>
-          Combinatorial probability applies counting techniques to calculate
-          probabilities. When all outcomes are equally likely, probability
-          becomes a counting problem: count the favorable outcomes and divide
-          by the total.
-        </p>
-      </section>
+      <LessonOpening topicId="b4-combinatorial-probability" />
 
       <section class="definition-block">
         <h2>Classical Probability Formula</h2>

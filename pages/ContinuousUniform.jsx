@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function ContinuousUniform() {
   return (
     <>
       <h1 class="page-title">C.1 Continuous Uniform Distribution</h1>
       <p class="page-subtitle">Continuous Distributions</p>
 
-      <section class="intro">
-        <p>
-          The continuous uniform distribution assigns equal probability density
-          to all values in an interval [a, b]. It's the continuous analog of
-          the discrete uniform — every point is equally likely.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-c1-continuous-uniform" />
 
       <section class="definition-block">
         <h2>Definition</h2>

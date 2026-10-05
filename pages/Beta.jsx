@@ -1,17 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Beta() {
   return (
     <>
       <h1 class="page-title">C.4 Beta Distribution</h1>
       <p class="page-subtitle">Continuous Distributions</p>
 
-      <section class="intro">
-        <p>
-          The beta distribution is defined on [0, 1] and is extremely flexible,
-          able to take many shapes. It's ideal for modeling probabilities,
-          proportions, and percentages, and serves as the conjugate prior for
-          binomial parameters in Bayesian statistics.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-c4-beta" />
 
       <section class="definition-block">
         <h2>Definition</h2>

@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function PDF() {
   return (
     <>
       <h1 class="page-title">A.2 Probability Density Functions</h1>
       <p class="page-subtitle">Univariate Random Variables</p>
 
-      <section class="intro">
-        <p>
-          A probability density function (PDF) describes how probability is
-          distributed across values of a continuous random variable. For discrete
-          variables, we use the probability mass function (PMF) instead.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-a2-pdf" />
 
       <section class="definition-block">
         <h2>Probability Mass Function (Discrete)</h2>

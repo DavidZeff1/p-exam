@@ -1,23 +1,19 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Gamma() {
   return (
     <>
       <h1 class="page-title">C.3 Gamma Distribution</h1>
       <p class="page-subtitle">Continuous Distributions</p>
 
-      <section class="intro">
-        <p>
-          The gamma distribution is a flexible two-parameter family that
-          generalizes the exponential. It models waiting times for multiple
-          events and appears throughout statistics, insurance, and reliability.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-c3-gamma" />
 
       <section class="definition-block">
         <h2>Definition</h2>
         <div class="definition">
           <p>
-            <strong>Setup:</strong> X represents the waiting time until α events
-            occur in a Poisson process with rate λ.
+            <strong>Setup:</strong> For a positive integer shape α, X is the waiting time until α events
+            occur in a Poisson process with rate λ. Positive noninteger shapes
+            also define gamma distributions, without this event-count interpretation.
           </p>
         </div>
         <div class="notation-table">

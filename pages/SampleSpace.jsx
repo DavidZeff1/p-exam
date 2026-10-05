@@ -1,15 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function SampleSpace() {
   return (
     <>
       <h1 class="page-title">A.3 Sample Space</h1>
       <p class="page-subtitle">Probability Fundamentals</p>
 
-      <section class="intro">
-        <p>
-          The sample space is the foundation of probability theory. Before we can talk about
-          the probability of anything, we must first define what outcomes are possible.
-        </p>
-      </section>
+      <LessonOpening topicId="a3-sample-space" />
 
       <section class="definition-block">
         <h2>Sample Space (S or Ω)</h2>

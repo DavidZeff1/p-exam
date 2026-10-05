@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function MultiplicationRule() {
   return (
     <>
       <h1 class="page-title">E.2 Multiplication Rule</h1>
       <p class="page-subtitle">Addition & Multiplication Rules</p>
 
-      <section class="intro">
-        <p>
-          The multiplication rule calculates the probability that multiple events
-          all occur together. The formula depends on whether events are independent
-          or dependent — this determines if we need conditional probabilities.
-        </p>
-      </section>
+      <LessonOpening topicId="e2-multiplication-rule" />
 
       <section class="definition-block">
         <h2>General Multiplication Rule</h2>

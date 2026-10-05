@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import { navStructure, availableTopics } from '../scripts/topics.js';
+import { UnderstandingSummary } from '../scripts/components/PracticeProblems.jsx';
 import { resources } from '../scripts/syllabus.js';
 
 export function Home({ completed }) {
@@ -10,9 +11,9 @@ export function Home({ completed }) {
   const matches=availableTopics.filter(topic=>`${topic.label} ${topic.sectionTitle} ${navStructure.find(category=>category.id===topic.categoryId).title}`.toLowerCase().includes(query.toLowerCase().trim()));
   return <>
     <div class="home-heading"><div><h1 class="page-title">Make probability<br/>second nature.</h1><p class="page-subtitle">Your Exam P study guide · May 2026 syllabus</p></div><div class="probability-emblem" aria-hidden="true">P(A<span>∣</span>B)<small>Learn. Calculate. Practice.</small></div></div>
-    <p class="intro">Build the ideas, work the calculations, then practice under exam conditions. Every chapter ends with five-choice questions and worked solutions.</p>
+    <p class="intro">Build the ideas, work the calculations, then practice under exam conditions. Start with a concrete question, test your reasoning, work through guided examples, then solve five-choice questions independently.</p>
     <div class="study-start"><div><h2>{completedCount===0?'Begin with the foundations':'Pick up where you left off'}</h2><p>{completedCount} of {core.length} syllabus lessons marked complete</p><progress value={completedCount} max={core.length} aria-label="Completed syllabus lessons" /></div>{nextTopic?<a class="home-cta" href={`#/${nextTopic.id}`}>{completedCount===0?'Start studying':'Continue'}: {nextTopic.label}</a>:<a class="home-cta" href="#/exam">Try a practice exam</a>}</div>
-    <nav class="study-tools" aria-label="Study tools"><a href="#/syllabus"><strong>Syllabus checklist</strong><span>Find every learning outcome</span></a><a href="#/exam"><strong>Timed practice exam</strong><span>30 questions in three hours</span></a><a href="#/reference"><strong>Formulas & prerequisites</strong><span>Distributions, calculus, and insurance</span></a></nav>
+    <UnderstandingSummary /><nav class="study-tools" aria-label="Study tools"><a href="#/review"><strong>Review & understanding</strong><span>Mixed questions, new variants, and your mistakes</span></a><a href="#/syllabus"><strong>Syllabus checklist</strong><span>Find every learning outcome</span></a><a href="#/exam"><strong>Timed practice exam</strong><span>30 questions in three hours</span></a><a href="#/reference"><strong>Formulas & prerequisites</strong><span>Distributions, calculus, and insurance</span></a></nav>
     <section class="exam-focus"><h2>Where to spend your study time</h2><p>Univariate distributions and insurance calculations carry the most weight. Revisit all three areas; questions can combine outcomes.</p><div class="syllabus-weight-bar" aria-hidden="true"><span class="general">General</span><span class="univariate">Univariate</span><span class="multivariate">Multivariate</span></div><div class="weight-legend">{navStructure.map(category=><span key={category.id}>{category.title}<strong>{category.weight}</strong></span>)}</div></section>
     <div class="chapter-index-heading"><h2>Explore the chapters</h2><label class="chapter-search">Find a topic<input type="search" placeholder="Try deductibles, Bayes, or order statistics" value={query} onInput={event=>setQuery(event.target.value)} /></label></div>
     {query.trim()&&<p class="search-count" role="status">{matches.length} matching lessons</p>}

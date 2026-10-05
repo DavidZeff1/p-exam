@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function CountingPrinciples() {
   return (
     <>
       <h1 class="page-title">B.1 Counting Principles</h1>
       <p class="page-subtitle">Combinatorics</p>
 
-      <section class="intro">
-        <p>
-          Counting principles are the foundation of combinatorics. They give us
-          systematic ways to count the number of outcomes in a sample space —
-          essential for calculating probabilities.
-        </p>
-      </section>
+      <LessonOpening topicId="b1-counting-principles" />
 
       <section class="definition-block">
         <h2>Multiplication Principle</h2>

@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function DiscreteUniform() {
   return (
     <>
       <h1 class="page-title">B.1 Discrete Uniform Distribution</h1>
       <p class="page-subtitle">Discrete Distributions</p>
 
-      <section class="intro">
-        <p>
-          The discrete uniform distribution assigns equal probability to each
-          outcome in a finite set. It's the simplest discrete distribution —
-          every value is equally likely.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-b1-discrete-uniform" />
 
       <section class="definition-block">
         <h2>Definition</h2>

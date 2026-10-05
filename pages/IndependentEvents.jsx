@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function IndependentEvents() {
   return (
     <>
       <h1 class="page-title">C.1 Independent Events</h1>
       <p class="page-subtitle">Independence</p>
 
-      <section class="intro">
-        <p>
-          Two events are independent if knowing one occurred gives no information
-          about whether the other occurred. Independence is a fundamental concept
-          that simplifies probability calculations dramatically.
-        </p>
-      </section>
+      <LessonOpening topicId="c1-independent-events" />
 
       <section class="definition-block">
         <h2>Definition of Independence</h2>

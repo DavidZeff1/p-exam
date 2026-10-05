@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Combinations() {
   return (
     <>
       <h1 class="page-title">B.3 Combinations</h1>
       <p class="page-subtitle">Combinatorics</p>
 
-      <section class="intro">
-        <p>
-          A combination is a selection of objects where order does NOT matter.
-          Choosing 3 people for a committee is a combination problem — the same
-          three people form the same committee regardless of selection order.
-        </p>
-      </section>
+      <LessonOpening topicId="b3-combinations" />
 
       <section class="definition-block">
         <h2>Combination Formula</h2>

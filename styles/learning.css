@@ -1,0 +1,67 @@
+/* Teaching surfaces emphasize decisions and graphs rather than decorative cards. */
+.lesson-opening, .learning-lab, .guided-examples, .mixed-review, .method-drills, .mistake-notebook { margin: 2rem 0; }
+.lesson-opening > h2 { font-size: 1.15rem; color: var(--text-muted, #536477); }
+.lesson-scenario { font-size: clamp(1.2rem, 2vw, 1.6rem); line-height: 1.5; max-width: 52ch; font-weight: 600; }
+.lesson-opening p, .learning-lab > p, .worked-example p, .problem-question, .lesson-paragraph { max-width: 75ch; line-height: 1.75; }
+.method-note { border-left: 3px solid var(--stroke-blue, #4a7e9b); padding: .25rem 1.1rem; margin: 1.4rem 0; }
+.method-note h3 { margin-top: .5rem; }
+.reasoning-check, .lab-prediction { padding: 1.15rem; margin: 1.25rem 0; background: var(--wash-neutral, #f0f4f7); border-radius: 4px; }
+.reasoning-check h3, .lab-prediction h3 { margin-top: 0; }
+.micro-choices { display: flex; gap: .6rem; flex-wrap: wrap; margin: .8rem 0; }
+.micro-choices .problem-action { white-space: normal; text-align: left; flex: 1 1 160px; }
+.micro-choices [aria-pressed='true'] { outline: 2px solid var(--stroke-blue, #4a7e9b); outline-offset: 2px; }
+.micro-choices .micro-correct { background: var(--wash-green, #e9f6ed); }
+.lesson-reference-intro { color: var(--text-muted, #536477); border-top: 1px solid var(--line, #d5dee7); padding-top: 1rem; }
+.learning-lab { border-top: 2px solid var(--stroke-teal, #579b9e); padding-top: 1rem; }
+.lab-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.3rem; margin: 1.5rem 0; align-items: end; }
+.lab-slider { display: block; min-width: 0; }
+.lab-slider > span { display: flex; justify-content: space-between; gap: 1rem; font-size: .9rem; }
+.lab-slider input { width: 100%; margin: .8rem 0 0; min-height: 28px; padding: 0; accent-color: var(--stroke-blue, #387797); }
+.lab-controls select, .confidence-label select, .mistake-notebook select { display: block; min-height: 44px; border: 1px solid var(--line, #bbcbd6); border-radius: 4px; padding: .55rem; background: var(--surface, white); color: var(--text-body, #273849); width: 100%; font: inherit; margin-top: .4rem; }
+.lab-chart { margin: 1rem 0; min-width: 0; }
+.lab-chart figcaption { font-weight: 600; margin-bottom: .7rem; }
+.lab-chart svg { width: 100%; height: auto; background: var(--surface, #fff); border: 1px solid var(--line, #d5dee7); border-radius: 4px; }
+.lab-chart text { fill: var(--text-body, #273849); font-family: inherit; font-size: 13px; }
+.lab-axis { stroke: var(--text-muted, #607385); stroke-width: 1.5; fill: none; }
+.lab-curve { stroke: var(--text-blue, #246887); stroke-width: 3; fill: none; }
+.lab-area, .lab-bar { fill: var(--stroke-teal, #5b9c9b); opacity: .42; }
+.lab-guide { stroke: var(--text-amber, #98732b); stroke-width: 2; stroke-dasharray: 5 4; }
+.lab-dot { fill: var(--text-red, #b54558); stroke: var(--surface, #fff); stroke-width: 2; }
+.lab-chart-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+.lab-result { border-left: 3px solid var(--stroke-teal, #5b9c9b); background: var(--wash-teal, #edf6f5); padding: 1rem; }
+.lab-formula { padding: .8rem 0; font-weight: 600; }
+.count-tree { text-align: center; margin: 1.5rem 0; }
+.count-tree > div:first-child { font-weight: 600; padding: .6rem; }
+.lab-tree-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border-top: 2px solid var(--line, #bccbd6); padding-top: 1rem; }
+.lab-tree-branches > div { background: var(--wash-blue, #eaf3f8); padding: 1rem .5rem; }
+.lab-statistics, .learning-stats { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; margin: 1.5rem 0; }
+.lab-statistics div, .learning-stats div { border-bottom: 1px solid var(--line, #ccd8e2); padding: .65rem 0; }
+.lab-statistics dt, .learning-stats dt { font-size: .9rem; color: var(--text-muted, #536477); }
+.lab-statistics dd, .learning-stats dd { margin: .45rem 0 0; font-size: 1.35rem; font-weight: 600; }
+.worked-example { border-left: 3px solid var(--stroke-blue, #5487a0); padding: .5rem 1.2rem; background: var(--wash-blue, #edf5f9); }
+.worked-example li { margin: .9rem 0; line-height: 1.7; }
+.problem-hints { border-left: 3px solid var(--stroke-amber, #b89745); padding: .3rem 1rem; margin-top: 1rem; background: var(--wash-amber, #fff8e9); }
+.confidence-label { display: block; max-width: 450px; font-size: .9rem; margin: 1rem 0; }
+.variant-label { margin-left: .8rem; font-size: .8rem; font-weight: normal; color: var(--text-muted, #536477); }
+.understanding-summary { border-left: 3px solid var(--stroke-teal, #579b9e); padding: .2rem 1rem; margin: 1rem 0; }
+.understanding-summary p:last-child, .understanding-note { color: var(--text-muted, #536477); font-size: .9rem; }
+.problem-feedback p:first-child { margin-top: 0; }
+.problem-feedback p:last-child { margin-bottom: 0; }
+.review-navigation { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; }
+.mistake-entry { padding: 1.1rem 0; border-bottom: 1px solid var(--line, #ccd8e2); }
+.next-review li { margin: .8rem 0; }
+.next-review span { display: block; font-size: .9rem; color: var(--text-muted, #536477); }
+.new-session { margin: 1.5rem 0; }
+.new-session summary, .mistake-entry summary { cursor: pointer; min-height: 44px; padding: .5rem 0; }
+.study-tools { grid-template-columns: repeat(2,minmax(0,1fr)); }
+:where(.learning-lab, .reasoning-check, .lab-prediction, .method-drills) button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid var(--stroke-blue, #49809c); outline-offset: 3px; }
+@media (max-width: 600px) {
+ .lab-controls, .lab-chart-pair, .study-tools { grid-template-columns: 1fr; }
+ .lab-statistics, .learning-stats { gap: .7rem; }
+ .lab-statistics dd, .learning-stats dd { font-size: 1.1rem; }
+ .reasoning-check, .lab-prediction { padding: .85rem; }
+ .worked-example { padding: .5rem .8rem; }
+ .micro-choices .problem-action { flex-basis: 100%; }
+ .problem-actions .problem-action { white-space: normal; }
+}
+@media print { .lab-controls, .lab-prediction, .confidence-label, .review-navigation, .new-session { display: none; } }

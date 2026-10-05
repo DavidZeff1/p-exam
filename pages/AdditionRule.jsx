@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function AdditionRule() {
   return (
     <>
       <h1 class="page-title">E.1 Addition Rule</h1>
       <p class="page-subtitle">Addition & Multiplication Rules</p>
 
-      <section class="intro">
-        <p>
-          The addition rule calculates the probability that at least one of
-          several events occurs. The formula depends on whether events can
-          overlap — if they can, we must correct for double-counting.
-        </p>
-      </section>
+      <LessonOpening topicId="e1-addition-rule" />
 
       <section class="definition-block">
         <h2>General Addition Rule (Two Events)</h2>

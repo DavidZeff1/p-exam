@@ -1,16 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Poisson() {
   return (
     <>
       <h1 class="page-title">B.6 Poisson Distribution</h1>
       <p class="page-subtitle">Discrete Distributions</p>
 
-      <section class="intro">
-        <p>
-          The Poisson distribution models the number of events occurring in a
-          fixed interval of time or space, when events happen independently at
-          a constant average rate. It's essential for modeling rare events.
-        </p>
-      </section>
+      <LessonOpening topicId="urv-b6-poisson" />
 
       <section class="definition-block">
         <h2>Definition</h2>

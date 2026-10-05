@@ -1,15 +1,11 @@
+import { LessonOpening } from '../scripts/components/LessonOpening.jsx';
 export function Events() {
   return (
     <>
       <h1 class="page-title">A.4 Events</h1>
       <p class="page-subtitle">Probability Fundamentals</p>
 
-      <section class="intro">
-        <p>
-          In probability theory, an event is any subset of the sample space. Events are what we assign probabilities to — 
-          they represent outcomes or collections of outcomes that we care about.
-        </p>
-      </section>
+      <LessonOpening topicId="a4-events" />
 
       <section class="definition-block">
         <h2>Event</h2>
