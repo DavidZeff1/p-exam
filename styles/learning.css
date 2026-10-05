@@ -1,5 +1,6 @@
 /* Teaching surfaces emphasize decisions and graphs rather than decorative cards. */
 .lesson-opening, .learning-lab, .guided-examples, .mixed-review, .method-drills, .mistake-notebook { margin: 2rem 0; }
+.exam-challenges { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--stroke-blue, #5487a0); }
 .lesson-opening > h2 { font-size: 1.15rem; color: var(--text-muted, #536477); }
 .lesson-scenario { font-size: clamp(1.2rem, 2vw, 1.6rem); line-height: 1.5; max-width: 52ch; font-weight: 600; }
 .lesson-opening p, .learning-lab > p, .worked-example p, .problem-question, .lesson-paragraph { max-width: 75ch; line-height: 1.75; }

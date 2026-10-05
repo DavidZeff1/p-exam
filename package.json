@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "check:problems": "node tools/check-problems.js",
     "check:syllabus": "node tools/check-syllabus.js",
-    "test": "node --test tools/exam.test.js tools/learning.test.js && node tools/verify-new-answers.js && npm run check:syllabus && npm run check:problems"
+    "check:advanced": "node tools/verify-advanced.js",
+    "test": "node --test tools/exam.test.js tools/learning.test.js && node tools/verify-new-answers.js && npm run check:advanced && npm run check:syllabus && npm run check:problems"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",

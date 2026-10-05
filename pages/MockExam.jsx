@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { availableTopics, navStructure } from '../scripts/topics.js';
-import { loadProblems } from '../scripts/problems.js';
+import { navStructure } from '../scripts/topics.js';
+import { loadExamBank } from '../scripts/problems.js';
 import { EXAM_DURATION, EXAM_STORAGE_KEY, buildExam, scoreExam, remainingTime, validSession } from '../scripts/exam.js';
 import { RichText } from '../scripts/components/RichText.jsx';
 import { CHOICE_LETTERS } from '../scripts/components/PracticeProblems.jsx';
@@ -56,9 +56,9 @@ export function MockExam() {
   async function start() {
     setLoading(true);setError('');
     try {
-      const groups=await Promise.all(availableTopics.filter(topic=>!topic.enrichment).map(async topic=>(await loadProblems(topic.id)).map((problem,i)=>({...problem,id:`${topic.id}-${i}`,topicId:topic.id,categoryId:topic.categoryId,sectionTitle:topic.sectionTitle}))));
+      const bank = await loadExamBank();
       if (!mounted.current) return;
-      commitSession({version:1,position:0,questions:buildExam(groups.flat()),answers:Array(30).fill(null),flags:[],deadline:Date.now()+EXAM_DURATION,submitted:false});
+      commitSession({version:1,bankVersion:2,position:0,questions:buildExam(bank),answers:Array(30).fill(null),flags:[],deadline:Date.now()+EXAM_DURATION,submitted:false});
       setNow(Date.now());setIndex(0);setConfirmSubmit(false);setFilter('all');
     } catch { if(mounted.current) setError('The question bank could not be loaded. Check your connection and try again.'); }
     finally { if(mounted.current) setLoading(false); }
@@ -67,7 +67,7 @@ export function MockExam() {
     <h1 class="page-title">Practice under exam conditions</h1><p class="page-subtitle">30 questions · Three hours · Five answer choices</p>
     <p class="intro">Work through a randomized paper, flag questions to revisit, and see your solutions after submitting. Answers and the deadline are saved in this browser when storage is available.</p>
     <div class="exam-brief"><h2>Your practice paper</h2><ul class="concept-list"><li>8 general probability, 14 univariate, and 8 multivariate questions.</li><li>All questions are scored. Unanswered questions count as incorrect.</li><li>The timer continues when you navigate away or close the tab.</li><li>Use the official normal table and practice recalling formulas.</li></ul></div>
-    <p class="lesson-paragraph">These original exercises can repeat questions from chapter practice. This paper follows the syllabus weights but has not been statistically calibrated to the real exam. Its score is not a pass/fail prediction.</p>
+    <p class="lesson-paragraph">Each paper draws from 116 original questions kept separate from chapter practice. They combine syllabus skills and require you to choose a method. Later papers can repeat questions from earlier papers. The bank has not been statistically calibrated to the real exam; its score is not a pass/fail prediction.</p>
     <a href={resources[1][1]} target="_blank" rel="noreferrer">Open official normal table</a>
     <div class="problem-actions"><button class="home-cta" disabled={loading} onClick={start}>{loading?'Preparing questions…':'Start three-hour practice exam'}</button></div>{error && <p role="alert">{error}</p>}
   </>;
@@ -99,6 +99,7 @@ export function MockExam() {
   const flagged=session.flags.includes(index);
   return <>
     <h1 class="page-title">Practice exam</h1>
+    {session.bankVersion !== 2 && <p class="understanding-note">Your saved exam uses the earlier chapter question bank. Finish it to keep your answers; the next exam will use the separate question bank.</p>}
     <div class="exam-status"><strong>{answered}/30 answered</strong><span class={seconds<600?'timer urgent':'timer'} aria-label="Time remaining">{formatTime(seconds)}</span><a href={resources[1][1]} target="_blank" rel="noreferrer">Normal table ↗</a></div>
     <div class="exam-workspace">
       <div class="exam-question"><h2 ref={questionRef} tabIndex={-1} class="question-title">Question {index+1} of 30</h2><p class="problem-question"><RichText text={question.question}/></p>

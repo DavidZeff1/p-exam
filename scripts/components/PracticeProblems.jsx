@@ -46,7 +46,7 @@ export function Problem({ problem, number, initialAnswer = null, onAnswer = () =
     revealSupport(); restored.current = false; started.current = Date.now(); onAnswer(null);
   }
   return <article class="problem" ref={articleRef}>
-    <h3 class="problem-heading">{guided ? 'Your turn' : `Question ${number}`}{problem.variant && <span class="variant-label">New numbers</span>}</h3>
+    <h3 class="problem-heading">{guided ? 'Your turn' : `Question ${number}`}{problem.variant && <span class="variant-label">New numbers</span>}{problem.level === 'challenge' && <span class="variant-label">Challenge</span>}</h3>
     <p class="problem-question"><RichText text={problem.question} /></p>
     <div class="choice-list" role="group" aria-label={`Answer choices for ${guided ? 'guided practice' : `question ${number}`}`}>
       {problem.choices.map((choice, index) => <button type="button" key={index} ref={index === 0 ? firstChoiceRef : undefined}
@@ -101,10 +101,20 @@ export function PracticeProblems({ topicId }) {
     const next = {...answers, [problem.question]: answer}; setAnswers(next);
     try { localStorage.setItem(`exam-p-practice-${topicId}`,JSON.stringify(next)); } catch { /* Answers still work without storage. */ }
   }
+  const foundations = problems.filter(problem => problem.level !== 'challenge');
+  const challenges = problems.filter(problem => problem.level === 'challenge');
   return <section class="practice-problems" id="practice">
     <div class="practice-header"><h2>Practice independently</h2><span class="weight-label">{problems.length || '…'} questions</span></div>
-    <p class="practice-intro">Choose a method before calculating. Aim for about six minutes per question. Use a hint when stuck, then revisit the idea with a fresh question. These are original study exercises in the five-choice format, not released SOA questions.</p>
+    <p class="practice-intro">Build fluency with the foundation exercises, then tackle the exam-style challenges below. These are original study exercises in the five-choice format, not released SOA questions.</p>
     <UnderstandingSummary topicId={topicId} />
-    {error ? <p role="alert">Practice could not be loaded. <button class="problem-action" onClick={() => window.location.reload()}>Reload</button></p> : !problems.length ? <p role="status">Loading questions…</p> : problems.map((problem,index) => <Problem key={problem.question} problem={problem} number={index+1} initialAnswer={validAnswer(problem)} onAnswer={answer => record(problem,answer)} />)}
+    {error ? <p role="alert">Practice could not be loaded. <button class="problem-action" onClick={() => window.location.reload()}>Reload</button></p> : !problems.length ? <p role="status">Loading questions…</p> : <>
+      {foundations.map((problem,index) => <Problem key={problem.id} problem={problem} number={index+1} initialAnswer={validAnswer(problem)} onAnswer={answer => record(problem,answer)} />)}
+      <section class="exam-challenges" aria-labelledby="challenge-heading">
+        <div class="practice-header"><h2 id="challenge-heading">Exam-style challenges</h2><span class="weight-label">{challenges.length} questions</span></div>
+        <p class="practice-intro">Choose your method before calculating. These questions combine several steps: interpret the information, set up the model, then find the requested quantity. Try them without hints and aim for about six minutes each. After checking, explain why the other choices fail.</p>
+        {challenges.map((problem,index) => <Problem key={problem.id} problem={problem} number={foundations.length+index+1} initialAnswer={validAnswer(problem)} onAnswer={answer => record(problem,answer)} />)}
+        <p class="understanding-note">Ready to choose methods across chapters? <a href="#/exam">Try the separate timed-exam bank</a> or <a href="#/review">review your mistakes</a>.</p>
+      </section>
+    </>}
   </section>;
 }

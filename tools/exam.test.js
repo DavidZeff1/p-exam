@@ -2,7 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { availableTopics, getTopic, getAdjacentTopics } from '../scripts/topics.js';
 import { EXAM_DURATION, buildExam, scoreExam, remainingTime, validSession } from '../scripts/exam.js';
-const bank=(await Promise.all(availableTopics.map(async topic=>(await import(`../problems/${topic.id}.js`)).default.map((problem,index)=>({...problem,id:`${topic.id}-${index}`,topicId:topic.id,categoryId:topic.categoryId,sectionTitle:topic.sectionTitle,enrichment:topic.enrichment}))))).flat();
+import examBank from '../scripts/content/exam-bank.js';
+const bank=Object.entries(examBank).flatMap(([topicId,questions])=>questions.map(q=>({...q,categoryId:getTopic(topicId).categoryId,sectionTitle:getTopic(topicId).sectionTitle,enrichment:getTopic(topicId).enrichment})));
+test('Timed papers draw from the separate core challenge bank',()=>{
+  assert.equal(bank.length,116);
+  assert.ok(bank.every(q=>q.id.startsWith('exam:')&&q.level==='challenge'));
+});
 const seeded=seed=>()=>{seed=(1664525*seed+1013904223)>>>0;return seed/2**32;};
 test('Randomized exams have 30 unique core questions, follow weights, and span every section',()=>{
   for(let seed=0;seed<100;seed++) {

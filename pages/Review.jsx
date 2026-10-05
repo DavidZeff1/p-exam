@@ -33,7 +33,8 @@ export function Review() {
     const selected = shuffle(selectReview(bank, state)).map(q => {
       const evidence = state.questions[q.id] ?? state.questions[`variant:${q.topicId}`];
       // Keep review scheduling tied to the original concept while changing its values.
-      return evidence ? { ...generateVariant(q.topicId, Math.floor(Math.random() * 1000000)), learningId: state.questions[q.id] ? q.id : `variant:${q.topicId}`, categoryId: q.categoryId } : q;
+      // Preserve multistep challenges rather than replacing them with a foundation drill.
+      return evidence && q.level !== 'challenge' ? { ...generateVariant(q.topicId, Math.floor(Math.random() * 1000000)), learningId: state.questions[q.id] ? q.id : `variant:${q.topicId}`, categoryId: q.categoryId } : q;
     });
     persist({ version: 1, questions: selected, answers: Array(8).fill(null), position: 0 });
   }
@@ -61,7 +62,7 @@ export function Review() {
         {completed && <p role="status">Session complete: {session.questions.filter((q,i)=>q.answer===session.answers[i]).length}/8 correct in your checked answers. Your learning record separately tracks first attempts and support.</p>}
         <details class="new-session"><summary>{completed ? 'Start another session' : 'Replace this review session'}</summary><p>{completed?'Choose eight more questions from your current review needs.':'Starting a new session replaces these eight questions. Your recorded attempts remain saved.'}</p><button class="problem-action" disabled={!bank.length} onClick={start}>Start new mixed review</button></details>
       </>}
-      <p class="understanding-note">Sessions and learning records are saved in this browser when storage is available. Reviewed ideas can return with different numbers; a new variant may test another part of the same lesson.</p>
+      <p class="understanding-note">Sessions and learning records are saved in this browser when storage is available. Foundation exercises can return with different numbers. Challenges retain their full reasoning and original question; retries after checking an answer count as supported practice.</p>
     </section>
     <section class="method-drills"><h2>Choose the tool before doing arithmetic</h2><p>These short drills focus on the assumptions and stopping rules that distinguish methods.</p>{drills.map((check,i)=><ReasoningCheck key={`${drillVersion}:${i}`} check={check} title={`Method decision ${i+1}`} />)}<button class="problem-action" onClick={()=>{setDrills(shuffle(methodDrills).slice(0,4));setDrillVersion(drillVersion+1);}}>New method decisions</button></section>
     <section class="mistake-notebook"><h2>Your mistake notebook</h2><label>Show<select value={filter} onChange={e=>setFilter(e.currentTarget.value)}><option value="needs-review">Still needs review</option><option value="all">All recorded mistakes</option></select></label>
