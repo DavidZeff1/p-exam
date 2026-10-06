@@ -90,6 +90,145 @@ export default {
       "id": "chapter:a1-set-functions:1",
       "topicId": "a1-set-functions",
       "family": "region-conditional"
+    },
+    {
+      "question": "A claim may involve property damage A, bodily injury B, both, or neither. P(A)=0.425, P(B)=0.475, and P(neither)=0.275. Given that at least one of A and B occurs, calculate the probability that exactly one occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2414$",
+        "$0.5500$",
+        "$0.5862$",
+        "$0.6552$",
+        "$0.7586$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The union has probability 0.725. The addition rule gives P(A∩B)=0.425+0.475-0.725=0.175.",
+        "Exactly one has probability P(A)+P(B)-2P(A∩B)=0.55.",
+        "Divide by the union probability to obtain 0.758621."
+      ],
+      "feedback": {
+        "0": "This gives both events conditional on the union.",
+        "1": "This is the probability of exactly one before restricting to the union.",
+        "2": "This includes the intersection as well as the A-only region.",
+        "3": "This includes the intersection as well as the B-only region."
+      },
+      "skills": [
+        "recover an intersection",
+        "exactly-one event",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: recover an intersection, exactly-one event, conditional normalization.",
+        "The union has probability 0.725. The addition rule gives P(A∩B)=0.425+0.475-0.725=0.175."
+      ],
+      "verification": {
+        "kind": "symmetric-difference",
+        "a": 0.425,
+        "b": 0.47500000000000003,
+        "both": 0.175,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a1-set-functions:2",
+      "topicId": "a1-set-functions",
+      "family": "symmetric-difference-infer"
+    },
+    {
+      "question": "Three diagnostic flags A, B, C have probabilities 17/46, 16/46, 15/46. Their pairwise intersections A∩B, A∩C, B∩C have probabilities 5/46, 5/46, 3/46, and all three occur with probability 1/46. Calculate the probability that exactly one flag occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2391$",
+        "$0.5435$",
+        "$0.6944$",
+        "$0.7609$",
+        "$0.7826$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times.",
+        "Subtract twice the sum of the pairwise intersections, then add three times the triple intersection.",
+        "The result is [17+16+15-2(5+5+3)+3]/46=25/46=0.543478."
+      ],
+      "feedback": {
+        "0": "This gives at least two flags.",
+        "2": "This conditions on at least one flag, which was not requested.",
+        "3": "This applies the union subtraction rather than the exactly-one subtraction and also omits the triple correction.",
+        "4": "This is at least one, including overlaps."
+      },
+      "skills": [
+        "Venn-region multiplicities",
+        "inclusion–exclusion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Venn-region multiplicities, inclusion–exclusion.",
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times."
+      ],
+      "verification": {
+        "kind": "three-exact",
+        "weights": [
+          10,
+          8,
+          9,
+          4,
+          8,
+          4,
+          2,
+          1
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a1-set-functions:3",
+      "topicId": "a1-set-functions",
+      "family": "three-events-exactly-one"
+    },
+    {
+      "question": "An insurer records P(auto coverage)=0.525, P(home coverage)=0.475, and P(both)=0.275. Auto-only customers renew with probability 0.55, home-only customers with probability 0.70, and customers with both renew at least one coverage with probability 0.90. Customers with neither cannot renew. Calculate the probability that a randomly selected customer renews at least one coverage. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2475$",
+        "$0.2775$",
+        "$0.5250$",
+        "$0.6213$",
+        "$0.7241$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The disjoint class shares are auto-only 0.25, home-only 0.2, both 0.275, and neither 0.275.",
+        "Multiply each class share by its corresponding renewal probability. The neither class contributes zero.",
+        "Total probability gives 0.25(0.55)+0.2(0.70)+0.275(0.90)=0.525."
+      ],
+      "feedback": {
+        "0": "This includes only the both-coverage class.",
+        "1": "This omits customers with both coverages.",
+        "3": "This double counts customers with both and applies the wrong renewal rate to them.",
+        "4": "This conditions on having coverage; the question samples from all customers."
+      },
+      "skills": [
+        "overlapping coverages to partition",
+        "total probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: overlapping coverages to partition, total probability.",
+        "The disjoint class shares are auto-only 0.25, home-only 0.2, both 0.275, and neither 0.275."
+      ],
+      "verification": {
+        "kind": "renewal-mixture",
+        "a": 0.525,
+        "b": 0.47500000000000003,
+        "both": 0.275,
+        "rates": [
+          0.55,
+          0.7,
+          0.9
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a1-set-functions:4",
+      "topicId": "a1-set-functions",
+      "family": "coverage-renewal-mixture"
     }
   ],
   "a2-venn-diagrams": [
@@ -185,6 +324,145 @@ export default {
       "id": "chapter:a2-venn-diagrams:1",
       "topicId": "a2-venn-diagrams",
       "family": "two-events-infer"
+    },
+    {
+      "question": "Three diagnostic flags A, B, C have probabilities 16/39, 13/39, 13/39. Their pairwise intersections A∩B, A∩C, B∩C have probabilities 4/39, 5/39, 3/39, and all three occur with probability 1/39. Calculate the probability that exactly one flag occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2564$",
+        "$0.5385$",
+        "$0.6774$",
+        "$0.7692$",
+        "$0.7949$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times.",
+        "Subtract twice the sum of the pairwise intersections, then add three times the triple intersection.",
+        "The result is [16+13+13-2(4+5+3)+3]/39=21/39=0.538462."
+      ],
+      "feedback": {
+        "0": "This gives at least two flags.",
+        "2": "This conditions on at least one flag, which was not requested.",
+        "3": "This applies the union subtraction rather than the exactly-one subtraction and also omits the triple correction.",
+        "4": "This is at least one, including overlaps."
+      },
+      "skills": [
+        "Venn-region multiplicities",
+        "inclusion–exclusion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Venn-region multiplicities, inclusion–exclusion.",
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times."
+      ],
+      "verification": {
+        "kind": "three-exact",
+        "weights": [
+          8,
+          8,
+          7,
+          3,
+          6,
+          4,
+          2,
+          1
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a2-venn-diagrams:2",
+      "topicId": "a2-venn-diagrams",
+      "family": "three-events-exactly-one"
+    },
+    {
+      "question": "A claim may involve property damage A, bodily injury B, both, or neither. P(A)=0.45, P(B)=0.45, and P(neither)=0.275. Given that at least one of A and B occurs, calculate the probability that exactly one occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2414$",
+        "$0.5500$",
+        "$0.6207$",
+        "$0.7250$",
+        "$0.7586$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The union has probability 0.725. The addition rule gives P(A∩B)=0.45+0.45-0.725=0.175.",
+        "Exactly one has probability P(A)+P(B)-2P(A∩B)=0.55.",
+        "Divide by the union probability to obtain 0.758621."
+      ],
+      "feedback": {
+        "0": "This gives both events conditional on the union.",
+        "1": "This is the probability of exactly one before restricting to the union.",
+        "2": "This includes the intersection as well as the A-only region.",
+        "3": "This gives the probability of the condition."
+      },
+      "skills": [
+        "recover an intersection",
+        "exactly-one event",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: recover an intersection, exactly-one event, conditional normalization.",
+        "The union has probability 0.725. The addition rule gives P(A∩B)=0.45+0.45-0.725=0.175."
+      ],
+      "verification": {
+        "kind": "symmetric-difference",
+        "a": 0.44999999999999996,
+        "b": 0.45,
+        "both": 0.175,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a2-venn-diagrams:3",
+      "topicId": "a2-venn-diagrams",
+      "family": "symmetric-difference-infer"
+    },
+    {
+      "question": "An insurer records P(auto coverage)=0.575, P(home coverage)=0.45, and P(both)=0.25. Auto-only customers renew with probability 0.55, home-only customers with probability 0.70, and customers with both renew at least one coverage with probability 0.90. Customers with neither cannot renew. Calculate the probability that a randomly selected customer renews at least one coverage. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2250$",
+        "$0.3187$",
+        "$0.5437$",
+        "$0.6312$",
+        "$0.7016$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The disjoint class shares are auto-only 0.325, home-only 0.2, both 0.25, and neither 0.225.",
+        "Multiply each class share by its corresponding renewal probability. The neither class contributes zero.",
+        "Total probability gives 0.325(0.55)+0.2(0.70)+0.25(0.90)=0.54375."
+      ],
+      "feedback": {
+        "0": "This includes only the both-coverage class.",
+        "1": "This omits customers with both coverages.",
+        "3": "This double counts customers with both and applies the wrong renewal rate to them.",
+        "4": "This conditions on having coverage; the question samples from all customers."
+      },
+      "skills": [
+        "overlapping coverages to partition",
+        "total probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: overlapping coverages to partition, total probability.",
+        "The disjoint class shares are auto-only 0.325, home-only 0.2, both 0.25, and neither 0.225."
+      ],
+      "verification": {
+        "kind": "renewal-mixture",
+        "a": 0.575,
+        "b": 0.45,
+        "both": 0.25,
+        "rates": [
+          0.55,
+          0.7,
+          0.9
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a2-venn-diagrams:4",
+      "topicId": "a2-venn-diagrams",
+      "family": "coverage-renewal-mixture"
     }
   ],
   "a3-sample-space": [
@@ -275,6 +553,131 @@ export default {
       "id": "chapter:a3-sample-space:1",
       "topicId": "a3-sample-space",
       "family": "discrete-uniform-sum"
+    },
+    {
+      "question": "An urn contains 3 red balls and 6 blue balls. Two balls are drawn in order without replacement. You are told that the second ball is red. Calculate the probability that the first ball was also red. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0833$",
+        "$0.2500$",
+        "$0.3333$",
+        "$0.3750$",
+        "$0.7500$"
+      ],
+      "answer": 1,
+      "solution": [
+        "P(first red and second red)=(3/9)(2/8).",
+        "By symmetry, the second draw is red with probability 3/9.",
+        "Dividing the joint probability by the condition probability gives (2)/(8)=0.25. Conditioning on a later draw still changes the earlier draw distribution."
+      ],
+      "feedback": {
+        "0": "This is the joint probability; it needs a conditional denominator.",
+        "2": "This is the first-draw probability before observing the second draw.",
+        "3": "The observed red ball must be removed from the red count as well as the population count.",
+        "4": "This gives the probability that the first ball was blue."
+      },
+      "skills": [
+        "ordered sample space",
+        "reverse conditioning",
+        "without replacement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: ordered sample space, reverse conditioning, without replacement.",
+        "P(first red and second red)=(3/9)(2/8)."
+      ],
+      "verification": {
+        "kind": "ordered-condition",
+        "N": 9,
+        "K": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a3-sample-space:2",
+      "topicId": "a3-sample-space",
+      "family": "ordered-draw-condition"
+    },
+    {
+      "question": "An integer-valued random variable X is uniform on 1 through 11. Given that X≥3, calculate the probability that X is even. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3636$",
+        "$0.4444$",
+        "$0.4545$",
+        "$0.5000$",
+        "$0.5556$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The condition retains the integers 3, 4, …, 11: 9 equally likely values.",
+        "Exactly 4 retained integers are even. The endpoints must be counted, not approximated by half the interval.",
+        "The conditional probability is 4/9=0.444444."
+      ],
+      "feedback": {
+        "0": "This is the joint probability and has not been renormalized.",
+        "2": "This is the unconditional even probability.",
+        "3": "Half is not guaranteed when a finite retained set has odd size.",
+        "4": "This counts the odd integers."
+      },
+      "skills": [
+        "discrete endpoints",
+        "conditional uniform support"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: discrete endpoints, conditional uniform support.",
+        "The condition retains the integers 3, 4, …, 11: 9 equally likely values."
+      ],
+      "verification": {
+        "kind": "uniform-lattice",
+        "n": 11,
+        "lower": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a3-sample-space:3",
+      "topicId": "a3-sample-space",
+      "family": "uniform-lattice-condition"
+    },
+    {
+      "question": "A committee of four is selected uniformly from 6 senior and 7 junior employees. A particular senior employee is known to be on the committee. Calculate the probability that the committee contains exactly two senior employees. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1591$",
+        "$0.3182$",
+        "$0.4167$",
+        "$0.4406$",
+        "$0.4773$"
+      ],
+      "answer": 4,
+      "solution": [
+        "After including the specified senior, choose three people from the remaining 12.",
+        "Exactly two seniors overall means one additional senior and two juniors: choose(5,1)choose(7,2).",
+        "Divide by choose(12,3) to obtain 0.477273."
+      ],
+      "feedback": {
+        "0": "This gives exactly one senior overall.",
+        "1": "This adds two more seniors, giving three seniors overall.",
+        "2": "This considers only one additional member and omits the other two selections.",
+        "3": "This is the unconditional probability before learning that a specific senior is included."
+      },
+      "skills": [
+        "conditional sample space",
+        "combinations",
+        "fixed membership"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional sample space, combinations, fixed membership.",
+        "After including the specified senior, choose three people from the remaining 12."
+      ],
+      "verification": {
+        "kind": "committee-condition",
+        "S": 6,
+        "J": 7,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a3-sample-space:4",
+      "topicId": "a3-sample-space",
+      "family": "committee-conditioned-membership"
     }
   ],
   "a4-events": [
@@ -361,6 +764,140 @@ export default {
       "id": "chapter:a4-events:1",
       "topicId": "a4-events",
       "family": "conditional-independent"
+    },
+    {
+      "question": "Three diagnostic flags A, B, C have probabilities 14/44, 15/44, 14/44. Their pairwise intersections A∩B, A∩C, B∩C have probabilities 4/44, 5/44, 3/44, and all three occur with probability 1/44. Calculate the probability that exactly one flag occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2273$",
+        "$0.5000$",
+        "$0.6875$",
+        "$0.7045$",
+        "$0.7273$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times.",
+        "Subtract twice the sum of the pairwise intersections, then add three times the triple intersection.",
+        "The result is [14+15+14-2(4+5+3)+3]/44=22/44=0.5."
+      ],
+      "feedback": {
+        "0": "This gives at least two flags.",
+        "2": "This conditions on at least one flag, which was not requested.",
+        "3": "This applies the union subtraction rather than the exactly-one subtraction and also omits the triple correction.",
+        "4": "This is at least one, including overlaps."
+      },
+      "skills": [
+        "Venn-region multiplicities",
+        "inclusion–exclusion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Venn-region multiplicities, inclusion–exclusion.",
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times."
+      ],
+      "verification": {
+        "kind": "three-exact",
+        "weights": [
+          12,
+          6,
+          9,
+          3,
+          7,
+          4,
+          2,
+          1
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a4-events:2",
+      "topicId": "a4-events",
+      "family": "three-events-exactly-one"
+    },
+    {
+      "question": "A claim may involve property damage A, bodily injury B, both, or neither. P(A)=0.425, P(B)=0.425, and P(neither)=0.375. Given that at least one of A and B occurs, calculate the probability that exactly one occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3600$",
+        "$0.4000$",
+        "$0.6250$",
+        "$0.6400$",
+        "$0.6800$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The union has probability 0.625. The addition rule gives P(A∩B)=0.425+0.425-0.625=0.225.",
+        "Exactly one has probability P(A)+P(B)-2P(A∩B)=0.4.",
+        "Divide by the union probability to obtain 0.64."
+      ],
+      "feedback": {
+        "0": "This gives both events conditional on the union.",
+        "1": "This is the probability of exactly one before restricting to the union.",
+        "2": "This gives the probability of the condition.",
+        "4": "This includes the intersection as well as the A-only region."
+      },
+      "skills": [
+        "recover an intersection",
+        "exactly-one event",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: recover an intersection, exactly-one event, conditional normalization.",
+        "The union has probability 0.625. The addition rule gives P(A∩B)=0.425+0.425-0.625=0.225."
+      ],
+      "verification": {
+        "kind": "symmetric-difference",
+        "a": 0.425,
+        "b": 0.42500000000000004,
+        "both": 0.225,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a4-events:3",
+      "topicId": "a4-events",
+      "family": "symmetric-difference-infer"
+    },
+    {
+      "question": "An urn contains 2 red balls and 8 blue balls. Two balls are drawn in order without replacement. You are told that the second ball is red. Calculate the probability that the first ball was also red. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0222$",
+        "$0.1111$",
+        "$0.2000$",
+        "$0.2222$",
+        "$0.8889$"
+      ],
+      "answer": 1,
+      "solution": [
+        "P(first red and second red)=(2/10)(1/9).",
+        "By symmetry, the second draw is red with probability 2/10.",
+        "Dividing the joint probability by the condition probability gives (1)/(9)=0.111111. Conditioning on a later draw still changes the earlier draw distribution."
+      ],
+      "feedback": {
+        "0": "This is the joint probability; it needs a conditional denominator.",
+        "2": "This is the first-draw probability before observing the second draw.",
+        "3": "The observed red ball must be removed from the red count as well as the population count.",
+        "4": "This gives the probability that the first ball was blue."
+      },
+      "skills": [
+        "ordered sample space",
+        "reverse conditioning",
+        "without replacement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: ordered sample space, reverse conditioning, without replacement.",
+        "P(first red and second red)=(2/10)(1/9)."
+      ],
+      "verification": {
+        "kind": "ordered-condition",
+        "N": 10,
+        "K": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a4-events:4",
+      "topicId": "a4-events",
+      "family": "ordered-draw-condition"
     }
   ],
   "a5-probability-set-function": [
@@ -448,6 +985,141 @@ export default {
       "id": "chapter:a5-probability-set-function:1",
       "topicId": "a5-probability-set-function",
       "family": "disjoint-infer"
+    },
+    {
+      "question": "Three diagnostic flags A, B, C have probabilities 16/42, 16/42, 14/42. Their pairwise intersections A∩B, A∩C, B∩C have probabilities 6/42, 5/42, 3/42, and all three occur with probability 1/42. Calculate the probability that exactly one flag occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2857$",
+        "$0.5000$",
+        "$0.6364$",
+        "$0.7619$",
+        "$0.7857$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times.",
+        "Subtract twice the sum of the pairwise intersections, then add three times the triple intersection.",
+        "The result is [16+16+14-2(6+5+3)+3]/42=21/42=0.5."
+      ],
+      "feedback": {
+        "0": "This gives at least two flags.",
+        "2": "This conditions on at least one flag, which was not requested.",
+        "3": "This applies the union subtraction rather than the exactly-one subtraction and also omits the triple correction.",
+        "4": "This is at least one, including overlaps."
+      },
+      "skills": [
+        "Venn-region multiplicities",
+        "inclusion–exclusion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Venn-region multiplicities, inclusion–exclusion.",
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times."
+      ],
+      "verification": {
+        "kind": "three-exact",
+        "weights": [
+          9,
+          6,
+          8,
+          5,
+          7,
+          4,
+          2,
+          1
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a5-probability-set-function:2",
+      "topicId": "a5-probability-set-function",
+      "family": "three-events-exactly-one"
+    },
+    {
+      "question": "A claim may involve property damage A, bodily injury B, both, or neither. P(A)=0.35, P(B)=0.425, and P(neither)=0.425. Given that at least one of A and B occurs, calculate the probability that exactly one occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3478$",
+        "$0.3750$",
+        "$0.6087$",
+        "$0.6522$",
+        "$0.7391$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The union has probability 0.575. The addition rule gives P(A∩B)=0.35+0.425-0.575=0.2.",
+        "Exactly one has probability P(A)+P(B)-2P(A∩B)=0.375.",
+        "Divide by the union probability to obtain 0.652174."
+      ],
+      "feedback": {
+        "0": "This gives both events conditional on the union.",
+        "1": "This is the probability of exactly one before restricting to the union.",
+        "2": "This includes the intersection as well as the A-only region.",
+        "4": "This includes the intersection as well as the B-only region."
+      },
+      "skills": [
+        "recover an intersection",
+        "exactly-one event",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: recover an intersection, exactly-one event, conditional normalization.",
+        "The union has probability 0.575. The addition rule gives P(A∩B)=0.35+0.425-0.575=0.2."
+      ],
+      "verification": {
+        "kind": "symmetric-difference",
+        "a": 0.35,
+        "b": 0.42500000000000004,
+        "both": 0.2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a5-probability-set-function:3",
+      "topicId": "a5-probability-set-function",
+      "family": "symmetric-difference-infer"
+    },
+    {
+      "question": "The claim count N takes values 0 through 3, with P(N=k)=c(k+1). A contract pays 75 for each claim in excess of the first 2 claims. Calculate expected payment per contract. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0000$",
+        "$18.7500$",
+        "$30.0000$",
+        "$150.0000$",
+        "$2250.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Normalize the probabilities: c[1+2+⋯+4]=1, giving c=2/(4×5).",
+        "The payment at count k is 75 max(k-2,0). Its possible values are 0, 0, 0, 75.",
+        "Weight each payment by c(k+1); the expected payment is 30."
+      ],
+      "feedback": {
+        "0": "A positive-part function cannot be moved outside an expectation.",
+        "1": "The supported counts are not equally likely.",
+        "3": "This ignores the count deductible.",
+        "4": "This is the second raw moment rather than the mean."
+      },
+      "skills": [
+        "PMF normalization",
+        "discrete payment transformation",
+        "expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: PMF normalization, discrete payment transformation, expectation.",
+        "Normalize the probabilities: c[1+2+⋯+4]=1, giving c=2/(4×5)."
+      ],
+      "verification": {
+        "kind": "finite-payment",
+        "n": 4,
+        "scale": 75,
+        "d": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:a5-probability-set-function:4",
+      "topicId": "a5-probability-set-function",
+      "family": "finite-payment-moments"
     }
   ],
   "a6-axioms-probability": [
@@ -547,6 +1219,148 @@ export default {
       "id": "chapter:a6-axioms-probability:1",
       "topicId": "a6-axioms-probability",
       "family": "independent-infer"
+    },
+    {
+      "question": "A claim may involve property damage A, bodily injury B, both, or neither. P(A)=0.425, P(B)=0.4, and P(neither)=0.325. Given that at least one of A and B occurs, calculate the probability that exactly one occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2222$",
+        "$0.5250$",
+        "$0.5926$",
+        "$0.6296$",
+        "$0.7778$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The union has probability 0.675. The addition rule gives P(A∩B)=0.425+0.4-0.675=0.15.",
+        "Exactly one has probability P(A)+P(B)-2P(A∩B)=0.525.",
+        "Divide by the union probability to obtain 0.777778."
+      ],
+      "feedback": {
+        "0": "This gives both events conditional on the union.",
+        "1": "This is the probability of exactly one before restricting to the union.",
+        "2": "This includes the intersection as well as the B-only region.",
+        "3": "This includes the intersection as well as the A-only region."
+      },
+      "skills": [
+        "recover an intersection",
+        "exactly-one event",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: recover an intersection, exactly-one event, conditional normalization.",
+        "The union has probability 0.675. The addition rule gives P(A∩B)=0.425+0.4-0.675=0.15."
+      ],
+      "verification": {
+        "kind": "symmetric-difference",
+        "a": 0.425,
+        "b": 0.4,
+        "both": 0.15,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a6-axioms-probability:2",
+      "topicId": "a6-axioms-probability",
+      "family": "symmetric-difference-infer"
+    },
+    {
+      "question": "Three diagnostic flags A, B, C have probabilities 14/42, 15/42, 15/42. Their pairwise intersections A∩B, A∩C, B∩C have probabilities 5/42, 5/42, 3/42, and all three occur with probability 1/42. Calculate the probability that exactly one flag occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2619$",
+        "$0.5000$",
+        "$0.6562$",
+        "$0.7381$",
+        "$0.7619$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times.",
+        "Subtract twice the sum of the pairwise intersections, then add three times the triple intersection.",
+        "The result is [14+15+15-2(5+5+3)+3]/42=21/42=0.5."
+      ],
+      "feedback": {
+        "0": "This gives at least two flags.",
+        "2": "This conditions on at least one flag, which was not requested.",
+        "3": "This applies the union subtraction rather than the exactly-one subtraction and also omits the triple correction.",
+        "4": "This is at least one, including overlaps."
+      },
+      "skills": [
+        "Venn-region multiplicities",
+        "inclusion–exclusion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Venn-region multiplicities, inclusion–exclusion.",
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times."
+      ],
+      "verification": {
+        "kind": "three-exact",
+        "weights": [
+          10,
+          5,
+          8,
+          4,
+          8,
+          4,
+          2,
+          1
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a6-axioms-probability:3",
+      "topicId": "a6-axioms-probability",
+      "family": "three-events-exactly-one"
+    },
+    {
+      "question": "A portfolio consists of classes A, B, C in proportions 0.225, 0.3, 0.475. Their annual claim probabilities are 0.1, 0.22, 0.4, respectively. A randomly selected policy has no claim this year. Calculate the probability it belongs to class B. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2340$",
+        "$0.2370$",
+        "$0.3000$",
+        "$0.3243$",
+        "$0.7800$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities.",
+        "Total no-claim probability is 0.225(0.9)+0.3(0.78)+0.475(0.6)=0.7215.",
+        "The class-B and no-claim joint probability is 0.234; its ratio to 0.7215 is 0.324324."
+      ],
+      "feedback": {
+        "0": "This is a joint probability; normalize by total no-claim probability.",
+        "1": "This conditions on a claim rather than on no claim.",
+        "2": "This is the prior class share.",
+        "4": "This reverses the direction of the condition."
+      },
+      "skills": [
+        "exhaustive partition",
+        "total probability",
+        "Bayes with a complement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: exhaustive partition, total probability, Bayes with a complement.",
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities."
+      ],
+      "verification": {
+        "kind": "class-survival",
+        "weights": [
+          0.225,
+          0.3,
+          0.475
+        ],
+        "rates": [
+          0.1,
+          0.22,
+          0.4
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:a6-axioms-probability:4",
+      "topicId": "a6-axioms-probability",
+      "family": "three-class-survival"
     }
   ],
   "b1-counting-principles": [
@@ -631,6 +1445,133 @@ export default {
       "id": "chapter:b1-counting-principles:1",
       "topicId": "b1-counting-principles",
       "family": "committee-roles"
+    },
+    {
+      "question": "A 5-digit identifier uses distinct digits chosen from 0 through 6. Its first digit cannot be 0, and its last digit must be 1, 3, or 5. Calculate the number of permitted identifiers.",
+      "choices": [
+        "$45$",
+        "$900$",
+        "$1080$",
+        "$1875$",
+        "$2520$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Choose the last digit first: there are three possibilities, each nonzero.",
+        "After fixing the last digit, the first digit has 5 nonzero choices.",
+        "Fill the 3 labeled middle positions from the remaining 5 digits without replacement. The count is 3×5×60=900."
+      ],
+      "feedback": {
+        "0": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection.",
+        "2": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection.",
+        "3": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection.",
+        "4": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection."
+      },
+      "skills": [
+        "constrained positions",
+        "multiplication principle",
+        "permutations"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: constrained positions, multiplication principle, permutations.",
+        "Choose the last digit first: there are three possibilities, each nonzero."
+      ],
+      "verification": {
+        "kind": "digit-codes",
+        "n": 7,
+        "length": 5,
+        "probability": false,
+        "precision": 0
+      },
+      "level": "challenge",
+      "id": "chapter:b1-counting-principles:2",
+      "topicId": "b1-counting-principles",
+      "family": "digit-code-restrictions"
+    },
+    {
+      "question": "A row contains two identical red folders and 8 distinct numbered folders. All folders are used. Calculate the number of distinct rows in which the red folders are not adjacent.",
+      "choices": [
+        "$362880$",
+        "$846720$",
+        "$1451520$",
+        "$1814400$",
+        "$2903040$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Arrange the numbered folders in 8! ways.",
+        "The numbered row creates 9 gaps, including the two ends. Choose two different gaps for the identical red folders.",
+        "The count is 8!×choose(9,2)=1451520. No factor of 2 is needed for identical red folders."
+      ],
+      "feedback": {
+        "0": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "1": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "3": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "4": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap."
+      },
+      "skills": [
+        "identical objects",
+        "gap method",
+        "nonadjacency"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: identical objects, gap method, nonadjacency.",
+        "Arrange the numbered folders in 8! ways."
+      ],
+      "verification": {
+        "kind": "multiset-separation",
+        "n": 8,
+        "probability": false,
+        "precision": 0
+      },
+      "level": "challenge",
+      "id": "chapter:b1-counting-principles:3",
+      "topicId": "b1-counting-principles",
+      "family": "multiset-separation"
+    },
+    {
+      "question": "A committee of four is selected uniformly from 6 senior and 4 junior employees. A particular senior employee is known to be on the committee. Calculate the probability that the committee contains exactly two senior employees. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0476$",
+        "$0.3571$",
+        "$0.4286$",
+        "$0.4762$",
+        "$0.5556$"
+      ],
+      "answer": 1,
+      "solution": [
+        "After including the specified senior, choose three people from the remaining 9.",
+        "Exactly two seniors overall means one additional senior and two juniors: choose(5,1)choose(4,2).",
+        "Divide by choose(9,3) to obtain 0.357143."
+      ],
+      "feedback": {
+        "0": "This gives exactly one senior overall.",
+        "2": "This is the unconditional probability before learning that a specific senior is included.",
+        "3": "This adds two more seniors, giving three seniors overall.",
+        "4": "This considers only one additional member and omits the other two selections."
+      },
+      "skills": [
+        "conditional sample space",
+        "combinations",
+        "fixed membership"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional sample space, combinations, fixed membership.",
+        "After including the specified senior, choose three people from the remaining 9."
+      ],
+      "verification": {
+        "kind": "committee-condition",
+        "S": 6,
+        "J": 4,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:b1-counting-principles:4",
+      "topicId": "b1-counting-principles",
+      "family": "committee-conditioned-membership"
     }
   ],
   "b2-permutations": [
@@ -713,6 +1654,132 @@ export default {
       "id": "chapter:b2-permutations:1",
       "topicId": "b2-permutations",
       "family": "restricted-code"
+    },
+    {
+      "question": "A row contains two identical red folders and 6 distinct numbered folders. All folders are used. Calculate the number of distinct rows in which the red folders are not adjacent.",
+      "choices": [
+        "$5040$",
+        "$7200$",
+        "$15120$",
+        "$20160$",
+        "$30240$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Arrange the numbered folders in 6! ways.",
+        "The numbered row creates 7 gaps, including the two ends. Choose two different gaps for the identical red folders.",
+        "The count is 6!×choose(7,2)=15120. No factor of 2 is needed for identical red folders."
+      ],
+      "feedback": {
+        "0": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "1": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "3": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "4": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap."
+      },
+      "skills": [
+        "identical objects",
+        "gap method",
+        "nonadjacency"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: identical objects, gap method, nonadjacency.",
+        "Arrange the numbered folders in 6! ways."
+      ],
+      "verification": {
+        "kind": "multiset-separation",
+        "n": 6,
+        "probability": false,
+        "precision": 0
+      },
+      "level": "challenge",
+      "id": "chapter:b2-permutations:2",
+      "topicId": "b2-permutations",
+      "family": "multiset-separation"
+    },
+    {
+      "question": "A 4-digit identifier uses distinct digits chosen from 0 through 6. Its first digit cannot be 0, and its last digit must be 1, 3, or 5. Calculate the number of permitted identifiers.",
+      "choices": [
+        "$60$",
+        "$300$",
+        "$360$",
+        "$375$",
+        "$840$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Choose the last digit first: there are three possibilities, each nonzero.",
+        "After fixing the last digit, the first digit has 5 nonzero choices.",
+        "Fill the 2 labeled middle positions from the remaining 5 digits without replacement. The count is 3×5×20=300."
+      ],
+      "feedback": {
+        "0": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection.",
+        "2": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection.",
+        "3": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection.",
+        "4": "Reserve the constrained last digit, exclude zero and that digit at the first position, and distinguish ordered middle positions from an unordered selection."
+      },
+      "skills": [
+        "constrained positions",
+        "multiplication principle",
+        "permutations"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: constrained positions, multiplication principle, permutations.",
+        "Choose the last digit first: there are three possibilities, each nonzero."
+      ],
+      "verification": {
+        "kind": "digit-codes",
+        "n": 7,
+        "length": 4,
+        "probability": false,
+        "precision": 0
+      },
+      "level": "challenge",
+      "id": "chapter:b2-permutations:3",
+      "topicId": "b2-permutations",
+      "family": "digit-code-restrictions"
+    },
+    {
+      "question": "A committee consists of exactly two senior and two junior employees selected from 6 seniors and 5 juniors. One selected senior is chair and one selected junior is secretary. Calculate the number of distinct committee-and-role assignments. Round your answer to four decimal places.",
+      "choices": [
+        "$150.0000$",
+        "$330.0000$",
+        "$600.0000$",
+        "$1320.0000$",
+        "$2400.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Choose the committee in choose(6,2)choose(5,2) ways.",
+        "Choose its chair from the two selected seniors and secretary from the two selected juniors.",
+        "The total is choose(6,2)choose(5,2)×2×2=600."
+      ],
+      "feedback": {
+        "0": "Separate unordered membership selection from the labeled roles; impose the senior/junior composition.",
+        "1": "Separate unordered membership selection from the labeled roles; impose the senior/junior composition.",
+        "3": "Separate unordered membership selection from the labeled roles; impose the senior/junior composition.",
+        "4": "Separate unordered membership selection from the labeled roles; impose the senior/junior composition."
+      },
+      "skills": [
+        "combinations",
+        "labeled roles",
+        "group restrictions"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: combinations, labeled roles, group restrictions.",
+        "Choose the committee in choose(6,2)choose(5,2) ways."
+      ],
+      "verification": {
+        "kind": "committee-roles",
+        "S": 6,
+        "J": 5
+      },
+      "level": "challenge",
+      "id": "chapter:b2-permutations:4",
+      "topicId": "b2-permutations",
+      "family": "committee-roles"
     }
   ],
   "b3-combinations": [
@@ -798,6 +1865,133 @@ export default {
       "id": "chapter:b3-combinations:1",
       "topicId": "b3-combinations",
       "family": "conditional-sample"
+    },
+    {
+      "question": "A committee of four is selected uniformly from 5 senior and 7 junior employees. A particular senior employee is known to be on the committee. Calculate the probability that the committee contains exactly two senior employees. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2121$",
+        "$0.2545$",
+        "$0.3636$",
+        "$0.4242$",
+        "$0.5091$"
+      ],
+      "answer": 4,
+      "solution": [
+        "After including the specified senior, choose three people from the remaining 11.",
+        "Exactly two seniors overall means one additional senior and two juniors: choose(4,1)choose(7,2).",
+        "Divide by choose(11,3) to obtain 0.509091."
+      ],
+      "feedback": {
+        "0": "This gives exactly one senior overall.",
+        "1": "This adds two more seniors, giving three seniors overall.",
+        "2": "This considers only one additional member and omits the other two selections.",
+        "3": "This is the unconditional probability before learning that a specific senior is included."
+      },
+      "skills": [
+        "conditional sample space",
+        "combinations",
+        "fixed membership"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional sample space, combinations, fixed membership.",
+        "After including the specified senior, choose three people from the remaining 11."
+      ],
+      "verification": {
+        "kind": "committee-condition",
+        "S": 5,
+        "J": 7,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:b3-combinations:2",
+      "topicId": "b3-combinations",
+      "family": "committee-conditioned-membership"
+    },
+    {
+      "question": "A lot contains 16 parts, of which 5 are defective. Two parts sampled without replacement are both found to be sound and are set aside. Three more parts are sampled without replacement from the remainder. Calculate the probability that exactly one of these three is defective. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2473$",
+        "$0.3571$",
+        "$0.4428$",
+        "$0.4911$",
+        "$0.4945$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The remaining lot has 14 parts: 5 defective and 9 sound.",
+        "Choose one defective and two sound parts in choose(5,1)choose(9,2) ways.",
+        "Divide by choose(14,3) to obtain 0.494505."
+      ],
+      "feedback": {
+        "0": "This gives exactly two defective parts.",
+        "1": "This is the probability for only one new part.",
+        "2": "This treats the follow-up sample as sampling with replacement.",
+        "3": "This samples from the original lot and ignores the observed removals."
+      },
+      "skills": [
+        "update a finite population",
+        "hypergeometric sample"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: update a finite population, hypergeometric sample.",
+        "The remaining lot has 14 parts: 5 defective and 9 sound."
+      ],
+      "verification": {
+        "kind": "hyper-followup",
+        "N": 16,
+        "K": 5,
+        "removed": 2,
+        "sample": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:b3-combinations:3",
+      "topicId": "b3-combinations",
+      "family": "hypergeometric-followup"
+    },
+    {
+      "question": "A row contains two identical red folders and 7 distinct numbered folders. All folders are used. Calculate the number of distinct rows in which the red folders are not adjacent.",
+      "choices": [
+        "$40320$",
+        "$75600$",
+        "$141120$",
+        "$181440$",
+        "$282240$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Arrange the numbered folders in 7! ways.",
+        "The numbered row creates 8 gaps, including the two ends. Choose two different gaps for the identical red folders.",
+        "The count is 7!×choose(8,2)=141120. No factor of 2 is needed for identical red folders."
+      ],
+      "feedback": {
+        "0": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "1": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "3": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap.",
+        "4": "Account for identical folders and use all gaps, including the ends, with at most one red folder per gap."
+      },
+      "skills": [
+        "identical objects",
+        "gap method",
+        "nonadjacency"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: identical objects, gap method, nonadjacency.",
+        "Arrange the numbered folders in 7! ways."
+      ],
+      "verification": {
+        "kind": "multiset-separation",
+        "n": 7,
+        "probability": false,
+        "precision": 0
+      },
+      "level": "challenge",
+      "id": "chapter:b3-combinations:4",
+      "topicId": "b3-combinations",
+      "family": "multiset-separation"
     }
   ],
   "b4-combinatorial-probability": [
@@ -888,6 +2082,134 @@ export default {
       "id": "chapter:b4-combinatorial-probability:1",
       "topicId": "b4-combinatorial-probability",
       "family": "hypergeom-bayes"
+    },
+    {
+      "question": "A committee of four is selected uniformly from 7 senior and 5 junior employees. A particular senior employee is known to be on the committee. Calculate the probability that the committee contains exactly two senior employees. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0606$",
+        "$0.3636$",
+        "$0.4242$",
+        "$0.4545$",
+        "$0.5455$"
+      ],
+      "answer": 1,
+      "solution": [
+        "After including the specified senior, choose three people from the remaining 11.",
+        "Exactly two seniors overall means one additional senior and two juniors: choose(6,1)choose(5,2).",
+        "Divide by choose(11,3) to obtain 0.363636."
+      ],
+      "feedback": {
+        "0": "This gives exactly one senior overall.",
+        "2": "This is the unconditional probability before learning that a specific senior is included.",
+        "3": "This adds two more seniors, giving three seniors overall.",
+        "4": "This considers only one additional member and omits the other two selections."
+      },
+      "skills": [
+        "conditional sample space",
+        "combinations",
+        "fixed membership"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional sample space, combinations, fixed membership.",
+        "After including the specified senior, choose three people from the remaining 11."
+      ],
+      "verification": {
+        "kind": "committee-condition",
+        "S": 7,
+        "J": 5,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:b4-combinatorial-probability:2",
+      "topicId": "b4-combinatorial-probability",
+      "family": "committee-conditioned-membership"
+    },
+    {
+      "question": "A lot contains 15 parts, of which 4 are defective. Two parts sampled without replacement are both found to be sound and are set aside. Three more parts are sampled without replacement from the remainder. Calculate the probability that exactly one of these three is defective. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1888$",
+        "$0.3077$",
+        "$0.4424$",
+        "$0.4835$",
+        "$0.5035$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The remaining lot has 13 parts: 4 defective and 9 sound.",
+        "Choose one defective and two sound parts in choose(4,1)choose(9,2) ways.",
+        "Divide by choose(13,3) to obtain 0.503497."
+      ],
+      "feedback": {
+        "0": "This gives exactly two defective parts.",
+        "1": "This is the probability for only one new part.",
+        "2": "This treats the follow-up sample as sampling with replacement.",
+        "3": "This samples from the original lot and ignores the observed removals."
+      },
+      "skills": [
+        "update a finite population",
+        "hypergeometric sample"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: update a finite population, hypergeometric sample.",
+        "The remaining lot has 13 parts: 4 defective and 9 sound."
+      ],
+      "verification": {
+        "kind": "hyper-followup",
+        "N": 15,
+        "K": 4,
+        "removed": 2,
+        "sample": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:b4-combinatorial-probability:3",
+      "topicId": "b4-combinatorial-probability",
+      "family": "hypergeometric-followup"
+    },
+    {
+      "question": "Independent trials succeed with probability 0.425. T is the trial number of the 4th success. Given that trial 1 failed, calculate P(T=9). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0718$",
+        "$0.1148$",
+        "$0.1248$",
+        "$0.2171$",
+        "$0.2937$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Trial 9 must succeed, and among trials 2 through 8 there must be exactly 3 successes.",
+        "The first failure is given, so it contributes no probability factor after conditioning. There are choose(7,3) admissible success-position sets.",
+        "The conditional probability is choose(7,3)(0.425)^4(0.575)^4=0.124823."
+      ],
+      "feedback": {
+        "0": "This retains the factor for the first failure even though that failure is already given.",
+        "1": "This is the unconditional negative-binomial probability.",
+        "3": "This allows all required successes before the final trial.",
+        "4": "This omits the required success on the final trial."
+      },
+      "skills": [
+        "negative-binomial event",
+        "conditional first trial",
+        "success positions"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: negative-binomial event, conditional first trial, success positions.",
+        "Trial 9 must succeed, and among trials 2 through 8 there must be exactly 3 successes."
+      ],
+      "verification": {
+        "kind": "negative-first-failure",
+        "r": 4,
+        "t": 9,
+        "p": 0.425,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:b4-combinatorial-probability:4",
+      "topicId": "b4-combinatorial-probability",
+      "family": "negative-binomial-first-failure"
     }
   ],
   "c1-independent-events": [
@@ -981,6 +2303,138 @@ export default {
       "id": "chapter:c1-independent-events:1",
       "topicId": "c1-independent-events",
       "family": "latent-two-years"
+    },
+    {
+      "question": "Three components operate independently, with operating probabilities 0.675, 0.725, and 0.85. A system operates if at least two components operate. Given that the system operates, calculate the probability that component 1 operates. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2363$",
+        "$0.4909$",
+        "$0.6472$",
+        "$0.6750$",
+        "$0.7637$"
+      ],
+      "answer": 4,
+      "solution": [
+        "System operation includes exactly two operating components and all three. Its probability is 0.847438.",
+        "Component 1 and the system both operate if component 1 operates and at least one of the other two does: 0.675[1-(1-0.725)(1-0.85)]=0.647156.",
+        "The requested ratio is 0.647156/0.847438=0.763663."
+      ],
+      "feedback": {
+        "0": "This gives component 1 failure conditional on system operation.",
+        "1": "This unnecessarily requires all three components to operate.",
+        "2": "This is the joint probability before conditioning.",
+        "3": "Component independence does not mean component 1 is independent of system operation."
+      },
+      "skills": [
+        "independent unequal trials",
+        "at-least-two event",
+        "conditional reliability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent unequal trials, at-least-two event, conditional reliability.",
+        "System operation includes exactly two operating components and all three. Its probability is 0.847438."
+      ],
+      "verification": {
+        "kind": "reliability-condition",
+        "rates": [
+          0.675,
+          0.725,
+          0.8500000000000001
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:c1-independent-events:2",
+      "topicId": "c1-independent-events",
+      "family": "unequal-reliability"
+    },
+    {
+      "question": "Two independent components have exponential lifetimes with means 5 and 5 years. A device fails when either component fails. Given that the device has survived 3 years, calculate the probability it survives at least another 3 years. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0907$",
+        "$0.3012$",
+        "$0.5488$",
+        "$0.6988$",
+        "$0.7408$"
+      ],
+      "answer": 1,
+      "solution": [
+        "For independent lifetimes, device survival is the product of both component survival functions.",
+        "The minimum lifetime is exponential with rate 1/5+1/5. It is memoryless.",
+        "Conditional survival for another 3 years is exp[-3(1/5+1/5)]=0.301194."
+      ],
+      "feedback": {
+        "0": "This is unconditional survival for twice the elapsed interval.",
+        "2": "Both components must survive, not just component 1.",
+        "3": "This gives failure during the additional interval.",
+        "4": "Means do not add for a minimum lifetime; failure rates add."
+      },
+      "skills": [
+        "minimum of independent lifetimes",
+        "rate versus mean",
+        "memorylessness"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: minimum of independent lifetimes, rate versus mean, memorylessness.",
+        "For independent lifetimes, device survival is the product of both component survival functions."
+      ],
+      "verification": {
+        "kind": "exponential-minimum",
+        "means": [
+          5,
+          5
+        ],
+        "t": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:c1-independent-events:3",
+      "topicId": "c1-independent-events",
+      "family": "exponential-minimum-lifetime"
+    },
+    {
+      "question": "5 policies have mutually independent claim indicators, each with claim probability 0.15. Given that at least one policy has a claim, calculate the probability policy 1 has a claim and at least one other policy has a claim. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0717$",
+        "$0.1289$",
+        "$0.2696$",
+        "$0.4780$",
+        "$0.7500$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The condition has probability 1-(1-0.15)^5=0.556295.",
+        "The numerator requires a claim on policy 1 and at least one among the remaining 4: 0.15[1-(1-0.15)^4]=0.071699.",
+        "Divide numerator by condition probability: 0.128887."
+      ],
+      "feedback": {
+        "0": "The numerator includes both policy 1 and another policy; the denominator restricts to the stated at-least-one population.",
+        "2": "The numerator includes both policy 1 and another policy; the denominator restricts to the stated at-least-one population.",
+        "3": "The numerator includes both policy 1 and another policy; the denominator restricts to the stated at-least-one population.",
+        "4": "The numerator includes both policy 1 and another policy; the denominator restricts to the stated at-least-one population."
+      },
+      "skills": [
+        "independence",
+        "complements",
+        "conditional joint event"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independence, complements, conditional joint event.",
+        "The condition has probability 1-(1-0.15)^5=0.556295."
+      ],
+      "verification": {
+        "kind": "binomial-indicators",
+        "n": 5,
+        "p": 0.15,
+        "target": "first-and-other-given-any"
+      },
+      "level": "challenge",
+      "id": "chapter:c1-independent-events:4",
+      "topicId": "c1-independent-events",
+      "family": "conditional-independent"
     }
   ],
   "c2-independent-trials": [
@@ -1074,6 +2528,140 @@ export default {
       "id": "chapter:c2-independent-trials:1",
       "topicId": "c2-independent-trials",
       "family": "latent-two-years"
+    },
+    {
+      "question": "Three components operate independently, with operating probabilities 0.6, 0.725, and 0.825. A system operates if at least two components operate. Given that the system operates, calculate the probability that component 1 operates. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2952$",
+        "$0.4429$",
+        "$0.5711$",
+        "$0.6000$",
+        "$0.7048$"
+      ],
+      "answer": 4,
+      "solution": [
+        "System operation includes exactly two operating components and all three. Its probability is 0.810375.",
+        "Component 1 and the system both operate if component 1 operates and at least one of the other two does: 0.6[1-(1-0.725)(1-0.825)]=0.571125.",
+        "The requested ratio is 0.571125/0.810375=0.704766."
+      ],
+      "feedback": {
+        "0": "This gives component 1 failure conditional on system operation.",
+        "1": "This unnecessarily requires all three components to operate.",
+        "2": "This is the joint probability before conditioning.",
+        "3": "Component independence does not mean component 1 is independent of system operation."
+      },
+      "skills": [
+        "independent unequal trials",
+        "at-least-two event",
+        "conditional reliability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent unequal trials, at-least-two event, conditional reliability.",
+        "System operation includes exactly two operating components and all three. Its probability is 0.810375."
+      ],
+      "verification": {
+        "kind": "reliability-condition",
+        "rates": [
+          0.6,
+          0.725,
+          0.8250000000000001
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:c2-independent-trials:2",
+      "topicId": "c2-independent-trials",
+      "family": "unequal-reliability"
+    },
+    {
+      "question": "A supplier shipment comes from plant A with probability 0.4, and otherwise from plant B. Within a shipment, inspected items are independent conditional on its plant. Defect probabilities are 0.4 at A and 0.1 at B. Exactly two of 7 inspected items are defective. Calculate the probability the shipment came from plant A. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1045$",
+        "$0.4000$",
+        "$0.5841$",
+        "$0.7273$",
+        "$0.9143$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.261274 for A and 0.124003 for B.",
+        "Weight the likelihoods by plant shares 0.4 and 0.6.",
+        "Bayes gives 0.104509/(0.104509+0.074402)=0.584141."
+      ],
+      "feedback": {
+        "0": "This omits the total likelihood in the denominator.",
+        "1": "This is the prior before observing the sample.",
+        "3": "This updates using one defective item rather than the entire sample.",
+        "4": "This omits the observed nondefective items."
+      },
+      "skills": [
+        "conditional binomial likelihood",
+        "Bayes over sample evidence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional binomial likelihood, Bayes over sample evidence.",
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.261274 for A and 0.124003 for B."
+      ],
+      "verification": {
+        "kind": "bayes-binomial",
+        "w": 0.4,
+        "rates": [
+          0.39999999999999997,
+          0.1
+        ],
+        "n": 7,
+        "k": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:c2-independent-trials:3",
+      "topicId": "c2-independent-trials",
+      "family": "bayes-sample-count"
+    },
+    {
+      "question": "Independent trials succeed with probability 0.375. T is the trial number of the 4th success. Given that trial 1 failed, calculate P(T=10). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0660$",
+        "$0.0990$",
+        "$0.1056$",
+        "$0.2112$",
+        "$0.2816$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Trial 10 must succeed, and among trials 2 through 9 there must be exactly 3 successes.",
+        "The first failure is given, so it contributes no probability factor after conditioning. There are choose(8,3) admissible success-position sets.",
+        "The conditional probability is choose(8,3)(0.375)^4(0.625)^5=0.105612."
+      ],
+      "feedback": {
+        "0": "This retains the factor for the first failure even though that failure is already given.",
+        "1": "This is the unconditional negative-binomial probability.",
+        "3": "This allows all required successes before the final trial.",
+        "4": "This omits the required success on the final trial."
+      },
+      "skills": [
+        "negative-binomial event",
+        "conditional first trial",
+        "success positions"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: negative-binomial event, conditional first trial, success positions.",
+        "Trial 10 must succeed, and among trials 2 through 9 there must be exactly 3 successes."
+      ],
+      "verification": {
+        "kind": "negative-first-failure",
+        "r": 4,
+        "t": 10,
+        "p": 0.375,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:c2-independent-trials:4",
+      "topicId": "c2-independent-trials",
+      "family": "negative-binomial-first-failure"
     }
   ],
   "d1-mutually-exclusive": [
@@ -1163,6 +2751,152 @@ export default {
       "id": "chapter:d1-mutually-exclusive:1",
       "topicId": "d1-mutually-exclusive",
       "family": "two-events-infer"
+    },
+    {
+      "question": "Three diagnostic flags A, B, C have probabilities 14/39, 14/39, 13/39. Their pairwise intersections A∩B, A∩C, B∩C have probabilities 5/39, 5/39, 3/39, and all three occur with probability 1/39. Calculate the probability that exactly one flag occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2821$",
+        "$0.4615$",
+        "$0.6207$",
+        "$0.7179$",
+        "$0.7436$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times.",
+        "Subtract twice the sum of the pairwise intersections, then add three times the triple intersection.",
+        "The result is [14+14+13-2(5+5+3)+3]/39=18/39=0.461538."
+      ],
+      "feedback": {
+        "0": "This gives at least two flags.",
+        "2": "This conditions on at least one flag, which was not requested.",
+        "3": "This applies the union subtraction rather than the exactly-one subtraction and also omits the triple correction.",
+        "4": "This is at least one, including overlaps."
+      },
+      "skills": [
+        "Venn-region multiplicities",
+        "inclusion–exclusion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Venn-region multiplicities, inclusion–exclusion.",
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times."
+      ],
+      "verification": {
+        "kind": "three-exact",
+        "weights": [
+          10,
+          5,
+          7,
+          4,
+          6,
+          4,
+          2,
+          1
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:d1-mutually-exclusive:2",
+      "topicId": "d1-mutually-exclusive",
+      "family": "three-events-exactly-one"
+    },
+    {
+      "question": "An insurer records P(auto coverage)=0.525, P(home coverage)=0.4, and P(both)=0.225. Auto-only customers renew with probability 0.55, home-only customers with probability 0.70, and customers with both renew at least one coverage with probability 0.90. Customers with neither cannot renew. Calculate the probability that a randomly selected customer renews at least one coverage. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2025$",
+        "$0.2875$",
+        "$0.4900$",
+        "$0.5688$",
+        "$0.7000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The disjoint class shares are auto-only 0.3, home-only 0.175, both 0.225, and neither 0.3.",
+        "Multiply each class share by its corresponding renewal probability. The neither class contributes zero.",
+        "Total probability gives 0.3(0.55)+0.175(0.70)+0.225(0.90)=0.49."
+      ],
+      "feedback": {
+        "0": "This includes only the both-coverage class.",
+        "1": "This omits customers with both coverages.",
+        "3": "This double counts customers with both and applies the wrong renewal rate to them.",
+        "4": "This conditions on having coverage; the question samples from all customers."
+      },
+      "skills": [
+        "overlapping coverages to partition",
+        "total probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: overlapping coverages to partition, total probability.",
+        "The disjoint class shares are auto-only 0.3, home-only 0.175, both 0.225, and neither 0.3."
+      ],
+      "verification": {
+        "kind": "renewal-mixture",
+        "a": 0.525,
+        "b": 0.4,
+        "both": 0.225,
+        "rates": [
+          0.55,
+          0.7,
+          0.9
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:d1-mutually-exclusive:3",
+      "topicId": "d1-mutually-exclusive",
+      "family": "coverage-renewal-mixture"
+    },
+    {
+      "question": "A portfolio consists of classes A, B, C in proportions 0.2, 0.3, 0.5. Their annual claim probabilities are 0.1, 0.24, 0.4, respectively. A randomly selected policy has no claim this year. Calculate the probability it belongs to class B. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2280$",
+        "$0.2466$",
+        "$0.3000$",
+        "$0.3220$",
+        "$0.7600$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities.",
+        "Total no-claim probability is 0.2(0.9)+0.3(0.76)+0.5(0.6)=0.708.",
+        "The class-B and no-claim joint probability is 0.228; its ratio to 0.708 is 0.322034."
+      ],
+      "feedback": {
+        "0": "This is a joint probability; normalize by total no-claim probability.",
+        "1": "This conditions on a claim rather than on no claim.",
+        "2": "This is the prior class share.",
+        "4": "This reverses the direction of the condition."
+      },
+      "skills": [
+        "exhaustive partition",
+        "total probability",
+        "Bayes with a complement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: exhaustive partition, total probability, Bayes with a complement.",
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities."
+      ],
+      "verification": {
+        "kind": "class-survival",
+        "weights": [
+          0.2,
+          0.3,
+          0.5
+        ],
+        "rates": [
+          0.1,
+          0.24000000000000002,
+          0.4
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:d1-mutually-exclusive:4",
+      "topicId": "d1-mutually-exclusive",
+      "family": "three-class-survival"
     }
   ],
   "d2-partitions": [
@@ -1256,6 +2990,149 @@ export default {
       "id": "chapter:d2-partitions:1",
       "topicId": "d2-partitions",
       "family": "mixture-no-claim"
+    },
+    {
+      "question": "A portfolio consists of classes A, B, C in proportions 0.3, 0.375, 0.325. Their annual claim probabilities are 0.12, 0.2, 0.4, respectively. A randomly selected policy has no claim this year. Calculate the probability it belongs to class B. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3000$",
+        "$0.3112$",
+        "$0.3750$",
+        "$0.3953$",
+        "$0.8000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities.",
+        "Total no-claim probability is 0.3(0.88)+0.375(0.8)+0.325(0.6)=0.759.",
+        "The class-B and no-claim joint probability is 0.3; its ratio to 0.759 is 0.395257."
+      ],
+      "feedback": {
+        "0": "This is a joint probability; normalize by total no-claim probability.",
+        "1": "This conditions on a claim rather than on no claim.",
+        "2": "This is the prior class share.",
+        "4": "This reverses the direction of the condition."
+      },
+      "skills": [
+        "exhaustive partition",
+        "total probability",
+        "Bayes with a complement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: exhaustive partition, total probability, Bayes with a complement.",
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities."
+      ],
+      "verification": {
+        "kind": "class-survival",
+        "weights": [
+          0.30000000000000004,
+          0.375,
+          0.32499999999999996
+        ],
+        "rates": [
+          0.12000000000000001,
+          0.2,
+          0.4
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:d2-partitions:2",
+      "topicId": "d2-partitions",
+      "family": "three-class-survival"
+    },
+    {
+      "question": "An insurer records P(auto coverage)=0.575, P(home coverage)=0.475, and P(both)=0.275. Auto-only customers renew with probability 0.55, home-only customers with probability 0.70, and customers with both renew at least one coverage with probability 0.90. Customers with neither cannot renew. Calculate the probability that a randomly selected customer renews at least one coverage. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2475$",
+        "$0.3050$",
+        "$0.5525$",
+        "$0.6487$",
+        "$0.7129$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The disjoint class shares are auto-only 0.3, home-only 0.2, both 0.275, and neither 0.225.",
+        "Multiply each class share by its corresponding renewal probability. The neither class contributes zero.",
+        "Total probability gives 0.3(0.55)+0.2(0.70)+0.275(0.90)=0.5525."
+      ],
+      "feedback": {
+        "0": "This includes only the both-coverage class.",
+        "1": "This omits customers with both coverages.",
+        "3": "This double counts customers with both and applies the wrong renewal rate to them.",
+        "4": "This conditions on having coverage; the question samples from all customers."
+      },
+      "skills": [
+        "overlapping coverages to partition",
+        "total probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: overlapping coverages to partition, total probability.",
+        "The disjoint class shares are auto-only 0.3, home-only 0.2, both 0.275, and neither 0.225."
+      ],
+      "verification": {
+        "kind": "renewal-mixture",
+        "a": 0.575,
+        "b": 0.47500000000000003,
+        "both": 0.275,
+        "rates": [
+          0.55,
+          0.7,
+          0.9
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:d2-partitions:3",
+      "topicId": "d2-partitions",
+      "family": "coverage-renewal-mixture"
+    },
+    {
+      "question": "A supplier shipment comes from plant A with probability 0.3, and otherwise from plant B. Within a shipment, inspected items are independent conditional on its plant. Defect probabilities are 0.35 at A and 0.15 at B. Exactly two of 7 inspected items are defective. Calculate the probability the shipment came from plant A. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0895$",
+        "$0.3000$",
+        "$0.3789$",
+        "$0.5000$",
+        "$0.7000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.298485 for A and 0.209651 for B.",
+        "Weight the likelihoods by plant shares 0.3 and 0.7.",
+        "Bayes gives 0.089545/(0.089545+0.146756)=0.378947."
+      ],
+      "feedback": {
+        "0": "This omits the total likelihood in the denominator.",
+        "1": "This is the prior before observing the sample.",
+        "3": "This updates using one defective item rather than the entire sample.",
+        "4": "This omits the observed nondefective items."
+      },
+      "skills": [
+        "conditional binomial likelihood",
+        "Bayes over sample evidence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional binomial likelihood, Bayes over sample evidence.",
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.298485 for A and 0.209651 for B."
+      ],
+      "verification": {
+        "kind": "bayes-binomial",
+        "w": 0.30000000000000004,
+        "rates": [
+          0.35,
+          0.15000000000000002
+        ],
+        "n": 7,
+        "k": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:d2-partitions:4",
+      "topicId": "d2-partitions",
+      "family": "bayes-sample-count"
     }
   ],
   "e1-addition-rule": [
@@ -1351,6 +3228,143 @@ export default {
       "id": "chapter:e1-addition-rule:1",
       "topicId": "e1-addition-rule",
       "family": "two-events-infer"
+    },
+    {
+      "question": "Three diagnostic flags A, B, C have probabilities 17/43, 15/43, 14/43. Their pairwise intersections A∩B, A∩C, B∩C have probabilities 5/43, 5/43, 3/43, and all three occur with probability 1/43. Calculate the probability that exactly one flag occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2558$",
+        "$0.5349$",
+        "$0.6765$",
+        "$0.7674$",
+        "$0.7907$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times.",
+        "Subtract twice the sum of the pairwise intersections, then add three times the triple intersection.",
+        "The result is [17+15+14-2(5+5+3)+3]/43=23/43=0.534884."
+      ],
+      "feedback": {
+        "0": "This gives at least two flags.",
+        "2": "This conditions on at least one flag, which was not requested.",
+        "3": "This applies the union subtraction rather than the exactly-one subtraction and also omits the triple correction.",
+        "4": "This is at least one, including overlaps."
+      },
+      "skills": [
+        "Venn-region multiplicities",
+        "inclusion–exclusion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Venn-region multiplicities, inclusion–exclusion.",
+        "Start with the sum of the three marginal probabilities. A point in exactly two events is counted twice, and a point in all three is counted three times."
+      ],
+      "verification": {
+        "kind": "three-exact",
+        "weights": [
+          9,
+          8,
+          8,
+          4,
+          7,
+          4,
+          2,
+          1
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e1-addition-rule:2",
+      "topicId": "e1-addition-rule",
+      "family": "three-events-exactly-one"
+    },
+    {
+      "question": "A claim may involve property damage A, bodily injury B, both, or neither. P(A)=0.35, P(B)=0.475, and P(neither)=0.375. Given that at least one of A and B occurs, calculate the probability that exactly one occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3200$",
+        "$0.4250$",
+        "$0.5600$",
+        "$0.6800$",
+        "$0.7600$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The union has probability 0.625. The addition rule gives P(A∩B)=0.35+0.475-0.625=0.2.",
+        "Exactly one has probability P(A)+P(B)-2P(A∩B)=0.425.",
+        "Divide by the union probability to obtain 0.68."
+      ],
+      "feedback": {
+        "0": "This gives both events conditional on the union.",
+        "1": "This is the probability of exactly one before restricting to the union.",
+        "2": "This includes the intersection as well as the A-only region.",
+        "4": "This includes the intersection as well as the B-only region."
+      },
+      "skills": [
+        "recover an intersection",
+        "exactly-one event",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: recover an intersection, exactly-one event, conditional normalization.",
+        "The union has probability 0.625. The addition rule gives P(A∩B)=0.35+0.475-0.625=0.2."
+      ],
+      "verification": {
+        "kind": "symmetric-difference",
+        "a": 0.35,
+        "b": 0.47500000000000003,
+        "both": 0.2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e1-addition-rule:3",
+      "topicId": "e1-addition-rule",
+      "family": "symmetric-difference-infer"
+    },
+    {
+      "question": "Three components operate independently, with operating probabilities 0.7, 0.75, and 0.875. A system operates if at least two components operate. Given that the system operates, calculate the probability that component 1 operates. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2250$",
+        "$0.5250$",
+        "$0.6781$",
+        "$0.7000$",
+        "$0.7750$"
+      ],
+      "answer": 4,
+      "solution": [
+        "System operation includes exactly two operating components and all three. Its probability is 0.875.",
+        "Component 1 and the system both operate if component 1 operates and at least one of the other two does: 0.7[1-(1-0.75)(1-0.875)]=0.678125.",
+        "The requested ratio is 0.678125/0.875=0.775."
+      ],
+      "feedback": {
+        "0": "This gives component 1 failure conditional on system operation.",
+        "1": "This unnecessarily requires all three components to operate.",
+        "2": "This is the joint probability before conditioning.",
+        "3": "Component independence does not mean component 1 is independent of system operation."
+      },
+      "skills": [
+        "independent unequal trials",
+        "at-least-two event",
+        "conditional reliability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent unequal trials, at-least-two event, conditional reliability.",
+        "System operation includes exactly two operating components and all three. Its probability is 0.875."
+      ],
+      "verification": {
+        "kind": "reliability-condition",
+        "rates": [
+          0.7,
+          0.75,
+          0.875
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e1-addition-rule:4",
+      "topicId": "e1-addition-rule",
+      "family": "unequal-reliability"
     }
   ],
   "e2-multiplication-rule": [
@@ -1448,6 +3462,139 @@ export default {
       "id": "chapter:e2-multiplication-rule:1",
       "topicId": "e2-multiplication-rule",
       "family": "latent-two-years"
+    },
+    {
+      "question": "An urn contains 3 red balls and 5 blue balls. Two balls are drawn in order without replacement. You are told that the second ball is red. Calculate the probability that the first ball was also red. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1071$",
+        "$0.2857$",
+        "$0.3750$",
+        "$0.4286$",
+        "$0.7143$"
+      ],
+      "answer": 1,
+      "solution": [
+        "P(first red and second red)=(3/8)(2/7).",
+        "By symmetry, the second draw is red with probability 3/8.",
+        "Dividing the joint probability by the condition probability gives (2)/(7)=0.285714. Conditioning on a later draw still changes the earlier draw distribution."
+      ],
+      "feedback": {
+        "0": "This is the joint probability; it needs a conditional denominator.",
+        "2": "This is the first-draw probability before observing the second draw.",
+        "3": "The observed red ball must be removed from the red count as well as the population count.",
+        "4": "This gives the probability that the first ball was blue."
+      },
+      "skills": [
+        "ordered sample space",
+        "reverse conditioning",
+        "without replacement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: ordered sample space, reverse conditioning, without replacement.",
+        "P(first red and second red)=(3/8)(2/7)."
+      ],
+      "verification": {
+        "kind": "ordered-condition",
+        "N": 8,
+        "K": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e2-multiplication-rule:2",
+      "topicId": "e2-multiplication-rule",
+      "family": "ordered-draw-condition"
+    },
+    {
+      "question": "Three components operate independently, with operating probabilities 0.65, 0.75, and 0.825. A system operates if at least two components operate. Given that the system operates, calculate the probability that component 1 operates. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2584$",
+        "$0.4799$",
+        "$0.6216$",
+        "$0.6500$",
+        "$0.7416$"
+      ],
+      "answer": 4,
+      "solution": [
+        "System operation includes exactly two operating components and all three. Its probability is 0.838125.",
+        "Component 1 and the system both operate if component 1 operates and at least one of the other two does: 0.65[1-(1-0.75)(1-0.825)]=0.621563.",
+        "The requested ratio is 0.621563/0.838125=0.741611."
+      ],
+      "feedback": {
+        "0": "This gives component 1 failure conditional on system operation.",
+        "1": "This unnecessarily requires all three components to operate.",
+        "2": "This is the joint probability before conditioning.",
+        "3": "Component independence does not mean component 1 is independent of system operation."
+      },
+      "skills": [
+        "independent unequal trials",
+        "at-least-two event",
+        "conditional reliability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent unequal trials, at-least-two event, conditional reliability.",
+        "System operation includes exactly two operating components and all three. Its probability is 0.838125."
+      ],
+      "verification": {
+        "kind": "reliability-condition",
+        "rates": [
+          0.65,
+          0.75,
+          0.8250000000000001
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e2-multiplication-rule:3",
+      "topicId": "e2-multiplication-rule",
+      "family": "unequal-reliability"
+    },
+    {
+      "question": "A supplier shipment comes from plant A with probability 0.25, and otherwise from plant B. Within a shipment, inspected items are independent conditional on its plant. Defect probabilities are 0.4 at A and 0.15 at B. Exactly two of 7 inspected items are defective. Calculate the probability the shipment came from plant A. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0653$",
+        "$0.2500$",
+        "$0.2935$",
+        "$0.4706$",
+        "$0.7033$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.261274 for A and 0.209651 for B.",
+        "Weight the likelihoods by plant shares 0.25 and 0.75.",
+        "Bayes gives 0.065318/(0.065318+0.157238)=0.293491."
+      ],
+      "feedback": {
+        "0": "This omits the total likelihood in the denominator.",
+        "1": "This is the prior before observing the sample.",
+        "3": "This updates using one defective item rather than the entire sample.",
+        "4": "This omits the observed nondefective items."
+      },
+      "skills": [
+        "conditional binomial likelihood",
+        "Bayes over sample evidence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional binomial likelihood, Bayes over sample evidence.",
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.261274 for A and 0.209651 for B."
+      ],
+      "verification": {
+        "kind": "bayes-binomial",
+        "w": 0.25,
+        "rates": [
+          0.39999999999999997,
+          0.15000000000000002
+        ],
+        "n": 7,
+        "k": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e2-multiplication-rule:4",
+      "topicId": "e2-multiplication-rule",
+      "family": "bayes-sample-count"
     }
   ],
   "e3-combined-problems": [
@@ -1542,6 +3689,144 @@ export default {
       "id": "chapter:e3-combined-problems:1",
       "topicId": "e3-combined-problems",
       "family": "hypergeom-bayes"
+    },
+    {
+      "question": "A supplier shipment comes from plant A with probability 0.2, and otherwise from plant B. Within a shipment, inspected items are independent conditional on its plant. Defect probabilities are 0.35 at A and 0.1 at B. Exactly two of 7 inspected items are defective. Calculate the probability the shipment came from plant A. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0597$",
+        "$0.2000$",
+        "$0.3757$",
+        "$0.4667$",
+        "$0.7538$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.298485 for A and 0.124003 for B.",
+        "Weight the likelihoods by plant shares 0.2 and 0.8.",
+        "Bayes gives 0.059697/(0.059697+0.099202)=0.375691."
+      ],
+      "feedback": {
+        "0": "This omits the total likelihood in the denominator.",
+        "1": "This is the prior before observing the sample.",
+        "3": "This updates using one defective item rather than the entire sample.",
+        "4": "This omits the observed nondefective items."
+      },
+      "skills": [
+        "conditional binomial likelihood",
+        "Bayes over sample evidence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional binomial likelihood, Bayes over sample evidence.",
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.298485 for A and 0.124003 for B."
+      ],
+      "verification": {
+        "kind": "bayes-binomial",
+        "w": 0.2,
+        "rates": [
+          0.35,
+          0.1
+        ],
+        "n": 7,
+        "k": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e3-combined-problems:2",
+      "topicId": "e3-combined-problems",
+      "family": "bayes-sample-count"
+    },
+    {
+      "question": "An insurer records P(auto coverage)=0.6, P(home coverage)=0.425, and P(both)=0.2. Auto-only customers renew with probability 0.55, home-only customers with probability 0.70, and customers with both renew at least one coverage with probability 0.90. Customers with neither cannot renew. Calculate the probability that a randomly selected customer renews at least one coverage. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1800$",
+        "$0.3775$",
+        "$0.5575$",
+        "$0.6275$",
+        "$0.6758$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The disjoint class shares are auto-only 0.4, home-only 0.225, both 0.2, and neither 0.175.",
+        "Multiply each class share by its corresponding renewal probability. The neither class contributes zero.",
+        "Total probability gives 0.4(0.55)+0.225(0.70)+0.2(0.90)=0.5575."
+      ],
+      "feedback": {
+        "0": "This includes only the both-coverage class.",
+        "1": "This omits customers with both coverages.",
+        "3": "This double counts customers with both and applies the wrong renewal rate to them.",
+        "4": "This conditions on having coverage; the question samples from all customers."
+      },
+      "skills": [
+        "overlapping coverages to partition",
+        "total probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: overlapping coverages to partition, total probability.",
+        "The disjoint class shares are auto-only 0.4, home-only 0.225, both 0.2, and neither 0.175."
+      ],
+      "verification": {
+        "kind": "renewal-mixture",
+        "a": 0.6,
+        "b": 0.42500000000000004,
+        "both": 0.2,
+        "rates": [
+          0.55,
+          0.7,
+          0.9
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e3-combined-problems:3",
+      "topicId": "e3-combined-problems",
+      "family": "coverage-renewal-mixture"
+    },
+    {
+      "question": "Three components operate independently, with operating probabilities 0.675, 0.725, and 0.825. A system operates if at least two components operate. Given that the system operates, calculate the probability that component 1 operates. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2323$",
+        "$0.4824$",
+        "$0.6425$",
+        "$0.6750$",
+        "$0.7677$"
+      ],
+      "answer": 4,
+      "solution": [
+        "System operation includes exactly two operating components and all three. Its probability is 0.836906.",
+        "Component 1 and the system both operate if component 1 operates and at least one of the other two does: 0.675[1-(1-0.725)(1-0.825)]=0.642516.",
+        "The requested ratio is 0.642516/0.836906=0.767727."
+      ],
+      "feedback": {
+        "0": "This gives component 1 failure conditional on system operation.",
+        "1": "This unnecessarily requires all three components to operate.",
+        "2": "This is the joint probability before conditioning.",
+        "3": "Component independence does not mean component 1 is independent of system operation."
+      },
+      "skills": [
+        "independent unequal trials",
+        "at-least-two event",
+        "conditional reliability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent unequal trials, at-least-two event, conditional reliability.",
+        "System operation includes exactly two operating components and all three. Its probability is 0.836906."
+      ],
+      "verification": {
+        "kind": "reliability-condition",
+        "rates": [
+          0.675,
+          0.725,
+          0.8250000000000001
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:e3-combined-problems:4",
+      "topicId": "e3-combined-problems",
+      "family": "unequal-reliability"
     }
   ],
   "f1-conditional-probability": [
@@ -1637,6 +3922,136 @@ export default {
       "id": "chapter:f1-conditional-probability:1",
       "topicId": "f1-conditional-probability",
       "family": "conditional-independent"
+    },
+    {
+      "question": "An urn contains 3 red balls and 9 blue balls. Two balls are drawn in order without replacement. You are told that the second ball is red. Calculate the probability that the first ball was also red. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0455$",
+        "$0.1818$",
+        "$0.2500$",
+        "$0.2727$",
+        "$0.8182$"
+      ],
+      "answer": 1,
+      "solution": [
+        "P(first red and second red)=(3/12)(2/11).",
+        "By symmetry, the second draw is red with probability 3/12.",
+        "Dividing the joint probability by the condition probability gives (2)/(11)=0.181818. Conditioning on a later draw still changes the earlier draw distribution."
+      ],
+      "feedback": {
+        "0": "This is the joint probability; it needs a conditional denominator.",
+        "2": "This is the first-draw probability before observing the second draw.",
+        "3": "The observed red ball must be removed from the red count as well as the population count.",
+        "4": "This gives the probability that the first ball was blue."
+      },
+      "skills": [
+        "ordered sample space",
+        "reverse conditioning",
+        "without replacement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: ordered sample space, reverse conditioning, without replacement.",
+        "P(first red and second red)=(3/12)(2/11)."
+      ],
+      "verification": {
+        "kind": "ordered-condition",
+        "N": 12,
+        "K": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f1-conditional-probability:2",
+      "topicId": "f1-conditional-probability",
+      "family": "ordered-draw-condition"
+    },
+    {
+      "question": "A claim may involve property damage A, bodily injury B, both, or neither. P(A)=0.375, P(B)=0.425, and P(neither)=0.425. Given that at least one of A and B occurs, calculate the probability that exactly one occurs. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3500$",
+        "$0.3913$",
+        "$0.6087$",
+        "$0.6522$",
+        "$0.7391$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The union has probability 0.575. The addition rule gives P(A∩B)=0.375+0.425-0.575=0.225.",
+        "Exactly one has probability P(A)+P(B)-2P(A∩B)=0.35.",
+        "Divide by the union probability to obtain 0.608696."
+      ],
+      "feedback": {
+        "0": "This is the probability of exactly one before restricting to the union.",
+        "1": "This gives both events conditional on the union.",
+        "3": "This includes the intersection as well as the A-only region.",
+        "4": "This includes the intersection as well as the B-only region."
+      },
+      "skills": [
+        "recover an intersection",
+        "exactly-one event",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: recover an intersection, exactly-one event, conditional normalization.",
+        "The union has probability 0.575. The addition rule gives P(A∩B)=0.375+0.425-0.575=0.225."
+      ],
+      "verification": {
+        "kind": "symmetric-difference",
+        "a": 0.375,
+        "b": 0.42500000000000004,
+        "both": 0.225,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f1-conditional-probability:3",
+      "topicId": "f1-conditional-probability",
+      "family": "symmetric-difference-infer"
+    },
+    {
+      "question": "Three components operate independently, with operating probabilities 0.6, 0.725, and 0.8. A system operates if at least two components operate. Given that the system operates, calculate the probability that component 1 operates. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2904$",
+        "$0.4355$",
+        "$0.5670$",
+        "$0.6000$",
+        "$0.7096$"
+      ],
+      "answer": 4,
+      "solution": [
+        "System operation includes exactly two operating components and all three. Its probability is 0.799.",
+        "Component 1 and the system both operate if component 1 operates and at least one of the other two does: 0.6[1-(1-0.725)(1-0.8)]=0.567.",
+        "The requested ratio is 0.567/0.799=0.709637."
+      ],
+      "feedback": {
+        "0": "This gives component 1 failure conditional on system operation.",
+        "1": "This unnecessarily requires all three components to operate.",
+        "2": "This is the joint probability before conditioning.",
+        "3": "Component independence does not mean component 1 is independent of system operation."
+      },
+      "skills": [
+        "independent unequal trials",
+        "at-least-two event",
+        "conditional reliability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent unequal trials, at-least-two event, conditional reliability.",
+        "System operation includes exactly two operating components and all three. Its probability is 0.799."
+      ],
+      "verification": {
+        "kind": "reliability-condition",
+        "rates": [
+          0.6,
+          0.725,
+          0.8
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f1-conditional-probability:4",
+      "topicId": "f1-conditional-probability",
+      "family": "unequal-reliability"
     }
   ],
   "f2-bayes-theorem": [
@@ -1731,6 +4146,148 @@ export default {
       "id": "chapter:f2-bayes-theorem:1",
       "topicId": "f2-bayes-theorem",
       "family": "latent-two-years"
+    },
+    {
+      "question": "A supplier shipment comes from plant A with probability 0.4, and otherwise from plant B. Within a shipment, inspected items are independent conditional on its plant. Defect probabilities are 0.35 at A and 0.1 at B. Exactly two of 7 inspected items are defective. Calculate the probability the shipment came from plant A. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1194$",
+        "$0.4000$",
+        "$0.6161$",
+        "$0.7000$",
+        "$0.8909$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.298485 for A and 0.124003 for B.",
+        "Weight the likelihoods by plant shares 0.4 and 0.6.",
+        "Bayes gives 0.119394/(0.119394+0.074402)=0.616081."
+      ],
+      "feedback": {
+        "0": "This omits the total likelihood in the denominator.",
+        "1": "This is the prior before observing the sample.",
+        "3": "This updates using one defective item rather than the entire sample.",
+        "4": "This omits the observed nondefective items."
+      },
+      "skills": [
+        "conditional binomial likelihood",
+        "Bayes over sample evidence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional binomial likelihood, Bayes over sample evidence.",
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.298485 for A and 0.124003 for B."
+      ],
+      "verification": {
+        "kind": "bayes-binomial",
+        "w": 0.4,
+        "rates": [
+          0.35,
+          0.1
+        ],
+        "n": 7,
+        "k": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f2-bayes-theorem:2",
+      "topicId": "f2-bayes-theorem",
+      "family": "bayes-sample-count"
+    },
+    {
+      "question": "A portfolio consists of classes A, B, C in proportions 0.275, 0.3, 0.425. Their annual claim probabilities are 0.12, 0.2, 0.4, respectively. A randomly selected policy has no claim this year. Calculate the probability it belongs to class B. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2281$",
+        "$0.2400$",
+        "$0.3000$",
+        "$0.3256$",
+        "$0.8000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities.",
+        "Total no-claim probability is 0.275(0.88)+0.3(0.8)+0.425(0.6)=0.737.",
+        "The class-B and no-claim joint probability is 0.24; its ratio to 0.737 is 0.325645."
+      ],
+      "feedback": {
+        "0": "This conditions on a claim rather than on no claim.",
+        "1": "This is a joint probability; normalize by total no-claim probability.",
+        "2": "This is the prior class share.",
+        "4": "This reverses the direction of the condition."
+      },
+      "skills": [
+        "exhaustive partition",
+        "total probability",
+        "Bayes with a complement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: exhaustive partition, total probability, Bayes with a complement.",
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities."
+      ],
+      "verification": {
+        "kind": "class-survival",
+        "weights": [
+          0.275,
+          0.3,
+          0.42500000000000004
+        ],
+        "rates": [
+          0.12000000000000001,
+          0.2,
+          0.4
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f2-bayes-theorem:3",
+      "topicId": "f2-bayes-theorem",
+      "family": "three-class-survival"
+    },
+    {
+      "question": "An insured belongs permanently to class H with probability 0.3, otherwise to class L. Conditional on class, annual claim counts are independent Poisson variables with means 1 and 0.4, respectively. No claims occurred in either of two years. Calculate the posterior probability of class H. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0406$",
+        "$0.1143$",
+        "$0.1353$",
+        "$0.1904$",
+        "$0.3000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "No claims in both years has probability exp(-2λ), giving 0.135335 for H and 0.449329 for L.",
+        "The overall likelihood is 0.355131 after weighting by the prior class shares.",
+        "The H posterior is 0.040601/0.355131=0.114326."
+      ],
+      "feedback": {
+        "0": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate.",
+        "2": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate.",
+        "3": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate.",
+        "4": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate."
+      },
+      "skills": [
+        "Poisson likelihood",
+        "conditional independence",
+        "Bayes"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Poisson likelihood, conditional independence, Bayes.",
+        "No claims in both years has probability exp(-2λ), giving 0.135335 for H and 0.449329 for L."
+      ],
+      "verification": {
+        "kind": "poisson-mixture",
+        "w": 0.3,
+        "rates": [
+          1,
+          0.4
+        ],
+        "n": 2,
+        "target": "posterior-zero"
+      },
+      "level": "challenge",
+      "id": "chapter:f2-bayes-theorem:4",
+      "topicId": "f2-bayes-theorem",
+      "family": "mixture-no-claim"
     }
   ],
   "f3-law-total-probability": [
@@ -1824,6 +4381,149 @@ export default {
       "id": "chapter:f3-law-total-probability:1",
       "topicId": "f3-law-total-probability",
       "family": "mixture-no-claim"
+    },
+    {
+      "question": "An insurer records P(auto coverage)=0.525, P(home coverage)=0.4, and P(both)=0.2. Auto-only customers renew with probability 0.55, home-only customers with probability 0.70, and customers with both renew at least one coverage with probability 0.90. Customers with neither cannot renew. Calculate the probability that a randomly selected customer renews at least one coverage. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1800$",
+        "$0.3187$",
+        "$0.4988$",
+        "$0.5688$",
+        "$0.6879$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The disjoint class shares are auto-only 0.325, home-only 0.2, both 0.2, and neither 0.275.",
+        "Multiply each class share by its corresponding renewal probability. The neither class contributes zero.",
+        "Total probability gives 0.325(0.55)+0.2(0.70)+0.2(0.90)=0.49875."
+      ],
+      "feedback": {
+        "0": "This includes only the both-coverage class.",
+        "1": "This omits customers with both coverages.",
+        "3": "This double counts customers with both and applies the wrong renewal rate to them.",
+        "4": "This conditions on having coverage; the question samples from all customers."
+      },
+      "skills": [
+        "overlapping coverages to partition",
+        "total probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: overlapping coverages to partition, total probability.",
+        "The disjoint class shares are auto-only 0.325, home-only 0.2, both 0.2, and neither 0.275."
+      ],
+      "verification": {
+        "kind": "renewal-mixture",
+        "a": 0.525,
+        "b": 0.4,
+        "both": 0.2,
+        "rates": [
+          0.55,
+          0.7,
+          0.9
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f3-law-total-probability:2",
+      "topicId": "f3-law-total-probability",
+      "family": "coverage-renewal-mixture"
+    },
+    {
+      "question": "A portfolio consists of classes A, B, C in proportions 0.2, 0.3, 0.5. Their annual claim probabilities are 0.14, 0.24, 0.4, respectively. A randomly selected policy has no claim this year. Calculate the probability it belongs to class B. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2280$",
+        "$0.2400$",
+        "$0.3000$",
+        "$0.3257$",
+        "$0.7600$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities.",
+        "Total no-claim probability is 0.2(0.86)+0.3(0.76)+0.5(0.6)=0.7.",
+        "The class-B and no-claim joint probability is 0.228; its ratio to 0.7 is 0.325714."
+      ],
+      "feedback": {
+        "0": "This is a joint probability; normalize by total no-claim probability.",
+        "1": "This conditions on a claim rather than on no claim.",
+        "2": "This is the prior class share.",
+        "4": "This reverses the direction of the condition."
+      },
+      "skills": [
+        "exhaustive partition",
+        "total probability",
+        "Bayes with a complement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: exhaustive partition, total probability, Bayes with a complement.",
+        "Use no-claim probabilities within each class, the complements of the supplied claim probabilities."
+      ],
+      "verification": {
+        "kind": "class-survival",
+        "weights": [
+          0.2,
+          0.3,
+          0.5
+        ],
+        "rates": [
+          0.14,
+          0.24000000000000002,
+          0.4
+        ],
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f3-law-total-probability:3",
+      "topicId": "f3-law-total-probability",
+      "family": "three-class-survival"
+    },
+    {
+      "question": "A supplier shipment comes from plant A with probability 0.4, and otherwise from plant B. Within a shipment, inspected items are independent conditional on its plant. Defect probabilities are 0.45 at A and 0.15 at B. Exactly two of 7 inspected items are defective. Calculate the probability the shipment came from plant A. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0856$",
+        "$0.4000$",
+        "$0.4050$",
+        "$0.6667$",
+        "$0.8571$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.214022 for A and 0.209651 for B.",
+        "Weight the likelihoods by plant shares 0.4 and 0.6.",
+        "Bayes gives 0.085609/(0.085609+0.12579)=0.404962."
+      ],
+      "feedback": {
+        "0": "This omits the total likelihood in the denominator.",
+        "1": "This is the prior before observing the sample.",
+        "3": "This updates using one defective item rather than the entire sample.",
+        "4": "This omits the observed nondefective items."
+      },
+      "skills": [
+        "conditional binomial likelihood",
+        "Bayes over sample evidence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional binomial likelihood, Bayes over sample evidence.",
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.214022 for A and 0.209651 for B."
+      ],
+      "verification": {
+        "kind": "bayes-binomial",
+        "w": 0.4,
+        "rates": [
+          0.44999999999999996,
+          0.15000000000000002
+        ],
+        "n": 7,
+        "k": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:f3-law-total-probability:4",
+      "topicId": "f3-law-total-probability",
+      "family": "bayes-sample-count"
     }
   ],
   "urv-a1-random-variables": [
@@ -1914,6 +4614,136 @@ export default {
       "id": "chapter:urv-a1-random-variables:1",
       "topicId": "urv-a1-random-variables",
       "family": "geometric-benefit"
+    },
+    {
+      "question": "The claim count N takes values 0 through 5, with P(N=k)=c(k+1). A contract pays 150 for each claim in excess of the first 1 claims. Calculate expected payment per contract. Round your answer to four decimal places.",
+      "choices": [
+        "$250.0000$",
+        "$350.0000$",
+        "$357.1429$",
+        "$500.0000$",
+        "$171428.5714$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Normalize the probabilities: c[1+2+⋯+6]=1, giving c=2/(6×7).",
+        "The payment at count k is 150 max(k-1,0). Its possible values are 0, 0, 150, 300, 450, 600.",
+        "Weight each payment by c(k+1); the expected payment is 357.142857."
+      ],
+      "feedback": {
+        "0": "The supported counts are not equally likely.",
+        "1": "A positive-part function cannot be moved outside an expectation.",
+        "3": "This ignores the count deductible.",
+        "4": "This is the second raw moment rather than the mean."
+      },
+      "skills": [
+        "PMF normalization",
+        "discrete payment transformation",
+        "expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: PMF normalization, discrete payment transformation, expectation.",
+        "Normalize the probabilities: c[1+2+⋯+6]=1, giving c=2/(6×7)."
+      ],
+      "verification": {
+        "kind": "finite-payment",
+        "n": 6,
+        "scale": 150,
+        "d": 1,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a1-random-variables:2",
+      "topicId": "urv-a1-random-variables",
+      "family": "finite-payment-moments"
+    },
+    {
+      "question": "A nonnegative loss X has CDF F(x)=0 for x<0, F(x)=0.225+(1-0.225)(x/8)^4 for 0≤x<8, and F(x)=1 for x≥8. Calculate E[X]. Round your answer to four decimal places.",
+      "choices": [
+        "$3.1000$",
+        "$4.9600$",
+        "$6.4000$",
+        "$6.7600$",
+        "$33.0667$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The jump at zero is 0.225. It contributes zero to E[X].",
+        "On (0,8), the density is (1-0.225)4x^3/8^4.",
+        "Integrating x times this density gives (1-0.225)8×4/(4+1)=4.96."
+      ],
+      "feedback": {
+        "0": "This replaces the power CDF with a uniform distribution.",
+        "2": "This is the mean conditional on X>0.",
+        "3": "The point mass is at zero, not at the upper endpoint.",
+        "4": "This is the second raw moment."
+      },
+      "skills": [
+        "CDF jump",
+        "continuous component",
+        "mixed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF jump, continuous component, mixed expectation.",
+        "The jump at zero is 0.225. It contributes zero to E[X]."
+      ],
+      "verification": {
+        "kind": "mixed-power",
+        "p": 0.225,
+        "B": 8,
+        "power": 4,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a1-random-variables:3",
+      "topicId": "urv-a1-random-variables",
+      "family": "mixed-cdf-mean"
+    },
+    {
+      "question": "X has CDF F(x)=(x/7)^4 for 0<x<7, with F(x)=0 below the support and 1 above it. A benefit is Y=4X²+7. Calculate E[Y]. Round your answer to four decimal places.",
+      "choices": [
+        "$29.4000$",
+        "$130.6667$",
+        "$132.4400$",
+        "$137.6667$",
+        "$529.6667$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Differentiating the CDF gives density 4x^3/7^4.",
+        "The second raw moment is E[X²]=4×7²/(4+2)=32.666667.",
+        "Linearity gives E[Y]=4E[X²]+7=137.666667. Squaring the mean would not give E[X²]."
+      ],
+      "feedback": {
+        "0": "This treats the squared transformation as linear in X.",
+        "1": "This omits the additive benefit.",
+        "2": "This replaces E[X²] by (E[X])².",
+        "4": "The multiplier is squared in a variance, not in an expectation."
+      },
+      "skills": [
+        "CDF to density",
+        "second raw moment",
+        "transformed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF to density, second raw moment, transformed expectation.",
+        "Differentiating the CDF gives density 4x^3/7^4."
+      ],
+      "verification": {
+        "kind": "power-expectation",
+        "B": 7,
+        "power": 4,
+        "a": 4,
+        "shift": 7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a1-random-variables:4",
+      "topicId": "urv-a1-random-variables",
+      "family": "power-transformed-expectation"
     }
   ],
   "urv-a2-pdf": [
@@ -2005,6 +4835,134 @@ export default {
       "id": "chapter:urv-a2-pdf:1",
       "topicId": "urv-a2-pdf",
       "family": "power-quantile-difference"
+    },
+    {
+      "question": "A loss X has density c(10-x) for 0<x<10, and zero otherwise. The constant c is unknown. A loss has already exceeded 2.5. Calculate the probability that it exceeds 7.5. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0625$",
+        "$0.1111$",
+        "$0.3333$",
+        "$0.5625$",
+        "$0.8889$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Normalization gives c=2/100, since the integral of 10-x over the support is 100/2.",
+        "The survival function is P(X>x)=((10-x)/10)².",
+        "Divide survival at 7.5 by survival at 2.5: [(10-7.5)/(10-2.5)]²=0.111111."
+      ],
+      "feedback": {
+        "0": "This is the unconditional tail at the higher threshold.",
+        "2": "This uses a uniform density instead of the supplied decreasing density.",
+        "3": "This is only the probability of the condition.",
+        "4": "This is the probability of not exceeding the higher threshold, conditional on exceeding the lower one."
+      },
+      "skills": [
+        "density normalization",
+        "survival integration",
+        "conditional tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: density normalization, survival integration, conditional tail.",
+        "Normalization gives c=2/100, since the integral of 10-x over the support is 100/2."
+      ],
+      "verification": {
+        "kind": "triangular-tail",
+        "B": 10,
+        "t": 2.5,
+        "u": 7.5,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a2-pdf:2",
+      "topicId": "urv-a2-pdf",
+      "family": "triangular-tail-infer"
+    },
+    {
+      "question": "A nonnegative loss X has CDF F(x)=0 for x<0, F(x)=0.15+(1-0.15)(x/4)^2 for 0≤x<4, and F(x)=1 for x≥4. Calculate E[X]. Round your answer to four decimal places.",
+      "choices": [
+        "$1.7000$",
+        "$2.2667$",
+        "$2.6667$",
+        "$2.8667$",
+        "$6.8000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The jump at zero is 0.15. It contributes zero to E[X].",
+        "On (0,4), the density is (1-0.15)2x^1/4^2.",
+        "Integrating x times this density gives (1-0.15)4×2/(2+1)=2.266667."
+      ],
+      "feedback": {
+        "0": "This replaces the power CDF with a uniform distribution.",
+        "2": "This is the mean conditional on X>0.",
+        "3": "The point mass is at zero, not at the upper endpoint.",
+        "4": "This is the second raw moment."
+      },
+      "skills": [
+        "CDF jump",
+        "continuous component",
+        "mixed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF jump, continuous component, mixed expectation.",
+        "The jump at zero is 0.15. It contributes zero to E[X]."
+      ],
+      "verification": {
+        "kind": "mixed-power",
+        "p": 0.15000000000000002,
+        "B": 4,
+        "power": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a2-pdf:3",
+      "topicId": "urv-a2-pdf",
+      "family": "mixed-cdf-mean"
+    },
+    {
+      "question": "X has density 2(12-x)/144 for 0<x<12, and zero otherwise. Given X>3, calculate Var(X). Round your answer to four decimal places.",
+      "choices": [
+        "$2.1213$",
+        "$4.5000$",
+        "$6.7500$",
+        "$8.0000$",
+        "$13.5000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The condition probability is ((12-3)/12)². Divide the original density by this probability on (3,12).",
+        "For Z=X-3, the conditional density is 2(9-z)/(9)² on (0,9). Its first two moments are 3 and 13.5.",
+        "The shift contributes no variance, so Var(X given X>3)=(9)²/18=4.5. The conditional mean is 6."
+      ],
+      "feedback": {
+        "0": "This is the conditional SD.",
+        "2": "This uses a conditional uniform distribution instead of the triangular density.",
+        "3": "This is the unconditional variance.",
+        "4": "This is the second raw moment of the shifted variable."
+      },
+      "skills": [
+        "conditional density",
+        "shifted support",
+        "two moments"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional density, shifted support, two moments.",
+        "The condition probability is ((12-3)/12)². Divide the original density by this probability on (3,12)."
+      ],
+      "verification": {
+        "kind": "triangular-variance",
+        "B": 12,
+        "lower": 3.0,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a2-pdf:4",
+      "topicId": "urv-a2-pdf",
+      "family": "triangular-conditional-variance"
     }
   ],
   "urv-a3-cdf": [
@@ -2092,6 +5050,137 @@ export default {
       "id": "chapter:urv-a3-cdf:1",
       "topicId": "urv-a3-cdf",
       "family": "continuous-conditional-mean"
+    },
+    {
+      "question": "A nonnegative loss X has CDF F(x)=0 for x<0, F(x)=0.125+(1-0.125)(x/9)^4 for 0≤x<9, and F(x)=1 for x≥9. Calculate E[X]. Round your answer to four decimal places.",
+      "choices": [
+        "$3.9375$",
+        "$6.3000$",
+        "$7.2000$",
+        "$7.4250$",
+        "$47.2500$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The jump at zero is 0.125. It contributes zero to E[X].",
+        "On (0,9), the density is (1-0.125)4x^3/9^4.",
+        "Integrating x times this density gives (1-0.125)9×4/(4+1)=6.3."
+      ],
+      "feedback": {
+        "0": "This replaces the power CDF with a uniform distribution.",
+        "2": "This is the mean conditional on X>0.",
+        "3": "The point mass is at zero, not at the upper endpoint.",
+        "4": "This is the second raw moment."
+      },
+      "skills": [
+        "CDF jump",
+        "continuous component",
+        "mixed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF jump, continuous component, mixed expectation.",
+        "The jump at zero is 0.125. It contributes zero to E[X]."
+      ],
+      "verification": {
+        "kind": "mixed-power",
+        "p": 0.125,
+        "B": 9,
+        "power": 4,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a3-cdf:2",
+      "topicId": "urv-a3-cdf",
+      "family": "mixed-cdf-mean"
+    },
+    {
+      "question": "Loss X is uniform on (0,1800). The insurer pays Y=0.65max(X-450,0), with no limit. Calculate the 75th percentile of payment per loss, including zero payments. Round your answer to four decimal places.",
+      "choices": [
+        "$438.7500$",
+        "$585.0000$",
+        "$658.1250$",
+        "$877.5000$",
+        "$900.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive.",
+        "For positive y, P(Y≤y)=(450+y/0.65)/1800.",
+        "Set this to 0.75 and solve y=0.65(0.75×1800-450)=585."
+      ],
+      "feedback": {
+        "0": "This is the positive-payment mean rather than the per-loss 75th percentile.",
+        "2": "This gives the percentile conditional on positive payment.",
+        "3": "This omits the deductible.",
+        "4": "This omits the insurer share."
+      },
+      "skills": [
+        "zero-payment mass",
+        "payment CDF",
+        "percentile inversion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-payment mass, payment CDF, percentile inversion.",
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive."
+      ],
+      "verification": {
+        "kind": "uniform-payment-quantile",
+        "B": 1800,
+        "d": 450.0,
+        "share": 0.65,
+        "u": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a3-cdf:3",
+      "topicId": "urv-a3-cdf",
+      "family": "uniform-payment-quantile"
+    },
+    {
+      "question": "Loss X is exponential with mean 1100. The payment is Y=min(0.75max(X-350,0),500). Calculate the probability that payment is strictly between zero and the cap. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2725$",
+        "$0.3306$",
+        "$0.3968$",
+        "$0.6032$",
+        "$0.7275$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The payment is positive when X>350, and reaches its cap when X≥1016.666667.",
+        "The event 0<Y<500 corresponds to 350<X<1016.666667. Both the zero atom and the cap atom are excluded.",
+        "Subtract the two exponential survival probabilities: exp(-350/1100)-exp(-(350+500/0.75)/1100)=0.330639."
+      ],
+      "feedback": {
+        "0": "This gives zero payment.",
+        "2": "This gives payment exactly at the cap.",
+        "3": "This includes zero payments.",
+        "4": "This includes the atom at the payment cap."
+      },
+      "skills": [
+        "invert a payment event",
+        "zero and cap atoms",
+        "strict endpoints"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: invert a payment event, zero and cap atoms, strict endpoints.",
+        "The payment is positive when X>350, and reaches its cap when X≥1016.666667."
+      ],
+      "verification": {
+        "kind": "payment-interior",
+        "mu": 1100,
+        "d": 350,
+        "cap": 500,
+        "share": 0.75,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-a3-cdf:4",
+      "topicId": "urv-a3-cdf",
+      "family": "payment-zero-and-cap"
     }
   ],
   "urv-b1-discrete-uniform": [
@@ -2180,6 +5269,133 @@ export default {
       "id": "chapter:urv-b1-discrete-uniform:1",
       "topicId": "urv-b1-discrete-uniform",
       "family": "discrete-uniform-sum"
+    },
+    {
+      "question": "An integer-valued random variable X is uniform on 1 through 12. Given that X≥4, calculate the probability that X is even. Round your answer to four decimal places.",
+      "choices": [
+        "$0.4167$",
+        "$0.4444$",
+        "$0.5000$",
+        "$0.5556$",
+        "$0.6250$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The condition retains the integers 4, 5, …, 12: 9 equally likely values.",
+        "Exactly 5 retained integers are even. The endpoints must be counted, not approximated by half the interval.",
+        "The conditional probability is 5/9=0.555556."
+      ],
+      "feedback": {
+        "0": "This is the joint probability and has not been renormalized.",
+        "1": "This counts the odd integers.",
+        "2": "This is the unconditional even probability.",
+        "4": "The inclusive lower endpoint contributes one more retained integer."
+      },
+      "skills": [
+        "discrete endpoints",
+        "conditional uniform support"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: discrete endpoints, conditional uniform support.",
+        "The condition retains the integers 4, 5, …, 12: 9 equally likely values."
+      ],
+      "verification": {
+        "kind": "uniform-lattice",
+        "n": 12,
+        "lower": 4,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b1-discrete-uniform:2",
+      "topicId": "urv-b1-discrete-uniform",
+      "family": "uniform-lattice-condition"
+    },
+    {
+      "question": "X is uniform on the integers 1 through an unknown n. Its variance is specified exactly as 168/12. Calculate E[X given X≥4]. Round your answer to four decimal places.",
+      "choices": [
+        "$4.5000$",
+        "$7.0000$",
+        "$8.0000$",
+        "$8.5000$",
+        "$10.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For this distribution Var(X)=(n²-1)/12, so n²=169 and n=13.",
+        "The conditional distribution is uniform on the integers 4 through 13.",
+        "Its mean is the midpoint (4+13)/2=8.5."
+      ],
+      "feedback": {
+        "0": "Recover the inclusive integer support from its variance, then renormalize to the retained integers before finding their mean.",
+        "1": "Recover the inclusive integer support from its variance, then renormalize to the retained integers before finding their mean.",
+        "2": "Recover the inclusive integer support from its variance, then renormalize to the retained integers before finding their mean.",
+        "4": "Recover the inclusive integer support from its variance, then renormalize to the retained integers before finding their mean."
+      },
+      "skills": [
+        "discrete-uniform variance",
+        "infer support size",
+        "conditional mean"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: discrete-uniform variance, infer support size, conditional mean.",
+        "For this distribution Var(X)=(n²-1)/12, so n²=169 and n=13."
+      ],
+      "verification": {
+        "kind": "uniform-support-infer",
+        "n": 13,
+        "threshold": 4,
+        "variance": 14.0,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b1-discrete-uniform:3",
+      "topicId": "urv-b1-discrete-uniform",
+      "family": "uniform-infer-support"
+    },
+    {
+      "question": "X is uniform on the integers 1 through 8. A cost is Y=5X²+3. Calculate E[Y]. Round your answer to four decimal places.",
+      "choices": [
+        "$25.5000$",
+        "$29.2500$",
+        "$104.2500$",
+        "$127.5000$",
+        "$130.5000$"
+      ],
+      "answer": 4,
+      "solution": [
+        "Each of the 8 values has probability 1/8.",
+        "E[X²]=(1²+2²+⋯+8²)/8=(8+1)(2×8+1)/6.",
+        "E[Y]=5E[X²]+3=130.5."
+      ],
+      "feedback": {
+        "0": "Average the squared values over the discrete uniform support and distinguish the second raw moment from the variance or squared mean.",
+        "1": "Average the squared values over the discrete uniform support and distinguish the second raw moment from the variance or squared mean.",
+        "2": "Average the squared values over the discrete uniform support and distinguish the second raw moment from the variance or squared mean.",
+        "3": "Average the squared values over the discrete uniform support and distinguish the second raw moment from the variance or squared mean."
+      },
+      "skills": [
+        "discrete-uniform support",
+        "second moment",
+        "nonlinear cost"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: discrete-uniform support, second moment, nonlinear cost.",
+        "Each of the 8 values has probability 1/8."
+      ],
+      "verification": {
+        "kind": "uniform-square",
+        "n": 8,
+        "scale": 5,
+        "shift": 3,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b1-discrete-uniform:4",
+      "topicId": "urv-b1-discrete-uniform",
+      "family": "uniform-lattice-square-moment"
     }
   ],
   "urv-b2-binomial": [
@@ -2267,6 +5483,136 @@ export default {
       "id": "chapter:urv-b2-binomial:1",
       "topicId": "urv-b2-binomial",
       "family": "capped-binomial-payment"
+    },
+    {
+      "question": "N is the number of claims among 7 independent policies with the same unknown claim probability p. The ratio P(N=2)/P(N=1) is specified exactly as 6×0.225/[2×0.775]. Calculate P(N≥3). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0114$",
+        "$0.1438$",
+        "$0.1936$",
+        "$0.4908$",
+        "$0.8321$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The binomial ratio simplifies to (6/2)p/(1-p). Equating it to the supplied ratio gives p=0.225.",
+        "At least three is the complement of zero, one, and two claims.",
+        "Use 1-Σ from k=0 to 2 of choose(7,k)p^k(1-p)^(7-k), giving 0.193582."
+      ],
+      "feedback": {
+        "0": "This requires three particular policies to claim and does not count the other possible outcomes.",
+        "1": "This gives exactly three, not at least three.",
+        "3": "This removes only zero and one, giving at least two.",
+        "4": "This gives at least one."
+      },
+      "skills": [
+        "infer a binomial parameter",
+        "complement of a count tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer a binomial parameter, complement of a count tail.",
+        "The binomial ratio simplifies to (6/2)p/(1-p). Equating it to the supplied ratio gives p=0.225."
+      ],
+      "verification": {
+        "kind": "binomial-odds",
+        "n": 7,
+        "p": 0.225,
+        "ratio": 0.8709677419354839,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b2-binomial:2",
+      "topicId": "urv-b2-binomial",
+      "family": "binomial-odds-infer"
+    },
+    {
+      "question": "A supplier shipment comes from plant A with probability 0.2, and otherwise from plant B. Within a shipment, inspected items are independent conditional on its plant. Defect probabilities are 0.4 at A and 0.15 at B. Exactly two of 7 inspected items are defective. Calculate the probability the shipment came from plant A. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0523$",
+        "$0.2000$",
+        "$0.2375$",
+        "$0.4000$",
+        "$0.6400$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.261274 for A and 0.209651 for B.",
+        "Weight the likelihoods by plant shares 0.2 and 0.8.",
+        "Bayes gives 0.052255/(0.052255+0.167721)=0.237548."
+      ],
+      "feedback": {
+        "0": "This omits the total likelihood in the denominator.",
+        "1": "This is the prior before observing the sample.",
+        "3": "This updates using one defective item rather than the entire sample.",
+        "4": "This omits the observed nondefective items."
+      },
+      "skills": [
+        "conditional binomial likelihood",
+        "Bayes over sample evidence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional binomial likelihood, Bayes over sample evidence.",
+        "The likelihoods of exactly two defects are choose(7,2)p²(1-p)^(5), giving 0.261274 for A and 0.209651 for B."
+      ],
+      "verification": {
+        "kind": "bayes-binomial",
+        "w": 0.2,
+        "rates": [
+          0.39999999999999997,
+          0.15000000000000002
+        ],
+        "n": 7,
+        "k": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b2-binomial:3",
+      "topicId": "urv-b2-binomial",
+      "family": "bayes-sample-count"
+    },
+    {
+      "question": "5 independent policies each have claim probability 0.15. N is their claim count. Given that at least one claim occurred, calculate Var(N). Round your answer to four decimal places.",
+      "choices": [
+        "$0.3395$",
+        "$0.6375$",
+        "$1.1460$",
+        "$1.5946$",
+        "$2.1571$"
+      ],
+      "answer": 0,
+      "solution": [
+        "Unconditionally E[N]=0.75 and E[N²]=np(1-p)+(np)²=1.2.",
+        "The condition probability is 0.556295. Because the excluded zero outcome contributes nothing, divide both raw moments by this probability.",
+        "Conditional variance is 1.2/0.556295-(0.75/0.556295)²=0.33947."
+      ],
+      "feedback": {
+        "1": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability.",
+        "2": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability.",
+        "3": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability.",
+        "4": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability."
+      },
+      "skills": [
+        "zero-truncated distribution",
+        "first and second moments",
+        "conditional variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-truncated distribution, first and second moments, conditional variance.",
+        "Unconditionally E[N]=0.75 and E[N²]=np(1-p)+(np)²=1.2."
+      ],
+      "verification": {
+        "kind": "binomial",
+        "n": 5,
+        "p": 0.15,
+        "target": "positive-variance"
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b2-binomial:4",
+      "topicId": "urv-b2-binomial",
+      "family": "conditional-binomial-variance"
     }
   ],
   "urv-b3-geometric": [
@@ -2355,6 +5701,133 @@ export default {
       "id": "chapter:urv-b3-geometric:1",
       "topicId": "urv-b3-geometric",
       "family": "geometric-conditioned"
+    },
+    {
+      "question": "Independent daily inspections detect a defect with probability 0.35. Inspections stop on the first detection or after 5 inspections, whichever occurs first. Calculate the expected number of inspections performed. Round your answer to four decimal places.",
+      "choices": [
+        "$0.5801$",
+        "$1.5256$",
+        "$1.9455$",
+        "$2.5256$",
+        "$2.8571$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Let T be the first successful inspection, so the number performed is min(T,h).",
+        "Inspection j is performed exactly when the first j-1 inspections all fail. Thus E[min(T,5)]=Σ from j=1 to 5 of (1-0.35)^(j-1).",
+        "The finite geometric sum is [1-(1-0.35)^5]/0.35=2.525631."
+      ],
+      "feedback": {
+        "0": "This counts only the all-failure outcome and misses earlier stops.",
+        "1": "This counts only inspections after the first one.",
+        "2": "This omits the censored outcome where no detection occurs by the limit.",
+        "4": "This is the uncapped waiting-time mean."
+      },
+      "skills": [
+        "geometric waiting time",
+        "censoring",
+        "tail-sum expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: geometric waiting time, censoring, tail-sum expectation.",
+        "Let T be the first successful inspection, so the number performed is min(T,h)."
+      ],
+      "verification": {
+        "kind": "geometric-cap",
+        "p": 0.35000000000000003,
+        "horizon": 5,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b3-geometric:2",
+      "topicId": "urv-b3-geometric",
+      "family": "geometric-capped-count"
+    },
+    {
+      "question": "Independent daily trials succeed with probability p. T is the day of the first success. You are given P(T>6)=(0.75)^6. Given no success on the first 6 days, calculate the probability that the first success occurs during the next 3 days. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1029$",
+        "$0.1406$",
+        "$0.2500$",
+        "$0.4219$",
+        "$0.5781$"
+      ],
+      "answer": 4,
+      "solution": [
+        "P(T>6)=(1-p)^6; its positive root gives 1-p=0.75 and p=0.25.",
+        "After the known failures, the remaining trials still have the same success probability.",
+        "The probability of at least one success in the next 3 trials is 1-(1-0.25)^3=0.578125."
+      ],
+      "feedback": {
+        "0": "This is the joint probability before conditioning on the known failures.",
+        "1": "This gives the first success exactly on the last day of the new interval.",
+        "2": "This considers only the next single trial.",
+        "3": "This gives no success during the next interval."
+      },
+      "skills": [
+        "infer a geometric parameter",
+        "memorylessness",
+        "interval complement"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer a geometric parameter, memorylessness, interval complement.",
+        "P(T>6)=(1-p)^6; its positive root gives 1-p=0.75 and p=0.25."
+      ],
+      "verification": {
+        "kind": "geometric-tail-infer",
+        "p": 0.25,
+        "elapsed": 6,
+        "remaining": 3,
+        "tail": 0.177978515625,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b3-geometric:3",
+      "topicId": "urv-b3-geometric",
+      "family": "geometric-tail-infer"
+    },
+    {
+      "question": "Independent inspections find a fault with probability 0.325. T is the inspection number of the first fault. Given no fault in the first 7 inspections, calculate E[T]. Round your answer to four decimal places.",
+      "choices": [
+        "$3.0769$",
+        "$8.0000$",
+        "$9.0769$",
+        "$10.0769$",
+        "$24.6154$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Future inspections retain their independent success probabilities.",
+        "The remaining waiting time is geometric with mean 1/0.325=3.076923.",
+        "Include the known inspections: E[T given T>7]=7+3.076923=10.076923."
+      ],
+      "feedback": {
+        "0": "Use memorylessness for future trials, count the successful trial, and add the elapsed trials.",
+        "1": "Use memorylessness for future trials, count the successful trial, and add the elapsed trials.",
+        "2": "Use memorylessness for future trials, count the successful trial, and add the elapsed trials.",
+        "4": "Use memorylessness for future trials, count the successful trial, and add the elapsed trials."
+      },
+      "skills": [
+        "conditional geometric waiting time",
+        "total versus remaining count"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional geometric waiting time, total versus remaining count.",
+        "Future inspections retain their independent success probabilities."
+      ],
+      "verification": {
+        "kind": "geometric-late",
+        "p": 0.325,
+        "elapsed": 7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b3-geometric:4",
+      "topicId": "urv-b3-geometric",
+      "family": "geometric-late-mean"
     }
   ],
   "urv-b4-negative-binomial": [
@@ -2440,6 +5913,137 @@ export default {
       "id": "chapter:urv-b4-negative-binomial:1",
       "topicId": "urv-b4-negative-binomial",
       "family": "first-success-given-second"
+    },
+    {
+      "question": "Independent trials succeed with probability 0.4. T is the trial number of the 3th success. Given that trial 1 failed, calculate P(T=6). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0230$",
+        "$0.0829$",
+        "$0.1382$",
+        "$0.1536$",
+        "$0.3456$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Trial 6 must succeed, and among trials 2 through 5 there must be exactly 2 successes.",
+        "The first failure is given, so it contributes no probability factor after conditioning. There are choose(4,2) admissible success-position sets.",
+        "The conditional probability is choose(4,2)(0.4)^3(0.6)^2=0.13824."
+      ],
+      "feedback": {
+        "0": "This counts only one success-position arrangement.",
+        "1": "This retains the factor for the first failure even though that failure is already given.",
+        "3": "This allows all required successes before the final trial.",
+        "4": "This omits the required success on the final trial."
+      },
+      "skills": [
+        "negative-binomial event",
+        "conditional first trial",
+        "success positions"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: negative-binomial event, conditional first trial, success positions.",
+        "Trial 6 must succeed, and among trials 2 through 5 there must be exactly 2 successes."
+      ],
+      "verification": {
+        "kind": "negative-first-failure",
+        "r": 3,
+        "t": 6,
+        "p": 0.4,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b4-negative-binomial:2",
+      "topicId": "urv-b4-negative-binomial",
+      "family": "negative-binomial-first-failure"
+    },
+    {
+      "question": "Independent trials succeed with probability 0.325. Trials stop at the 4th success. Exactly two successes have occurred in the first 7 trials. Calculate the expected total number of trials until stopping, conditional on this information. Round your answer to four decimal places.",
+      "choices": [
+        "$6.1538$",
+        "$11.1538$",
+        "$12.3077$",
+        "$13.1538$",
+        "$19.3077$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The known history leaves 2 successes still required.",
+        "The future waiting time is negative binomial with mean (4-2)/0.325=6.153846.",
+        "Add the already completed trials: 7+6.153846=13.153846."
+      ],
+      "feedback": {
+        "0": "Use the remaining success count, the convention counting all future trials rather than failures only, and add the elapsed trials.",
+        "1": "Use the remaining success count, the convention counting all future trials rather than failures only, and add the elapsed trials.",
+        "2": "Use the remaining success count, the convention counting all future trials rather than failures only, and add the elapsed trials.",
+        "4": "Use the remaining success count, the convention counting all future trials rather than failures only, and add the elapsed trials."
+      },
+      "skills": [
+        "conditional progress",
+        "negative-binomial mean",
+        "total versus remaining trials"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional progress, negative-binomial mean, total versus remaining trials.",
+        "The known history leaves 2 successes still required."
+      ],
+      "verification": {
+        "kind": "negative-progress",
+        "p": 0.325,
+        "r": 4,
+        "elapsed": 7,
+        "completed": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b4-negative-binomial:3",
+      "topicId": "urv-b4-negative-binomial",
+      "family": "negative-binomial-progress-mean"
+    },
+    {
+      "question": "Independent trials succeed with probability 0.35. T is the trial number of the 4th success. Given T>5, calculate P(T≤8). Round your answer to four decimal places.",
+      "choices": [
+        "$0.2396$",
+        "$0.2533$",
+        "$0.2936$",
+        "$0.7254$",
+        "$0.7467$"
+      ],
+      "answer": 1,
+      "solution": [
+        "T>n means fewer than 4 successes among the first n trials, so P(T>n)=Σ from k=0 to 3 of choose(n,k)p^k(1-p)^(n-k).",
+        "The survival probabilities at 5 and 8 are 0.945978 and 0.706399.",
+        "The conditional interval probability is 1-P(T>8)/P(T>5)=0.25326. For more than one required success, geometric memorylessness does not apply."
+      ],
+      "feedback": {
+        "0": "This is the interval probability before conditioning.",
+        "2": "This includes stopping times before the given lower bound.",
+        "3": "This uses a first-success geometric event for a later-success stopping time.",
+        "4": "This is survival beyond the upper bound, conditional on the lower bound."
+      },
+      "skills": [
+        "negative-binomial to binomial counts",
+        "conditional interval",
+        "nonmemoryless waiting time"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: negative-binomial to binomial counts, conditional interval, nonmemoryless waiting time.",
+        "T>n means fewer than 4 successes among the first n trials, so P(T>n)=Σ from k=0 to 3 of choose(n,k)p^k(1-p)^(n-k)."
+      ],
+      "verification": {
+        "kind": "negative-interval",
+        "r": 4,
+        "p": 0.35,
+        "a": 5,
+        "b": 8,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b4-negative-binomial:4",
+      "topicId": "urv-b4-negative-binomial",
+      "family": "negative-binomial-interval"
     }
   ],
   "urv-b5-hypergeometric": [
@@ -2532,6 +6136,137 @@ export default {
       "id": "chapter:urv-b5-hypergeometric:1",
       "topicId": "urv-b5-hypergeometric",
       "family": "hypergeom-payment"
+    },
+    {
+      "question": "A lot contains 14 parts, of which 4 are defective. Two parts sampled without replacement are both found to be sound and are set aside. Three more parts are sampled without replacement from the remainder. Calculate the probability that exactly one of these three is defective. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2182$",
+        "$0.3333$",
+        "$0.4444$",
+        "$0.4945$",
+        "$0.5091$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The remaining lot has 12 parts: 4 defective and 8 sound.",
+        "Choose one defective and two sound parts in choose(4,1)choose(8,2) ways.",
+        "Divide by choose(12,3) to obtain 0.509091."
+      ],
+      "feedback": {
+        "0": "This gives exactly two defective parts.",
+        "1": "This is the probability for only one new part.",
+        "2": "This treats the follow-up sample as sampling with replacement.",
+        "3": "This samples from the original lot and ignores the observed removals."
+      },
+      "skills": [
+        "update a finite population",
+        "hypergeometric sample"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: update a finite population, hypergeometric sample.",
+        "The remaining lot has 12 parts: 4 defective and 8 sound."
+      ],
+      "verification": {
+        "kind": "hyper-followup",
+        "N": 14,
+        "K": 4,
+        "removed": 2,
+        "sample": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b5-hypergeometric:2",
+      "topicId": "urv-b5-hypergeometric",
+      "family": "hypergeometric-followup"
+    },
+    {
+      "question": "A committee of four is selected uniformly from 4 senior and 7 junior employees. A particular senior employee is known to be on the committee. Calculate the probability that the committee contains exactly two senior employees. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1750$",
+        "$0.2917$",
+        "$0.3000$",
+        "$0.3818$",
+        "$0.5250$"
+      ],
+      "answer": 4,
+      "solution": [
+        "After including the specified senior, choose three people from the remaining 10.",
+        "Exactly two seniors overall means one additional senior and two juniors: choose(3,1)choose(7,2).",
+        "Divide by choose(10,3) to obtain 0.525."
+      ],
+      "feedback": {
+        "0": "This adds two more seniors, giving three seniors overall.",
+        "1": "This gives exactly one senior overall.",
+        "2": "This considers only one additional member and omits the other two selections.",
+        "3": "This is the unconditional probability before learning that a specific senior is included."
+      },
+      "skills": [
+        "conditional sample space",
+        "combinations",
+        "fixed membership"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional sample space, combinations, fixed membership.",
+        "After including the specified senior, choose three people from the remaining 10."
+      ],
+      "verification": {
+        "kind": "committee-condition",
+        "S": 4,
+        "J": 7,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b5-hypergeometric:3",
+      "topicId": "urv-b5-hypergeometric",
+      "family": "committee-conditioned-membership"
+    },
+    {
+      "question": "A collection contains 4 class-A, 8 class-B, and 5 class-C files. Five are selected uniformly without replacement. X counts class-A files and Y counts class-B files in the sample. Given X=2, calculate Var(Y). Round your answer to four decimal places.",
+      "choices": [
+        "$0.3641$",
+        "$0.5917$",
+        "$0.7101$",
+        "$0.7890$",
+        "$1.8462$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Conditioning on X=2 leaves three sampled files drawn from the 13 non-A files, of which 8 are B.",
+        "The conditional Y distribution is hypergeometric with population 13, success count 8, and sample size 3.",
+        "Its variance is 3(8/13)(1-8/13)(13-3)/(13-1)=0.591716."
+      ],
+      "feedback": {
+        "0": "Change the sample size and population after conditioning, and retain the finite-population correction.",
+        "2": "Change the sample size and population after conditioning, and retain the finite-population correction.",
+        "3": "Change the sample size and population after conditioning, and retain the finite-population correction.",
+        "4": "Change the sample size and population after conditioning, and retain the finite-population correction."
+      },
+      "skills": [
+        "condition a multivariate sample",
+        "hypergeometric variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: condition a multivariate sample, hypergeometric variance.",
+        "Conditioning on X=2 leaves three sampled files drawn from the 13 non-A files, of which 8 are B."
+      ],
+      "verification": {
+        "kind": "conditional-hypergeom",
+        "groups": [
+          4,
+          8,
+          5
+        ],
+        "n": 5,
+        "x": 2,
+        "target": "variance"
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b5-hypergeometric:4",
+      "topicId": "urv-b5-hypergeometric",
+      "family": "conditional-hypergeom-variance"
     }
   ],
   "urv-b6-poisson": [
@@ -2619,6 +6354,136 @@ export default {
       "id": "chapter:urv-b6-poisson:1",
       "topicId": "urv-b6-poisson",
       "family": "poisson-split-condition"
+    },
+    {
+      "question": "Weekly claim counts are independent and identically Poisson distributed. For one week, P(N=1)=1P(N=0). Calculate the probability of exactly 5 claims over 2 weeks. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0000$",
+        "$0.0031$",
+        "$0.0361$",
+        "$0.0527$",
+        "$0.1353$"
+      ],
+      "answer": 2,
+      "solution": [
+        "For a Poisson distribution, P(N=1)/P(N=0)=λ, so the weekly mean is 1.",
+        "The independent 2-week total is Poisson with mean 2.",
+        "Its probability at 5 is exp(-2)(2)^5/5!=0.036089."
+      ],
+      "feedback": {
+        "0": "This requires that count in every week, rather than in the entire period.",
+        "1": "This uses a one-week mean.",
+        "3": "This gives at least the requested count.",
+        "4": "This gives zero claims."
+      },
+      "skills": [
+        "infer a Poisson mean",
+        "independent sums",
+        "exact count"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer a Poisson mean, independent sums, exact count.",
+        "For a Poisson distribution, P(N=1)/P(N=0)=λ, so the weekly mean is 1."
+      ],
+      "verification": {
+        "kind": "poisson-aggregate",
+        "lam": 1.0,
+        "periods": 2,
+        "count": 5,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b6-poisson:2",
+      "topicId": "urv-b6-poisson",
+      "family": "poisson-ratio-aggregate"
+    },
+    {
+      "question": "N is Poisson with mean 2.25. Only policies with at most 5 claims are retained in a study. Calculate the mean claim count among retained policies. Round your answer to four decimal places.",
+      "choices": [
+        "$2.0745$",
+        "$2.1328$",
+        "$2.2500$",
+        "$2.3133$",
+        "$2.5000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The retained probability is Σ from n=0 to 5 of exp(-2.25)(2.25)^n/n!=0.972635.",
+        "The retained first-moment sum is Σ nP(N=n) over those same counts, equal to 2.074468.",
+        "Normalize to the study population: E[N given N≤5]=2.074468/0.972635=2.132834."
+      ],
+      "feedback": {
+        "0": "This is the restricted first moment before normalization.",
+        "2": "This is the mean of all policies before truncation.",
+        "3": "The excluded high-count outcomes contribute to the mean and must be removed from the numerator.",
+        "4": "The retained counts are not uniformly distributed."
+      },
+      "skills": [
+        "truncated Poisson support",
+        "conditional first moment"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: truncated Poisson support, conditional first moment.",
+        "The retained probability is Σ from n=0 to 5 of exp(-2.25)(2.25)^n/n!=0.972635."
+      ],
+      "verification": {
+        "kind": "poisson-truncated",
+        "lam": 2.25,
+        "upper": 5,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b6-poisson:3",
+      "topicId": "urv-b6-poisson",
+      "family": "poisson-truncated-mean"
+    },
+    {
+      "question": "An insured belongs permanently to class H with probability 0.5, otherwise to class L. Conditional on class, annual claim counts are independent Poisson variables with means 1 and 0.4, respectively. No claims occurred in either of two years. Calculate the posterior probability of class H. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0677$",
+        "$0.1353$",
+        "$0.2315$",
+        "$0.3543$",
+        "$0.5000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "No claims in both years has probability exp(-2λ), giving 0.135335 for H and 0.449329 for L.",
+        "The overall likelihood is 0.292332 after weighting by the prior class shares.",
+        "The H posterior is 0.067668/0.292332=0.231475."
+      ],
+      "feedback": {
+        "0": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate.",
+        "1": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate.",
+        "3": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate.",
+        "4": "Condition on the entire two-year history. The unconditional portfolio is a mixture, not a single Poisson law with averaged rate."
+      },
+      "skills": [
+        "Poisson likelihood",
+        "conditional independence",
+        "Bayes"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Poisson likelihood, conditional independence, Bayes.",
+        "No claims in both years has probability exp(-2λ), giving 0.135335 for H and 0.449329 for L."
+      ],
+      "verification": {
+        "kind": "poisson-mixture",
+        "w": 0.5,
+        "rates": [
+          1,
+          0.4
+        ],
+        "n": 2,
+        "target": "posterior-zero"
+      },
+      "level": "challenge",
+      "id": "chapter:urv-b6-poisson:4",
+      "topicId": "urv-b6-poisson",
+      "family": "mixture-no-claim"
     }
   ],
   "urv-c1-continuous-uniform": [
@@ -2707,6 +6572,137 @@ export default {
       "id": "chapter:urv-c1-continuous-uniform:1",
       "topicId": "urv-c1-continuous-uniform",
       "family": "uniform-payment-variance"
+    },
+    {
+      "question": "Loss X is uniform on (0,2600). The insurer pays Y=0.6max(X-650,0), with no limit. Calculate the 75th percentile of payment per loss, including zero payments. Round your answer to four decimal places.",
+      "choices": [
+        "$585.0000$",
+        "$780.0000$",
+        "$877.5000$",
+        "$1170.0000$",
+        "$1300.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive.",
+        "For positive y, P(Y≤y)=(650+y/0.6)/2600.",
+        "Set this to 0.75 and solve y=0.6(0.75×2600-650)=780."
+      ],
+      "feedback": {
+        "0": "This is the positive-payment mean rather than the per-loss 75th percentile.",
+        "2": "This gives the percentile conditional on positive payment.",
+        "3": "This omits the deductible.",
+        "4": "This omits the insurer share."
+      },
+      "skills": [
+        "zero-payment mass",
+        "payment CDF",
+        "percentile inversion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-payment mass, payment CDF, percentile inversion.",
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive."
+      ],
+      "verification": {
+        "kind": "uniform-payment-quantile",
+        "B": 2600,
+        "d": 650.0,
+        "share": 0.6,
+        "u": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c1-continuous-uniform:2",
+      "topicId": "urv-c1-continuous-uniform",
+      "family": "uniform-payment-quantile"
+    },
+    {
+      "question": "An original loss X is uniform on (0,1200). Losses increase by 10%. A fixed franchise deductible of 450 applies to the inflated loss: the insurer pays nothing at or below the threshold and 70% of the full inflated loss above it. Calculate expected payment per original loss. Round your answer to four decimal places.",
+      "choices": [
+        "$200.6932$",
+        "$397.0313$",
+        "$408.3068$",
+        "$462.0000$",
+        "$583.2955$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The inflated loss Z is uniform on (0,1320). Its density is 1/1320.",
+        "The payment is 0.7Z for Z>450, so integrate 0.7z/1320 from 450 to 1320.",
+        "The result is 0.7[(1320)²-450²]/(2×1320)=408.306818."
+      ],
+      "feedback": {
+        "0": "This uses an ordinary deductible rather than the stated franchise deductible.",
+        "1": "This inflates the original mean payment and effectively inflates the franchise threshold too.",
+        "3": "This ignores the threshold.",
+        "4": "This omits the insurer share."
+      },
+      "skills": [
+        "inflate the loss support",
+        "fixed franchise threshold",
+        "payment integration"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: inflate the loss support, fixed franchise threshold, payment integration.",
+        "The inflated loss Z is uniform on (0,1320). Its density is 1/1320."
+      ],
+      "verification": {
+        "kind": "inflation-franchise",
+        "B": 1200,
+        "factor": 1.1,
+        "d": 450,
+        "share": 0.7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c1-continuous-uniform:3",
+      "topicId": "urv-c1-continuous-uniform",
+      "family": "inflation-franchise-mean"
+    },
+    {
+      "question": "6 independent values are uniform on (0,10). Let X_(2) be the 2th smallest value. Calculate E[X_(2)]. Round your answer to four decimal places.",
+      "choices": [
+        "$1.4286$",
+        "$2.8571$",
+        "$3.3333$",
+        "$5.0000$",
+        "$7.1429$"
+      ],
+      "answer": 1,
+      "solution": [
+        "For Z=X_(2)/10, the order-statistic density is proportional to z^1(1-z)^4 on (0,1).",
+        "This is beta(2,5), with mean 2/(6+1).",
+        "Rescale: E[X_(2)]=10×2/7=2.857143."
+      ],
+      "feedback": {
+        "0": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "2": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "3": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "4": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean."
+      },
+      "skills": [
+        "order-statistic density",
+        "beta first moment",
+        "rescaling"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: order-statistic density, beta first moment, rescaling.",
+        "For Z=X_(2)/10, the order-statistic density is proportional to z^1(1-z)^4 on (0,1)."
+      ],
+      "verification": {
+        "kind": "order-uniform-mean",
+        "n": 6,
+        "rank": 2,
+        "B": 10,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c1-continuous-uniform:4",
+      "topicId": "urv-c1-continuous-uniform",
+      "family": "order-uniform-middle-mean"
     }
   ],
   "urv-c2-exponential": [
@@ -2795,6 +6791,137 @@ export default {
       "id": "chapter:urv-c2-exponential:1",
       "topicId": "urv-c2-exponential",
       "family": "exponential-benefit"
+    },
+    {
+      "question": "Two independent components have exponential lifetimes with means 6 and 9 years. A device fails when either component fails. Given that the device has survived 3 years, calculate the probability it survives at least another 3 years. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1889$",
+        "$0.4346$",
+        "$0.5654$",
+        "$0.6065$",
+        "$0.8187$"
+      ],
+      "answer": 1,
+      "solution": [
+        "For independent lifetimes, device survival is the product of both component survival functions.",
+        "The minimum lifetime is exponential with rate 1/6+1/9. It is memoryless.",
+        "Conditional survival for another 3 years is exp[-3(1/6+1/9)]=0.434598."
+      ],
+      "feedback": {
+        "0": "This is unconditional survival for twice the elapsed interval.",
+        "2": "This gives failure during the additional interval.",
+        "3": "Both components must survive, not just component 1.",
+        "4": "Means do not add for a minimum lifetime; failure rates add."
+      },
+      "skills": [
+        "minimum of independent lifetimes",
+        "rate versus mean",
+        "memorylessness"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: minimum of independent lifetimes, rate versus mean, memorylessness.",
+        "For independent lifetimes, device survival is the product of both component survival functions."
+      ],
+      "verification": {
+        "kind": "exponential-minimum",
+        "means": [
+          6,
+          9
+        ],
+        "t": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c2-exponential:2",
+      "topicId": "urv-c2-exponential",
+      "family": "exponential-minimum-lifetime"
+    },
+    {
+      "question": "An exponential loss has mean 1300. A policy originally has an ordinary deductible of 400. The deductible is increased to 500, with no other changes. Calculate the ratio of the new expected payment per loss to the old expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0740$",
+        "$0.6807$",
+        "$0.7351$",
+        "$0.9260$",
+        "$1.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For an ordinary deductible d, E[(X-d)₊]=1300 exp(-d/1300).",
+        "The new-to-old ratio is exp(-(500)/1300)/exp(-400/1300).",
+        "The original deductible cancels, leaving exp(-100/1300)=0.925961. The ratio is per loss, so zero payments are included."
+      ],
+      "feedback": {
+        "0": "This is the fractional reduction, not the retained fraction.",
+        "1": "This is the new positive-payment probability, rather than its ratio to the old one.",
+        "2": "This is the old positive-payment probability.",
+        "4": "Per-payment means stay constant for this exponential model, but the question asks per loss."
+      },
+      "skills": [
+        "ordinary deductible mean",
+        "compare policy terms",
+        "per-loss basis"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: ordinary deductible mean, compare policy terms, per-loss basis.",
+        "For an ordinary deductible d, E[(X-d)₊]=1300 exp(-d/1300)."
+      ],
+      "verification": {
+        "kind": "deductible-ratio",
+        "mu": 1300,
+        "d": 400,
+        "delta": 100,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c2-exponential:3",
+      "topicId": "urv-c2-exponential",
+      "family": "deductible-change-ratio"
+    },
+    {
+      "question": "A loss X is exponential with mean 800. There is no deductible. The insurer pays 0.75X, subject to a maximum insurer payment of 800. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$230.9640$",
+        "$379.2723$",
+        "$441.8417$",
+        "$589.1223$",
+        "$600.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The final cap is reached at loss 1066.666667, since coinsurance is applied before the payment cap.",
+        "For 0≤y<800, P(Y>y)=exp[-y/(0.75×800)].",
+        "Integrate this survival function from 0 to 800: E[Y]=0.75×800[1-exp(-800/(0.75×800))]=441.841717."
+      ],
+      "feedback": {
+        "0": "This omits the point mass at the payment cap.",
+        "1": "This caps the loss before coinsurance instead of capping insurer payment.",
+        "3": "This pays the cap at every uncapped covered outcome.",
+        "4": "This omits the payment limit."
+      },
+      "skills": [
+        "final payment cap",
+        "coinsurance order",
+        "survival integration"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: final payment cap, coinsurance order, survival integration.",
+        "The final cap is reached at loss 1066.666667, since coinsurance is applied before the payment cap."
+      ],
+      "verification": {
+        "kind": "limited-exponential",
+        "mu": 800,
+        "cap": 800,
+        "share": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c2-exponential:4",
+      "topicId": "urv-c2-exponential",
+      "family": "limited-exponential-infer"
     }
   ],
   "urv-c3-gamma": [
@@ -2882,6 +7009,135 @@ export default {
       "id": "chapter:urv-c3-gamma:1",
       "topicId": "urv-c3-gamma",
       "family": "gamma-sum-condition"
+    },
+    {
+      "question": "T is the sum of 2 independent exponential lifetimes, each with mean 5. A lifetime is recorded only if T>20. Calculate the mean of T among recorded lifetimes. Round your answer to four decimal places.",
+      "choices": [
+        "$2.3810$",
+        "$10.0000$",
+        "$26.0000$",
+        "$30.0000$",
+        "$109.1963$"
+      ],
+      "answer": 2,
+      "solution": [
+        "T has a gamma density with shape 2 and scale 5. Its recording probability is 0.091578.",
+        "Multiplying its density by t gives 10 times the gamma density with shape 3 and the same scale. Thus the restricted first moment is 2.381033.",
+        "Divide by the recording probability to obtain 26. A multistage lifetime does not have exponential memorylessness."
+      ],
+      "feedback": {
+        "0": "This is a restricted first moment before conditioning.",
+        "1": "This is the unconditional mean.",
+        "3": "This applies exponential memorylessness to a gamma variable with shape greater than one.",
+        "4": "The discarded lower region contributes a nonzero first moment; the numerator must be restricted too."
+      },
+      "skills": [
+        "gamma from exponential sums",
+        "truncated moment",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: gamma from exponential sums, truncated moment, conditional normalization.",
+        "T has a gamma density with shape 2 and scale 5. Its recording probability is 0.091578."
+      ],
+      "verification": {
+        "kind": "gamma-truncated-mean",
+        "shape": 2,
+        "scale": 5,
+        "threshold": 20,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c3-gamma:2",
+      "topicId": "urv-c3-gamma",
+      "family": "gamma-truncated-mean"
+    },
+    {
+      "question": "2 independent waiting times each have a gamma distribution with shape 2 and scale 2. Calculate the probability that their sum exceeds 10. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0067$",
+        "$0.0404$",
+        "$0.2650$",
+        "$0.2873$",
+        "$0.7350$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Independent gamma variables with the same scale add their shapes. The total has shape 4 and scale 2.",
+        "For this integer shape, survival at 10 is exp(-10/2) times Σ from k=0 to 3 of (10/2)^k/k!.",
+        "The probability is 0.265026."
+      ],
+      "feedback": {
+        "0": "This treats the multistage sum as a single exponential.",
+        "1": "This uses the shape of one waiting time only.",
+        "3": "For independent sums with equal scales, add the shapes rather than the scales.",
+        "4": "This is the lower tail of the sum."
+      },
+      "skills": [
+        "independent gamma sum",
+        "shape and scale",
+        "integer-shape tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent gamma sum, shape and scale, integer-shape tail.",
+        "Independent gamma variables with the same scale add their shapes. The total has shape 4 and scale 2."
+      ],
+      "verification": {
+        "kind": "gamma-aggregate",
+        "shape": 2,
+        "scale": 2,
+        "count": 2,
+        "threshold": 10,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c3-gamma:3",
+      "topicId": "urv-c3-gamma",
+      "family": "gamma-aggregate-tail"
+    },
+    {
+      "question": "A gamma loss has mean 35 and squared coefficient of variation 1/7. Calculate its variance. Round your answer to four decimal places.",
+      "choices": [
+        "$13.2288$",
+        "$25.0000$",
+        "$35.0000$",
+        "$175.0000$",
+        "$1225.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For a gamma loss, CV²=1/α, so the shape is recovered directly from the squared CV.",
+        "The mean αθ=35 gives α=7 and θ=5.",
+        "Var(X)=αθ²=7×5²=175. Equivalently, Var(X)=CV²(E[X])²."
+      ],
+      "feedback": {
+        "0": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter.",
+        "1": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter.",
+        "2": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter.",
+        "4": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter."
+      },
+      "skills": [
+        "gamma moments",
+        "coefficient of variation",
+        "parameter inference"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: gamma moments, coefficient of variation, parameter inference.",
+        "For a gamma loss, CV²=1/α, so the shape is recovered directly from the squared CV."
+      ],
+      "verification": {
+        "kind": "gamma-cv",
+        "shape": 7,
+        "scale": 5,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c3-gamma:4",
+      "topicId": "urv-c3-gamma",
+      "family": "gamma-cv-infer"
     }
   ],
   "urv-c4-beta": [
@@ -2970,6 +7226,135 @@ export default {
       "id": "chapter:urv-c4-beta:1",
       "topicId": "urv-c4-beta",
       "family": "beta-conditional"
+    },
+    {
+      "question": "A damage fraction X follows a beta distribution with both shape parameters greater than 1. Its mean is 4/10, and its mode is 3/8. Calculate Var(X). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0218$",
+        "$0.1477$",
+        "$0.1600$",
+        "$0.1818$",
+        "$0.2400$"
+      ],
+      "answer": 0,
+      "solution": [
+        "Write s=α+β. The mean gives α=(4/10)s, while the mode gives (α-1)/(s-2)=(3/8).",
+        "Solving these two equations yields α=4 and β=6.",
+        "Beta variance is αβ/[s²(s+1)]=0.021818."
+      ],
+      "feedback": {
+        "1": "This is the standard deviation.",
+        "2": "This is the squared mean.",
+        "3": "This is the second raw moment.",
+        "4": "This omits the concentration factor s+1 in the variance."
+      },
+      "skills": [
+        "infer beta parameters",
+        "mode versus mean",
+        "variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer beta parameters, mode versus mean, variance.",
+        "Write s=α+β. The mean gives α=(4/10)s, while the mode gives (α-1)/(s-2)=(3/8)."
+      ],
+      "verification": {
+        "kind": "beta-mode-infer",
+        "a": 4,
+        "b": 6,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c4-beta:2",
+      "topicId": "urv-c4-beta",
+      "family": "beta-mode-mean-infer"
+    },
+    {
+      "question": "8 independent values are uniform on (0,15). Let X_(4) be the 4th smallest value. Calculate E[X_(4)]. Round your answer to four decimal places.",
+      "choices": [
+        "$1.6667$",
+        "$6.0000$",
+        "$6.6667$",
+        "$7.5000$",
+        "$8.3333$"
+      ],
+      "answer": 2,
+      "solution": [
+        "For Z=X_(4)/15, the order-statistic density is proportional to z^3(1-z)^4 on (0,1).",
+        "This is beta(4,5), with mean 4/(8+1).",
+        "Rescale: E[X_(4)]=15×4/9=6.666667."
+      ],
+      "feedback": {
+        "0": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "1": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "3": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "4": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean."
+      },
+      "skills": [
+        "order-statistic density",
+        "beta first moment",
+        "rescaling"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: order-statistic density, beta first moment, rescaling.",
+        "For Z=X_(4)/15, the order-statistic density is proportional to z^3(1-z)^4 on (0,1)."
+      ],
+      "verification": {
+        "kind": "order-uniform-mean",
+        "n": 8,
+        "rank": 4,
+        "B": 15,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c4-beta:3",
+      "topicId": "urv-c4-beta",
+      "family": "order-uniform-middle-mean"
+    },
+    {
+      "question": "X has CDF F(x)=(x/7)^2 for 0<x<7, with F(x)=0 below the support and 1 above it. A benefit is Y=5X²+9. Calculate E[Y]. Round your answer to four decimal places.",
+      "choices": [
+        "$32.3333$",
+        "$117.8889$",
+        "$122.5000$",
+        "$131.5000$",
+        "$621.5000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Differentiating the CDF gives density 2x^1/7^2.",
+        "The second raw moment is E[X²]=2×7²/(2+2)=24.5.",
+        "Linearity gives E[Y]=5E[X²]+9=131.5. Squaring the mean would not give E[X²]."
+      ],
+      "feedback": {
+        "0": "This treats the squared transformation as linear in X.",
+        "1": "This replaces E[X²] by (E[X])².",
+        "2": "This omits the additive benefit.",
+        "4": "The multiplier is squared in a variance, not in an expectation."
+      },
+      "skills": [
+        "CDF to density",
+        "second raw moment",
+        "transformed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF to density, second raw moment, transformed expectation.",
+        "Differentiating the CDF gives density 2x^1/7^2."
+      ],
+      "verification": {
+        "kind": "power-expectation",
+        "B": 7,
+        "power": 2,
+        "a": 5,
+        "shift": 9,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c4-beta:4",
+      "topicId": "urv-c4-beta",
+      "family": "power-transformed-expectation"
     }
   ],
   "urv-c5-normal": [
@@ -3058,6 +7443,140 @@ export default {
       "id": "chapter:urv-c5-normal:1",
       "topicId": "urv-c5-normal",
       "family": "normal-quadratic"
+    },
+    {
+      "question": "A measurement X is normally distributed. Its 15.8655th percentile is 85 and its 97.7250th percentile is 160. Use standard-normal percentile values -1 and 2, respectively. Calculate P(X>135). Round your answer to four decimal places.",
+      "choices": [
+        "$0.1587$",
+        "$0.3085$",
+        "$0.3694$",
+        "$0.4840$",
+        "$0.8413$"
+      ],
+      "answer": 0,
+      "solution": [
+        "The percentile equations are μ-σ=85 and μ+2σ=160. Subtract them to get 3σ=75, so σ=25.",
+        "Then μ=110, and the requested threshold standardizes to (135-110)/25=1.",
+        "The upper standard-normal tail at 1 is 0.158655."
+      ],
+      "feedback": {
+        "1": "The midpoint of asymmetrically placed percentiles is not the mean.",
+        "2": "The percentile separation is three SDs, not one.",
+        "3": "Standardize using SD, not variance.",
+        "4": "This is the lower tail at the threshold."
+      },
+      "skills": [
+        "solve normal location and scale",
+        "standardization",
+        "upper tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: solve normal location and scale, standardization, upper tail.",
+        "The percentile equations are μ-σ=85 and μ+2σ=160. Subtract them to get 3σ=75, so σ=25."
+      ],
+      "verification": {
+        "kind": "normal-two-quantiles",
+        "mu": 110,
+        "sd": 25,
+        "lower": 85,
+        "upper": 160,
+        "threshold": 135,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c5-normal:2",
+      "topicId": "urv-c5-normal",
+      "family": "normal-two-quantiles"
+    },
+    {
+      "question": "Independent normal X and Y have means 120 and 40. SD(X)=10. The variance of X+Y is 125. Calculate P(X-2Y>59.79898987). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0808$",
+        "$0.4606$",
+        "$0.5000$",
+        "$0.9192$",
+        "$1.0000$"
+      ],
+      "answer": 0,
+      "solution": [
+        "Independence gives Var(Y)=Var(X+Y)-Var(X)=125-100=25.",
+        "X-2Y is exactly normal with mean 40 and SD √(100+4×25)=14.142136.",
+        "The standardized threshold is 1.4, so the upper-tail probability is 1-Φ(1.4)=0.080757."
+      ],
+      "feedback": {
+        "1": "Use signed coefficients in the mean and squared coefficients in the independent variance, then standardize with SD.",
+        "2": "Use signed coefficients in the mean and squared coefficients in the independent variance, then standardize with SD.",
+        "3": "Use signed coefficients in the mean and squared coefficients in the independent variance, then standardize with SD.",
+        "4": "Use signed coefficients in the mean and squared coefficients in the independent variance, then standardize with SD."
+      },
+      "skills": [
+        "infer a component variance",
+        "exact normal linear combination",
+        "tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer a component variance, exact normal linear combination, tail.",
+        "Independence gives Var(Y)=Var(X+Y)-Var(X)=125-100=25."
+      ],
+      "verification": {
+        "kind": "normal-combination",
+        "muX": 120,
+        "muY": 40,
+        "sdX": 10,
+        "sdY": 5,
+        "a": 1,
+        "b": -2,
+        "t": 59.798989873223334,
+        "target": "tail"
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c5-normal:3",
+      "topicId": "urv-c5-normal",
+      "family": "normal-combination-infer"
+    },
+    {
+      "question": "140 independent policies each have probability 0.35 of a claim. Use a normal approximation with continuity correction to calculate the probability at least 56 policies have a claim. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0919$",
+        "$0.1074$",
+        "$0.1247$",
+        "$0.4191$",
+        "$0.8753$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The count mean is 49 and SD is √(140×0.35×0.65)=5.64358.",
+        "At least 56 for an integer count becomes the normal event above 55.5. The standardized boundary is 1.151751.",
+        "The approximate probability is 1-Φ(z)=0.124712."
+      ],
+      "feedback": {
+        "0": "Use the lower half-unit boundary for an at-least tail and standardize using SD rather than variance.",
+        "1": "Use the lower half-unit boundary for an at-least tail and standardize using SD rather than variance.",
+        "3": "Use the lower half-unit boundary for an at-least tail and standardize using SD rather than variance.",
+        "4": "Use the lower half-unit boundary for an at-least tail and standardize using SD rather than variance."
+      },
+      "skills": [
+        "binomial normal approximation",
+        "continuity correction",
+        "tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: binomial normal approximation, continuity correction, tail.",
+        "The count mean is 49 and SD is √(140×0.35×0.65)=5.64358."
+      ],
+      "verification": {
+        "kind": "clt-binomial",
+        "n": 140,
+        "p": 0.35,
+        "k": 56
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c5-normal:4",
+      "topicId": "urv-c5-normal",
+      "family": "clt-binomial-correction"
     }
   ],
   "urv-c6-lognormal": [
@@ -3144,6 +7663,135 @@ export default {
       "id": "chapter:urv-c6-lognormal:1",
       "topicId": "urv-c6-lognormal",
       "family": "lognormal-moment-infer"
+    },
+    {
+      "question": "Optional enrichment: ln X is normal with mean 3 and SD 0.4. Given X>exp(3), calculate P(X>exp(3.4)). Round your answer to four decimal places.",
+      "choices": [
+        "$0.1587$",
+        "$0.3173$",
+        "$0.5000$",
+        "$0.6827$",
+        "$0.8413$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Taking logs preserves the inequality because the logarithm is increasing.",
+        "The condition is Z>0 and the higher threshold is Z>1 for a standard normal Z.",
+        "The conditional tail is [1-Φ(1)]/[1-Φ(0)]=0.317311."
+      ],
+      "feedback": {
+        "0": "This is the unconditional upper tail.",
+        "2": "This is the probability of the conditioning event.",
+        "3": "This is the conditional probability of being at or below the higher threshold.",
+        "4": "This is the lower tail before conditioning."
+      },
+      "skills": [
+        "monotone log transformation",
+        "conditional normal tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: monotone log transformation, conditional normal tail.",
+        "Taking logs preserves the inequality because the logarithm is increasing."
+      ],
+      "verification": {
+        "kind": "lognormal-conditional",
+        "mu": 3.0,
+        "sigma": 0.4,
+        "lower": 20.085536923187668,
+        "upper": 29.96410004739701,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c6-lognormal:2",
+      "topicId": "urv-c6-lognormal",
+      "family": "lognormal-conditional-tail"
+    },
+    {
+      "question": "Optional enrichment: ln X is normal with mean 2.5 and variance 0.16. A payment is Y=0.75X. Calculate E[Y²]. Round your answer to four decimal places.",
+      "choices": [
+        "$9.8979$",
+        "$16.9984$",
+        "$97.9675$",
+        "$114.9659$",
+        "$153.2879$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For a lognormal variable, E[X^r]=exp(rμ+r²σ²/2).",
+        "At r=2, E[X²]=exp(2×2.5+2×0.16).",
+        "The payment multiplier is squared: E[Y²]=(0.75)²E[X²]=114.965934."
+      ],
+      "feedback": {
+        "0": "Use the second raw moment, square the payment multiplier, and distinguish the supplied log variance from log SD.",
+        "1": "Use the second raw moment, square the payment multiplier, and distinguish the supplied log variance from log SD.",
+        "2": "Use the second raw moment, square the payment multiplier, and distinguish the supplied log variance from log SD.",
+        "4": "Use the second raw moment, square the payment multiplier, and distinguish the supplied log variance from log SD."
+      },
+      "skills": [
+        "lognormal raw moment",
+        "scaled payment",
+        "second moment"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: lognormal raw moment, scaled payment, second moment.",
+        "For a lognormal variable, E[X^r]=exp(rμ+r²σ²/2)."
+      ],
+      "verification": {
+        "kind": "lognormal-square",
+        "mu": 2.5,
+        "sigma": 0.4,
+        "share": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c6-lognormal:3",
+      "topicId": "urv-c6-lognormal",
+      "family": "lognormal-square-moment"
+    },
+    {
+      "question": "Optional enrichment: ln X is normal with mean 3.3 and SD 0.55. Payment is Y=min(X,exp(3.3)). Calculate E[Y]. Round your answer to four decimal places.",
+      "choices": [
+        "$9.1831$",
+        "$13.5563$",
+        "$22.7394$",
+        "$27.1126$",
+        "$31.5398$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Split payment into the uncapped first moment below the cap and cap times its upper-tail probability.",
+        "For lognormal X, E[X I(X≤c)]=exp(μ+σ²/2)Φ((ln c-μ-σ²)/σ). Here c=exp(μ), so the normal argument is -0.55 and cap probability is 0.5.",
+        "E[Y]=exp(3.3+0.15125)Φ(-0.55)+0.5exp(3.3)=22.739436."
+      ],
+      "feedback": {
+        "0": "A limited expectation includes the truncated raw moment and the positive mass at the cap; the unconditional mean or a probability times the mean is insufficient.",
+        "1": "A limited expectation includes the truncated raw moment and the positive mass at the cap; the unconditional mean or a probability times the mean is insufficient.",
+        "3": "A limited expectation includes the truncated raw moment and the positive mass at the cap; the unconditional mean or a probability times the mean is insufficient.",
+        "4": "A limited expectation includes the truncated raw moment and the positive mass at the cap; the unconditional mean or a probability times the mean is insufficient."
+      },
+      "skills": [
+        "truncated lognormal moment",
+        "cap mass",
+        "limited expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: truncated lognormal moment, cap mass, limited expectation.",
+        "Split payment into the uncapped first moment below the cap and cap times its upper-tail probability."
+      ],
+      "verification": {
+        "kind": "lognormal-limited",
+        "mu": 3.3,
+        "sigma": 0.55,
+        "cap": 27.112638920657883,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-c6-lognormal:4",
+      "topicId": "urv-c6-lognormal",
+      "family": "lognormal-limited-mean"
     }
   ],
   "urv-d1-conditional-discrete": [
@@ -3230,6 +7878,131 @@ export default {
       "id": "chapter:urv-d1-conditional-discrete:1",
       "topicId": "urv-d1-conditional-discrete",
       "family": "conditional-binomial-variance"
+    },
+    {
+      "question": "N is Poisson with mean 1.25. Only policies with at most 3 claims are retained in a study. Calculate the mean claim count among retained policies. Round your answer to four decimal places.",
+      "choices": [
+        "$1.0856$",
+        "$1.1288$",
+        "$1.2500$",
+        "$1.2997$",
+        "$1.5000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The retained probability is Σ from n=0 to 3 of exp(-1.25)(1.25)^n/n!=0.961731.",
+        "The retained first-moment sum is Σ nP(N=n) over those same counts, equal to 1.085585.",
+        "Normalize to the study population: E[N given N≤3]=1.085585/0.961731=1.128782."
+      ],
+      "feedback": {
+        "0": "This is the restricted first moment before normalization.",
+        "2": "This is the mean of all policies before truncation.",
+        "3": "The excluded high-count outcomes contribute to the mean and must be removed from the numerator.",
+        "4": "The retained counts are not uniformly distributed."
+      },
+      "skills": [
+        "truncated Poisson support",
+        "conditional first moment"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: truncated Poisson support, conditional first moment.",
+        "The retained probability is Σ from n=0 to 3 of exp(-1.25)(1.25)^n/n!=0.961731."
+      ],
+      "verification": {
+        "kind": "poisson-truncated",
+        "lam": 1.25,
+        "upper": 3,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-d1-conditional-discrete:2",
+      "topicId": "urv-d1-conditional-discrete",
+      "family": "poisson-truncated-mean"
+    },
+    {
+      "question": "A lot contains 13 parts, of which 6 are defective. Two parts sampled without replacement are both found to be sound and are set aside. Three more parts are sampled without replacement from the remainder. Calculate the probability that exactly one of these three is defective. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3381$",
+        "$0.3636$",
+        "$0.4406$",
+        "$0.4545$",
+        "$0.5455$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The remaining lot has 11 parts: 6 defective and 5 sound.",
+        "Choose one defective and two sound parts in choose(6,1)choose(5,2) ways.",
+        "Divide by choose(11,3) to obtain 0.363636."
+      ],
+      "feedback": {
+        "0": "This treats the follow-up sample as sampling with replacement.",
+        "2": "This samples from the original lot and ignores the observed removals.",
+        "3": "This gives exactly two defective parts.",
+        "4": "This is the probability for only one new part."
+      },
+      "skills": [
+        "update a finite population",
+        "hypergeometric sample"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: update a finite population, hypergeometric sample.",
+        "The remaining lot has 11 parts: 6 defective and 5 sound."
+      ],
+      "verification": {
+        "kind": "hyper-followup",
+        "N": 13,
+        "K": 6,
+        "removed": 2,
+        "sample": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-d1-conditional-discrete:3",
+      "topicId": "urv-d1-conditional-discrete",
+      "family": "hypergeometric-followup"
+    },
+    {
+      "question": "An integer-valued random variable X is uniform on 1 through 15. Given that X≥5, calculate the probability that X is even. Round your answer to four decimal places.",
+      "choices": [
+        "$0.3333$",
+        "$0.4545$",
+        "$0.4667$",
+        "$0.5000$",
+        "$0.5455$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The condition retains the integers 5, 6, …, 15: 11 equally likely values.",
+        "Exactly 5 retained integers are even. The endpoints must be counted, not approximated by half the interval.",
+        "The conditional probability is 5/11=0.454545."
+      ],
+      "feedback": {
+        "0": "This is the joint probability and has not been renormalized.",
+        "2": "This is the unconditional even probability.",
+        "3": "Half is not guaranteed when a finite retained set has odd size.",
+        "4": "This counts the odd integers."
+      },
+      "skills": [
+        "discrete endpoints",
+        "conditional uniform support"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: discrete endpoints, conditional uniform support.",
+        "The condition retains the integers 5, 6, …, 15: 11 equally likely values."
+      ],
+      "verification": {
+        "kind": "uniform-lattice",
+        "n": 15,
+        "lower": 5,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-d1-conditional-discrete:4",
+      "topicId": "urv-d1-conditional-discrete",
+      "family": "uniform-lattice-condition"
     }
   ],
   "urv-d2-conditional-continuous": [
@@ -3319,6 +8092,134 @@ export default {
       "id": "chapter:urv-d2-conditional-continuous:1",
       "topicId": "urv-d2-conditional-continuous",
       "family": "density-infer-conditional"
+    },
+    {
+      "question": "X has density 2(14-x)/196 for 0<x<14, and zero otherwise. Given X>4.2, calculate Var(X). Round your answer to four decimal places.",
+      "choices": [
+        "$2.3099$",
+        "$5.3356$",
+        "$8.0033$",
+        "$10.8889$",
+        "$16.0067$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The condition probability is ((14-4.2)/14)². Divide the original density by this probability on (4.2,14).",
+        "For Z=X-4.2, the conditional density is 2(9.8-z)/(9.8)² on (0,9.8). Its first two moments are 3.266667 and 16.006667.",
+        "The shift contributes no variance, so Var(X given X>4.2)=(9.8)²/18=5.335556. The conditional mean is 7.466667."
+      ],
+      "feedback": {
+        "0": "This is the conditional SD.",
+        "2": "This uses a conditional uniform distribution instead of the triangular density.",
+        "3": "This is the unconditional variance.",
+        "4": "This is the second raw moment of the shifted variable."
+      },
+      "skills": [
+        "conditional density",
+        "shifted support",
+        "two moments"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional density, shifted support, two moments.",
+        "The condition probability is ((14-4.2)/14)². Divide the original density by this probability on (4.2,14)."
+      ],
+      "verification": {
+        "kind": "triangular-variance",
+        "B": 14,
+        "lower": 4.2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-d2-conditional-continuous:2",
+      "topicId": "urv-d2-conditional-continuous",
+      "family": "triangular-conditional-variance"
+    },
+    {
+      "question": "T is the sum of 4 independent exponential lifetimes, each with mean 3. A lifetime is recorded only if T>9. Calculate the mean of T among recorded lifetimes. Round your answer to four decimal places.",
+      "choices": [
+        "$9.7832$",
+        "$12.0000$",
+        "$15.1154$",
+        "$18.5405$",
+        "$21.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "T has a gamma density with shape 4 and scale 3. Its recording probability is 0.647232.",
+        "Multiplying its density by t gives 12 times the gamma density with shape 5 and the same scale. Thus the restricted first moment is 9.783159.",
+        "Divide by the recording probability to obtain 15.115385. A multistage lifetime does not have exponential memorylessness."
+      ],
+      "feedback": {
+        "0": "This is a restricted first moment before conditioning.",
+        "1": "This is the unconditional mean.",
+        "3": "The discarded lower region contributes a nonzero first moment; the numerator must be restricted too.",
+        "4": "This applies exponential memorylessness to a gamma variable with shape greater than one."
+      },
+      "skills": [
+        "gamma from exponential sums",
+        "truncated moment",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: gamma from exponential sums, truncated moment, conditional normalization.",
+        "T has a gamma density with shape 4 and scale 3. Its recording probability is 0.647232."
+      ],
+      "verification": {
+        "kind": "gamma-truncated-mean",
+        "shape": 4,
+        "scale": 3,
+        "threshold": 9,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-d2-conditional-continuous:3",
+      "topicId": "urv-d2-conditional-continuous",
+      "family": "gamma-truncated-mean"
+    },
+    {
+      "question": "A loss X has density c(8-x) for 0<x<8, and zero otherwise. The constant c is unknown. A loss has already exceeded 2. Calculate the probability that it exceeds 6. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0625$",
+        "$0.1111$",
+        "$0.3333$",
+        "$0.5625$",
+        "$0.8889$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Normalization gives c=2/64, since the integral of 8-x over the support is 64/2.",
+        "The survival function is P(X>x)=((8-x)/8)².",
+        "Divide survival at 6 by survival at 2: [(8-6)/(8-2)]²=0.111111."
+      ],
+      "feedback": {
+        "0": "This is the unconditional tail at the higher threshold.",
+        "2": "This uses a uniform density instead of the supplied decreasing density.",
+        "3": "This is only the probability of the condition.",
+        "4": "This is the probability of not exceeding the higher threshold, conditional on exceeding the lower one."
+      },
+      "skills": [
+        "density normalization",
+        "survival integration",
+        "conditional tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: density normalization, survival integration, conditional tail.",
+        "Normalization gives c=2/64, since the integral of 8-x over the support is 64/2."
+      ],
+      "verification": {
+        "kind": "triangular-tail",
+        "B": 8,
+        "t": 2.0,
+        "u": 6.0,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-d2-conditional-continuous:4",
+      "topicId": "urv-d2-conditional-continuous",
+      "family": "triangular-tail-infer"
     }
   ],
   "urv-e1-expected-value": [
@@ -3407,6 +8308,135 @@ export default {
       "id": "chapter:urv-e1-expected-value:1",
       "topicId": "urv-e1-expected-value",
       "family": "exponential-benefit"
+    },
+    {
+      "question": "The claim count N takes values 0 through 6, with P(N=k)=c(k+1). A contract pays 75 for each claim in excess of the first 2 claims. Calculate expected payment per contract. Round your answer to four decimal places.",
+      "choices": [
+        "$107.1429$",
+        "$150.0000$",
+        "$160.7143$",
+        "$300.0000$",
+        "$38169.6429$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Normalize the probabilities: c[1+2+⋯+7]=1, giving c=2/(7×8).",
+        "The payment at count k is 75 max(k-2,0). Its possible values are 0, 0, 0, 75, 150, 225, 300.",
+        "Weight each payment by c(k+1); the expected payment is 160.714286."
+      ],
+      "feedback": {
+        "0": "The supported counts are not equally likely.",
+        "1": "A positive-part function cannot be moved outside an expectation.",
+        "3": "This ignores the count deductible.",
+        "4": "This is the second raw moment rather than the mean."
+      },
+      "skills": [
+        "PMF normalization",
+        "discrete payment transformation",
+        "expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: PMF normalization, discrete payment transformation, expectation.",
+        "Normalize the probabilities: c[1+2+⋯+7]=1, giving c=2/(7×8)."
+      ],
+      "verification": {
+        "kind": "finite-payment",
+        "n": 7,
+        "scale": 75,
+        "d": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e1-expected-value:2",
+      "topicId": "urv-e1-expected-value",
+      "family": "finite-payment-moments"
+    },
+    {
+      "question": "Independent daily inspections detect a defect with probability 0.275. Inspections stop on the first detection or after 8 inspections, whichever occurs first. Calculate the expected number of inspections performed. Round your answer to four decimal places.",
+      "choices": [
+        "$0.6107$",
+        "$2.3588$",
+        "$2.7481$",
+        "$3.3588$",
+        "$3.6364$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Let T be the first successful inspection, so the number performed is min(T,h).",
+        "Inspection j is performed exactly when the first j-1 inspections all fail. Thus E[min(T,8)]=Σ from j=1 to 8 of (1-0.275)^(j-1).",
+        "The finite geometric sum is [1-(1-0.275)^8]/0.275=3.358794."
+      ],
+      "feedback": {
+        "0": "This counts only the all-failure outcome and misses earlier stops.",
+        "1": "This counts only inspections after the first one.",
+        "2": "This omits the censored outcome where no detection occurs by the limit.",
+        "4": "This is the uncapped waiting-time mean."
+      },
+      "skills": [
+        "geometric waiting time",
+        "censoring",
+        "tail-sum expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: geometric waiting time, censoring, tail-sum expectation.",
+        "Let T be the first successful inspection, so the number performed is min(T,h)."
+      ],
+      "verification": {
+        "kind": "geometric-cap",
+        "p": 0.275,
+        "horizon": 8,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e1-expected-value:3",
+      "topicId": "urv-e1-expected-value",
+      "family": "geometric-capped-count"
+    },
+    {
+      "question": "X has CDF F(x)=(x/8)^4 for 0<x<8, with F(x)=0 below the support and 1 above it. A benefit is Y=5X²+6. Calculate E[Y]. Round your answer to four decimal places.",
+      "choices": [
+        "$38.0000$",
+        "$210.8000$",
+        "$213.3333$",
+        "$219.3333$",
+        "$1072.6667$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Differentiating the CDF gives density 4x^3/8^4.",
+        "The second raw moment is E[X²]=4×8²/(4+2)=42.666667.",
+        "Linearity gives E[Y]=5E[X²]+6=219.333333. Squaring the mean would not give E[X²]."
+      ],
+      "feedback": {
+        "0": "This treats the squared transformation as linear in X.",
+        "1": "This replaces E[X²] by (E[X])².",
+        "2": "This omits the additive benefit.",
+        "4": "The multiplier is squared in a variance, not in an expectation."
+      },
+      "skills": [
+        "CDF to density",
+        "second raw moment",
+        "transformed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF to density, second raw moment, transformed expectation.",
+        "Differentiating the CDF gives density 4x^3/8^4."
+      ],
+      "verification": {
+        "kind": "power-expectation",
+        "B": 8,
+        "power": 4,
+        "a": 5,
+        "shift": 6,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e1-expected-value:4",
+      "topicId": "urv-e1-expected-value",
+      "family": "power-transformed-expectation"
     }
   ],
   "urv-e2-moments": [
@@ -3500,6 +8530,141 @@ export default {
       "id": "chapter:urv-e2-moments:1",
       "topicId": "urv-e2-moments",
       "family": "linear-second-moment"
+    },
+    {
+      "question": "X has CDF F(x)=(x/5)^5 for 0<x<5, with F(x)=0 below the support and 1 above it. A benefit is Y=5X²+7. Calculate E[Y]. Round your answer to four decimal places.",
+      "choices": [
+        "$27.8333$",
+        "$89.2857$",
+        "$93.8056$",
+        "$96.2857$",
+        "$453.4286$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Differentiating the CDF gives density 5x^4/5^5.",
+        "The second raw moment is E[X²]=5×5²/(5+2)=17.857143.",
+        "Linearity gives E[Y]=5E[X²]+7=96.285714. Squaring the mean would not give E[X²]."
+      ],
+      "feedback": {
+        "0": "This treats the squared transformation as linear in X.",
+        "1": "This omits the additive benefit.",
+        "2": "This replaces E[X²] by (E[X])².",
+        "4": "The multiplier is squared in a variance, not in an expectation."
+      },
+      "skills": [
+        "CDF to density",
+        "second raw moment",
+        "transformed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF to density, second raw moment, transformed expectation.",
+        "Differentiating the CDF gives density 5x^4/5^5."
+      ],
+      "verification": {
+        "kind": "power-expectation",
+        "B": 5,
+        "power": 5,
+        "a": 5,
+        "shift": 7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e2-moments:2",
+      "topicId": "urv-e2-moments",
+      "family": "power-transformed-expectation"
+    },
+    {
+      "question": "A nonnegative loss X has CDF F(x)=0 for x<0, F(x)=0.1+(1-0.1)(x/7)^3 for 0≤x<7, and F(x)=1 for x≥7. Calculate E[X]. Round your answer to four decimal places.",
+      "choices": [
+        "$3.1500$",
+        "$4.7250$",
+        "$5.2500$",
+        "$5.4250$",
+        "$26.4600$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The jump at zero is 0.1. It contributes zero to E[X].",
+        "On (0,7), the density is (1-0.1)3x^2/7^3.",
+        "Integrating x times this density gives (1-0.1)7×3/(3+1)=4.725."
+      ],
+      "feedback": {
+        "0": "This replaces the power CDF with a uniform distribution.",
+        "2": "This is the mean conditional on X>0.",
+        "3": "The point mass is at zero, not at the upper endpoint.",
+        "4": "This is the second raw moment."
+      },
+      "skills": [
+        "CDF jump",
+        "continuous component",
+        "mixed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF jump, continuous component, mixed expectation.",
+        "The jump at zero is 0.1. It contributes zero to E[X]."
+      ],
+      "verification": {
+        "kind": "mixed-power",
+        "p": 0.1,
+        "B": 7,
+        "power": 3,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e2-moments:3",
+      "topicId": "urv-e2-moments",
+      "family": "mixed-cdf-mean"
+    },
+    {
+      "question": "A randomly selected loss belongs to class A with probability 0.35 and to class B otherwise. Conditional loss means are 120 and 340, and conditional standard deviations are 40 and 80, respectively. Calculate the unconditional loss variance. Round your answer to four decimal places.",
+      "choices": [
+        "$66.0000$",
+        "$125.4233$",
+        "$4720.0000$",
+        "$11011.0000$",
+        "$15731.0000$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The mean is 0.35(120)+0.65(340)=263.",
+        "The mean conditional variance is 4720. The variance of the class means is 0.35(0.65)(120-340)²=11011.",
+        "Total variance is the sum 4720+11011=15731."
+      ],
+      "feedback": {
+        "0": "This averages SDs rather than using total variance.",
+        "1": "This is the unconditional SD.",
+        "2": "This omits variation between class means.",
+        "3": "This omits variation within classes."
+      },
+      "skills": [
+        "mixture first moment",
+        "within-class and between-class variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: mixture first moment, within-class and between-class variance.",
+        "The mean is 0.35(120)+0.65(340)=263."
+      ],
+      "verification": {
+        "kind": "loss-mixture-variance",
+        "w": 0.35,
+        "means": [
+          120,
+          340
+        ],
+        "sds": [
+          40,
+          80
+        ],
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e2-moments:4",
+      "topicId": "urv-e2-moments",
+      "family": "two-class-loss-variance"
     }
   ],
   "urv-e3-mode-median-percentiles": [
@@ -3589,6 +8754,137 @@ export default {
       "id": "chapter:urv-e3-mode-median-percentiles:1",
       "topicId": "urv-e3-mode-median-percentiles",
       "family": "normal-quantile-infer"
+    },
+    {
+      "question": "A damage fraction X follows a beta distribution with both shape parameters greater than 1. Its mean is 3/8, and its mode is 2/6. Calculate Var(X). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0260$",
+        "$0.1406$",
+        "$0.1614$",
+        "$0.1667$",
+        "$0.2344$"
+      ],
+      "answer": 0,
+      "solution": [
+        "Write s=α+β. The mean gives α=(3/8)s, while the mode gives (α-1)/(s-2)=(2/6).",
+        "Solving these two equations yields α=3 and β=5.",
+        "Beta variance is αβ/[s²(s+1)]=0.026042."
+      ],
+      "feedback": {
+        "1": "This is the squared mean.",
+        "2": "This is the standard deviation.",
+        "3": "This is the second raw moment.",
+        "4": "This omits the concentration factor s+1 in the variance."
+      },
+      "skills": [
+        "infer beta parameters",
+        "mode versus mean",
+        "variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer beta parameters, mode versus mean, variance.",
+        "Write s=α+β. The mean gives α=(3/8)s, while the mode gives (α-1)/(s-2)=(2/6)."
+      ],
+      "verification": {
+        "kind": "beta-mode-infer",
+        "a": 3,
+        "b": 5,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e3-mode-median-percentiles:2",
+      "topicId": "urv-e3-mode-median-percentiles",
+      "family": "beta-mode-mean-infer"
+    },
+    {
+      "question": "Loss X is uniform on (0,2000). The insurer pays Y=0.7max(X-500,0), with no limit. Calculate the 75th percentile of payment per loss, including zero payments. Round your answer to four decimal places.",
+      "choices": [
+        "$525.0000$",
+        "$700.0000$",
+        "$787.5000$",
+        "$1000.0000$",
+        "$1050.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive.",
+        "For positive y, P(Y≤y)=(500+y/0.7)/2000.",
+        "Set this to 0.75 and solve y=0.7(0.75×2000-500)=700."
+      ],
+      "feedback": {
+        "0": "This is the positive-payment mean rather than the per-loss 75th percentile.",
+        "2": "This gives the percentile conditional on positive payment.",
+        "3": "This omits the insurer share.",
+        "4": "This omits the deductible."
+      },
+      "skills": [
+        "zero-payment mass",
+        "payment CDF",
+        "percentile inversion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-payment mass, payment CDF, percentile inversion.",
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive."
+      ],
+      "verification": {
+        "kind": "uniform-payment-quantile",
+        "B": 2000,
+        "d": 500.0,
+        "share": 0.7,
+        "u": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e3-mode-median-percentiles:3",
+      "topicId": "urv-e3-mode-median-percentiles",
+      "family": "uniform-payment-quantile"
+    },
+    {
+      "question": "A measurement X is normally distributed. Its 15.8655th percentile is 115 and its 97.7250th percentile is 160. Use standard-normal percentile values -1 and 2, respectively. Calculate P(X>145). Round your answer to four decimal places.",
+      "choices": [
+        "$0.1587$",
+        "$0.3085$",
+        "$0.3694$",
+        "$0.4734$",
+        "$0.8413$"
+      ],
+      "answer": 0,
+      "solution": [
+        "The percentile equations are μ-σ=115 and μ+2σ=160. Subtract them to get 3σ=45, so σ=15.",
+        "Then μ=130, and the requested threshold standardizes to (145-130)/15=1.",
+        "The upper standard-normal tail at 1 is 0.158655."
+      ],
+      "feedback": {
+        "1": "The midpoint of asymmetrically placed percentiles is not the mean.",
+        "2": "The percentile separation is three SDs, not one.",
+        "3": "Standardize using SD, not variance.",
+        "4": "This is the lower tail at the threshold."
+      },
+      "skills": [
+        "solve normal location and scale",
+        "standardization",
+        "upper tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: solve normal location and scale, standardization, upper tail.",
+        "The percentile equations are μ-σ=115 and μ+2σ=160. Subtract them to get 3σ=45, so σ=15."
+      ],
+      "verification": {
+        "kind": "normal-two-quantiles",
+        "mu": 130,
+        "sd": 15,
+        "lower": 115,
+        "upper": 160,
+        "threshold": 145,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-e3-mode-median-percentiles:4",
+      "topicId": "urv-e3-mode-median-percentiles",
+      "family": "normal-two-quantiles"
     }
   ],
   "urv-f1-variance": [
@@ -3678,6 +8974,138 @@ export default {
       "id": "chapter:urv-f1-variance:1",
       "topicId": "urv-f1-variance",
       "family": "quadratic-moment"
+    },
+    {
+      "question": "A randomly selected loss belongs to class A with probability 0.4 and to class B otherwise. Conditional loss means are 160 and 300, and conditional standard deviations are 40 and 80, respectively. Calculate the unconditional loss variance. Round your answer to four decimal places.",
+      "choices": [
+        "$64.0000$",
+        "$95.8332$",
+        "$4480.0000$",
+        "$4704.0000$",
+        "$9184.0000$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The mean is 0.4(160)+0.6(300)=244.",
+        "The mean conditional variance is 4480. The variance of the class means is 0.4(0.6)(160-300)²=4704.",
+        "Total variance is the sum 4480+4704=9184."
+      ],
+      "feedback": {
+        "0": "This averages SDs rather than using total variance.",
+        "1": "This is the unconditional SD.",
+        "2": "This omits variation between class means.",
+        "3": "This omits variation within classes."
+      },
+      "skills": [
+        "mixture first moment",
+        "within-class and between-class variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: mixture first moment, within-class and between-class variance.",
+        "The mean is 0.4(160)+0.6(300)=244."
+      ],
+      "verification": {
+        "kind": "loss-mixture-variance",
+        "w": 0.4,
+        "means": [
+          160,
+          300
+        ],
+        "sds": [
+          40,
+          80
+        ],
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f1-variance:2",
+      "topicId": "urv-f1-variance",
+      "family": "two-class-loss-variance"
+    },
+    {
+      "question": "X has density 2(8-x)/64 for 0<x<8, and zero otherwise. Given X>2.4, calculate Var(X). Round your answer to four decimal places.",
+      "choices": [
+        "$1.3199$",
+        "$1.7422$",
+        "$2.6133$",
+        "$3.5556$",
+        "$5.2267$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The condition probability is ((8-2.4)/8)². Divide the original density by this probability on (2.4,8).",
+        "For Z=X-2.4, the conditional density is 2(5.6-z)/(5.6)² on (0,5.6). Its first two moments are 1.866667 and 5.226667.",
+        "The shift contributes no variance, so Var(X given X>2.4)=(5.6)²/18=1.742222. The conditional mean is 4.266667."
+      ],
+      "feedback": {
+        "0": "This is the conditional SD.",
+        "2": "This uses a conditional uniform distribution instead of the triangular density.",
+        "3": "This is the unconditional variance.",
+        "4": "This is the second raw moment of the shifted variable."
+      },
+      "skills": [
+        "conditional density",
+        "shifted support",
+        "two moments"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional density, shifted support, two moments.",
+        "The condition probability is ((8-2.4)/8)². Divide the original density by this probability on (2.4,8)."
+      ],
+      "verification": {
+        "kind": "triangular-variance",
+        "B": 8,
+        "lower": 2.4,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f1-variance:3",
+      "topicId": "urv-f1-variance",
+      "family": "triangular-conditional-variance"
+    },
+    {
+      "question": "7 independent policies each have claim probability 0.2. N is their claim count. Given that at least one claim occurred, calculate Var(N). Round your answer to four decimal places.",
+      "choices": [
+        "$0.7591$",
+        "$1.1200$",
+        "$1.4172$",
+        "$1.9373$",
+        "$3.8973$"
+      ],
+      "answer": 0,
+      "solution": [
+        "Unconditionally E[N]=1.4 and E[N²]=np(1-p)+(np)²=3.08.",
+        "The condition probability is 0.790285. Because the excluded zero outcome contributes nothing, divide both raw moments by this probability.",
+        "Conditional variance is 3.08/0.790285-(1.4/0.790285)²=0.75907."
+      ],
+      "feedback": {
+        "1": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability.",
+        "2": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability.",
+        "3": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability.",
+        "4": "Renormalize both raw moments and square the conditional mean; conditional variance is not simply unconditional variance divided by the condition probability."
+      },
+      "skills": [
+        "zero-truncated distribution",
+        "first and second moments",
+        "conditional variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-truncated distribution, first and second moments, conditional variance.",
+        "Unconditionally E[N]=1.4 and E[N²]=np(1-p)+(np)²=3.08."
+      ],
+      "verification": {
+        "kind": "binomial",
+        "n": 7,
+        "p": 0.2,
+        "target": "positive-variance"
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f1-variance:4",
+      "topicId": "urv-f1-variance",
+      "family": "conditional-binomial-variance"
     }
   ],
   "urv-f2-standard-deviation": [
@@ -3770,6 +9198,145 @@ export default {
       "id": "chapter:urv-f2-standard-deviation:1",
       "topicId": "urv-f2-standard-deviation",
       "family": "mixture-payment-sd"
+    },
+    {
+      "question": "A loss belongs to class A with probability 0.25 and otherwise to class B. Conditional means are 120 and 340, and conditional SDs are 40 and 80, respectively. Calculate the unconditional loss standard deviation. Round your answer to four decimal places.",
+      "choices": [
+        "$70.0000$",
+        "$72.1110$",
+        "$95.2628$",
+        "$119.4780$",
+        "$14275.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The unconditional mean is 285. Total variance combines mean within-class variance 5200 and variance of class means 9075.",
+        "Thus Var(X)=14275 and SD(X)=119.478031.",
+        "The requested standard deviation is 119.478031."
+      ],
+      "feedback": {
+        "0": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV.",
+        "1": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV.",
+        "2": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV.",
+        "4": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV."
+      },
+      "skills": [
+        "total variance",
+        "mixture mean",
+        "standard deviation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: total variance, mixture mean, standard deviation.",
+        "The unconditional mean is 285. Total variance combines mean within-class variance 5200 and variance of class means 9075."
+      ],
+      "verification": {
+        "kind": "loss-mixture-variance",
+        "w": 0.25,
+        "means": [
+          120,
+          340
+        ],
+        "sds": [
+          40,
+          80
+        ],
+        "target": "sd",
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f2-standard-deviation:2",
+      "topicId": "urv-f2-standard-deviation",
+      "family": "loss-mixture-sd"
+    },
+    {
+      "question": "X and Y have standard deviations 8 and 7 and correlation 0.3. Calculate the standard deviation of 2X-3Y. Round your answer to four decimal places.",
+      "choices": [
+        "$5.0000$",
+        "$22.2576$",
+        "$26.4008$",
+        "$29.9767$",
+        "$495.4000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "First Cov(X,Y)=0.3×8×7=16.8.",
+        "Then Var(2X-3Y)=4×8²+9×7²-12×16.8=495.4.",
+        "Take the square root to get the SD 22.257583."
+      ],
+      "feedback": {
+        "0": "Convert correlation to covariance, preserve coefficient signs in the cross term, and take the square root of the resulting variance.",
+        "2": "Convert correlation to covariance, preserve coefficient signs in the cross term, and take the square root of the resulting variance.",
+        "3": "Convert correlation to covariance, preserve coefficient signs in the cross term, and take the square root of the resulting variance.",
+        "4": "Convert correlation to covariance, preserve coefficient signs in the cross term, and take the square root of the resulting variance."
+      },
+      "skills": [
+        "correlation to covariance",
+        "linear variance",
+        "standard deviation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: correlation to covariance, linear variance, standard deviation.",
+        "First Cov(X,Y)=0.3×8×7=16.8."
+      ],
+      "verification": {
+        "kind": "correlated-linear",
+        "sx": 8,
+        "sy": 7,
+        "rho": 0.3,
+        "a": 2,
+        "b": -3,
+        "target": "sd",
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f2-standard-deviation:3",
+      "topicId": "urv-f2-standard-deviation",
+      "family": "correlated-linear-sd"
+    },
+    {
+      "question": "X has density 2(8-x)/64 on (0,8), and zero elsewhere. Given X>2.8, calculate its conditional standard deviation. Round your answer to four decimal places.",
+      "choices": [
+        "$1.2257$",
+        "$1.5011$",
+        "$1.5022$",
+        "$1.8856$",
+        "$2.1229$"
+      ],
+      "answer": 0,
+      "solution": [
+        "Normalize the density on (2.8,8). After subtracting 2.8, the conditional variable is decreasing triangular on (0,5.2).",
+        "Its conditional variance is (5.2)²/18=1.502222.",
+        "Take the square root: SD(X given X>2.8)=1.225652."
+      ],
+      "feedback": {
+        "1": "Use the variance of the conditional triangular density, then take its square root; the conditional mean and uniform SD are different quantities.",
+        "2": "Use the variance of the conditional triangular density, then take its square root; the conditional mean and uniform SD are different quantities.",
+        "3": "Use the variance of the conditional triangular density, then take its square root; the conditional mean and uniform SD are different quantities.",
+        "4": "Use the variance of the conditional triangular density, then take its square root; the conditional mean and uniform SD are different quantities."
+      },
+      "skills": [
+        "conditional density",
+        "conditional variance",
+        "standard deviation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional density, conditional variance, standard deviation.",
+        "Normalize the density on (2.8,8). After subtracting 2.8, the conditional variable is decreasing triangular on (0,5.2)."
+      ],
+      "verification": {
+        "kind": "triangular-variance",
+        "B": 8,
+        "lower": 2.8,
+        "target": "sd",
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f2-standard-deviation:4",
+      "topicId": "urv-f2-standard-deviation",
+      "family": "triangular-conditional-sd"
     }
   ],
   "urv-f3-coefficient-variation": [
@@ -3861,6 +9428,142 @@ export default {
       "id": "chapter:urv-f3-coefficient-variation:1",
       "topicId": "urv-f3-coefficient-variation",
       "family": "uniform-payment-cv"
+    },
+    {
+      "question": "A loss belongs to class A with probability 0.35 and otherwise to class B. Conditional means are 160 and 340, and conditional SDs are 40 and 80, respectively. Calculate the unconditional loss coefficient of variation. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2480$",
+        "$0.3099$",
+        "$0.3970$",
+        "$2.5191$",
+        "$43.6498$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The unconditional mean is 277. Total variance combines mean within-class variance 4720 and variance of class means 7371.",
+        "Thus Var(X)=12091 and SD(X)=109.959083.",
+        "The requested coefficient of variation is 0.396964 after dividing SD by the unconditional mean."
+      ],
+      "feedback": {
+        "0": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV.",
+        "1": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV.",
+        "3": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV.",
+        "4": "Include both within-class and between-class variance, take its square root, and use the unconditional mean when calculating CV."
+      },
+      "skills": [
+        "total variance",
+        "mixture mean",
+        "coefficient of variation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: total variance, mixture mean, coefficient of variation.",
+        "The unconditional mean is 277. Total variance combines mean within-class variance 4720 and variance of class means 7371."
+      ],
+      "verification": {
+        "kind": "loss-mixture-variance",
+        "w": 0.35,
+        "means": [
+          160,
+          340
+        ],
+        "sds": [
+          40,
+          80
+        ],
+        "target": "cv",
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f3-coefficient-variation:2",
+      "topicId": "urv-f3-coefficient-variation",
+      "family": "loss-mixture-cv"
+    },
+    {
+      "question": "A loss X is zero with probability 0.15. Conditional on a positive loss, its CDF is (x/7)^4 on (0,7). Calculate the coefficient of variation of X, including zero losses. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0998$",
+        "$0.2041$",
+        "$0.4749$",
+        "$1.0733$",
+        "$2.1059$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Include the positive-loss probability in both raw moments: E[X]=4.76 and E[X²]=27.766667.",
+        "Then SD(X)=√(E[X²]-(E[X])²)=2.260324.",
+        "CV(X)=SD(X)/E[X]=0.474858."
+      ],
+      "feedback": {
+        "0": "Include the zero-loss mass in both moments, take the square root to get SD, then divide by the unconditional mean.",
+        "1": "Include the zero-loss mass in both moments, take the square root to get SD, then divide by the unconditional mean.",
+        "3": "Include the zero-loss mass in both moments, take the square root to get SD, then divide by the unconditional mean.",
+        "4": "Include the zero-loss mass in both moments, take the square root to get SD, then divide by the unconditional mean."
+      },
+      "skills": [
+        "mixed raw moments",
+        "standard deviation",
+        "coefficient of variation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: mixed raw moments, standard deviation, coefficient of variation.",
+        "Include the positive-loss probability in both raw moments: E[X]=4.76 and E[X²]=27.766667."
+      ],
+      "verification": {
+        "kind": "mixed-power",
+        "p": 0.15000000000000002,
+        "B": 7,
+        "power": 4,
+        "target": "cv",
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f3-coefficient-variation:3",
+      "topicId": "urv-f3-coefficient-variation",
+      "family": "mixed-power-cv"
+    },
+    {
+      "question": "A gamma loss has mean 10 and squared coefficient of variation 1/2. Calculate its variance. Round your answer to four decimal places.",
+      "choices": [
+        "$7.0711$",
+        "$10.0000$",
+        "$25.0000$",
+        "$50.0000$",
+        "$100.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For a gamma loss, CV²=1/α, so the shape is recovered directly from the squared CV.",
+        "The mean αθ=10 gives α=2 and θ=5.",
+        "Var(X)=αθ²=2×5²=50. Equivalently, Var(X)=CV²(E[X])²."
+      ],
+      "feedback": {
+        "0": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter.",
+        "1": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter.",
+        "2": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter.",
+        "4": "Squared CV multiplies the squared mean to give variance; it is not itself a variance or a scale parameter."
+      },
+      "skills": [
+        "gamma moments",
+        "coefficient of variation",
+        "parameter inference"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: gamma moments, coefficient of variation, parameter inference.",
+        "For a gamma loss, CV²=1/α, so the shape is recovered directly from the squared CV."
+      ],
+      "verification": {
+        "kind": "gamma-cv",
+        "shape": 2,
+        "scale": 5,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-f3-coefficient-variation:4",
+      "topicId": "urv-f3-coefficient-variation",
+      "family": "gamma-cv-infer"
     }
   ],
   "urv-g1-deductibles": [
@@ -3946,6 +9649,136 @@ export default {
       "id": "chapter:urv-g1-deductibles:1",
       "topicId": "urv-g1-deductibles",
       "family": "exponential-infer"
+    },
+    {
+      "question": "An exponential loss has mean 700. A policy originally has an ordinary deductible of 350. The deductible is increased to 500, with no other changes. Calculate the ratio of the new expected payment per loss to the old expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$0.1929$",
+        "$0.4895$",
+        "$0.6065$",
+        "$0.8071$",
+        "$1.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For an ordinary deductible d, E[(X-d)₊]=700 exp(-d/700).",
+        "The new-to-old ratio is exp(-(500)/700)/exp(-350/700).",
+        "The original deductible cancels, leaving exp(-150/700)=0.807118. The ratio is per loss, so zero payments are included."
+      ],
+      "feedback": {
+        "0": "This is the fractional reduction, not the retained fraction.",
+        "1": "This is the new positive-payment probability, rather than its ratio to the old one.",
+        "2": "This is the old positive-payment probability.",
+        "4": "Per-payment means stay constant for this exponential model, but the question asks per loss."
+      },
+      "skills": [
+        "ordinary deductible mean",
+        "compare policy terms",
+        "per-loss basis"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: ordinary deductible mean, compare policy terms, per-loss basis.",
+        "For an ordinary deductible d, E[(X-d)₊]=700 exp(-d/700)."
+      ],
+      "verification": {
+        "kind": "deductible-ratio",
+        "mu": 700,
+        "d": 350,
+        "delta": 150,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g1-deductibles:2",
+      "topicId": "urv-g1-deductibles",
+      "family": "deductible-change-ratio"
+    },
+    {
+      "question": "A loss X is exponential with mean 900. A policy has a franchise deductible 350: it pays nothing when X≤350, and pays 0.6X when X>350. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$366.0172$",
+        "$508.3572$",
+        "$540.0000$",
+        "$750.0000$",
+        "$847.2620$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The covered probability is exp(-350/900)=0.67781.",
+        "Memorylessness gives E[X given X>350]=350+900. A franchise deductible retains the full loss after crossing the threshold.",
+        "Multiply covered probability, conditional full-loss mean, and insurer share: 0.6(350+900)exp(-350/900)=508.357184."
+      ],
+      "feedback": {
+        "0": "This subtracts the deductible from a covered loss, giving an ordinary-deductible payment.",
+        "2": "This ignores the franchise threshold.",
+        "3": "This gives the conditional mean among covered losses only.",
+        "4": "This omits coinsurance."
+      },
+      "skills": [
+        "franchise versus ordinary deductible",
+        "conditional exponential mean",
+        "coinsurance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: franchise versus ordinary deductible, conditional exponential mean, coinsurance.",
+        "The covered probability is exp(-350/900)=0.67781."
+      ],
+      "verification": {
+        "kind": "franchise-exponential",
+        "mu": 900,
+        "d": 350,
+        "share": 0.6,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g1-deductibles:3",
+      "topicId": "urv-g1-deductibles",
+      "family": "franchise-payment-mean"
+    },
+    {
+      "question": "Loss X is uniform on (0,2600). The insurer pays Y=0.65max(X-910,0), with no limit. Calculate the 75th percentile of payment per loss, including zero payments. Round your answer to four decimal places.",
+      "choices": [
+        "$549.2500$",
+        "$676.0000$",
+        "$823.8750$",
+        "$1040.0000$",
+        "$1267.5000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Payment has mass 0.35 at zero. Since this is below 0.75, the requested percentile is positive.",
+        "For positive y, P(Y≤y)=(910+y/0.65)/2600.",
+        "Set this to 0.75 and solve y=0.65(0.75×2600-910)=676."
+      ],
+      "feedback": {
+        "0": "This is the positive-payment mean rather than the per-loss 75th percentile.",
+        "2": "This gives the percentile conditional on positive payment.",
+        "3": "This omits the insurer share.",
+        "4": "This omits the deductible."
+      },
+      "skills": [
+        "zero-payment mass",
+        "payment CDF",
+        "percentile inversion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-payment mass, payment CDF, percentile inversion.",
+        "Payment has mass 0.35 at zero. Since this is below 0.75, the requested percentile is positive."
+      ],
+      "verification": {
+        "kind": "uniform-payment-quantile",
+        "B": 2600,
+        "d": 910.0000000000001,
+        "share": 0.65,
+        "u": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g1-deductibles:4",
+      "topicId": "urv-g1-deductibles",
+      "family": "uniform-payment-quantile"
     }
   ],
   "urv-g2-coinsurance": [
@@ -4036,6 +9869,136 @@ export default {
       "id": "chapter:urv-g2-coinsurance:1",
       "topicId": "urv-g2-coinsurance",
       "family": "cap-infer"
+    },
+    {
+      "question": "A loss X is exponential with mean 700. A policy has a franchise deductible 200: it pays nothing when X≤200, and pays 0.75X when X>200. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$394.5256$",
+        "$507.2472$",
+        "$525.0000$",
+        "$675.0000$",
+        "$676.3296$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The covered probability is exp(-200/700)=0.751477.",
+        "Memorylessness gives E[X given X>200]=200+700. A franchise deductible retains the full loss after crossing the threshold.",
+        "Multiply covered probability, conditional full-loss mean, and insurer share: 0.75(200+700)exp(-200/700)=507.247173."
+      ],
+      "feedback": {
+        "0": "This subtracts the deductible from a covered loss, giving an ordinary-deductible payment.",
+        "2": "This ignores the franchise threshold.",
+        "3": "This gives the conditional mean among covered losses only.",
+        "4": "This omits coinsurance."
+      },
+      "skills": [
+        "franchise versus ordinary deductible",
+        "conditional exponential mean",
+        "coinsurance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: franchise versus ordinary deductible, conditional exponential mean, coinsurance.",
+        "The covered probability is exp(-200/700)=0.751477."
+      ],
+      "verification": {
+        "kind": "franchise-exponential",
+        "mu": 700,
+        "d": 200,
+        "share": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g2-coinsurance:2",
+      "topicId": "urv-g2-coinsurance",
+      "family": "franchise-payment-mean"
+    },
+    {
+      "question": "A loss X is exponential with mean 1100. There is no deductible. The insurer pays 0.75X, subject to a maximum insurer payment of 500. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$102.2184$",
+        "$227.2522$",
+        "$301.3425$",
+        "$374.9662$",
+        "$825.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The final cap is reached at loss 666.666667, since coinsurance is applied before the payment cap.",
+        "For 0≤y<500, P(Y>y)=exp[-y/(0.75×1100)].",
+        "Integrate this survival function from 0 to 500: E[Y]=0.75×1100[1-exp(-500/(0.75×1100))]=374.96616."
+      ],
+      "feedback": {
+        "0": "This omits the point mass at the payment cap.",
+        "1": "This pays the cap at every uncapped covered outcome.",
+        "2": "This caps the loss before coinsurance instead of capping insurer payment.",
+        "4": "This omits the payment limit."
+      },
+      "skills": [
+        "final payment cap",
+        "coinsurance order",
+        "survival integration"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: final payment cap, coinsurance order, survival integration.",
+        "The final cap is reached at loss 666.666667, since coinsurance is applied before the payment cap."
+      ],
+      "verification": {
+        "kind": "limited-exponential",
+        "mu": 1100,
+        "cap": 500,
+        "share": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g2-coinsurance:3",
+      "topicId": "urv-g2-coinsurance",
+      "family": "limited-exponential-infer"
+    },
+    {
+      "question": "Loss X is uniform on (0,2400). The insurer pays Y=0.75max(X-720,0), with no limit. Calculate the 75th percentile of payment per loss, including zero payments. Round your answer to four decimal places.",
+      "choices": [
+        "$630.0000$",
+        "$810.0000$",
+        "$945.0000$",
+        "$1080.0000$",
+        "$1350.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Payment has mass 0.3 at zero. Since this is below 0.75, the requested percentile is positive.",
+        "For positive y, P(Y≤y)=(720+y/0.75)/2400.",
+        "Set this to 0.75 and solve y=0.75(0.75×2400-720)=810."
+      ],
+      "feedback": {
+        "0": "This is the positive-payment mean rather than the per-loss 75th percentile.",
+        "2": "This gives the percentile conditional on positive payment.",
+        "3": "This omits the insurer share.",
+        "4": "This omits the deductible."
+      },
+      "skills": [
+        "zero-payment mass",
+        "payment CDF",
+        "percentile inversion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-payment mass, payment CDF, percentile inversion.",
+        "Payment has mass 0.3 at zero. Since this is below 0.75, the requested percentile is positive."
+      ],
+      "verification": {
+        "kind": "uniform-payment-quantile",
+        "B": 2400,
+        "d": 720.0000000000001,
+        "share": 0.75,
+        "u": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g2-coinsurance:4",
+      "topicId": "urv-g2-coinsurance",
+      "family": "uniform-payment-quantile"
     }
   ],
   "urv-g3-benefit-limits": [
@@ -4125,6 +10088,135 @@ export default {
       "id": "chapter:urv-g3-benefit-limits:1",
       "topicId": "urv-g3-benefit-limits",
       "family": "payment-per-payment"
+    },
+    {
+      "question": "A loss X is exponential with mean 900. There is no deductible. The insurer pays 0.6X, subject to a maximum insurer payment of 800. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$235.4171$",
+        "$317.9994$",
+        "$417.2576$",
+        "$540.0000$",
+        "$618.1594$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The final cap is reached at loss 1333.333333, since coinsurance is applied before the payment cap.",
+        "For 0≤y<800, P(Y>y)=exp[-y/(0.6×900)].",
+        "Integrate this survival function from 0 to 800: E[Y]=0.6×900[1-exp(-800/(0.6×900))]=417.257624."
+      ],
+      "feedback": {
+        "0": "This omits the point mass at the payment cap.",
+        "1": "This caps the loss before coinsurance instead of capping insurer payment.",
+        "3": "This omits the payment limit.",
+        "4": "This pays the cap at every uncapped covered outcome."
+      },
+      "skills": [
+        "final payment cap",
+        "coinsurance order",
+        "survival integration"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: final payment cap, coinsurance order, survival integration.",
+        "The final cap is reached at loss 1333.333333, since coinsurance is applied before the payment cap."
+      ],
+      "verification": {
+        "kind": "limited-exponential",
+        "mu": 900,
+        "cap": 800,
+        "share": 0.6,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g3-benefit-limits:2",
+      "topicId": "urv-g3-benefit-limits",
+      "family": "limited-exponential-infer"
+    },
+    {
+      "question": "Loss X is exponential with mean 700. The payment is Y=min(0.75max(X-250,0),500). Calculate the probability that payment is strictly between zero and the cap. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2699$",
+        "$0.3003$",
+        "$0.4297$",
+        "$0.6997$",
+        "$0.7301$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The payment is positive when X>250, and reaches its cap when X≥916.666667.",
+        "The event 0<Y<500 corresponds to 250<X<916.666667. Both the zero atom and the cap atom are excluded.",
+        "Subtract the two exponential survival probabilities: exp(-250/700)-exp(-(250+500/0.75)/700)=0.429724."
+      ],
+      "feedback": {
+        "0": "This gives payment exactly at the cap.",
+        "1": "This gives zero payment.",
+        "3": "This includes the atom at the payment cap.",
+        "4": "This includes zero payments."
+      },
+      "skills": [
+        "invert a payment event",
+        "zero and cap atoms",
+        "strict endpoints"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: invert a payment event, zero and cap atoms, strict endpoints.",
+        "The payment is positive when X>250, and reaches its cap when X≥916.666667."
+      ],
+      "verification": {
+        "kind": "payment-interior",
+        "mu": 700,
+        "d": 250,
+        "cap": 500,
+        "share": 0.75,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g3-benefit-limits:3",
+      "topicId": "urv-g3-benefit-limits",
+      "family": "payment-zero-and-cap"
+    },
+    {
+      "question": "Independent daily inspections detect a defect with probability 0.325. Inspections stop on the first detection or after 7 inspections, whichever occurs first. Calculate the expected number of inspections performed. Round your answer to four decimal places.",
+      "choices": [
+        "$0.4469$",
+        "$1.8805$",
+        "$2.4336$",
+        "$2.8805$",
+        "$3.0769$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Let T be the first successful inspection, so the number performed is min(T,h).",
+        "Inspection j is performed exactly when the first j-1 inspections all fail. Thus E[min(T,7)]=Σ from j=1 to 7 of (1-0.325)^(j-1).",
+        "The finite geometric sum is [1-(1-0.325)^7]/0.325=2.880477."
+      ],
+      "feedback": {
+        "0": "This counts only the all-failure outcome and misses earlier stops.",
+        "1": "This counts only inspections after the first one.",
+        "2": "This omits the censored outcome where no detection occurs by the limit.",
+        "4": "This is the uncapped waiting-time mean."
+      },
+      "skills": [
+        "geometric waiting time",
+        "censoring",
+        "tail-sum expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: geometric waiting time, censoring, tail-sum expectation.",
+        "Let T be the first successful inspection, so the number performed is min(T,h)."
+      ],
+      "verification": {
+        "kind": "geometric-cap",
+        "p": 0.325,
+        "horizon": 7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g3-benefit-limits:4",
+      "topicId": "urv-g3-benefit-limits",
+      "family": "geometric-capped-count"
     }
   ],
   "urv-g4-inflation": [
@@ -4217,6 +10309,137 @@ export default {
       "id": "chapter:urv-g4-inflation:1",
       "topicId": "urv-g4-inflation",
       "family": "inflation-tail"
+    },
+    {
+      "question": "An original loss X is uniform on (0,1200). Losses increase by 10%. A fixed franchise deductible of 400 applies to the inflated loss: the insurer pays nothing at or below the threshold and 70% of the full inflated loss above it. Calculate expected payment per original loss. Round your answer to four decimal places.",
+      "choices": [
+        "$224.4242$",
+        "$410.6667$",
+        "$419.5758$",
+        "$462.0000$",
+        "$599.3939$"
+      ],
+      "answer": 2,
+      "solution": [
+        "The inflated loss Z is uniform on (0,1320). Its density is 1/1320.",
+        "The payment is 0.7Z for Z>400, so integrate 0.7z/1320 from 400 to 1320.",
+        "The result is 0.7[(1320)²-400²]/(2×1320)=419.575758."
+      ],
+      "feedback": {
+        "0": "This uses an ordinary deductible rather than the stated franchise deductible.",
+        "1": "This inflates the original mean payment and effectively inflates the franchise threshold too.",
+        "3": "This ignores the threshold.",
+        "4": "This omits the insurer share."
+      },
+      "skills": [
+        "inflate the loss support",
+        "fixed franchise threshold",
+        "payment integration"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: inflate the loss support, fixed franchise threshold, payment integration.",
+        "The inflated loss Z is uniform on (0,1320). Its density is 1/1320."
+      ],
+      "verification": {
+        "kind": "inflation-franchise",
+        "B": 1200,
+        "factor": 1.1,
+        "d": 400,
+        "share": 0.7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g4-inflation:2",
+      "topicId": "urv-g4-inflation",
+      "family": "inflation-franchise-mean"
+    },
+    {
+      "question": "Loss X is uniform on (0,1800). The insurer pays Y=0.7max(X-450,0), with no limit. Calculate the 75th percentile of payment per loss, including zero payments. Round your answer to four decimal places.",
+      "choices": [
+        "$472.5000$",
+        "$630.0000$",
+        "$708.7500$",
+        "$900.0000$",
+        "$945.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive.",
+        "For positive y, P(Y≤y)=(450+y/0.7)/1800.",
+        "Set this to 0.75 and solve y=0.7(0.75×1800-450)=630."
+      ],
+      "feedback": {
+        "0": "This is the positive-payment mean rather than the per-loss 75th percentile.",
+        "2": "This gives the percentile conditional on positive payment.",
+        "3": "This omits the insurer share.",
+        "4": "This omits the deductible."
+      },
+      "skills": [
+        "zero-payment mass",
+        "payment CDF",
+        "percentile inversion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-payment mass, payment CDF, percentile inversion.",
+        "Payment has mass 0.25 at zero. Since this is below 0.75, the requested percentile is positive."
+      ],
+      "verification": {
+        "kind": "uniform-payment-quantile",
+        "B": 1800,
+        "d": 450.0,
+        "share": 0.7,
+        "u": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g4-inflation:3",
+      "topicId": "urv-g4-inflation",
+      "family": "uniform-payment-quantile"
+    },
+    {
+      "question": "An exponential loss has mean 800. A policy originally has an ordinary deductible of 400. The deductible is increased to 600, with no other changes. Calculate the ratio of the new expected payment per loss to the old expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2212$",
+        "$0.4724$",
+        "$0.6065$",
+        "$0.7788$",
+        "$1.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For an ordinary deductible d, E[(X-d)₊]=800 exp(-d/800).",
+        "The new-to-old ratio is exp(-(600)/800)/exp(-400/800).",
+        "The original deductible cancels, leaving exp(-200/800)=0.778801. The ratio is per loss, so zero payments are included."
+      ],
+      "feedback": {
+        "0": "This is the fractional reduction, not the retained fraction.",
+        "1": "This is the new positive-payment probability, rather than its ratio to the old one.",
+        "2": "This is the old positive-payment probability.",
+        "4": "Per-payment means stay constant for this exponential model, but the question asks per loss."
+      },
+      "skills": [
+        "ordinary deductible mean",
+        "compare policy terms",
+        "per-loss basis"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: ordinary deductible mean, compare policy terms, per-loss basis.",
+        "For an ordinary deductible d, E[(X-d)₊]=800 exp(-d/800)."
+      ],
+      "verification": {
+        "kind": "deductible-ratio",
+        "mu": 800,
+        "d": 400,
+        "delta": 200,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-g4-inflation:4",
+      "topicId": "urv-g4-inflation",
+      "family": "deductible-change-ratio"
     }
   ],
   "urv-h1-loss-variable": [
@@ -4307,6 +10530,140 @@ export default {
       "id": "chapter:urv-h1-loss-variable:1",
       "topicId": "urv-h1-loss-variable",
       "family": "total-variance-mixture"
+    },
+    {
+      "question": "A randomly selected loss belongs to class A with probability 0.35 and to class B otherwise. Conditional loss means are 100 and 460, and conditional standard deviations are 40 and 80, respectively. Calculate the unconditional loss variance. Round your answer to four decimal places.",
+      "choices": [
+        "$66.0000$",
+        "$184.9432$",
+        "$4720.0000$",
+        "$29484.0000$",
+        "$34204.0000$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The mean is 0.35(100)+0.65(460)=334.",
+        "The mean conditional variance is 4720. The variance of the class means is 0.35(0.65)(100-460)²=29484.",
+        "Total variance is the sum 4720+29484=34204."
+      ],
+      "feedback": {
+        "0": "This averages SDs rather than using total variance.",
+        "1": "This is the unconditional SD.",
+        "2": "This omits variation between class means.",
+        "3": "This omits variation within classes."
+      },
+      "skills": [
+        "mixture first moment",
+        "within-class and between-class variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: mixture first moment, within-class and between-class variance.",
+        "The mean is 0.35(100)+0.65(460)=334."
+      ],
+      "verification": {
+        "kind": "loss-mixture-variance",
+        "w": 0.35,
+        "means": [
+          100,
+          460
+        ],
+        "sds": [
+          40,
+          80
+        ],
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h1-loss-variable:2",
+      "topicId": "urv-h1-loss-variable",
+      "family": "two-class-loss-variance"
+    },
+    {
+      "question": "A nonnegative loss X has CDF F(x)=0 for x<0, F(x)=0.125+(1-0.125)(x/9)^2 for 0≤x<9, and F(x)=1 for x≥9. Calculate E[X]. Round your answer to four decimal places.",
+      "choices": [
+        "$3.9375$",
+        "$5.2500$",
+        "$6.0000$",
+        "$6.3750$",
+        "$35.4375$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The jump at zero is 0.125. It contributes zero to E[X].",
+        "On (0,9), the density is (1-0.125)2x^1/9^2.",
+        "Integrating x times this density gives (1-0.125)9×2/(2+1)=5.25."
+      ],
+      "feedback": {
+        "0": "This replaces the power CDF with a uniform distribution.",
+        "2": "This is the mean conditional on X>0.",
+        "3": "The point mass is at zero, not at the upper endpoint.",
+        "4": "This is the second raw moment."
+      },
+      "skills": [
+        "CDF jump",
+        "continuous component",
+        "mixed expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CDF jump, continuous component, mixed expectation.",
+        "The jump at zero is 0.125. It contributes zero to E[X]."
+      ],
+      "verification": {
+        "kind": "mixed-power",
+        "p": 0.125,
+        "B": 9,
+        "power": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h1-loss-variable:3",
+      "topicId": "urv-h1-loss-variable",
+      "family": "mixed-cdf-mean"
+    },
+    {
+      "question": "T is the sum of 3 independent exponential lifetimes, each with mean 4. A lifetime is recorded only if T>8. Calculate the mean of T among recorded lifetimes. Round your answer to four decimal places.",
+      "choices": [
+        "$10.2855$",
+        "$12.0000$",
+        "$15.2000$",
+        "$17.7337$",
+        "$20.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "T has a gamma density with shape 3 and scale 4. Its recording probability is 0.676676.",
+        "Multiplying its density by t gives 12 times the gamma density with shape 4 and the same scale. Thus the restricted first moment is 10.285482.",
+        "Divide by the recording probability to obtain 15.2. A multistage lifetime does not have exponential memorylessness."
+      ],
+      "feedback": {
+        "0": "This is a restricted first moment before conditioning.",
+        "1": "This is the unconditional mean.",
+        "3": "The discarded lower region contributes a nonzero first moment; the numerator must be restricted too.",
+        "4": "This applies exponential memorylessness to a gamma variable with shape greater than one."
+      },
+      "skills": [
+        "gamma from exponential sums",
+        "truncated moment",
+        "conditional normalization"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: gamma from exponential sums, truncated moment, conditional normalization.",
+        "T has a gamma density with shape 3 and scale 4. Its recording probability is 0.676676."
+      ],
+      "verification": {
+        "kind": "gamma-truncated-mean",
+        "shape": 3,
+        "scale": 4,
+        "threshold": 8,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h1-loss-variable:4",
+      "topicId": "urv-h1-loss-variable",
+      "family": "gamma-truncated-mean"
     }
   ],
   "urv-h2-payment-variable": [
@@ -4396,6 +10753,137 @@ export default {
       "id": "chapter:urv-h2-payment-variable:1",
       "topicId": "urv-h2-payment-variable",
       "family": "cdf-atom-conditional"
+    },
+    {
+      "question": "Loss X is exponential with mean 700. The payment is Y=min(0.75max(X-300,0),300). Calculate the probability that payment is strictly between zero and the cap. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2836$",
+        "$0.3486$",
+        "$0.3679$",
+        "$0.6321$",
+        "$0.6514$"
+      ],
+      "answer": 0,
+      "solution": [
+        "The payment is positive when X>300, and reaches its cap when X≥700.",
+        "The event 0<Y<300 corresponds to 300<X<700. Both the zero atom and the cap atom are excluded.",
+        "Subtract the two exponential survival probabilities: exp(-300/700)-exp(-(300+300/0.75)/700)=0.28356."
+      ],
+      "feedback": {
+        "1": "This gives zero payment.",
+        "2": "This gives payment exactly at the cap.",
+        "3": "This includes zero payments.",
+        "4": "This includes the atom at the payment cap."
+      },
+      "skills": [
+        "invert a payment event",
+        "zero and cap atoms",
+        "strict endpoints"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: invert a payment event, zero and cap atoms, strict endpoints.",
+        "The payment is positive when X>300, and reaches its cap when X≥700."
+      ],
+      "verification": {
+        "kind": "payment-interior",
+        "mu": 700,
+        "d": 300,
+        "cap": 300,
+        "share": 0.75,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h2-payment-variable:2",
+      "topicId": "urv-h2-payment-variable",
+      "family": "payment-zero-and-cap"
+    },
+    {
+      "question": "A loss X is exponential with mean 600. A policy has a franchise deductible 450: it pays nothing when X≤450, and pays 0.8X when X>450. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$226.7359$",
+        "$396.7879$",
+        "$480.0000$",
+        "$495.9849$",
+        "$840.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The covered probability is exp(-450/600)=0.472367.",
+        "Memorylessness gives E[X given X>450]=450+600. A franchise deductible retains the full loss after crossing the threshold.",
+        "Multiply covered probability, conditional full-loss mean, and insurer share: 0.8(450+600)exp(-450/600)=396.787904."
+      ],
+      "feedback": {
+        "0": "This subtracts the deductible from a covered loss, giving an ordinary-deductible payment.",
+        "2": "This ignores the franchise threshold.",
+        "3": "This omits coinsurance.",
+        "4": "This gives the conditional mean among covered losses only."
+      },
+      "skills": [
+        "franchise versus ordinary deductible",
+        "conditional exponential mean",
+        "coinsurance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: franchise versus ordinary deductible, conditional exponential mean, coinsurance.",
+        "The covered probability is exp(-450/600)=0.472367."
+      ],
+      "verification": {
+        "kind": "franchise-exponential",
+        "mu": 600,
+        "d": 450,
+        "share": 0.8,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h2-payment-variable:3",
+      "topicId": "urv-h2-payment-variable",
+      "family": "franchise-payment-mean"
+    },
+    {
+      "question": "Loss X is uniform on (0,1600). The insurer pays Y=0.7max(X-480,0), with no limit. Calculate the 75th percentile of payment per loss, including zero payments. Round your answer to four decimal places.",
+      "choices": [
+        "$392.0000$",
+        "$504.0000$",
+        "$588.0000$",
+        "$720.0000$",
+        "$840.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Payment has mass 0.3 at zero. Since this is below 0.75, the requested percentile is positive.",
+        "For positive y, P(Y≤y)=(480+y/0.7)/1600.",
+        "Set this to 0.75 and solve y=0.7(0.75×1600-480)=504."
+      ],
+      "feedback": {
+        "0": "This is the positive-payment mean rather than the per-loss 75th percentile.",
+        "2": "This gives the percentile conditional on positive payment.",
+        "3": "This omits the insurer share.",
+        "4": "This omits the deductible."
+      },
+      "skills": [
+        "zero-payment mass",
+        "payment CDF",
+        "percentile inversion"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: zero-payment mass, payment CDF, percentile inversion.",
+        "Payment has mass 0.3 at zero. Since this is below 0.75, the requested percentile is positive."
+      ],
+      "verification": {
+        "kind": "uniform-payment-quantile",
+        "B": 1600,
+        "d": 480.00000000000006,
+        "share": 0.7,
+        "u": 0.75,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h2-payment-variable:4",
+      "topicId": "urv-h2-payment-variable",
+      "family": "uniform-payment-quantile"
     }
   ],
   "urv-h3-moments-loss-payment": [
@@ -4487,6 +10975,135 @@ export default {
       "id": "chapter:urv-h3-moments-loss-payment:1",
       "topicId": "urv-h3-moments-loss-payment",
       "family": "uniform-payment-variance"
+    },
+    {
+      "question": "A loss X is exponential with mean 1300. There is no deductible. The insurer pays 0.7X, subject to a maximum insurer payment of 400. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$65.9414$",
+        "$142.2722$",
+        "$241.0213$",
+        "$323.6692$",
+        "$910.0000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "The final cap is reached at loss 571.428571, since coinsurance is applied before the payment cap.",
+        "For 0≤y<400, P(Y>y)=exp[-y/(0.7×1300)].",
+        "Integrate this survival function from 0 to 400: E[Y]=0.7×1300[1-exp(-400/(0.7×1300))]=323.669186."
+      ],
+      "feedback": {
+        "0": "This omits the point mass at the payment cap.",
+        "1": "This pays the cap at every uncapped covered outcome.",
+        "2": "This caps the loss before coinsurance instead of capping insurer payment.",
+        "4": "This omits the payment limit."
+      },
+      "skills": [
+        "final payment cap",
+        "coinsurance order",
+        "survival integration"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: final payment cap, coinsurance order, survival integration.",
+        "The final cap is reached at loss 571.428571, since coinsurance is applied before the payment cap."
+      ],
+      "verification": {
+        "kind": "limited-exponential",
+        "mu": 1300,
+        "cap": 400,
+        "share": 0.7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h3-moments-loss-payment:2",
+      "topicId": "urv-h3-moments-loss-payment",
+      "family": "limited-exponential-infer"
+    },
+    {
+      "question": "A loss X is exponential with mean 700. A policy has a franchise deductible 400: it pays nothing when X≤400, and pays 0.7X when X>400. Calculate expected payment per loss. Round your answer to four decimal places.",
+      "choices": [
+        "$276.7119$",
+        "$434.8330$",
+        "$490.0000$",
+        "$621.1899$",
+        "$770.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The covered probability is exp(-400/700)=0.564718.",
+        "Memorylessness gives E[X given X>400]=400+700. A franchise deductible retains the full loss after crossing the threshold.",
+        "Multiply covered probability, conditional full-loss mean, and insurer share: 0.7(400+700)exp(-400/700)=434.832954."
+      ],
+      "feedback": {
+        "0": "This subtracts the deductible from a covered loss, giving an ordinary-deductible payment.",
+        "2": "This ignores the franchise threshold.",
+        "3": "This omits coinsurance.",
+        "4": "This gives the conditional mean among covered losses only."
+      },
+      "skills": [
+        "franchise versus ordinary deductible",
+        "conditional exponential mean",
+        "coinsurance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: franchise versus ordinary deductible, conditional exponential mean, coinsurance.",
+        "The covered probability is exp(-400/700)=0.564718."
+      ],
+      "verification": {
+        "kind": "franchise-exponential",
+        "mu": 700,
+        "d": 400,
+        "share": 0.7,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h3-moments-loss-payment:3",
+      "topicId": "urv-h3-moments-loss-payment",
+      "family": "franchise-payment-mean"
+    },
+    {
+      "question": "The claim count N takes values 0 through 4, with P(N=k)=c(k+1). A contract pays 100 for each claim in excess of the first 2 claims. Calculate expected payment per contract. Round your answer to four decimal places.",
+      "choices": [
+        "$60.0000$",
+        "$66.6667$",
+        "$93.3333$",
+        "$266.6667$",
+        "$16000.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Normalize the probabilities: c[1+2+⋯+5]=1, giving c=2/(5×6).",
+        "The payment at count k is 100 max(k-2,0). Its possible values are 0, 0, 0, 100, 200.",
+        "Weight each payment by c(k+1); the expected payment is 93.333333."
+      ],
+      "feedback": {
+        "0": "The supported counts are not equally likely.",
+        "1": "A positive-part function cannot be moved outside an expectation.",
+        "3": "This ignores the count deductible.",
+        "4": "This is the second raw moment rather than the mean."
+      },
+      "skills": [
+        "PMF normalization",
+        "discrete payment transformation",
+        "expectation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: PMF normalization, discrete payment transformation, expectation.",
+        "Normalize the probabilities: c[1+2+⋯+5]=1, giving c=2/(5×6)."
+      ],
+      "verification": {
+        "kind": "finite-payment",
+        "n": 5,
+        "scale": 100,
+        "d": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:urv-h3-moments-loss-payment:4",
+      "topicId": "urv-h3-moments-loss-payment",
+      "family": "finite-payment-moments"
     }
   ],
   "mrv-a1-joint-distributions": [
@@ -4572,6 +11189,133 @@ export default {
       "id": "chapter:mrv-a1-joint-distributions:1",
       "topicId": "mrv-a1-joint-distributions",
       "family": "joint-linear-variance"
+    },
+    {
+      "question": "Integer-valued X and Y have joint PMF P(X=x,Y=y)=c for nonnegative integers satisfying x+y≤7, and zero otherwise. Calculate P(X-Y>3). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0938$",
+        "$0.1667$",
+        "$0.2500$",
+        "$0.5000$",
+        "$0.8333$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The triangular lattice contains (7+1)(7+2)/2=36 points, so c=1/36.",
+        "There are 6 support points with x>y+3. The inequality is strict.",
+        "The event probability is 6/36=0.166667."
+      ],
+      "feedback": {
+        "0": "This uses the full square rather than the triangular support.",
+        "2": "This includes the boundary x-y=t.",
+        "3": "A positive threshold and excluded equality outcomes prevent a simple one-half answer.",
+        "4": "This gives the complementary event."
+      },
+      "skills": [
+        "joint discrete support",
+        "PMF normalization",
+        "strict difference event"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: joint discrete support, PMF normalization, strict difference event.",
+        "The triangular lattice contains (7+1)(7+2)/2=36 points, so c=1/36."
+      ],
+      "verification": {
+        "kind": "joint-discrete-triangle",
+        "B": 7,
+        "threshold": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-a1-joint-distributions:2",
+      "topicId": "mrv-a1-joint-distributions",
+      "family": "joint-discrete-triangle-event"
+    },
+    {
+      "question": "X and Y have equal joint probability at every pair of nonnegative integers with x+y≤8, and zero probability elsewhere. Calculate E[X given Y=1]. Round your answer to four decimal places.",
+      "choices": [
+        "$2.6667$",
+        "$3.5000$",
+        "$4.0000$",
+        "$4.5000$",
+        "$7.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "At Y=1, the allowable X values are 0,1,…,7.",
+        "The joint PMF is constant at these 8 points, so the conditional PMF is 1/8 at each value.",
+        "The conditional mean is (8-1)/2=3.5."
+      ],
+      "feedback": {
+        "0": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "2": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "3": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "4": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row."
+      },
+      "skills": [
+        "joint support row",
+        "conditional PMF",
+        "conditional first moment"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: joint support row, conditional PMF, conditional first moment.",
+        "At Y=1, the allowable X values are 0,1,…,7."
+      ],
+      "verification": {
+        "kind": "joint-discrete-triangle-mean",
+        "B": 8,
+        "y": 1,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-a1-joint-distributions:3",
+      "topicId": "mrv-a1-joint-distributions",
+      "family": "joint-discrete-triangle-mean"
+    },
+    {
+      "question": "U is uniform on the integers 1 through 7. Errors E and F each take values ±√2 with equal probability. U, E, and F are mutually independent. Measurements are X=U+E and Y=4(7-U)+F. Calculate Cov(X,Y). Round your answer to four decimal places.",
+      "choices": [
+        "$-80.0000$",
+        "$-24.0000$",
+        "$-16.0000$",
+        "$0.0000$",
+        "$16.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Expand the covariance using bilinearity. Cross terms involving independent errors vanish.",
+        "The constant term 28 contributes zero covariance, leaving Cov(U,-4U)=-4Var(U).",
+        "For this discrete uniform U, Var(U)=(49-1)/12. Thus Cov(X,Y)=-16."
+      ],
+      "feedback": {
+        "0": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "1": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "3": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "4": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²]."
+      },
+      "skills": [
+        "shared discrete variable",
+        "covariance bilinearity",
+        "sign of dependence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: shared discrete variable, covariance bilinearity, sign of dependence.",
+        "Expand the covariance using bilinearity. Cross terms involving independent errors vanish."
+      ],
+      "verification": {
+        "kind": "shared-discrete-cov",
+        "B": 7,
+        "a": 4,
+        "noise": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-a1-joint-distributions:4",
+      "topicId": "mrv-a1-joint-distributions",
+      "family": "shared-discrete-covariance"
     }
   ],
   "mrv-a2-conditional-distributions": [
@@ -4662,6 +11406,133 @@ export default {
       "id": "chapter:mrv-a2-conditional-distributions:1",
       "topicId": "mrv-a2-conditional-distributions",
       "family": "joint-table-conditional-moment"
+    },
+    {
+      "question": "X and Y have equal joint probability at every pair of nonnegative integers with x+y≤6, and zero probability elsewhere. Calculate E[X given Y=1]. Round your answer to four decimal places.",
+      "choices": [
+        "$2.0000$",
+        "$2.5000$",
+        "$3.0000$",
+        "$3.5000$",
+        "$5.0000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "At Y=1, the allowable X values are 0,1,…,5.",
+        "The joint PMF is constant at these 6 points, so the conditional PMF is 1/6 at each value.",
+        "The conditional mean is (6-1)/2=2.5."
+      ],
+      "feedback": {
+        "0": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "2": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "3": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "4": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row."
+      },
+      "skills": [
+        "joint support row",
+        "conditional PMF",
+        "conditional first moment"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: joint support row, conditional PMF, conditional first moment.",
+        "At Y=1, the allowable X values are 0,1,…,5."
+      ],
+      "verification": {
+        "kind": "joint-discrete-triangle-mean",
+        "B": 6,
+        "y": 1,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-a2-conditional-distributions:2",
+      "topicId": "mrv-a2-conditional-distributions",
+      "family": "joint-discrete-triangle-mean"
+    },
+    {
+      "question": "X and Y have a constant joint PMF on nonnegative integer pairs satisfying x+y≤9, and zero elsewhere. Calculate Var(X given Y=3). Round your answer to four decimal places.",
+      "choices": [
+        "$2.0000$",
+        "$3.0000$",
+        "$4.0000$",
+        "$9.0000$",
+        "$13.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Given Y=3, X is discrete uniform on the 7 integers 0 through 6.",
+        "The conditional first moment is 3, and second moment is 13.",
+        "Subtract the squared conditional mean: Var(X given Y=3)=6(6+2)/12=4."
+      ],
+      "feedback": {
+        "0": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction.",
+        "1": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction.",
+        "3": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction.",
+        "4": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction."
+      },
+      "skills": [
+        "conditional discrete support",
+        "conditional raw moments",
+        "conditional variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional discrete support, conditional raw moments, conditional variance.",
+        "Given Y=3, X is discrete uniform on the 7 integers 0 through 6."
+      ],
+      "verification": {
+        "kind": "joint-discrete-triangle-variance",
+        "B": 9,
+        "y": 3,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-a2-conditional-distributions:3",
+      "topicId": "mrv-a2-conditional-distributions",
+      "family": "joint-discrete-triangle-variance"
+    },
+    {
+      "question": "Independent claim counts X and Y from two branches are Poisson with means 1.2 and 0.6. Given X+Y=4, calculate P(X≥2). Round your answer to four decimal places.",
+      "choices": [
+        "$0.1975$",
+        "$0.3374$",
+        "$0.6667$",
+        "$0.8889$",
+        "$0.9877$"
+      ],
+      "answer": 3,
+      "solution": [
+        "For independent Poisson counts, the conditional distribution X given X+Y=n is binomial with p=λX/(λX+λY)=0.666667.",
+        "The requested tail is 1-P(X=0)-P(X=1) for that conditional binomial with n=4.",
+        "Evaluate 1-(1-p)^4-4p(1-p)^3=0.888889."
+      ],
+      "feedback": {
+        "0": "Conditioning on the total changes the count distribution to binomial; remove both zero and one for the requested tail.",
+        "1": "Conditioning on the total changes the count distribution to binomial; remove both zero and one for the requested tail.",
+        "2": "Conditioning on the total changes the count distribution to binomial; remove both zero and one for the requested tail.",
+        "4": "Conditioning on the total changes the count distribution to binomial; remove both zero and one for the requested tail."
+      },
+      "skills": [
+        "independent Poisson totals",
+        "conditional binomial",
+        "tail probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent Poisson totals, conditional binomial, tail probability.",
+        "For independent Poisson counts, the conditional distribution X given X+Y=n is binomial with p=λX/(λX+λY)=0.666667."
+      ],
+      "verification": {
+        "kind": "poisson-split",
+        "a": 1.2,
+        "b": 0.6,
+        "n": 4,
+        "target": "atleast2"
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-a2-conditional-distributions:4",
+      "topicId": "mrv-a2-conditional-distributions",
+      "family": "poisson-split-condition"
     }
   ],
   "mrv-b1-joint-moments": [
@@ -4754,6 +11625,136 @@ export default {
       "id": "chapter:mrv-b1-joint-moments:1",
       "topicId": "mrv-b1-joint-moments",
       "family": "shared-class-covariance"
+    },
+    {
+      "question": "U is uniform on the integers 1 through 3. Errors E and F each take values ±√4 with equal probability. U, E, and F are mutually independent. Measurements are X=U+E and Y=4(3-U)+F. Calculate Cov(X,Y). Round your answer to four decimal places.",
+      "choices": [
+        "$-18.6667$",
+        "$-8.0000$",
+        "$-2.6667$",
+        "$0.0000$",
+        "$2.6667$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Expand the covariance using bilinearity. Cross terms involving independent errors vanish.",
+        "The constant term 12 contributes zero covariance, leaving Cov(U,-4U)=-4Var(U).",
+        "For this discrete uniform U, Var(U)=(9-1)/12. Thus Cov(X,Y)=-2.666667."
+      ],
+      "feedback": {
+        "0": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "1": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "3": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "4": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²]."
+      },
+      "skills": [
+        "shared discrete variable",
+        "covariance bilinearity",
+        "sign of dependence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: shared discrete variable, covariance bilinearity, sign of dependence.",
+        "Expand the covariance using bilinearity. Cross terms involving independent errors vanish."
+      ],
+      "verification": {
+        "kind": "shared-discrete-cov",
+        "B": 3,
+        "a": 4,
+        "noise": 4,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-b1-joint-moments:2",
+      "topicId": "mrv-b1-joint-moments",
+      "family": "shared-discrete-covariance"
+    },
+    {
+      "question": "X and Y have standard deviations 5 and 4, and correlation 0.35. Calculate Var(2X-3Y). Round your answer to four decimal places.",
+      "choices": [
+        "$12.6491$",
+        "$14.0000$",
+        "$160.0000$",
+        "$244.0000$",
+        "$328.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Cov(X,Y)=ρ SD(X) SD(Y)=7.",
+        "For aX+bY, variance is a²Var(X)+b²Var(Y)+2abCov(X,Y). Here the Y coefficient is negative.",
+        "Var(2X-3Y)=4(5)²+9(4)²-12(7)=160."
+      ],
+      "feedback": {
+        "0": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances.",
+        "1": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances.",
+        "3": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances.",
+        "4": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances."
+      },
+      "skills": [
+        "correlation to covariance",
+        "signed linear combination",
+        "variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: correlation to covariance, signed linear combination, variance.",
+        "Cov(X,Y)=ρ SD(X) SD(Y)=7."
+      ],
+      "verification": {
+        "kind": "correlated-linear",
+        "sx": 5,
+        "sy": 4,
+        "rho": 0.35,
+        "a": 2,
+        "b": -3,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-b1-joint-moments:3",
+      "topicId": "mrv-b1-joint-moments",
+      "family": "correlated-linear-variance"
+    },
+    {
+      "question": "X and Y have equal joint probability at every pair of nonnegative integers with x+y≤5, and zero probability elsewhere. Calculate E[X given Y=2]. Round your answer to four decimal places.",
+      "choices": [
+        "$1.5000$",
+        "$1.6667$",
+        "$2.5000$",
+        "$3.0000$",
+        "$3.5000$"
+      ],
+      "answer": 0,
+      "solution": [
+        "At Y=2, the allowable X values are 0,1,…,3.",
+        "The joint PMF is constant at these 4 points, so the conditional PMF is 1/4 at each value.",
+        "The conditional mean is (5-2)/2=1.5."
+      ],
+      "feedback": {
+        "1": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "2": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "3": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row.",
+        "4": "Normalize the PMF on the conditional row; the unconditional marginal mean and full-support midpoint do not describe that row."
+      },
+      "skills": [
+        "joint support row",
+        "conditional PMF",
+        "conditional first moment"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: joint support row, conditional PMF, conditional first moment.",
+        "At Y=2, the allowable X values are 0,1,…,3."
+      ],
+      "verification": {
+        "kind": "joint-discrete-triangle-mean",
+        "B": 5,
+        "y": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-b1-joint-moments:4",
+      "topicId": "mrv-b1-joint-moments",
+      "family": "joint-discrete-triangle-mean"
     }
   ],
   "mrv-b2-conditional-variance": [
@@ -4844,6 +11845,136 @@ export default {
       "id": "chapter:mrv-b2-conditional-variance:1",
       "topicId": "mrv-b2-conditional-variance",
       "family": "conditional-hypergeom-variance"
+    },
+    {
+      "question": "X and Y have a constant joint PMF on nonnegative integer pairs satisfying x+y≤8, and zero elsewhere. Calculate Var(X given Y=2). Round your answer to four decimal places.",
+      "choices": [
+        "$2.0000$",
+        "$3.0000$",
+        "$4.0000$",
+        "$9.0000$",
+        "$13.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Given Y=2, X is discrete uniform on the 7 integers 0 through 6.",
+        "The conditional first moment is 3, and second moment is 13.",
+        "Subtract the squared conditional mean: Var(X given Y=2)=6(6+2)/12=4."
+      ],
+      "feedback": {
+        "0": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction.",
+        "1": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction.",
+        "3": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction.",
+        "4": "Use the inclusive discrete conditional support and both conditional moments; the continuous-uniform formula misses the lattice endpoint correction."
+      },
+      "skills": [
+        "conditional discrete support",
+        "conditional raw moments",
+        "conditional variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional discrete support, conditional raw moments, conditional variance.",
+        "Given Y=2, X is discrete uniform on the 7 integers 0 through 6."
+      ],
+      "verification": {
+        "kind": "joint-discrete-triangle-variance",
+        "B": 8,
+        "y": 2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-b2-conditional-variance:2",
+      "topicId": "mrv-b2-conditional-variance",
+      "family": "joint-discrete-triangle-variance"
+    },
+    {
+      "question": "N is Poisson with mean 2.5. Only policies with N≤5 are retained. Calculate the conditional variance of N among retained policies. Round your answer to four decimal places.",
+      "choices": [
+        "$1.7813$",
+        "$1.8595$",
+        "$2.5000$",
+        "$2.6097$",
+        "$7.2682$"
+      ],
+      "answer": 1,
+      "solution": [
+        "The retained probability is 0.957979. Divide the restricted first and second raw-moment sums by this probability.",
+        "The conditional moments are E[N]=2.325672 and E[N²]=7.268214.",
+        "The conditional variance is 7.268214-(2.325672)²=1.859463."
+      ],
+      "feedback": {
+        "0": "Renormalize both restricted raw moments and subtract the squared conditional mean; truncation does not merely rescale the unconditional variance.",
+        "2": "Renormalize both restricted raw moments and subtract the squared conditional mean; truncation does not merely rescale the unconditional variance.",
+        "3": "Renormalize both restricted raw moments and subtract the squared conditional mean; truncation does not merely rescale the unconditional variance.",
+        "4": "Renormalize both restricted raw moments and subtract the squared conditional mean; truncation does not merely rescale the unconditional variance."
+      },
+      "skills": [
+        "truncated Poisson PMF",
+        "conditional raw moments",
+        "conditional variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: truncated Poisson PMF, conditional raw moments, conditional variance.",
+        "The retained probability is 0.957979. Divide the restricted first and second raw-moment sums by this probability."
+      ],
+      "verification": {
+        "kind": "poisson-truncated",
+        "lam": 2.5,
+        "upper": 5,
+        "target": "variance",
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-b2-conditional-variance:3",
+      "topicId": "mrv-b2-conditional-variance",
+      "family": "poisson-truncated-variance"
+    },
+    {
+      "question": "A policy has a permanent class H with probability 0.35, otherwise class L. Conditional on class, annual counts are independent Poisson variables with means 2 and 0.4, respectively. Given no claims in year 1, calculate the conditional variance of the year-2 count. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2264$",
+        "$0.5569$",
+        "$0.7833$",
+        "$1.0934$",
+        "$1.5424$"
+      ],
+      "answer": 2,
+      "solution": [
+        "No-claim likelihoods update the H share to 0.098054 by Bayes.",
+        "The posterior mean count, also the mean within-class Poisson variance, is 0.556886.",
+        "Add posterior variance of the class rates 0.226404: Var(N₂ given N₁=0)=0.78329."
+      ],
+      "feedback": {
+        "0": "Update the class probabilities using the observed count, then add within-class and between-class variance under that posterior.",
+        "1": "Update the class probabilities using the observed count, then add within-class and between-class variance under that posterior.",
+        "3": "Update the class probabilities using the observed count, then add within-class and between-class variance under that posterior.",
+        "4": "Update the class probabilities using the observed count, then add within-class and between-class variance under that posterior."
+      },
+      "skills": [
+        "Bayes from a count observation",
+        "conditional independence",
+        "conditional total variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: Bayes from a count observation, conditional independence, conditional total variance.",
+        "No-claim likelihoods update the H share to 0.098054 by Bayes."
+      ],
+      "verification": {
+        "kind": "predictive-variance",
+        "w": 0.35,
+        "rates": [
+          2.0,
+          0.4
+        ],
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-b2-conditional-variance:4",
+      "topicId": "mrv-b2-conditional-variance",
+      "family": "bayes-predictive-variance"
     }
   ],
   "mrv-c1-covariance": [
@@ -4929,6 +12060,139 @@ export default {
       "id": "chapter:mrv-c1-covariance:1",
       "topicId": "mrv-c1-covariance",
       "family": "joint-linear-variance"
+    },
+    {
+      "question": "U is uniform on the integers 1 through 7. Errors E and F each take values ±√4 with equal probability. U, E, and F are mutually independent. Measurements are X=U+E and Y=1(7-U)+F. Calculate Cov(X,Y). Round your answer to four decimal places.",
+      "choices": [
+        "$-20.0000$",
+        "$-8.0000$",
+        "$-4.0000$",
+        "$0.0000$",
+        "$4.0000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Expand the covariance using bilinearity. Cross terms involving independent errors vanish.",
+        "The constant term 7 contributes zero covariance, leaving Cov(U,-1U)=-1Var(U).",
+        "For this discrete uniform U, Var(U)=(49-1)/12. Thus Cov(X,Y)=-4."
+      ],
+      "feedback": {
+        "0": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "1": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "3": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²].",
+        "4": "The measurements share U with opposite coefficients. Independent error variances do not enter the cross covariance, which uses Var(U), not E[U²]."
+      },
+      "skills": [
+        "shared discrete variable",
+        "covariance bilinearity",
+        "sign of dependence"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: shared discrete variable, covariance bilinearity, sign of dependence.",
+        "Expand the covariance using bilinearity. Cross terms involving independent errors vanish."
+      ],
+      "verification": {
+        "kind": "shared-discrete-cov",
+        "B": 7,
+        "a": 1,
+        "noise": 4,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-c1-covariance:2",
+      "topicId": "mrv-c1-covariance",
+      "family": "shared-discrete-covariance"
+    },
+    {
+      "question": "X and Y have standard deviations 4 and 4, and correlation 0.4. Calculate Var(2X-3Y). Round your answer to four decimal places.",
+      "choices": [
+        "$3.2000$",
+        "$11.4543$",
+        "$131.2000$",
+        "$208.0000$",
+        "$284.8000$"
+      ],
+      "answer": 2,
+      "solution": [
+        "Cov(X,Y)=ρ SD(X) SD(Y)=6.4.",
+        "For aX+bY, variance is a²Var(X)+b²Var(Y)+2abCov(X,Y). Here the Y coefficient is negative.",
+        "Var(2X-3Y)=4(4)²+9(4)²-12(6.4)=131.2."
+      ],
+      "feedback": {
+        "0": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances.",
+        "1": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances.",
+        "3": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances.",
+        "4": "Square the coefficients on marginal variances, preserve the negative sign in the covariance term, and convert correlation using SDs rather than variances."
+      },
+      "skills": [
+        "correlation to covariance",
+        "signed linear combination",
+        "variance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: correlation to covariance, signed linear combination, variance.",
+        "Cov(X,Y)=ρ SD(X) SD(Y)=6.4."
+      ],
+      "verification": {
+        "kind": "correlated-linear",
+        "sx": 4,
+        "sy": 4,
+        "rho": 0.4,
+        "a": 2,
+        "b": -3,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-c1-covariance:3",
+      "topicId": "mrv-c1-covariance",
+      "family": "correlated-linear-variance"
+    },
+    {
+      "question": "An insured is type A with probability 0.3, otherwise type B. Given type, claim counts X and Y in two years are independent Poisson variables, each with mean 1 for A or 6 for B. Calculate Cov(X,Y) without conditioning on type. Round your answer to four decimal places.",
+      "choices": [
+        "$-5.2500$",
+        "$0.0000$",
+        "$4.5000$",
+        "$5.2500$",
+        "$25.5000$"
+      ],
+      "answer": 3,
+      "solution": [
+        "Conditional independence gives E[XY given type]=the squared class mean, but does not give unconditional independence.",
+        "E[XY]=25.5 and E[X]=E[Y]=4.5.",
+        "Cov(X,Y)=E[XY]-E[X]E[Y]=5.25."
+      ],
+      "feedback": {
+        "0": "The persistent class creates dependence across years after averaging over type. Use the cross moment or covariance of conditional means.",
+        "1": "The persistent class creates dependence across years after averaging over type. Use the cross moment or covariance of conditional means.",
+        "2": "The persistent class creates dependence across years after averaging over type. Use the cross moment or covariance of conditional means.",
+        "4": "The persistent class creates dependence across years after averaging over type. Use the cross moment or covariance of conditional means."
+      },
+      "skills": [
+        "conditional independence",
+        "mixed moment",
+        "latent covariance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: conditional independence, mixed moment, latent covariance.",
+        "Conditional independence gives E[XY given type]=the squared class mean, but does not give unconditional independence."
+      ],
+      "verification": {
+        "kind": "poisson-class",
+        "w": 0.3,
+        "rates": [
+          1,
+          6
+        ],
+        "target": "covariance"
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-c1-covariance:4",
+      "topicId": "mrv-c1-covariance",
+      "family": "shared-class-covariance"
     }
   ],
   "mrv-d1-order-statistics": [
@@ -5017,6 +12281,136 @@ export default {
       "id": "chapter:mrv-d1-order-statistics:1",
       "topicId": "mrv-d1-order-statistics",
       "family": "order-rank-conditional"
+    },
+    {
+      "question": "7 independent component lifetimes are exponential with mean 3. T is the time of the second failure. Calculate P(T≤6). Round your answer to four decimal places.",
+      "choices": [
+        "$0.0000$",
+        "$0.0007$",
+        "$0.3614$",
+        "$0.7476$",
+        "$1.0000$"
+      ],
+      "answer": 4,
+      "solution": [
+        "Each component fails by time 6 with probability 1-exp(-6/3)=0.864665.",
+        "The number of failures by time 6 is binomial with n=7 and p=0.864665. The second failure has occurred exactly when this count is at least two.",
+        "Remove zero and one failures: 1-(1-p)^7-7p(1-p)^6=0.999962."
+      ],
+      "feedback": {
+        "0": "This is the probability the second failure is still in the future.",
+        "1": "This counts exactly two failures and excludes three or more.",
+        "2": "This requires all components to fail by the threshold.",
+        "3": "This requires two specified components to fail rather than the second order statistic."
+      },
+      "skills": [
+        "order-statistic event",
+        "binomial count representation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: order-statistic event, binomial count representation.",
+        "Each component fails by time 6 with probability 1-exp(-6/3)=0.864665."
+      ],
+      "verification": {
+        "kind": "order-exponential",
+        "n": 7,
+        "mu": 3,
+        "threshold": 6,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-d1-order-statistics:2",
+      "topicId": "mrv-d1-order-statistics",
+      "family": "order-second-exponential"
+    },
+    {
+      "question": "9 independent values are uniform on (0,14). Let X_(4) be the 4th smallest value. Calculate E[X_(4)]. Round your answer to four decimal places.",
+      "choices": [
+        "$1.4000$",
+        "$5.6000$",
+        "$6.2222$",
+        "$7.0000$",
+        "$8.4000$"
+      ],
+      "answer": 1,
+      "solution": [
+        "For Z=X_(4)/14, the order-statistic density is proportional to z^3(1-z)^5 on (0,1).",
+        "This is beta(4,6), with mean 4/(9+1).",
+        "Rescale: E[X_(4)]=14×4/10=5.6."
+      ],
+      "feedback": {
+        "0": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "2": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "3": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean.",
+        "4": "Use the rank-specific order-statistic distribution; its beta shape parameters sum to n+1, and the uniform endpoint rescales its mean."
+      },
+      "skills": [
+        "order-statistic density",
+        "beta first moment",
+        "rescaling"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: order-statistic density, beta first moment, rescaling.",
+        "For Z=X_(4)/14, the order-statistic density is proportional to z^3(1-z)^5 on (0,1)."
+      ],
+      "verification": {
+        "kind": "order-uniform-mean",
+        "n": 9,
+        "rank": 4,
+        "B": 14,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-d1-order-statistics:3",
+      "topicId": "mrv-d1-order-statistics",
+      "family": "order-uniform-middle-mean"
+    },
+    {
+      "question": "Two independent components have exponential lifetimes with means 4 and 7 years. A device fails when either component fails. Given that the device has survived 2 years, calculate the probability it survives at least another 2 years. Round your answer to four decimal places.",
+      "choices": [
+        "$0.2077$",
+        "$0.4558$",
+        "$0.5442$",
+        "$0.6065$",
+        "$0.8338$"
+      ],
+      "answer": 1,
+      "solution": [
+        "For independent lifetimes, device survival is the product of both component survival functions.",
+        "The minimum lifetime is exponential with rate 1/4+1/7. It is memoryless.",
+        "Conditional survival for another 2 years is exp[-2(1/4+1/7)]=0.455794."
+      ],
+      "feedback": {
+        "0": "This is unconditional survival for twice the elapsed interval.",
+        "2": "This gives failure during the additional interval.",
+        "3": "Both components must survive, not just component 1.",
+        "4": "Means do not add for a minimum lifetime; failure rates add."
+      },
+      "skills": [
+        "minimum of independent lifetimes",
+        "rate versus mean",
+        "memorylessness"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: minimum of independent lifetimes, rate versus mean, memorylessness.",
+        "For independent lifetimes, device survival is the product of both component survival functions."
+      ],
+      "verification": {
+        "kind": "exponential-minimum",
+        "means": [
+          4,
+          7
+        ],
+        "t": 2,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-d1-order-statistics:4",
+      "topicId": "mrv-d1-order-statistics",
+      "family": "exponential-minimum-lifetime"
     }
   ],
   "mrv-e1-linear-combinations": [
@@ -5108,6 +12502,139 @@ export default {
       "id": "chapter:mrv-e1-linear-combinations:1",
       "topicId": "mrv-e1-linear-combinations",
       "family": "poisson-weighted-sum"
+    },
+    {
+      "question": "Independent counts X and Y are binomial with parameters (5,0.3) and (6,0.35), respectively. Each X claim costs two units and each Y claim costs one unit. Calculate P(2X+Y≤3). Round your answer to four decimal places.",
+      "choices": [
+        "$0.1273$",
+        "$0.2018$",
+        "$0.2633$",
+        "$0.4899$",
+        "$0.7367$"
+      ],
+      "answer": 2,
+      "solution": [
+        "For a fixed X=x, the permitted Y values satisfy Y≤3-2x. Values with 2x>3 contribute zero.",
+        "By independence, sum P(X=x)P(Y≤3-2x) over x=0,…,1.",
+        "This weighted discrete sum equals 0.263251; the weighted count is not an ordinary binomial variable."
+      ],
+      "feedback": {
+        "0": "This gives equality only.",
+        "1": "This reverses the two costs.",
+        "3": "This treats both claim types as having the same cost.",
+        "4": "This gives the probability the cost exceeds the limit."
+      },
+      "skills": [
+        "independent discrete sums",
+        "weighted support",
+        "conditional summation"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent discrete sums, weighted support, conditional summation.",
+        "For a fixed X=x, the permitted Y values satisfy Y≤3-2x. Values with 2x>3 contribute zero."
+      ],
+      "verification": {
+        "kind": "weighted-binomial",
+        "n": 5,
+        "m": 6,
+        "p": 0.30000000000000004,
+        "q": 0.35,
+        "limit": 3,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-e1-linear-combinations:2",
+      "topicId": "mrv-e1-linear-combinations",
+      "family": "independent-weighted-binomial"
+    },
+    {
+      "question": "Weekly claim counts are independent and identically Poisson distributed. For one week, P(N=1)=0.4P(N=0). Calculate the probability of exactly 4 claims over 2 weeks. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0000$",
+        "$0.0007$",
+        "$0.0077$",
+        "$0.0091$",
+        "$0.4493$"
+      ],
+      "answer": 2,
+      "solution": [
+        "For a Poisson distribution, P(N=1)/P(N=0)=λ, so the weekly mean is 0.4.",
+        "The independent 2-week total is Poisson with mean 0.8.",
+        "Its probability at 4 is exp(-0.8)(0.8)^4/4!=0.007669."
+      ],
+      "feedback": {
+        "0": "This requires that count in every week, rather than in the entire period.",
+        "1": "This uses a one-week mean.",
+        "3": "This gives at least the requested count.",
+        "4": "This gives zero claims."
+      },
+      "skills": [
+        "infer a Poisson mean",
+        "independent sums",
+        "exact count"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer a Poisson mean, independent sums, exact count.",
+        "For a Poisson distribution, P(N=1)/P(N=0)=λ, so the weekly mean is 0.4."
+      ],
+      "verification": {
+        "kind": "poisson-aggregate",
+        "lam": 0.4,
+        "periods": 2,
+        "count": 4,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-e1-linear-combinations:3",
+      "topicId": "mrv-e1-linear-combinations",
+      "family": "poisson-ratio-aggregate"
+    },
+    {
+      "question": "Independent measurements X and Y are normal with means 60 and 60 and SDs 6 and 8, respectively. Calculate P(X<Y+10). Round your answer to four decimal places.",
+      "choices": [
+        "$0.1587$",
+        "$0.5398$",
+        "$0.7625$",
+        "$0.8413$",
+        "$0.9522$"
+      ],
+      "answer": 3,
+      "solution": [
+        "D=X-Y is normal with mean 60-60=0.",
+        "Independence gives Var(D)=6²+8²=100; the negative coefficient does not subtract variance.",
+        "Standardize D<10: Φ[(10-0)/√100]=0.841345."
+      ],
+      "feedback": {
+        "0": "This is the upper rather than lower difference tail.",
+        "1": "This standardizes using variance instead of SD.",
+        "2": "Independent SDs do not add directly.",
+        "4": "This ignores the variation in Y."
+      },
+      "skills": [
+        "independent normal difference",
+        "mean and variance of a linear combination",
+        "tail probability"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: independent normal difference, mean and variance of a linear combination, tail probability.",
+        "D=X-Y is normal with mean 60-60=0."
+      ],
+      "verification": {
+        "kind": "normal-independent-difference",
+        "mx": 60,
+        "my": 60,
+        "sx": 6,
+        "sy": 8,
+        "margin": 10,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-e1-linear-combinations:4",
+      "topicId": "mrv-e1-linear-combinations",
+      "family": "normal-independent-difference"
     }
   ],
   "mrv-e2-linear-moments": [
@@ -5199,6 +12726,135 @@ export default {
       "id": "chapter:mrv-e2-linear-moments:1",
       "topicId": "mrv-e2-linear-moments",
       "family": "sample-mean-random-shift"
+    },
+    {
+      "question": "Independent X and Y are uniform on the integers 1 through 5 and Bernoulli with success probability 0.35, respectively. Let Z=2X-3Y+6. Calculate E[Z²]. Round your answer to four decimal places.",
+      "choices": [
+        "$10.0475$",
+        "$34.5500$",
+        "$46.0475$",
+        "$119.9025$",
+        "$129.9500$"
+      ],
+      "answer": 4,
+      "solution": [
+        "E[Z]=2(6/2)-3(0.35)+6=10.95.",
+        "Independence gives Var(Z)=4(24/12)+9(0.35)(0.65)=10.0475. The shift adds no variance.",
+        "E[Z²]=Var(Z)+(E[Z])²=129.95."
+      ],
+      "feedback": {
+        "0": "Distinguish the second raw moment from variance, square the linear coefficients in the variance, and include the shift in the mean before squaring.",
+        "1": "Distinguish the second raw moment from variance, square the linear coefficients in the variance, and include the shift in the mean before squaring.",
+        "2": "Distinguish the second raw moment from variance, square the linear coefficients in the variance, and include the shift in the mean before squaring.",
+        "3": "Distinguish the second raw moment from variance, square the linear coefficients in the variance, and include the shift in the mean before squaring."
+      },
+      "skills": [
+        "moments of independent variables",
+        "signed coefficients",
+        "second raw moment"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: moments of independent variables, signed coefficients, second raw moment.",
+        "E[Z]=2(6/2)-3(0.35)+6=10.95."
+      ],
+      "verification": {
+        "kind": "independent-linear-raw",
+        "n": 5,
+        "p": 0.35000000000000003,
+        "shift": 6,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-e2-linear-moments:2",
+      "topicId": "mrv-e2-linear-moments",
+      "family": "independent-linear-second-moment"
+    },
+    {
+      "question": "7 independent measurements each have mean 100 and SD 16. Let M be their average. A cost is Z=1.2M+C, where C is independent of all measurements and has mean 5 and SD 5. Calculate SD(Z). Round your answer to four decimal places.",
+      "choices": [
+        "$8.2997$",
+        "$8.8127$",
+        "$12.2569$",
+        "$19.8404$",
+        "$77.6629$"
+      ],
+      "answer": 1,
+      "solution": [
+        "Var(M)=16²/7=36.571429.",
+        "Independence gives Var(Z)=1.2²Var(M)+Var(C)=77.662857. The means do not affect this variance.",
+        "Take the square root: SD(Z)=8.812653."
+      ],
+      "feedback": {
+        "0": "Divide measurement variance by sample size, square the scaling factor, add the independent surcharge variance, then take the square root.",
+        "2": "Divide measurement variance by sample size, square the scaling factor, add the independent surcharge variance, then take the square root.",
+        "3": "Divide measurement variance by sample size, square the scaling factor, add the independent surcharge variance, then take the square root.",
+        "4": "Divide measurement variance by sample size, square the scaling factor, add the independent surcharge variance, then take the square root."
+      },
+      "skills": [
+        "moments of an independent average",
+        "independent random surcharge",
+        "SD of a linear combination"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: moments of an independent average, independent random surcharge, SD of a linear combination.",
+        "Var(M)=16²/7=36.571429."
+      ],
+      "verification": {
+        "kind": "independent-average-sd",
+        "sd": 16,
+        "n": 7,
+        "shiftSD": 5,
+        "scale": 1.2,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-e2-linear-moments:3",
+      "topicId": "mrv-e2-linear-moments",
+      "family": "independent-average-sd"
+    },
+    {
+      "question": "Independent counts X and Y are Poisson. Their zero-count probabilities are exp(-1.1) and exp(-2), respectively. Calculate Var(2X-3Y). Round your answer to four decimal places.",
+      "choices": [
+        "$-13.6000$",
+        "$-3.8000$",
+        "$4.7329$",
+        "$8.2000$",
+        "$22.4000$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The identity P(N=0)=exp(-λ) gives means 1.1 and 2. Poisson variances equal those means.",
+        "Independence gives zero covariance. Both the positive and negative coefficients must be squared in the variance.",
+        "Var(2X-3Y)=4×1.1+9×2=22.4."
+      ],
+      "feedback": {
+        "0": "Infer both Poisson variances, square the coefficients, and distinguish variance from the mean, SD, and second raw moment.",
+        "1": "Infer both Poisson variances, square the coefficients, and distinguish variance from the mean, SD, and second raw moment.",
+        "2": "Infer both Poisson variances, square the coefficients, and distinguish variance from the mean, SD, and second raw moment.",
+        "3": "Infer both Poisson variances, square the coefficients, and distinguish variance from the mean, SD, and second raw moment."
+      },
+      "skills": [
+        "infer Poisson parameters",
+        "independent linear variance",
+        "signed coefficients"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: infer Poisson parameters, independent linear variance, signed coefficients.",
+        "The identity P(N=0)=exp(-λ) gives means 1.1 and 2. Poisson variances equal those means."
+      ],
+      "verification": {
+        "kind": "poisson-linear-variance",
+        "a": 1.1,
+        "b": 2.0,
+        "probability": false
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-e2-linear-moments:4",
+      "topicId": "mrv-e2-linear-moments",
+      "family": "independent-poisson-linear-variance"
     }
   ],
   "mrv-f1-central-limit-theorem": [
@@ -5287,6 +12943,136 @@ export default {
       "id": "chapter:mrv-f1-central-limit-theorem:1",
       "topicId": "mrv-f1-central-limit-theorem",
       "family": "clt-binomial-correction"
+    },
+    {
+      "question": "Independent and identically distributed observations have standard deviation 22 and finite mean μ. Using the central limit theorem and z=1.96 for a central 95% normal interval, calculate the smallest integer sample size n for which P(|sample mean-μ|≤3) is approximately at least 0.95.",
+      "choices": [
+        "$15$",
+        "$54$",
+        "$146$",
+        "$206$",
+        "$207$"
+      ],
+      "answer": 4,
+      "solution": [
+        "The sample mean has standard deviation 22/√n.",
+        "The required central-normal half-width is 1.96×22/√n≤3, so n≥(1.96×22/3)²=206.592711.",
+        "Round upward, since n is an integer and must meet the bound: n=207."
+      ],
+      "feedback": {
+        "0": "Use the two-sided 95% critical value, the square-root sample-size rule for SD, and the smallest integer satisfying the inequality.",
+        "1": "Use the two-sided 95% critical value, the square-root sample-size rule for SD, and the smallest integer satisfying the inequality.",
+        "2": "Use the two-sided 95% critical value, the square-root sample-size rule for SD, and the smallest integer satisfying the inequality.",
+        "3": "Use the two-sided 95% critical value, the square-root sample-size rule for SD, and the smallest integer satisfying the inequality."
+      },
+      "skills": [
+        "CLT for a sample mean",
+        "two-sided probability",
+        "inverse sample size"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CLT for a sample mean, two-sided probability, inverse sample size.",
+        "The sample mean has standard deviation 22/√n."
+      ],
+      "verification": {
+        "kind": "clt-size",
+        "sd": 22,
+        "tolerance": 3,
+        "z": 1.96,
+        "probability": false,
+        "precision": 0
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-f1-central-limit-theorem:2",
+      "topicId": "mrv-f1-central-limit-theorem",
+      "family": "clt-sample-size"
+    },
+    {
+      "question": "60 independent service times are each uniform on (0,14) minutes. Use the central limit theorem to approximate the probability that their average exceeds 7.8 minutes. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0000$",
+        "$0.0016$",
+        "$0.0626$",
+        "$0.4215$",
+        "$0.9374$"
+      ],
+      "answer": 2,
+      "solution": [
+        "One service time has mean 14/2 and variance 196/12.",
+        "The average has variance 196/(12×60), so z=(7.8-14/2)/√(196/(12×60))=1.533304.",
+        "The upper normal tail is approximately 0.062601."
+      ],
+      "feedback": {
+        "0": "The SD decreases by √n, not n.",
+        "1": "This standardizes using the average variance rather than its SD.",
+        "3": "This uses the SD of one observation rather than the average.",
+        "4": "This is the lower normal tail."
+      },
+      "skills": [
+        "CLT for a uniform average",
+        "variance divided by sample size",
+        "normal tail"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: CLT for a uniform average, variance divided by sample size, normal tail.",
+        "One service time has mean 14/2 and variance 196/12."
+      ],
+      "verification": {
+        "kind": "clt-uniform",
+        "B": 14,
+        "n": 60,
+        "threshold": 7.8,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-f1-central-limit-theorem:3",
+      "topicId": "mrv-f1-central-limit-theorem",
+      "family": "clt-uniform-average"
+    },
+    {
+      "question": "70 independent claim amounts each have an exponential distribution with mean 140. Use the central limit theorem to approximate the probability that the aggregate claim amount exceeds 10600. Round your answer to four decimal places.",
+      "choices": [
+        "$0.0000$",
+        "$0.2473$",
+        "$0.3390$",
+        "$0.4675$",
+        "$0.7527$"
+      ],
+      "answer": 1,
+      "solution": [
+        "An exponential claim has variance 140². The aggregate has mean 9800 and variance 70×140².",
+        "The standardized reserve is (10600-9800)/(140√70)=0.682988.",
+        "The approximate upper normal tail is 0.247307."
+      ],
+      "feedback": {
+        "0": "This uses one claim SD for the entire sum.",
+        "2": "An aggregate of exponential variables is not a single exponential with the aggregate mean.",
+        "3": "The sum SD grows with √n, not n.",
+        "4": "This is the lower tail."
+      },
+      "skills": [
+        "exponential moments",
+        "CLT for an aggregate",
+        "reserve exceedance"
+      ],
+      "designBasis": "Original exercises using May 2026 syllabus outcomes and official sample-question reasoning styles",
+      "hints": [
+        "Break the solution into: exponential moments, CLT for an aggregate, reserve exceedance.",
+        "An exponential claim has variance 140². The aggregate has mean 9800 and variance 70×140²."
+      ],
+      "verification": {
+        "kind": "clt-exponential",
+        "n": 70,
+        "mu": 140,
+        "reserve": 10600,
+        "probability": true
+      },
+      "level": "challenge",
+      "id": "chapter:mrv-f1-central-limit-theorem:4",
+      "topicId": "mrv-f1-central-limit-theorem",
+      "family": "clt-exponential-total"
     }
   ]
 };

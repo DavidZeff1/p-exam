@@ -6,6 +6,7 @@ import challenges from '../scripts/content/challenges.js';
 import examBank from '../scripts/content/exam-bank.js';
 import { availableTopics } from '../scripts/topics.js';
 import { tokenizeMath } from '../scripts/math-text.js';
+import { additionalExpected } from './verify-soa-families.js';
 const fact=n=>{let value=1;for(let i=2;i<=n;i++)value*=i;return value;};
 const choose=(n,k)=>k<0||k>n?0:fact(n)/(fact(k)*fact(n-k));
 const normalDensity=x=>Math.exp(-x*x/2)/Math.sqrt(2*Math.PI);
@@ -87,7 +88,7 @@ function expected(s) {
  case 'clt-payment': {const mean=s.p*integral(x=>Math.max(x-s.d,0)/s.B,s.d,s.B);const second=s.p*integral(x=>Math.max(x-s.d,0)**2/s.B,s.d,s.B);const variance=second-mean*mean;return 1-Phi((s.threshold-s.n*mean)/Math.sqrt(s.n*variance));}
  case 'clt-binomial':return 1-Phi((s.k-.5-s.n*s.p)/Math.sqrt(s.n*s.p*(1-s.p)));
  case 'uniform-pairs': {const pairs=[];for(let x=1;x<=s.n;x++)for(let y=1;y<=s.n;y++)if(x+y>=s.threshold)pairs.push([x,y]);return pairs.filter(([x,y])=>x===y).length/pairs.length;}
- default:throw new Error(`Missing independent oracle for ${s.kind}`);
+ default:return additionalExpected(s,{choose,fact,integral,Phi,poisson,binomial,moments});
  }
 }
 const all=[...Object.values(challenges).flat(),...Object.values(examBank).flat()];
@@ -99,14 +100,18 @@ assert.equal(Object.keys(examBank).length,58);
 assert.equal(new Set(all.map(q=>q.id)).size,all.length);
 assert.equal(new Set(all.map(q=>q.question)).size,all.length,'Chapter challenges and timed exam stems must be disjoint');
 let verified=0;
-for(const topic of availableTopics){assert.equal(challenges[topic.id]?.length,2,`${topic.id} needs two chapter challenges`);if(!topic.enrichment)assert.equal(examBank[topic.id]?.length,2);}
+for(const topic of availableTopics){assert.equal(challenges[topic.id]?.length,5,`${topic.id} needs five chapter challenges`);assert.equal(new Set(challenges[topic.id].map(q=>q.family)).size,5,`${topic.id} needs distinct exercise families`);if(!topic.enrichment)assert.equal(examBank[topic.id]?.length,2);}
 for(const q of all) {
  assert.ok(q.solution.length>=3,`${q.id}: requires worked reasoning`);
  assert.ok(q.skills.length>=2,`${q.id}: requires multiple reasoning steps`);
  assert.equal(q.choices.length,5);assert.equal(new Set(q.choices).size,5);
+ assert.equal(Object.keys(q.feedback).length,4,`${q.id}: all distractors need feedback`);
+ assert.ok(Object.entries(q.feedback).every(([index,text])=>Number(index)!==q.answer&&typeof text==='string'&&text.trim()),`${q.id}: feedback must describe wrong choices`);
  const computed=expected(q.verification),value=choice=>Number(choice.replaceAll('$',''));
- assert.ok(Number.isFinite(computed));assert.ok(Math.abs(value(q.choices[q.answer])-computed)<=.000051,`${q.id} (${q.family}): chosen ${value(q.choices[q.answer])}, independently computed ${computed}`);
- assert.equal(q.choices.filter(choice=>Math.abs(value(choice)-computed)<=.000051).length,1,`${q.id}: needs one correct rounded choice`);
+ const tolerance=.5*10**-(q.verification.precision??4)+.000001;
+ assert.ok(Number.isFinite(computed),`${q.id}: nonfinite audit result`);assert.ok(Math.abs(value(q.choices[q.answer])-computed)<=tolerance,`${q.id} (${q.family}): chosen ${value(q.choices[q.answer])}, independently computed ${computed}`);
+ assert.equal(q.choices.filter(choice=>Math.abs(value(choice)-computed)<=tolerance).length,1,`${q.id}: needs one correct rounded choice`);
+ if(q.verification.probability)assert.ok(q.choices.every(choice=>value(choice)>=0&&value(choice)<=1),`${q.id}: probability choices must lie in [0,1]`);
  for(const text of [q.question,...q.choices,...q.solution,...q.hints,...Object.values(q.feedback)])for(const segment of tokenizeMath(text)){
   if(segment.type==='text')assert.ok(!segment.value.includes('$'),`${q.id}: unmatched dollar`);
   if(['inline','display'].includes(segment.type))katex.renderToString(segment.value,{throwOnError:true,strict:'error'});

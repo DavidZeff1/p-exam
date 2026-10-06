@@ -1,7 +1,9 @@
 """Build original multistep challenge sets and a separate timed-exam bank.
 All arithmetic answers are checked independently by verify-advanced.js.
 """
-import json,math
+import json,math,sys
+# Keep the authoring command from leaving generated Python cache files behind.
+sys.dont_write_bytecode=True
 from pathlib import Path
 from math import comb,exp,log,sqrt
 # Topic ordering is supplied by the app so no chapter is omitted.
@@ -18,7 +20,7 @@ def Q(text,answer,steps,spec,wrong,skills,refs):
  digits=4
  fmt=lambda x:f'{x:.{digits}f}'
  probability_kinds={'four-atoms','atoms','two-events','draw-sequence','uniform-pairs','binomial-indicators','partition','weighted-discrete','independent','hypergeom-mixture','latent-history','mixture','poisson-mixture','screen','linear-density','mixed-cdf','geometric-interval','negative-binomial','success-positions','poisson-split','exponential','gamma','beta','normal','order-uniform','normal-combination','poisson-weighted','inflated-exp-tail','clt-payment','clt-binomial'}
- is_probability=spec['kind'] in probability_kinds or (spec['kind'],spec.get('target')) in {('binomial','atleast2-given-positive'),('hypergeom','two-given-positive'),('lognormal','tail'),('joint-grid','event')}
+ is_probability=spec.get('probability',spec['kind'] in probability_kinds or (spec['kind'],spec.get('target')) in {('binomial','atleast2-given-positive'),('hypergeom','two-given-positive'),('lognormal','tail'),('joint-grid','event')})
  options=[(answer,'')]
  for val,why in wrong:
   if is_probability and not 0<=val<=1:continue
@@ -472,6 +474,9 @@ MAPPING={
 'mrv-f1-central-limit-theorem':['clt-payment-tail','clt-binomial-correction'],
 }
 
+from soa_families import register
+EXTRA_MAPPING=register(family,Q,W,f,phi)
+
 def build():
  chapter={};exam={};seen=set()
  for index,t in enumerate(TOPICS):
@@ -488,6 +493,22 @@ def build():
     seen.add(question['question']);question['id']=f'{mode}:{id}:{slot}';question['topicId']=id;question['family']=name
     (chapter if mode=='chapter' else exam)[id].append(question)
   if not exam[id]:del exam[id]
+ # Append only after generating the original banks. Existing question IDs,
+ # parameters, and saved answers remain stable, including timed-exam instances.
+ assert set(EXTRA_MAPPING)==set(MAPPING)
+ for index,t in enumerate(TOPICS):
+  id=t['id']
+  assert len(EXTRA_MAPPING[id])==3
+  assert len(set(MAPPING[id]+EXTRA_MAPPING[id]))==5
+  for slot,name in enumerate(EXTRA_MAPPING[id],start=2):
+   v=20000+index*137+slot*19
+   for attempt in range(200):
+    try:question=FAMILIES[name](v+attempt*31)
+    except ValueError:continue
+    if question['question'] not in seen:break
+   else:raise RuntimeError('Exhausted distinct additional questions '+id+' '+name)
+   seen.add(question['question']);question['id']=f'chapter:{id}:{slot}';question['topicId']=id;question['family']=name
+   chapter[id].append(question)
  Path('scripts/content/challenges.js').write_text('export default '+json.dumps(chapter,indent=2,ensure_ascii=False)+';\n')
  Path('scripts/content/exam-bank.js').write_text('export default '+json.dumps(exam,indent=2,ensure_ascii=False)+';\n')
  print(f'{sum(map(len,chapter.values()))} chapter challenges across {len(chapter)} chapters; {sum(map(len,exam.values()))} separate exam questions; {len(FAMILIES)} exercise families.')

@@ -4,8 +4,8 @@ A Preact + Vite study website aligned to the **May 2026 SOA Exam P syllabus**.
 
 - 58 syllabus lessons and one clearly labeled optional lognormal lesson.
 - All 22 learning outcomes mapped to instruction and chapter practice.
-- 329 original five-choice chapter questions: 211 foundation exercises plus two multistep challenges at the end of each of the 59 chapters.
-- A separate bank of 116 original timed-exam questions, with distinct stems and numerical parameters from chapter practice. Challenges and exam questions span 73 exercise families.
+- 506 original five-choice chapter questions: 211 foundation exercises plus five multistep challenges at the end of each of the 59 chapters.
+- A separate bank of 116 original timed-exam questions, with distinct stems and numerical parameters from chapter practice. Challenges and exam questions span 139 exercise families.
 - A parameterized foundation exercise family for each chapter; mixed review retains the full difficulty of challenge questions.
 - Concrete lesson openings, method cues, misconception reminders, reasoning checks, and worked/guided/independent practice in every chapter.
 - Interactive Bayes counts, linked PDF/CDF graphs, deductible/coinsurance/cap/inflation payment graphs, and a reproducible CLT simulation.
@@ -34,7 +34,7 @@ npm test
 npm run build
 ```
 
-`npm test` validates teaching coverage for all 59 chapters, generated choice uniqueness and LaTeX across multiple seeds, independently recomputes representative variant families, numerically integrates lab payment moments, checks the CLT simulation, and tests review scheduling and learning records. It also verifies the exam blueprint, scoring, deadline calculations, stored-session structure, and topic navigation; independently recomputes 75 earlier added answers and all 234 new challenge/exam answers using outcome enumeration, numerical integration, conditional distributions, and moment identities; checks all 22 syllabus mappings and lesson formulas; and validates all 445 fixed questions, choices, solutions, and LaTeX syntax. It requires two challenges in every chapter and checks that timed-exam stems do not appear in chapter practice. Numerical recomputation covers the added question sets, rather than claiming mathematical verification of every pre-existing exercise.
+`npm test` validates teaching coverage for all 59 chapters, generated choice uniqueness and LaTeX across multiple seeds, independently recomputes representative variant families, numerically integrates lab payment moments, checks the CLT simulation, and tests review scheduling and learning records. It also verifies the exam blueprint, scoring, deadline calculations, stored-session structure, and topic navigation; independently recomputes 75 earlier added answers and all 411 challenge/exam answers using outcome enumeration, numerical integration, conditional distributions, and moment identities; checks all 22 syllabus mappings and lesson formulas; and validates all 622 fixed questions, choices, solutions, and LaTeX syntax. It requires five challenges from distinct exercise families in every chapter and checks that timed-exam stems do not appear in chapter practice. Numerical recomputation covers the added question sets, rather than claiming mathematical verification of every pre-existing exercise.
 
 Browser verification also covered all 59 lesson routes at a 320-pixel dark-mode viewport, progressive hints, confidence, first-attempt retention, assistance after reloads, mixed review completion/restoration, mistake notebook history, answer/solution interactions, saved practice answers, syllabus and formula pages, mobile navigation, exam restoration, submission, filtering, and automatic expiry. The challenge update was also checked on every chapter route, with answer restoration, progressive steps, missed-challenge retention in mixed review, and separate-bank exam selection. See [the syllabus audit](SYLLABUS_AUDIT.md).
 
@@ -45,8 +45,8 @@ Browser verification also covered all 59 lesson routes at a 320-pixel dark-mode 
 - `scripts/content/lessons.json`: new lessons rendered by `pages/StudyLesson.jsx`.
 - `pages/*.jsx`: original lesson pages and study tools.
 - `problems/<topic-id>.js`: each chapter's question bank. Use five distinct choices, a zero-based `answer`, and a nonempty array of solution steps. Escape LaTeX backslashes in JavaScript strings.
-- `tools/write-advanced.py`: authoring source for challenge families and topic mappings. After editing, run `python tools/write-advanced.py` to regenerate `scripts/content/challenges.js` and `scripts/content/exam-bank.js`, then `npm run check:advanced`. Keep chapter and timed-exam instances distinct.
-- `tools/verify-advanced.js`: independent numerical audit; update its oracle when adding a new mathematical family.
+- `tools/write-advanced.py` and `tools/soa_families.py`: authoring sources for challenge families and topic mappings. After editing, run `python3 tools/write-advanced.py` to regenerate `scripts/content/challenges.js` and `scripts/content/exam-bank.js`, then `npm run check:advanced`. The three additional challenges are appended after generating the original banks, preserving earlier IDs and content. Keep chapter and timed-exam instances distinct.
+- `tools/verify-advanced.js` and `tools/verify-soa-families.js`: independent numerical audit; update its oracle when adding a new mathematical family. Count questions use integer choices; numerical comparisons respect each question's stated precision.
 - `scripts/problems.js`: loads foundations and challenges together; loads the separate timed bank without authoring/audit metadata. Foundation IDs remain stable for existing learning records.
 - `scripts/content/teaching.js`: chapter-specific concrete scenarios, intuition, method cues, traps, and reasoning checks.
 - `scripts/content/distractors.js`: known explanations for common wrong answers; avoid inventing a student's reasoning from an unexplained choice.
