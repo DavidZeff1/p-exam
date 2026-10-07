@@ -1,6 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "preact/hooks";
 import { renderFormulas } from "./katex-init.js";
-import { getTopic } from "./topics.js";
 import { useCompletedTopics } from "./progress.js";
 import { Sidebar } from "./components/Sidebar.jsx";
 import { PracticeProblems } from "./components/PracticeProblems.jsx";
@@ -11,6 +10,8 @@ import { Home } from "../pages/Home.jsx";
 import { Syllabus } from "../pages/Syllabus.jsx";
 import { Reference } from "../pages/Reference.jsx";
 import { MockExam } from "../pages/MockExam.jsx";
+import { ChapterQuestions } from "../pages/ChapterQuestions.jsx";
+import { getStudyRoute, questionsPath } from "./study-routes.js";
 import { getOutcomes } from "./syllabus.js";
 import { useTheme } from "./theme.js";
 import { ThemeToggle } from "./components/ThemeToggle.jsx";
@@ -25,6 +26,7 @@ const pageModules = import.meta.glob([
   "!../pages/Reference.jsx",
   "!../pages/MockExam.jsx",
   "!../pages/Review.jsx",
+  "!../pages/ChapterQuestions.jsx",
 ]);
 
 function loadPage(topic) {
@@ -48,8 +50,8 @@ export function App() {
   const desktopMenuButtonRef = useRef(null);
   const drawerOpenedOn = useRef(null);
   const hasNavigated = useRef(false);
-  const topic = getTopic(currentPage);
-  const pageReady = Boolean(topic?.page) && loadedPage?.id === topic.id;
+  const { topic, questions: questionsPage } = getStudyRoute(currentPage);
+  const pageReady = Boolean(topic?.page) && (questionsPage || loadedPage?.id === topic.id);
 
   useEffect(() => {
     const handleHash = () => {
@@ -102,8 +104,8 @@ export function App() {
   }, [drawerIsOpen]);
 
   useEffect(() => {
-    document.title = topic ? `${topic.label} · Exam P` : Object.hasOwn(utilityTitles, currentPage) ? `${utilityTitles[currentPage]} · Exam P` : "SOA Exam P Study Guide";
-    if (!topic?.page) return;
+    document.title = topic ? `${questionsPage ? 'Questions · ' : ''}${topic.label} · Exam P` : Object.hasOwn(utilityTitles, currentPage) ? `${utilityTitles[currentPage]} · Exam P` : "SOA Exam P Study Guide";
+    if (!topic?.page || questionsPage) return;
 
     let cancelled = false;
     loadPage(topic).then(
@@ -120,7 +122,7 @@ export function App() {
     return () => {
       cancelled = true;
     };
-  }, [topic, currentPage]);
+  }, [topic, currentPage, questionsPage]);
 
   useEffect(() => {
     renderFormulas();
@@ -148,6 +150,8 @@ export function App() {
     content = <><h1 class="page-title">Topic not found</h1><p>That chapter link does not exist. <a href="#/">Find a lesson in the study guide</a>.</p></>;
   } else if (!topic) {
     content = <Home completed={completed} />;
+  } else if (pageReady && questionsPage) {
+    content = <ChapterQuestions key={topic.id} topic={topic} />;
   } else if (pageReady) {
     content = loadedPage.element;
   } else if (failedPage === topic.id) {
@@ -212,14 +216,15 @@ export function App() {
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
         </div>
         <div id="page-container">
-          {topic && pageReady && <nav class="lesson-toolbar" aria-label="Lesson tools"><a href="#/">Study guide</a><span>{topic.sectionTitle}</span><a href="#practice" onClick={event => { event.preventDefault(); document.getElementById("practice")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" }); }}>Go to practice</a></nav>}
+          {topic && pageReady && <nav class="lesson-toolbar" aria-label="Lesson tools"><a href="#/">Study guide</a><span>{topic.sectionTitle}</span><a href={`#/${questionsPage ? topic.id : questionsPath(topic.id)}`}>{questionsPage ? 'Back to lesson' : 'Chapter questions'}</a></nav>}
           {topic && pageReady && <p class="outcome-tags">{topic.enrichment ? "Optional enrichment: lognormal is not named in the May 2026 syllabus." : <>Syllabus {getOutcomes(topic.id).map(outcome => <a key={outcome.code} href="#/syllabus" title={outcome.label}>{outcome.code}</a>)}</>}</p>}
           {content}
-          {pageReady && <GuidedExamples key={`guided:${topic.id}`} topicId={topic.id} />}
-          {pageReady && <PracticeProblems key={topic.id} topicId={topic.id} />}
+          {pageReady && !questionsPage && <GuidedExamples key={`guided:${topic.id}`} topicId={topic.id} />}
+          {pageReady && !questionsPage && <PracticeProblems key={topic.id} topicId={topic.id} mode="foundation" />}
           {topic && (pageReady || !topic.page) && (
             <TopicFooter
               topic={topic}
+              questions={questionsPage}
               isCompleted={completed.includes(topic.id)}
               onToggleCompleted={toggleCompleted}
             />

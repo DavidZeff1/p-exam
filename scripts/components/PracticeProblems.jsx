@@ -5,9 +5,10 @@ import { loadProblems } from '../problems.js';
 import { hasSupport, markSupport } from '../support.js';
 import { saveAttempt, summarizeLearning } from '../learning.js';
 import { useLearning } from '../use-learning.js';
+import { questionsPath } from '../study-routes.js';
 
 export const CHOICE_LETTERS = ['A', 'B', 'C', 'D', 'E'];
-export function Problem({ problem, number, initialAnswer = null, onAnswer = () => {}, guided = false, hideTopic = false }) {
+export function Problem({ problem, number, initialAnswer = null, onAnswer = () => {}, guided = false, hideTopic = false, examStyle = false }) {
   const [selected, setSelected] = useState(initialAnswer), [checked, setChecked] = useState(initialAnswer !== null);
   const [hintCount, setHintCount] = useState(0), [steps, setSteps] = useState(0), [confidence, setConfidence] = useState('');
   const [showFollowup, setShowFollowup] = useState(false), [assisted, setAssisted] = useState(guided || hasSupport(problem.id));
@@ -57,7 +58,7 @@ export function Problem({ problem, number, initialAnswer = null, onAnswer = () =
         {checked && index === selected && !correct && <span class="choice-mark" aria-label="Your incorrect answer">×</span>}
       </button>)}
     </div>
-    {!checked && <label class="confidence-label">Before checking, how confident are you?<select value={confidence} onChange={e => setConfidence(e.currentTarget.value)}><option value="">Choose (optional)</option><option value="low">Low: I guessed or feel unsure</option><option value="medium">Medium: I have a method</option><option value="high">High: I can explain my answer</option></select></label>}
+    {!checked && !examStyle && <label class="confidence-label">Before checking, how confident are you?<select value={confidence} onChange={e => setConfidence(e.currentTarget.value)}><option value="">Choose (optional)</option><option value="low">Low: I guessed or feel unsure</option><option value="medium">Medium: I have a method</option><option value="high">High: I can explain my answer</option></select></label>}
     {checked && <div ref={feedbackRef} tabIndex={-1} class={`problem-feedback ${correct ? 'correct' : 'incorrect'}`} role="status">
       <p>{correct ? 'Correct.' : `Your choice was ${CHOICE_LETTERS[selected]}; the correct answer is ${CHOICE_LETTERS[problem.answer]}.`}</p>
       {!correct && <p><RichText text={problem.feedback?.[selected] || `Check this part of your reasoning: ${problem.trap ?? 'Match the requested event to the calculation in the solution.'}`} /></p>}
@@ -67,9 +68,9 @@ export function Problem({ problem, number, initialAnswer = null, onAnswer = () =
     {showFollowup && <ReasoningCheck check={problem.checkpoint} title="Repair the reasoning" />}
     <div class="problem-actions">
       {!checked && <button type="button" class="problem-action primary-action" disabled={selected === null} onClick={checkAnswer}>Check answer</button>}
-      {!checked && hintCount < (problem.hints?.length ?? 0) && <button type="button" class="problem-action" onClick={() => { setHintCount(hintCount + 1); revealSupport(); }}>{hintCount === 0 ? 'Hint: choose a method' : 'Hint: set up the calculation'}</button>}
-      {steps < problem.solution.length && <button type="button" class="problem-action" onClick={() => { setSteps(steps + 1); revealSupport(); }}>{steps === 0 ? 'Show first solution step' : 'Show next solution step'}</button>}
-      {steps < problem.solution.length && <button type="button" class="problem-action" onClick={() => { setSteps(problem.solution.length); revealSupport(); }}>Show full solution</button>}
+      {!checked && !examStyle && hintCount < (problem.hints?.length ?? 0) && <button type="button" class="problem-action" onClick={() => { setHintCount(hintCount + 1); revealSupport(); }}>{hintCount === 0 ? 'Hint: choose a method' : 'Hint: set up the calculation'}</button>}
+      {(!examStyle || checked) && steps < problem.solution.length && <button type="button" class="problem-action" onClick={() => { setSteps(steps + 1); revealSupport(); }}>{steps === 0 ? 'Show first solution step' : 'Show next solution step'}</button>}
+      {(!examStyle || checked) && steps < problem.solution.length && <button type="button" class="problem-action" onClick={() => { setSteps(problem.solution.length); revealSupport(); }}>Show full solution</button>}
       {steps > 0 && <button type="button" class="problem-action" onClick={() => setSteps(0)}>Hide solution</button>}
       {checked && <button type="button" class="problem-action" onClick={retry}>Try again</button>}
     </div>
@@ -84,12 +85,12 @@ function readAnswers(topicId) {
     return stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {};
   } catch { return {}; }
 }
-export function UnderstandingSummary({ topicId }) {
+export function UnderstandingSummary({ topicId, showEmpty = true }) {
   const state = useLearning(), stats = summarizeLearning(state, topicId);
-  if (!stats.questions) return <p class="understanding-note">Your first-attempt accuracy and hint use will appear after you check a question. Lesson completion is tracked separately.</p>;
+  if (!stats.questions) return showEmpty ? <p class="understanding-note">Your first-attempt accuracy and hint use will appear after you check a question. Lesson completion is tracked separately.</p> : null;
   return <div class="understanding-summary" aria-live="polite"><p><strong>{stats.independentCorrect}/{stats.independent}</strong> first attempts correct without help · <strong>{stats.assisted}</strong> first attempts with support · <strong>{stats.highConfidenceMisses}</strong> high-confidence mistakes</p><p>First attempts stay in your record when you retry. Time runs from the question first appearing on screen to its first check on that visit, including pauses. <a href="#/review">Review your learning record</a>.</p></div>;
 }
-export function PracticeProblems({ topicId }) {
+export function PracticeProblems({ topicId, mode = 'all' }) {
   const [problems,setProblems] = useState([]), [error,setError] = useState(false), [answers,setAnswers] = useState(() => readAnswers(topicId));
   useEffect(() => {
     let cancelled = false;
@@ -103,18 +104,22 @@ export function PracticeProblems({ topicId }) {
   }
   const foundations = problems.filter(problem => problem.level !== 'challenge');
   const challenges = problems.filter(problem => problem.level === 'challenge');
+  const examStyle = mode === 'exam';
+  const visible = mode === 'foundation' ? foundations : examStyle ? challenges : problems;
+  const checkedCount = visible.filter(problem => validAnswer(problem) !== null).length;
+  const correctCount = visible.filter(problem => validAnswer(problem) === problem.answer).length;
   return <section class="practice-problems" id="practice">
-    <div class="practice-header"><h2>Practice independently</h2><span class="weight-label">{problems.length || '…'} questions</span></div>
-    <p class="practice-intro">Build fluency with the foundation exercises, then tackle the exam-style challenges below. These are original study exercises in the five-choice format, not released SOA questions.</p>
-    <UnderstandingSummary topicId={topicId} />
+    <div class="practice-header"><h2>{examStyle ? 'Exam-style questions' : 'Practice independently'}</h2><span class="weight-label">{visible.length || '…'} questions</span></div>
+    {examStyle ? <p class="practice-intro" role="status">{checkedCount} of {visible.length} answered · {correctCount} correct. Checked answers are saved in this browser; retries preserve your first-attempt record.</p>
+      : <p class="practice-intro">Build fluency with these foundation exercises, then <a href={`#/${questionsPath(topicId)}`}>open this chapter’s exam-style questions</a>. All exercises use five answer choices.</p>}
+    <UnderstandingSummary topicId={topicId} showEmpty={!examStyle} />
     {error ? <p role="alert">Practice could not be loaded. <button class="problem-action" onClick={() => window.location.reload()}>Reload</button></p> : !problems.length ? <p role="status">Loading questions…</p> : <>
-      {foundations.map((problem,index) => <Problem key={problem.id} problem={problem} number={index+1} initialAnswer={validAnswer(problem)} onAnswer={answer => record(problem,answer)} />)}
-      <section class="exam-challenges" aria-labelledby="challenge-heading">
-        <div class="practice-header"><h2 id="challenge-heading">Exam-style challenges</h2><span class="weight-label">{challenges.length} questions</span></div>
-        <p class="practice-intro">Choose your method before calculating. These questions combine several steps: interpret the information, set up the model, then find the requested quantity. Try them without hints and aim for about six minutes each. After checking, explain why the other choices fail.</p>
-        {challenges.map((problem,index) => <Problem key={problem.id} problem={problem} number={foundations.length+index+1} initialAnswer={validAnswer(problem)} onAnswer={answer => record(problem,answer)} />)}
+      {mode !== 'exam' && foundations.map((problem,index) => <Problem key={problem.id} problem={problem} number={index+1} initialAnswer={validAnswer(problem)} onAnswer={answer => record(problem,answer)} />)}
+      {mode !== 'foundation' && <section class="exam-challenges" aria-label="Chapter exam-style practice">
+        {!examStyle && <div class="practice-header"><h2>Exam-style challenges</h2><span class="weight-label">{challenges.length} questions</span></div>}
+        {challenges.map((problem,index) => <Problem key={problem.id} problem={problem} number={(examStyle ? 0 : foundations.length)+index+1} examStyle={examStyle} initialAnswer={validAnswer(problem)} onAnswer={answer => record(problem,answer)} />)}
         <p class="understanding-note">Ready to choose methods across chapters? <a href="#/exam">Try the separate timed-exam bank</a> or <a href="#/review">review your mistakes</a>.</p>
-      </section>
+      </section>}
     </>}
   </section>;
 }

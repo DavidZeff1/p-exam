@@ -66,3 +66,4 @@
  .problem-actions .problem-action { white-space: normal; }
 }
 @media print { .lab-controls, .lab-prediction, .confidence-label, .review-navigation, .new-session { display: none; } }
+.sidebar .nav-questions { padding-left: 2rem; font-size: .8rem; }

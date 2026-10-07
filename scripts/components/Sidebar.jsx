@@ -1,10 +1,11 @@
 import { useEffect, useState } from "preact/hooks";
-import { navStructure, getTopic, availableTopics } from "../topics.js";
+import { navStructure, availableTopics } from "../topics.js";
+import { getStudyRoute, questionsPath } from "../study-routes.js";
 
 export function Sidebar({ currentPage, completed, isOpen, onClose, onNavigate }) {
   const [search, setSearch] = useState("");
   const [openSections, setOpenSections] = useState(["general-probability"]);
-  const currentCategory = getTopic(currentPage)?.categoryId;
+  const currentCategory = getStudyRoute(currentPage).topic?.categoryId;
   const coreTopics = availableTopics.filter(topic => !topic.enrichment);
   const completedCount = coreTopics.filter((topic) => completed.includes(topic.id)).length;
 
@@ -80,13 +81,12 @@ export function Sidebar({ currentPage, completed, isOpen, onClose, onNavigate })
                       const classes = ["nav-link", active && "active", !item.page && "coming-soon"]
                         .filter(Boolean)
                         .join(" ");
-                      return (
+                      return <div key={item.id}>
                         <a
                           href={`#/${item.id}`}
                           class={classes}
                           aria-current={active ? "page" : undefined}
                           onClick={onNavigate}
-                          key={item.id}
                         >
                           <span class="nav-link-label">{item.label}</span>
                           {completed.includes(item.id) && (
@@ -96,7 +96,12 @@ export function Sidebar({ currentPage, completed, isOpen, onClose, onNavigate })
                           )}
                           {item.enrichment && <span class="nav-soon">optional</span>}
                         </a>
-                      );
+                        {item.page && <a href={`#/${questionsPath(item.id)}`}
+                          class={`nav-link nav-questions ${currentPage === questionsPath(item.id) ? 'active' : ''}`}
+                          aria-current={currentPage === questionsPath(item.id) ? 'page' : undefined}
+                          aria-label={`Questions for ${item.label}`}
+                          onClick={onNavigate}>Questions · {item.label.split(' ')[0]}</a>}
+                      </div>;
                     })}
                   </li>
                 ))}
