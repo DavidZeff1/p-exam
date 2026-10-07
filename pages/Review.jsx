@@ -7,6 +7,7 @@ import { markSupport } from '../scripts/support.js';
 import { useLearning } from '../scripts/use-learning.js';
 import { shuffle } from '../scripts/exam.js';
 import { Problem } from '../scripts/components/PracticeProblems.jsx';
+import { DifficultyBadge } from '../scripts/components/DifficultyBadge.jsx';
 import { ReasoningCheck } from '../scripts/components/LessonOpening.jsx';
 import { RichText } from '../scripts/components/RichText.jsx';
 import { methodDrills } from '../scripts/content/method-drills.js';
@@ -73,7 +74,7 @@ export function Review() {
         const recovered=last.correct&&!last.assisted;
         const source=lastMiss?.source ?? original;
         return <article class="mistake-entry" key={id}>
-          <h3><a href={`#/${q.topicId}`}>{topic?.label??q.topicId}</a></h3>
+          <h3><a href={`#/${q.topicId}`}>{topic?.label??q.topicId}</a>{source && <DifficultyBadge problem={{ ...original, ...source, topicId: q.topicId }} />}</h3>
           {source&&<p><RichText text={source.question}/></p>}
           {lastMiss?.source&&<p>Your answer: <RichText text={source.selectedChoice}/> · Correct answer: <RichText text={source.correctChoice}/></p>}
           <p>{q.attempts.filter(a=>!a.correct).length} missed attempts · {recovered?'Later solved a question in this lesson independently':'Needs an independent answer'} · review {new Date(q.due).toLocaleDateString()}</p>

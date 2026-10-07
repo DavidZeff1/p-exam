@@ -6,6 +6,7 @@ A Preact + Vite study website aligned to the **May 2026 SOA Exam P syllabus**.
 - All 22 learning outcomes mapped to instruction and chapter practice.
 - 506 original five-choice chapter questions: 211 foundation exercises plus five multistep challenges for each of the 59 chapters.
 - A dedicated Questions page immediately after each chapter in the sidebar and Next/Previous sequence. Each page presents its five existing multistep exam-style challenges (295 across the guide), with A–E choices, saved answers, progress, and solutions available after checking. Foundation exercises remain with the lesson. Direct links use `#/<topic-id>/questions`.
+- Difficulty estimates beside question headings use a 1–10 scale: direct formulas at the lower end, routine multistep problems in the middle, and combined conditional/payment/moment calculations higher up. Ratings are editorial study estimates, not official SOA ratings or a statistically calibrated scale. Every fixed question and generated foundation family is rated; existing saved sessions retain their answers.
 - A separate bank of 116 original timed-exam questions, with distinct stems and numerical parameters from chapter practice. Challenges and exam questions span 139 exercise families.
 - A parameterized foundation exercise family for each chapter; mixed review retains the full difficulty of challenge questions.
 - Concrete lesson openings, method cues, misconception reminders, reasoning checks, and worked/guided/independent practice in every chapter.
@@ -45,6 +46,7 @@ The dedicated Questions pages were checked across all 59 routes at 320 pixels: m
 
 - `scripts/topics.js`: chapter order, navigation, and optional-enrichment flags.
 - `scripts/study-routes.js` and `pages/ChapterQuestions.jsx`: lesson → questions → next lesson routing and subsection exam-style practice. Question and learning IDs stay unchanged, so previously saved answers are retained.
+- `scripts/difficulty.js`: authored scores for each challenge family and each foundation question in its stable file order, plus separate generated-family scores. Explicit integer `difficulty` values from 1 through 10 override these estimates. Add a rating when adding a question or family; coverage is checked by `tools/difficulty.test.js`.
 - `scripts/syllabus.js`: learning-outcome mappings and official resources.
 - `scripts/content/lessons.json`: new lessons rendered by `pages/StudyLesson.jsx`.
 - `pages/*.jsx`: original lesson pages and study tools.

@@ -67,3 +67,4 @@
 }
 @media print { .lab-controls, .lab-prediction, .confidence-label, .review-navigation, .new-session { display: none; } }
 .sidebar .nav-questions { padding-left: 2rem; font-size: .8rem; }
+.difficulty-badge { display: inline-block; margin-left: .6rem; padding: .15rem .4rem; border: 1px solid var(--color-border, #aabfcd); border-radius: 4px; font-size: .75rem; font-weight: 500; line-height: 1.5; vertical-align: middle; white-space: nowrap; }

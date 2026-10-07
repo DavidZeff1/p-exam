@@ -4,6 +4,7 @@ import { loadExamBank } from '../scripts/problems.js';
 import { EXAM_DURATION, EXAM_STORAGE_KEY, buildExam, scoreExam, remainingTime, validSession } from '../scripts/exam.js';
 import { RichText } from '../scripts/components/RichText.jsx';
 import { CHOICE_LETTERS } from '../scripts/components/PracticeProblems.jsx';
+import { DifficultyBadge } from '../scripts/components/DifficultyBadge.jsx';
 import { resources } from '../scripts/syllabus.js';
 function readSession() {
   try { const value=JSON.parse(localStorage.getItem(EXAM_STORAGE_KEY)); return validSession(value) ? value : null; } catch { return null; }
@@ -86,7 +87,7 @@ export function MockExam() {
       {error && <p role="alert">{error}</p>}
       {!visible.length && <p>No questions match this review filter.</p>}
       {visible.map(({question,i})=><article class="problem" key={question.id}>
-        <h2 class="problem-heading">Question {i+1}</h2><p class="problem-question"><RichText text={question.question}/></p>
+        <h2 class="problem-heading">Question {i+1}<DifficultyBadge problem={question} /></h2><p class="problem-question"><RichText text={question.question}/></p>
         <p class={`problem-feedback ${session.answers[i]===question.answer?'correct':'incorrect'}`}>Your answer: {session.answers[i]===null?'Unanswered':CHOICE_LETTERS[session.answers[i]]}. Correct answer: {CHOICE_LETTERS[question.answer]}.</p>
         <div class="choice-list review-choices">{question.choices.map((choice,j)=><div key={j} class={`choice ${j===question.answer?'correct':''} ${j===session.answers[i]&&j!==question.answer?'incorrect':''}`}><span class="choice-letter">{CHOICE_LETTERS[j]}</span><span class="choice-text"><RichText text={choice}/></span>{j===question.answer&&<span class="choice-mark" aria-label="Correct answer">✓</span>}{j===session.answers[i]&&j!==question.answer&&<span class="choice-mark" aria-label="Your incorrect answer">×</span>}</div>)}</div>
         <details class="review-solution"><summary>Worked solution</summary><div class="problem-solution">{question.solution.map((step,j)=><p key={j}><RichText text={step}/></p>)}</div></details>
@@ -102,7 +103,7 @@ export function MockExam() {
     {session.bankVersion !== 2 && <p class="understanding-note">Your saved exam uses the earlier chapter question bank. Finish it to keep your answers; the next exam will use the separate question bank.</p>}
     <div class="exam-status"><strong>{answered}/30 answered</strong><span class={seconds<600?'timer urgent':'timer'} aria-label="Time remaining">{formatTime(seconds)}</span><a href={resources[1][1]} target="_blank" rel="noreferrer">Normal table ↗</a></div>
     <div class="exam-workspace">
-      <div class="exam-question"><h2 ref={questionRef} tabIndex={-1} class="question-title">Question {index+1} of 30</h2><p class="problem-question"><RichText text={question.question}/></p>
+      <div class="exam-question"><h2 ref={questionRef} tabIndex={-1} class="question-title">Question {index+1} of 30<DifficultyBadge problem={question} /></h2><p class="problem-question"><RichText text={question.question}/></p>
         <div class="choice-list" role="group" aria-label={`Answer choices for question ${index+1}`}>{question.choices.map((choice,i)=><button type="button" key={i} class={`choice ${session.answers[index]===i?'selected':''}`} aria-pressed={session.answers[index]===i} onClick={()=>commitSession(current=>({...current,answers:current.answers.map((a,j)=>j===index?i:a)}))}><span class="choice-letter">{CHOICE_LETTERS[i]}</span><span class="choice-text"><RichText text={choice}/></span></button>)}</div>
         <div class="problem-actions"><button class="problem-action" aria-pressed={flagged} onClick={()=>commitSession(current=>({...current,flags:flagged?current.flags.filter(i=>i!==index):[...current.flags,index]}))}>{flagged?'Flagged for review':'Flag for review'}</button><button class="problem-action" disabled={session.answers[index]===null} onClick={()=>commitSession(current=>({...current,answers:current.answers.map((a,j)=>j===index?null:a)}))}>Clear answer</button></div>
         <div class="exam-pager"><button class="problem-action" disabled={index===0} onClick={()=>setIndex(index-1)}>Previous</button><button class="problem-action primary-action" disabled={index===29} onClick={()=>setIndex(index+1)}>Next question</button></div>

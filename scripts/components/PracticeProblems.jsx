@@ -6,6 +6,8 @@ import { hasSupport, markSupport } from '../support.js';
 import { saveAttempt, summarizeLearning } from '../learning.js';
 import { useLearning } from '../use-learning.js';
 import { questionsPath } from '../study-routes.js';
+import { DifficultyBadge } from './DifficultyBadge.jsx';
+import { getDifficulty } from '../difficulty.js';
 
 export const CHOICE_LETTERS = ['A', 'B', 'C', 'D', 'E'];
 export function Problem({ problem, number, initialAnswer = null, onAnswer = () => {}, guided = false, hideTopic = false, examStyle = false }) {
@@ -37,7 +39,7 @@ export function Problem({ problem, number, initialAnswer = null, onAnswer = () =
       seconds: Math.max(0, Math.round((Date.now() - (started.current ?? Date.now())) / 1000)), hints: hintCount,
       ...(!correct ? { source: { id: problem.id, question: problem.question, selectedChoice: problem.choices[selected],
         correctChoice: problem.choices[problem.answer], feedback: problem.feedback?.[selected] || problem.trap,
-        solution: problem.solution } } : {}),
+        solution: problem.solution, difficulty: getDifficulty(problem) } } : {}),
     });
     markSupport(problem.id); onAnswer(selected);
   }
@@ -47,7 +49,7 @@ export function Problem({ problem, number, initialAnswer = null, onAnswer = () =
     revealSupport(); restored.current = false; started.current = Date.now(); onAnswer(null);
   }
   return <article class="problem" ref={articleRef}>
-    <h3 class="problem-heading">{guided ? 'Your turn' : `Question ${number}`}{problem.variant && <span class="variant-label">New numbers</span>}{problem.level === 'challenge' && <span class="variant-label">Challenge</span>}</h3>
+    <h3 class="problem-heading">{guided ? 'Your turn' : `Question ${number}`}<DifficultyBadge problem={problem} />{problem.variant && <span class="variant-label">New numbers</span>}{problem.level === 'challenge' && <span class="variant-label">Challenge</span>}</h3>
     <p class="problem-question"><RichText text={problem.question} /></p>
     <div class="choice-list" role="group" aria-label={`Answer choices for ${guided ? 'guided practice' : `question ${number}`}`}>
       {problem.choices.map((choice, index) => <button type="button" key={index} ref={index === 0 ? firstChoiceRef : undefined}
