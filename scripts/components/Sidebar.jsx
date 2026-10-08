@@ -1,11 +1,12 @@
 import { useEffect, useState } from "preact/hooks";
 import { navStructure, availableTopics } from "../topics.js";
 import { getStudyRoute, questionsPath } from "../study-routes.js";
+import { getSectionForRoute, sectionQuestionsPath } from "../sections.js";
 
 export function Sidebar({ currentPage, completed, isOpen, onClose, onNavigate }) {
   const [search, setSearch] = useState("");
   const [openSections, setOpenSections] = useState(["general-probability"]);
-  const currentCategory = getStudyRoute(currentPage).topic?.categoryId;
+  const currentCategory = getStudyRoute(currentPage).topic?.categoryId ?? getSectionForRoute(currentPage)?.categoryId;
   const coreTopics = availableTopics.filter(topic => !topic.enrichment);
   const completedCount = coreTopics.filter((topic) => completed.includes(topic.id)).length;
 
@@ -103,6 +104,10 @@ export function Sidebar({ currentPage, completed, isOpen, onClose, onNavigate })
                           onClick={onNavigate}>Questions · {item.label.split(' ')[0]}</a>}
                       </div>;
                     })}
+                    <a href={`#/${sectionQuestionsPath(`${category.id}-${section.title[0].toLowerCase()}`)}`}
+                      class={`nav-link nav-section-questions ${currentPage === sectionQuestionsPath(`${category.id}-${section.title[0].toLowerCase()}`) ? 'active' : ''}`}
+                      aria-current={currentPage === sectionQuestionsPath(`${category.id}-${section.title[0].toLowerCase()}`) ? 'page' : undefined}
+                      onClick={onNavigate}>Mixed questions · All {section.title[0]}</a>
                   </li>
                 ))}
               </ul>

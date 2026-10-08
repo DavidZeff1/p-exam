@@ -6,6 +6,8 @@ import challenges from '../scripts/content/challenges.js';
 import examBank from '../scripts/content/exam-bank.js';
 import { availableTopics } from '../scripts/topics.js';
 import { tokenizeMath } from '../scripts/math-text.js';
+import { sections } from '../scripts/sections.js';
+import { sectionExpected } from './verify-section-families.js';
 import { additionalExpected } from './verify-soa-families.js';
 const fact=n=>{let value=1;for(let i=2;i<=n;i++)value*=i;return value;};
 const choose=(n,k)=>k<0||k>n?0:fact(n)/(fact(k)*fact(n-k));
@@ -34,6 +36,7 @@ function uniformPayment(s) {
  return s.target==='mean'?mean:s.target==='sd'?Math.sqrt(variance):s.target==='cv'?Math.sqrt(variance)/mean:variance;
 }
 function expected(s) {
+ if(s.kind.startsWith("section-"))return sectionExpected(s,{integral,Phi,binomial,poisson,moments});
  switch(s.kind) {
  case 'atoms': {const total=s.weights.reduce((a,b)=>a+b,0);const den=s.weights.filter((_,i)=>!(i&1)).reduce((a,b)=>a+b,0);return s.weights[0]/den;}
  case 'four-atoms':return(s.k+1)/(1+2+s.k+s.k+1);
@@ -91,7 +94,8 @@ function expected(s) {
  default:return additionalExpected(s,{choose,fact,integral,Phi,poisson,binomial,moments});
  }
 }
-const all=[...Object.values(challenges).flat(),...Object.values(examBank).flat()];
+const sectionBank=(await Promise.all(sections.map(async section=>(await import(`../scripts/content/section-questions/${section.id}.js`)).default))).flat();
+const all=[...Object.values(challenges).flat(),...Object.values(examBank).flat(),...sectionBank];
 const foundations=(await Promise.all(availableTopics.map(async t=>(await import(`../problems/${t.id}.js`)).default))).flat();
 const foundationStems=new Set(foundations.map(q=>q.question));
 assert.ok(all.every(q=>!foundationStems.has(q.question)), 'New questions must not duplicate foundation stems');
@@ -118,4 +122,4 @@ for(const q of all) {
  }
  verified++;
 }
-console.log(`${verified} challenge/exam answers independently verified; 59 chapters covered; timed and chapter stems disjoint.`);
+console.log(`${verified} chapter/exam/section answers independently verified; 59 chapters covered; timed and chapter stems disjoint.`);

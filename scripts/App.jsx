@@ -11,6 +11,8 @@ import { Syllabus } from "../pages/Syllabus.jsx";
 import { Reference } from "../pages/Reference.jsx";
 import { MockExam } from "../pages/MockExam.jsx";
 import { ChapterQuestions } from "../pages/ChapterQuestions.jsx";
+import { SectionQuestions } from "../pages/SectionQuestions.jsx";
+import { getSectionForRoute } from "./sections.js";
 import { getStudyRoute, questionsPath } from "./study-routes.js";
 import { getOutcomes } from "./syllabus.js";
 import { useTheme } from "./theme.js";
@@ -27,6 +29,7 @@ const pageModules = import.meta.glob([
   "!../pages/MockExam.jsx",
   "!../pages/Review.jsx",
   "!../pages/ChapterQuestions.jsx",
+  "!../pages/SectionQuestions.jsx",
 ]);
 
 function loadPage(topic) {
@@ -51,6 +54,7 @@ export function App() {
   const drawerOpenedOn = useRef(null);
   const hasNavigated = useRef(false);
   const { topic, questions: questionsPage } = getStudyRoute(currentPage);
+  const section = getSectionForRoute(currentPage);
   const pageReady = Boolean(topic?.page) && (questionsPage || loadedPage?.id === topic.id);
 
   useEffect(() => {
@@ -104,7 +108,7 @@ export function App() {
   }, [drawerIsOpen]);
 
   useEffect(() => {
-    document.title = topic ? `${questionsPage ? 'Questions · ' : ''}${topic.label} · Exam P` : Object.hasOwn(utilityTitles, currentPage) ? `${utilityTitles[currentPage]} · Exam P` : "SOA Exam P Study Guide";
+    document.title = topic ? `${questionsPage ? 'Questions · ' : ''}${topic.label} · Exam P` : section ? `Mixed questions · ${section.categoryTitle} · All ${section.letter} · Exam P` : Object.hasOwn(utilityTitles, currentPage) ? `${utilityTitles[currentPage]} · Exam P` : "SOA Exam P Study Guide";
     if (!topic?.page || questionsPage) return;
 
     let cancelled = false;
@@ -146,6 +150,8 @@ export function App() {
     content = <Reference />;
   } else if (currentPage === "exam") {
     content = <MockExam />;
+  } else if (section) {
+    content = <SectionQuestions key={section.id} section={section} />;
   } else if (!topic && currentPage) {
     content = <><h1 class="page-title">Topic not found</h1><p>That chapter link does not exist. <a href="#/">Find a lesson in the study guide</a>.</p></>;
   } else if (!topic) {

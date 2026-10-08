@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { availableTopics } from '../scripts/topics.js';
 import { getStudyRoute, getStudyPager, questionsPath } from '../scripts/study-routes.js';
 import challenges from '../scripts/content/challenges.js';
+import { getTopicSection, sectionQuestionsPath } from '../scripts/sections.js';
 
 test('Every chapter has a direct questions route with five distinct multistep exercises', () => {
   for (const topic of availableTopics) {
@@ -20,14 +21,15 @@ test('Every chapter has a direct questions route with five distinct multistep ex
   }
 });
 
-test('Navigation alternates lesson and questions without skipping chapters', () => {
+test('Navigation alternates lessons and chapter questions, adding a mixed page at section boundaries', () => {
   availableTopics.forEach((topic, index) => {
     const lesson = getStudyPager(topic);
     const questions = getStudyPager(topic, true);
     assert.equal(lesson.next.path, questionsPath(topic.id));
     assert.equal(questions.prev.path, topic.id);
-    assert.equal(lesson.prev?.path, index ? questionsPath(availableTopics[index - 1].id) : undefined);
-    assert.equal(questions.next?.path, availableTopics[index + 1]?.id);
+    const section = getTopicSection(topic.id), previous = availableTopics[index - 1];
+    assert.equal(lesson.prev?.path, index ? section.items[0].id === topic.id ? sectionQuestionsPath(getTopicSection(previous.id).id) : questionsPath(previous.id) : undefined);
+    assert.equal(questions.next?.path, section.items.at(-1).id === topic.id ? sectionQuestionsPath(section.id) : availableTopics[index + 1]?.id);
   });
 });
 

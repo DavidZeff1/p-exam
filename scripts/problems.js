@@ -2,8 +2,14 @@ import teaching from './content/teaching.js';
 import { distractors } from './content/distractors.js';
 import { getTopic } from './topics.js';
 const modules = import.meta.glob('../problems/*.js');
+const sectionModules = import.meta.glob('./content/section-questions/*.js');
 // Authoring/audit metadata is not needed in saved browser sessions.
 function studyQuestion({ verification, designBasis, ...problem }) { return problem; }
+export async function loadSectionProblems(sectionId) {
+  const load = sectionModules[`./content/section-questions/${sectionId}.js`];
+  if (!load) throw new Error(`No mixed question set for ${sectionId}`);
+  return (await load()).default.map(studyQuestion);
+}
 export async function loadProblems(topicId) {
   const load = modules[`../problems/${topicId}.js`];
   if (!load) throw new Error(`No practice set for ${topicId}`);
